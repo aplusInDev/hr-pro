@@ -1,0 +1,8 @@
+aside {
+    /* background-color: var(--seconde-dark-color); */
+    background-color: var(--aside-ground);
+    width: 200px;
+    /* height: calc(100vh - 50px); */
+    height: 100vh;
+    /* border-top: 1px solid var(--b-dark); */
+}
