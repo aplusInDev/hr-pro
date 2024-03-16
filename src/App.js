@@ -1,21 +1,13 @@
 import './App.css';
+import { Header, Sidebar, Footer } from './layouts/index';
 
 function App() {
   return (
     <>
-      <header>
-        <h1>
-          <span>hr</span> pro
-        </h1>
-        <ul>
-          <li className="dark-ground"></li>
-          <li className="translation"></li>
-          <li className="notifications"></li>
-          <li className="account"></li>
-        </ul>
-      </header>
+      <Header />
       <main></main>
-      <aside></aside>
+      <Sidebar />
+      <Footer />
     </>
   );
 }
