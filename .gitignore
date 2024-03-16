@@ -1,2 +1,3 @@
-node-models/
 *test*
+node_modules
+package-lock.json
