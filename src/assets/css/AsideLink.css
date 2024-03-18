@@ -1,12 +1,12 @@
 .aside-link {
-text-decoration: none;
-color: var(--icon-color);
-padding-left: 5px;
-margin: 0 5px;
-width: 185px;
-height: var(--field-height);
-display: flex;
-align-items: center;
+  text-decoration: none;
+  color: var(--icon-color);
+  padding-left: 5px;
+  margin: 0 5px;
+  width: 185px;
+  height: var(--field-height);
+  display: flex;
+  align-items: center;
 }
 
 aside li:hover > .aside-link,
