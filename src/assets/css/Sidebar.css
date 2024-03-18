@@ -1,8 +1,39 @@
 aside {
-    /* background-color: var(--seconde-dark-color); */
-    background-color: var(--aside-ground);
-    width: 200px;
-    /* height: calc(100vh - 50px); */
-    height: 100vh;
-    /* border-top: 1px solid var(--b-dark); */
+  /* background-color: var(--seconde-dark-color); */
+  background-color: #000205;
+  width: 200px;
+  /* height: calc(100vh - 50px); */
+  height: 100vh;
+  /* border-top: 1px solid var(--b-dark); */
+  color:#1A9BB7;
+  
 }
+
+.sidebar ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.sidebar li {
+  padding: 15px 30px 15px ;
+  height: 50px;
+
+}
+
+a {
+  text-decoration: none;
+  color:#1A9BB7;
+}
+
+.sidebar li:hover {
+  background-color: #323232; 
+  border-radius: 10px;
+}
+
+.sidebar li span{
+  padding-right: 10px;
+
+}
+
+  
