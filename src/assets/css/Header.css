@@ -6,7 +6,7 @@ header {
 }
 
 header h1 {
-  font: italic bold 30px 'Lato', sans-serif;
+  font: italic bold 25px 'Lato', sans-serif;
   color: #F2F2F2;
   width: 200px;
   height: 40px;
@@ -23,7 +23,7 @@ h1 > span {
   color: #000000;
   width: 35px;
   height: 35px;
-  margin-right: 10px;
+  margin-right: 5px;
   padding-left: 4px;
   display: flex;
   flex-direction: row;

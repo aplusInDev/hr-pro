@@ -31,19 +31,18 @@ function  Sidebar() {
   return (
     <aside>
       <nav>
-    <ul>
-      {fields.map((field, index) => (
-        <li
-          key={index}>
-          <AsideLink 
-            link={field.link}
-            icon={field.icon}
-            text={field.text}
-            active={active === index}
-            onClick={() => handleClik(index)}
-          />
-        </li>
-      ))}
+        <ul>
+          {fields.map((field, index) => (
+            <li key={index}>
+              <AsideLink 
+                link={field.link}
+                icon={field.icon}
+                text={field.text}
+                active={active === index}
+                onClick={() => handleClik(index)}
+              />
+            </li>
+          ))}
         </ul>
       </nav>
     </aside>
