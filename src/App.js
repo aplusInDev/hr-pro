@@ -1,14 +1,13 @@
-import './assets/css/App.css';
-import { Header, Sidebar, Footer } from './layouts/index';
+import { Header, Sidebar, Main, Footer } from './layouts/index';
 
 function App() {
   return (
-    <>
-      <Header />
-      <main></main>
-      <Sidebar />
-      <Footer />
-    </>
+  <>
+    <Header />
+    <Sidebar />
+    <Main />
+    <Footer />
+  </>
   );
 }
 
