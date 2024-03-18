@@ -15,10 +15,9 @@ aside a.active {
   opacity: .5;
   border-radius: 5px;
   color: var(--second-dark-color);
-  transition: opacity .5s step-end;
+  transition: opacity .5s step-end, color .5s step-end;
 }
 
-aside li:hover > .aside-link::before,
 aside a.active::before {
   content: '';
   width: 2px;
