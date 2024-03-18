@@ -31,10 +31,10 @@
   box-sizing: border-box;
   scrollbar-color: #677070 #292e2e;
   scrollbar-width: thin;
+  font: italic bold 14px 'Lato', sans-serif;
 }
 
 #root {
-  background-color: #ff0000;
   position: relative;
   overflow-x: hidden;
   height: 100vh;
