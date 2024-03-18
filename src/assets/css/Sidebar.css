@@ -1,35 +1,23 @@
 aside {
-  /* background-color: var(--seconde-dark-color); */
+  --field-height: 30px;
   background-color: var(--second-dark-color);
   width: 200px;
   /* height: calc(100vh - 50px); */
   height: 100vh;
-  /* border-top: 1px solid var(--b-dark); */
+  border-top: 1px solid var(--b-dark);
   color: var(--icon-color);
 }
 
-.sidebar ul{
-  margin: 0;
+aside ul {
+  list-style: none;
   padding: 0;
-  list-style-type: none;
+  margin: 0;
+  margin-top: 15px;
+  padding-top: 2px;
 }
 
-.sidebar li {
-  padding: 15px 30px 15px ;
-  height: 50px;
-
-}
-
-a {
-  text-decoration: none;
-  color: var(--icon-color);
-}
-
-.sidebar li:hover {
-  background-color: var(--b-dark); 
-  border-radius: 10px;
-}
-
-.sidebar li span{
-  padding-right: 10px;
+aside li {
+  height: var(--field-height);
+  line-height: 30px;
+  padding: 25px 5px;
 }
