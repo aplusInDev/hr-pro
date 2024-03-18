@@ -1,0 +1,9 @@
+main {
+    /* background-color: red; */
+    background-color: var(--main-light-color);
+    width: calc(100vw - 200px);
+    /* height: calc(100vh - 50px); */
+    height: 100vh;
+    position: absolute;
+    left: 200px;
+}

@@ -1,12 +1,11 @@
 aside {
   /* background-color: var(--seconde-dark-color); */
-  background-color: #000205;
+  background-color: var(--second-dark-color);
   width: 200px;
   /* height: calc(100vh - 50px); */
   height: 100vh;
   /* border-top: 1px solid var(--b-dark); */
-  color:#1A9BB7;
-  
+  color: var(--icon-color);
 }
 
 .sidebar ul{
@@ -23,17 +22,14 @@ aside {
 
 a {
   text-decoration: none;
-  color:#1A9BB7;
+  color: var(--icon-color);
 }
 
 .sidebar li:hover {
-  background-color: #323232; 
+  background-color: var(--b-dark); 
   border-radius: 10px;
 }
 
 .sidebar li span{
   padding-right: 10px;
-
 }
-
-  

@@ -1,4 +1,4 @@
-import './App.css';
+import './assets/css/App.css';
 import { Header, Sidebar, Footer } from './layouts/index';
 
 function App() {
