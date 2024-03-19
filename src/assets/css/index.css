@@ -25,13 +25,27 @@
 }
 
 * {
+  font: italic bold 14px 'Lato', sans-serif;
   margin :0;
   padding: 0;
-  scroll-behavior: smooth;
   box-sizing: border-box;
-  scrollbar-color: #677070 #292e2e;
-  scrollbar-width: thin;
-  font: italic bold 14px 'Lato', sans-serif;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  /* background-color: #677070; */
+  /* background: linear-gradient(180deg, var(--second-dark-color) 0%, #5b6165 100%); */
+  border-radius: 5px;
+  background-color: #555555;
+}
+
+::-webkit-scrollbar-track {
+  /* background-color: #292e2e; */
+  background-color: var(--main-light-color);
 }
 
 #root {

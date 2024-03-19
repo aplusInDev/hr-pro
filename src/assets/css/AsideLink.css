@@ -12,8 +12,11 @@
 aside li:hover > .aside-link,
 aside a.active {
   background-color: var(--main-light-color);
-  opacity: .5;
   border-radius: 5px;
+}
+
+aside a.active {
+  opacity: .5;
   color: var(--second-dark-color);
   transition: opacity .5s step-end, color .5s step-end;
 }
