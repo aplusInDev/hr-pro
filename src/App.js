@@ -1,4 +1,4 @@
-import { Header, Sidebar, Main, Footer } from './layouts/index';
+import { Header, Sidebar, Main } from './layouts/index';
 
 function App() {
   return (
@@ -6,7 +6,6 @@ function App() {
     <Header />
     <Sidebar />
     <Main />
-    <Footer />
   </>
   );
 }

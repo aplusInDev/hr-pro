@@ -2,8 +2,7 @@ aside {
   --field-height: 30px;
   background-color: var(--second-dark-color);
   width: 200px;
-  /* height: calc(100vh - 50px); */
-  height: 100vh;
+  height: calc(100vh - 50px);
   border-top: 1px solid var(--b-dark);
   color: var(--icon-color);
 }
