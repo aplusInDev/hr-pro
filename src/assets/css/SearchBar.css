@@ -1,0 +1,15 @@
+input.search {
+    width: 1000px;
+    height: 30px;
+    background-color: black;
+    border: none;
+  }
+  .searchBox {
+    width: 1200px; /* Width of the box */
+    height: 50px; /* Height of the box */
+    background-color: black; /* Background color of the box */
+    padding: 10px; /* Padding inside the box */
+    margin: 20px; /* Margin around the box */
+    border-radius: 5px;
+  }
+  
