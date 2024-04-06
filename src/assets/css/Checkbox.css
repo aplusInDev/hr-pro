@@ -1,0 +1,41 @@
+input {
+    width: 100px;
+  }
+  label.labelDept {
+    margin-left: 50px;
+  }
+  .vertical-line {
+    border: none; /* Remove default border */
+    border-left: 2px solid gray; /* Adjust thickness and color as needed */
+    height: 50px; /* Adjust height as needed */
+    width: 0; /* Ensure width is 0 to create a vertical line */
+    margin-left: 50px; /* Center the line horizontally */
+  }
+  .dept {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 50px;
+  }
+  .job {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 30px;
+    color: white;
+    margin-right: 20px;
+  }
+  form tr {
+    width: 80px; /* Width of the box */
+    height: 150px; /* Height of the box */
+    background-color: black; /* Background color of the box */
+    padding: 20px; /* Padding inside the box */
+    margin: 20px; /* Margin around the box */
+    border-radius: 20px;
+  }
+  
