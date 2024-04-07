@@ -1,14 +1,11 @@
-import '../assets/css/Main.css';
 import React from 'react';
-//import Filter from "../components/filter/Filter";
+import '../assets/css/Main.css';
 
 
 const Main = () => {
 
   return (
     <main>
-       
-       
     </main>
   );
 }
