@@ -10,12 +10,12 @@
   --main-light-color: #D9D9D9;
   --aside-ground: rgb(6, 22, 33);
   --icon-color: #1A9BB7;
-  --current-button: #1A7EB7;
+  --current-btn: #1A7EB7;
   --checkbox-ground: #9CBEBE;
-  --green-button: #00FF00;
-  --red-button: #FF0000;
-  /* --green-button: #1AB759; */
-  /* --red-button: #B71A1A; */
+  --green-btn: #00FF00;
+  --red-btn: #FF0000;
+  --second-green-btn: #1AB759;
+  --red-btn: #B71A1A;
 }
 
 .dark {
