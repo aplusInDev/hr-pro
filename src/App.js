@@ -1,12 +1,11 @@
-import { Header, Sidebar, Main } from './layouts/index';
+// import { Header, Sidebar, Main } from './layouts/index';
+import { Register } from './pages'
 
 function App() {
   
   return (
   <>
-    <Header />
-    <Sidebar />
-    <Main />
+    <Register />
   </>
   );
 }
