@@ -91,7 +91,7 @@ li:last-child:hover .profile-settings {
   margin: 5px 0;
 }
 
-.profile-settings li:not(li:nth-last-child(2)) {
+.profile-settings li:not(li:nth-last-child(2), li:last-child) {
   border-bottom: 1px solid #726c6c;
 }
 
