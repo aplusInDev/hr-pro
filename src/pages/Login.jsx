@@ -1,9 +1,15 @@
-import { React } from 'react'
+import { React, useState } from 'react'
 import httpClient from '../services/httpClient';
 import { Form, redirect, Outlet } from 'react-router-dom';
 import "../assets/css/Register.css";
 
 export default function Login() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+  }
+
   return (
     <div className="login">
       <header>
@@ -12,7 +18,7 @@ export default function Login() {
         </div>
       </header>
       <Outlet />
-      <Form method='post' action='/login'>
+      <Form method='post' action='/login' onSubmit={handleSubmit}>
         <label>
           <span>Username</span>
           <input
@@ -20,6 +26,8 @@ export default function Login() {
             aria-label='email'
             type='email'
             name='email'
+            disabled={isSubmitting}
+            required
           />
         </label>
         <label>
@@ -29,13 +37,16 @@ export default function Login() {
             aria-label='password'
             type='password'
             name='password'
+            disabled={isSubmitting}
+            required
           />
         </label>
-        <button type='submit'>Login In</button>
+        <button type='submit' disabled={isSubmitting}>Login In</button>
       </Form>
     </div>
   )
 }
+
 
 export async function action({ request }) {
   const formData = await request.formData();

@@ -1,9 +1,14 @@
-import { React } from 'react'
+import { React, useState } from 'react'
 import { Form, redirect, Outlet } from 'react-router-dom';
 import httpClient from '../services/httpClient';
 import '../assets/css/Register.css';
 
 export default function Register() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+  }
 
   return (
     <div className="register">
@@ -16,6 +21,7 @@ export default function Register() {
       <Form
         method='post'
         action='/register'
+        onSubmit={handleSubmit}
       >
         <label>
           <span>first name</span>
@@ -24,6 +30,7 @@ export default function Register() {
             aria-label='first name'
             type='text'
             name='first_name'
+            disabled={isSubmitting}
             required
           />
         </label>
@@ -34,6 +41,7 @@ export default function Register() {
             aria-label='last name'
             type='text'
             name='last_name'
+            disabled={isSubmitting}
             required
           />
         </label>

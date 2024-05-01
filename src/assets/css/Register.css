@@ -77,7 +77,7 @@
 .register form span,
 .login form span {
   display: block;
-  margin: 30px 0 2px;
+  margin: 30px 0 5px 8px;
 }
 
 .register input,

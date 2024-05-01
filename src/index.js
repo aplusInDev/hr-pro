@@ -11,11 +11,13 @@ import { loader as rootLoader } from './pages/Profile';
 import { action as profileAction } from './pages/Profile';
 import { action as loginAction } from './pages/Login';
 import {action as registerAction } from './pages/Register';
+import { loader as landingPageLoader } from './pages/LandingPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LandingPage />,
+    loader: landingPageLoader,
   },
   {
     path: "login",
@@ -35,6 +37,7 @@ const router = createBrowserRouter([
     path: "register",
     element: <Register />,
     action: registerAction,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "created",

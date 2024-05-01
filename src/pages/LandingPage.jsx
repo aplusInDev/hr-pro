@@ -1,6 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, redirect } from 'react-router-dom'
+import { Alert } from '../components/ui';
 import "../assets/css/LandingPage.css";
+import httpClient from '../services/httpClient';
 
 export default function LandingPage() {
   return (
@@ -14,6 +16,10 @@ export default function LandingPage() {
           <button type='button'><Link to={'register'}>Sign Up</Link></button>
         </div>
       </header>
+      <Alert
+        title="Welcome"
+        body="Welcome to the landing page"
+      />
       <section>
         <h1>Welcome to the Landing Page</h1>
       </section>
@@ -21,3 +27,11 @@ export default function LandingPage() {
   );
 }
 
+export async function loader() {
+  try {
+    await httpClient.get('http://localhost:5000/api/v1/profile');
+    return redirect("/profile");
+  } catch (err) {
+    return null;
+  }
+}
