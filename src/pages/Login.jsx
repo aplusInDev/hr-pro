@@ -1,56 +1,56 @@
-import { React, useState } from 'react'
+import { React } from 'react'
 import httpClient from '../services/httpClient';
+import { Form, redirect, Outlet } from 'react-router-dom';
+import "../assets/css/Register.css";
 
 export default function Login() {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
-
-  function handleInputChange(e) {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  }
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    try {
-      const formDataToSend = new FormData();
-      formDataToSend.append('email', formData.email);
-      formDataToSend.append('password', formData.password);
-      const response = await httpClient.post('http://localhost:5000/api/v1/login', formDataToSend);
-      console.log('Success:', response.data);
-      window.location.href = "/profile";
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-
-
   return (
-    <div className="register">
-      <form onSubmit={handleSubmit}>
-        <input
-          type='email'
-          name='email'
-          placeholder='Email'
-          value={formData.email}
-          onChange={handleInputChange}
-          required
-        />
-        <input
-          type='password'
-          name='password'
-          placeholder='Password'
-          value={formData.password}
-          onChange={handleInputChange}
-          required
-        />
-        <button type='submit'>Login</button>
-      </form>
+    <div className="login">
+      <header>
+        <div className="logo">
+          <span>hr</span><span>pro</span>
+        </div>
+      </header>
+      <Outlet />
+      <Form method='post' action='/login'>
+        <label>
+          <span>Username</span>
+          <input
+            placeholder='type your email'
+            aria-label='email'
+            type='email'
+            name='email'
+          />
+        </label>
+        <label>
+          <span>Password</span>
+          <input
+            placeholder='type your password'
+            aria-label='password'
+            type='password'
+            name='password'
+          />
+        </label>
+        <button type='submit'>Login In</button>
+      </Form>
     </div>
-  );
+  )
+}
+
+export async function action({ request }) {
+  const formData = await request.formData();
+
+  try {
+    await httpClient.post('http://localhost:5000/api/v1/login',
+      formData,
+    );
+    return redirect('/profile');
+  } catch (err) {
+    // check if the error is 403 "account not activated"
+    if (err.response.status === 403) {
+      return redirect('forbidden');
+    }
+    console.log('erro: ', err);
+    return redirect('/login');
+  }
 }

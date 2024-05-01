@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './assets/css/index.css';
-// import App from './App';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { LandingPage, Login, Register, Profile } from './pages';
+import { Alert } from './components/ui';
+import { LandingPage, Login, Register, Profile, ErrorPage } from './pages';
 import { loader as rootLoader } from './pages/Profile';
 import { action as profileAction } from './pages/Profile';
+import { action as loginAction } from './pages/Login';
+import {action as registerAction } from './pages/Register';
 
 const router = createBrowserRouter([
   {
@@ -18,10 +20,30 @@ const router = createBrowserRouter([
   {
     path: "login",
     element: <Login />,
+    action: loginAction,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "forbidden",
+        element: <ErrorPage
+          msg="Account not activated"
+        />,
+      },
+    ],
   },
   {
     path: "register",
     element: <Register />,
+    action: registerAction,
+    children: [
+      {
+        path: "created",
+        element: <Alert
+          title="account created"
+          body="visit your email and activate your account"
+        /> 
+      }
+    ]
   },
   {
     path: "profile",

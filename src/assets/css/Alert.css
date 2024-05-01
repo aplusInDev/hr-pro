@@ -1,0 +1,26 @@
+.alert-card {
+  background-color: rgb(1, 7, 18);
+  position: relative;
+  width: 450px;
+  height: 250px;
+  margin: 10vh auto;
+  border-radius: 20px;
+  filter: drop-shadow(5px 12px 5px #363030);
+  z-index: 1000;
+}
+
+.alert-card h1 {
+  color: #f2f2f2;
+  font-size: 2rem;
+  text-align: center;
+  padding: 30px 20px 20px;
+}
+
+.alert-card span {
+  display: inline-block;
+  color: #f2f2f2;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+}
