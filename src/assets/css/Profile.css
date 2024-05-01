@@ -1,0 +1,7 @@
+.profile {
+  background-color: var(--bgColor4);
+  margin-top: 50px;
+  width: 100vw;
+  height: calc(100vh - 50px);
+  padding: 20px 30px;
+}

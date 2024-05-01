@@ -1,21 +1,45 @@
 import { React } from 'react'
 import httpClient from '../services/httpClient';
 import { useLoaderData, redirect, Form } from 'react-router-dom';
+import { Header } from '../layouts';
+import '../assets/css/Profile.css';
+import { Icon } from '@iconify/react';
 
 export default function Profile() {
   const data = useLoaderData();
 
   return (
-    <div>
-      <h1>Profile</h1>
-      {data && <h1>{data.email}</h1>}
-      <Form
-        method='delete'
-        action="/logout"
-      >
-        <button type='submit'>logout</button>
-      </Form>
-    </div>
+    <>
+      <Header>
+        <li>
+          <button type='button'>
+            <Icon icon="mdi:domain" />
+            <span>Company info</span>
+          </button>
+        </li>
+        <li>
+          <button type='button'>
+            <Icon icon="marketeq:settings" />
+            <span>forms settings</span>
+          </button>
+        </li>
+        <li>
+          <Form
+            method='delete'
+            action="/logout"
+          >
+            <button type='submit'>
+              <Icon icon="streamline:interface-logout-arrow-exit-frame-leave-logout-rectangle-right" />
+              <span>Logout</span>
+            </button>
+          </Form>
+        </li>
+      </Header>
+      <div className='profile'>
+        <h1>Profile</h1>
+        {data && <h1>{data.email}</h1>}
+      </div>
+    </>
   )
 }
 

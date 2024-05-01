@@ -1,11 +1,14 @@
-header {
+.main-header {
   width: 100vw;
   height: 50px;
   background-color: var(--midnight-black);
   outline: 2px solid var(--b-dark);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-header h1 {
+.main-header h1 {
   font: italic bold 25px 'Lato', sans-serif;
   color: #F2F2F2;
   width: 200px;
@@ -16,7 +19,7 @@ header h1 {
   flex-flow: row nowrap;
 }
 
-h1 > span {
+.main-header h1 > span {
   font: italic bold 25px 'Lato', sans-serif;
   background-color: #F2F2F2;
   border-radius: 50%;
@@ -29,4 +32,91 @@ h1 > span {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+}
+
+.main-header ul.header-icons {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.header-icons > li {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.header-icons > li:hover {
+  color: rgb(98, 161, 182)
+}
+
+.header-icons > li > :first-child {
+  width: 20px;
+  height: 20px;
+}
+
+.header-icons > li:last-child {
+  position: relative;
+}
+
+li:last-child:focus .profile-settings,
+li:last-child:hover .profile-settings {
+  display: block;
+}
+
+.profile-settings {
+  display: none;
+  width: 200px;
+  min-height: 100px;
+  padding: 15px 5px;
+  position: absolute;
+  top: 35px;
+  right: -5px;
+  border-radius: 20px;
+  background-color: #d3cece;
+}
+
+.profile-settings li {
+  height: 25px;
+  line-height: 25px;
+  text-align: left;
+  margin: 5px 0;
+}
+
+.profile-settings li:not(li:nth-last-child(2)) {
+  border-bottom: 1px solid #726c6c;
+}
+
+.profile-settings li:last-child {
+  border-radius: 10px;
+  border: 1px solid #726c6c;
+}
+
+.profile-settings li:hover {
+  background-color: #acb4b5;
+  border: none;
+}
+
+.profile-settings button {
+  display: inline-block;
+  width: 100%;
+  padding-left: 10px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  height: 25px;
+  line-height: 25px;
+  cursor: pointer;
+}
+
+.profile-settings span {
+  margin-left: 15px;
 }
