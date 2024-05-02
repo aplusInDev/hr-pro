@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { LandingPage, Login, Register, Profile, ErrorPage } from './pages';
 import { loader as rootLoader } from './pages/Profile';
-import { action as profileAction } from './pages/Profile';
+import { action as logoutAction } from './layouts/Header';
 import { action as loginAction } from './pages/Login';
 import {action as registerAction } from './pages/Register';
 import { loader as landingPageLoader } from './pages/LandingPage';
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
   },
   {
     path: "logout",
-    action: profileAction,
+    action: logoutAction,
   },
 ]);
 
