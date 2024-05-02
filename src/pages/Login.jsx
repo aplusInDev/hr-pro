@@ -1,6 +1,6 @@
 import { React, useState } from 'react'
 import httpClient from '../services/httpClient';
-import { Form, redirect, Outlet } from 'react-router-dom';
+import { Form, redirect } from 'react-router-dom';
 import "../assets/css/Register.css";
 
 export default function Login() {
@@ -17,7 +17,6 @@ export default function Login() {
           <span>hr</span><span>pro</span>
         </div>
       </header>
-      <Outlet />
       <Form method='post' action='/login' onSubmit={handleSubmit}>
         <label>
           <span>Username</span>

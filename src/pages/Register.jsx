@@ -1,5 +1,5 @@
 import { React, useState } from 'react'
-import { Form, redirect, Outlet } from 'react-router-dom';
+import { Form, redirect } from 'react-router-dom';
 import httpClient from '../services/httpClient';
 import '../assets/css/Register.css';
 
@@ -41,12 +41,11 @@ export default function Register() {
           <span>hr</span><span>pro</span>
         </div>
       </header>
-      <Outlet />
       <Form
         method='post'
         action='/register'
         onSubmit={handleSubmit}
-      >
+        >
         <section className='admin-info'>
           <label>
             <span>first name</span>
@@ -184,7 +183,7 @@ export async function action({ request }) {
     await httpClient.post('http://localhost:5000/api/v1/accounts',
       formData,
     );
-    return redirect("created");
+    return redirect("/login");
   } catch (err) {
     console.log('error: ', err);
     return null;

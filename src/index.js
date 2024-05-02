@@ -5,7 +5,6 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { Alert } from './components/ui';
 import { LandingPage, Login, Register, Profile, ErrorPage } from './pages';
 import { loader as rootLoader } from './pages/Profile';
 import { action as profileAction } from './pages/Profile';
@@ -24,29 +23,12 @@ const router = createBrowserRouter([
     element: <Login />,
     action: loginAction,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "forbidden",
-        element: <ErrorPage
-          msg="Account not activated"
-        />,
-      },
-    ],
   },
   {
     path: "register",
     element: <Register />,
     action: registerAction,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "created",
-        element: <Alert
-          title="account created"
-          body="visit your email and activate your account"
-        /> 
-      }
-    ]
   },
   {
     path: "profile",
