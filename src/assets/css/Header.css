@@ -55,7 +55,7 @@
 }
 
 .header-icons > li:hover {
-  color: rgb(98, 161, 182)
+  color: rgb(98, 161, 182);
 }
 
 .header-icons > li > :first-child {

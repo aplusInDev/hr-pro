@@ -89,11 +89,16 @@
   background-color: rgba(129, 139, 158, 0.289);
   resize: none;
   border-radius: 5px;
+  color: var(--disabled-input-color);
 }
 
+.register textarea:focus,
+.login textarea:focus,
 .register input:focus,
 .login input:focus {
-  background-color: #eeee;
+  background-color: #fefefe;
+  color: var(--cardColor);
+  transition: all .5s;
 }
 
 .register button,
