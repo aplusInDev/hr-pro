@@ -73,7 +73,7 @@ li:last-child:hover .profile-settings {
 }
 
 .profile-settings {
-  display: none;
+  /* display: none; */
   width: 200px;
   min-height: 100px;
   padding: 15px 5px;
@@ -89,15 +89,24 @@ li:last-child:hover .profile-settings {
   line-height: 25px;
   text-align: left;
   margin: 5px 0;
+  position: relative;
 }
 
-.profile-settings li:not(li:nth-last-child(2), li:last-child) {
-  border-bottom: 1px solid #726c6c;
+.profile-settings li:not(li:nth-last-child(2), li:last-child)::before {
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 1px;
+  bottom: 0;
+  left: 10%;
+  background-color: rgb(189, 179, 179);
 }
 
 .profile-settings li:last-child {
   border-radius: 10px;
   border: 1px solid #726c6c;
+  margin-top: 20px;
+  margin-bottom: 0;
 }
 
 .profile-settings li:hover {
@@ -105,7 +114,8 @@ li:last-child:hover .profile-settings {
   border: none;
 }
 
-.profile-settings button {
+.profile-settings button,
+.profile-settings a {
   display: inline-block;
   width: 100%;
   padding-left: 10px;
