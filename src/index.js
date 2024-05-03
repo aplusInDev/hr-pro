@@ -5,7 +5,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { LandingPage, Login, Register, Profile, ErrorPage } from './pages';
+import { LandingPage, Login, Register, Profile, ErrorPage, CustomForm } from './pages';
 import { companyLoader, loginLoader, logoutLoader, profileLoader } from './pages/loaders';
 import { action as loginAction } from './pages/Login';
 import {action as registerAction } from './pages/Register';
@@ -40,6 +40,10 @@ const router = createBrowserRouter([
         element: <Company />,
         loader: companyLoader,
         action: companyAction,
+      },
+      {
+        path: "forms_settings",
+        element: <CustomForm />,
       }
     ]
   },

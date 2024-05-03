@@ -31,10 +31,10 @@ function Header() {
               </Link>
             </li>
             <li>
-              <button type='button'>
+              <Link to={"forms_settings"}>
                 <Icon icon="marketeq:settings" />
                 <span>forms settings</span>
-              </button>
+              </Link>
             </li>
             <li>
               <Link to={"/logout"}>

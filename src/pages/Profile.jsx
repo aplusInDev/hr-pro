@@ -14,7 +14,9 @@ export default function Profile() {
           <h1>Profile</h1>
           {data && <h1>{data.email}</h1>}
         </aside>
-        <Outlet />
+        <main>
+          <Outlet />
+        </main>
       </div>
     </>
   )

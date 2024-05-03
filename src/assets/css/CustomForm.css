@@ -1,0 +1,633 @@
+/* global styles */
+
+input,
+textarea,
+select {
+  background-color: #fefefe;
+  color: var(--cardColor);
+  border: none;
+}
+
+input:not(input[type="radio"], input[type="checkbox"]):focus,
+textarea:focus {
+  outline: 1px solid #76a39c;
+  border-radius: 10px;
+}
+
+input {
+  outline: none;
+  border-radius: 10px;
+  text-align: left;
+  padding: 2px 5px;
+  font-size: 14px;
+  font-weight: 600;
+  overflow-wrap: break-word;
+}
+
+::placeholder {
+  color: var(--cardColor);
+  opacity: .7; /* Fix for Firefox */
+}
+::-ms-input-placeholder { /* For Edge 12-18 */
+  color: var(--cardColor);
+}
+
+textarea {
+  font-weight: 600;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  text-overflow: clip;
+  padding: 5px 8px;
+  height: 40px;
+}
+
+/* styling checkbox */
+input[type="checkbox"],
+input[type="radio"] {
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+input[type="checkbox"]::before,
+input[type="radio"]::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 15px;
+  height: 15px;
+  border-radius: 5px;
+  background-color: #adc1bc47;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: brightness(1.2);
+}
+
+input[type="checkbox"]::before {
+  border: none;
+}
+
+input[type="checkbox"]:checked::after,
+input[type="radio"]:checked::after {
+  content: "✔";
+  position: absolute;
+  font-size: 18px;
+  color: #76a39c;
+  text-align: left;
+  line-height: 8px;
+  border: none;
+  top: -2px;
+  left: 2px;
+}
+
+/* styling checkbox __________________ */
+
+button[type="submit"],
+input[type="submit"] {
+  position: absolute;
+  right: 20px;
+  bottom: 6px;
+  width: 100px;
+  height: 25px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0 5px;
+  background-color: var(--bgColor10);
+  color: #d8dddc;
+  border: none;
+  filter: drop-shadow(0px 1px 5px #5a5959);
+}
+
+button[type="button"]:not(.option-btn, .form-info-btn):hover {
+  background-color: var(--bgColor5);
+  filter: drop-shadow(0 0 5px #0893c1);
+  color: white;
+}
+
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+  background-color: var(--bgColor9);
+  filter: drop-shadow(0 0 5px #8e59d4);
+  color: white;
+  opacity: 0.8;
+}
+
+/* global styles ___________ */
+
+/* styling form-info */
+.form-info,
+.new-field,
+.show-preview,
+.form-preview,
+tbody {
+  background-color: var(--cardColor);
+  font-family: var(--cardFont);
+  filter: drop-shadow(0 0 5px #000);
+  color: rgba(250, 251, 252, 0.571);
+  font-size: 14px;
+}
+
+.form-info,
+.new-field,
+.show-preview,
+.form-preview {
+  position: relative;
+  width: 1000px;
+  margin: 30px auto;
+  border-radius: 10px;
+}
+
+.form-info {
+  height: 180px;
+}
+
+/* 1.1 styling form-list */
+.forms-list  {
+  display: none;
+}
+
+.form-info-btn:hover + .forms-list {
+  display: block;
+}
+
+.forms-list {
+  width: 205px;
+}
+
+.options-list {
+  width: 190px;
+}
+
+.forms-list,
+.options-list {
+  position: relative;
+  margin-top: 5px;
+  height: 90px;
+  border-radius: 10px;
+  margin: -2px;
+  background-color: #4a5163;
+  color: #bcbebf;
+}
+
+.forms-list > ul {
+  width: 200px;
+}
+
+.options-list > ul {
+  width: 185px;
+}
+
+.forms-list > ul,
+.options-list > ul {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  height: 80px;
+  padding: 5px 10px;
+  overflow-y: scroll;
+}
+
+.forms-list li,
+.options-list li {
+  padding-bottom: 5px;
+}
+
+.forms-list li:not(li:last-child),
+.options-list li:not(li:last-child) {
+  margin-bottom: 5px;
+  border-bottom: 1px solid var(--bgColor7);
+}
+
+.form-info input[name="foption"],
+.options-list input[name="foption"] {
+  width: 100px;
+  margin: 2px;
+}
+
+.form-info h4,
+.options-list h4 {
+  display: inline-block;
+  width: 90px;
+  font-weight: 600;
+  overflow-wrap: break-word;
+}
+
+.options-list h4,
+.options-list input[name="foption"] {
+  width: 90px;
+}
+
+.form-info input[name="foption"]:focus,
+.options-list input[name="foption"]:focus {
+  border-radius: 5px;
+  border: 1px solid #042d43;
+}
+
+.forms-list button,
+.options-list button,
+table td:last-child button {
+  width: 25px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+  padding-top: 2px;
+  color: white;
+  border-radius: 5px;
+  background-color: var(--bgColor5);
+  border: none;
+}
+
+.forms-list button:first-of-type,
+.options-list button:first-of-type {
+  margin: auto 4px;
+}
+
+.forms-list button:first-of-type,
+.options-list button:first-of-type,
+table td:last-child button:first-of-type {
+  color: #76a39c;
+}
+
+.forms-list button:first-of-type:hover,
+.options-list button:first-of-type:hover,
+table td:last-child button:first-of-type:hover {
+  filter: brightness(1.2) drop-shadow(1px 2px 7px #4b7f8f);
+}
+
+.forms-list button:last-of-type,
+.options-list button:last-of-type,
+table td:last-child button:last-of-type {
+  background-color: #32071a;
+  color: hsl(10, 50%, 50%);
+}
+.forms-list button:last-of-type:hover,
+.options-list button:last-of-type:hover,
+table td:last-child button:last-of-type:hover {
+  filter: brightness(1.2) drop-shadow(1px 2px 5px #b15b85);
+  color: hsl(10, 100%, 50%);
+}
+
+/* ## styling forms-list scrollbar */
+.forms-list > ul::-webkit-scrollbar,
+.options-list > ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+.forms-list > ul::-webkit-scrollbar-thumb,
+.options-list > ul::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7e8785, #5880a3);
+  border-radius: 10px;
+}
+
+.forms-list > ul::-webkit-scrollbar-track,
+.options-list > ul::-webkit-scrollbar-track {
+  background-color: none;
+  border-radius: 10px;
+}
+
+/* ## styling forms-list scrollbar ____________________ */
+
+.form-info-btn {
+  position: relative;
+  width: 205px;
+  height: 25px;
+  border: none;
+  border-radius: 10px;
+  text-align: left;
+  padding-left: 10px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 15px;
+  background-color: #fefefe;
+  color: var(--cardColor);
+}
+
+.form-info-btn::before {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #050844;
+}
+
+.form-info-btn:hover::before,
+.form-info-btn:focus::before {
+  display: none;
+}
+
+/*  1. styling .all-forms */
+
+.form-info > .all-forms,
+.form-info > .new-form {
+  position: absolute;
+  padding-left: 20px;
+  width: 700px;
+  height: 90%;
+  top: 5%;
+  display: flex;
+  flex: 1;
+}
+
+.form-info > .all-forms::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 0;
+  height: 80%;
+  border-left: 1px solid #515272;
+  opacity: 0.3;
+}
+
+.all-forms label {
+  margin: 10px;
+}
+
+.all-forms h3 {
+  margin: 5px auto;
+}
+
+.all-forms textarea {
+  width: 420px;
+}
+
+/* 2. styling .new-form */
+
+.form-info .new-form {
+  right: 0;
+  width: 300px;
+}
+
+.new-form input[type="text"] {
+  width: 220px;
+  height: 20px;
+  margin: 25px auto auto 30px;
+  padding-left: 15px;
+}
+
+.new-form textarea {
+  position: absolute;
+  top: 40px;
+  width: 220px;
+  margin: 15px 30px;
+  padding-left: 15px;
+}
+
+.new-form > button {
+  margin-right: 10px;
+}
+
+/* styling .form-info _______________ */
+
+/* styling .new-field */
+
+.new-field {
+  height: 165px;
+}
+
+.new-field label > * {
+  margin-bottom: 5px;
+}
+
+.new-field > span {
+  position: absolute;
+  padding: 5px;
+  top: 15px;
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.new-field select,
+table select,
+.form-preview select {
+  border-radius: 10px;
+  width: 105px;
+  height: 23px;
+  text-align: left;
+  padding: 0 5px 5px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #2a2929;
+}
+
+.new-field select > *,
+table select > * {
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #0c162db5;
+}
+
+.new-field input[type="text"] {
+  height: 20px;
+}
+
+.new-field input[type="text"]:not(input[name="foption"]) {
+  width: 100px;
+}
+
+.new-field > button[type="button"],
+.new-field > input[type="submit"] {
+  position: absolute;
+  bottom: 12px;
+  width: 100px;
+  height: 30px;
+}
+
+.new-field > button[type="button"] {
+  left: 130px;
+  border-radius: 10px !important;
+}
+
+.new-field input[type="submit"] {
+  left: 20px;
+}
+
+.new-field button:not(.option-btn),
+table button:not(td:last-child button) {
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0 5px;
+  margin-left: 5px;
+  background-color: var(--bgColor5);
+  filter: brightness(1.2) drop-shadow(1px 1px 3px #5a5959);
+  color: white;
+  border: none;
+}
+
+/* styling .new-field _______________________ */
+
+/* styling fields-table */
+table {
+  width: 1000px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border-spacing: 0;
+}
+
+thead {
+  background-color: var(--bgColor10);
+  height: 30px;
+  color: #FAFBFC92;
+  font-family: var(--cardFont);
+  font-size: 14px;
+}
+
+thead tr {
+  height: 30px;
+  line-height: 30px;
+}
+
+thead th {
+  height: 30px;
+}
+
+tr {
+  display: flex;
+  justify-content: space-around;
+}
+
+th:not(th:nth-child(6)),
+td:not(td:nth-child(6)) {
+  width: calc(1000px / 8);
+}
+
+td {
+  padding: 20px 5px 10px;
+  border-bottom: 1px solid var(--bgColor10);
+}
+
+td:not(td:nth-child(6)) {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+th:nth-child(6),
+td:nth-child(6) {
+  width: calc(1000px / 4);
+}
+
+td:last-child {
+  padding-left: 15px;
+}
+
+table input[type="text"] {
+  padding: 2px 5px;
+  width: 100px;
+  height: 20px;
+}
+
+table input + button {
+  margin: auto auto 10px 5px;
+}
+
+table td:last-child > button {
+  width: 30px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+
+td:last-child > button + button {
+  transform: translateX(-50%);
+}
+
+td:last-child button {
+  position: relative;
+}
+
+td:last-child button > * {
+  position: absolute;
+  top: 2px;
+  left: 8px;
+}
+
+/* styling fields-table __________________ */
+
+/* styling .show-preview section */
+.show-preview {
+  background-color: transparent;
+}
+
+.show-preview > button {
+  background-color: var(--cardColor);
+  filter: drop-shadow(0 0 5px #6c7071);
+  color: #fefefe;
+  padding: 5px 10px;
+  border-radius: 15px;
+  border: none;
+}
+/* styling .show-preview section ________________________*/
+
+/* styling form-preview */
+.form-preview {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  color: #fefefe;
+}
+
+.form-preview h1 {
+  width: 300px;
+}
+
+.form-preview > span {
+  width: 300px;
+  padding: 5px;
+}
+
+.form-preview > div {
+  width: 100%;
+  height: 30px;
+  margin: 5px auto;
+  padding: 5px 30px;
+  position: relative;
+}
+
+.form-preview input:not(input[type="checkbox"], input[type="radio"]),
+.form-preview select,
+.form-preview textarea {
+  position: absolute;
+  left: 200px;
+  width: 300px;
+  height: 25px;
+}
+
+.form-preview > div > span {
+  display: inline-block;
+  width: 120px;
+  margin-right: 50px;
+}
+
+.form-preview span ~ label {
+  margin-right: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  position: relative;
+}
+
+.form-preview input[type="radio"],
+.form-preview input[type="checkbox"] {
+  position: absolute;
+  top: 3px;
+}
+
+.form-preview input[type="radio"] + span,
+.form-preview input[type="checkbox"] + span {
+  padding-left: 20px;
+}
+
+/* styling form-preview ___________________ */

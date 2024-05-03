@@ -51,9 +51,10 @@ export async function action({ request }) {
   const formData = await request.formData();
 
   try {
-    await httpClient.post('http://localhost:5000/api/v1/login',
+    const response = await httpClient.post('http://localhost:5000/api/v1/login',
       formData,
     );
+    console.log(response.data);
     return redirect('/profile');
   } catch (err) {
     // check if the error is 403 "account not activated"

@@ -1,11 +1,12 @@
 .profile .profile-company {
   position: absolute;
-  top: 50px;
-  left: 200px;
+  top: 5px;
+  left: 20px;
   padding: 10px 20px;
   width: calc(100vw - 200px);
-  height: calc(100vh - 50px);
+  height: calc(100vh - 60px);
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .profile-company form {
