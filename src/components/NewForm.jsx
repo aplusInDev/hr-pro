@@ -1,7 +1,8 @@
 import { React, useState } from 'react'
 import { postForm } from '../services/formService'
 
-const company_id = localStorage.getItem('company_id');
+const currentUser = localStorage.getItem('currentUser');
+const company_id = JSON.parse(currentUser).company_id;
 const allFormsUrl = `http://localhost:5000/api/v1/companies/${company_id}/forms`;
 const initialForm = {
   name: '',

@@ -4,10 +4,9 @@ import { getForms } from '../services/formService';
 import { getFields } from '../services/fieldService';
 import '../assets/css/CustomForm.css'
 
-localStorage.setItem('company_id', '309c77f0-dd8d-4f3e-83cc-a0f9122a2296');
 
-//
-const company_id = localStorage.getItem('company_id');
+const currentUser = localStorage.getItem('currentUser');
+const company_id = JSON.parse(currentUser).company_id;
 const allFormsUrl = `http://localhost:5000/api/v1/companies/${company_id}/forms`;
 const initialForm = {
   name: '',

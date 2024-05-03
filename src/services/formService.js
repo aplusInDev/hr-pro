@@ -2,13 +2,11 @@ export async function getForms(url) {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
+
     return data;
   } catch (error) {
-    console.log(error);
+
     return null;
-  } finally {
-    console.log('completed');
   }
 }
 
@@ -22,13 +20,9 @@ export async function postForm(url, info) {
       body: JSON.stringify(info)
     });
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
-    console.log(error);
     return null;
-  } finally {
-    console.log('completed');
   }
 }
 
@@ -42,13 +36,9 @@ export async function putForm(info) {
       body: JSON.stringify(info)
     });
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
-    console.log(error);
     return null;
-  } finally {
-    console.log('completed');
   }
 }
 
@@ -59,13 +49,9 @@ export async function deleteForm(id) {
       method: 'DELETE'
     });
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
-    console.log(error);
     return null;
-  } finally {
-    console.log('completed');
   }
 }
 

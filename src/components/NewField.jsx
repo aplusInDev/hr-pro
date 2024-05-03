@@ -28,7 +28,6 @@ async function handleSubmit(e) {
     if (field.name !== '' && formId) {
       const postedField = await postField(formId, newField);
       if (postedField) {
-        console.log('new field:', postedField);
         setField(initialField);
         setFields([
           ...fields,
