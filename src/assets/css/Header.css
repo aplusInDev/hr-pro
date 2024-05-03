@@ -93,6 +93,10 @@ li:last-child:hover .profile-settings {
   position: relative;
 }
 
+.profile-settings li a.active {
+  background-color: #acb4b5;
+}
+
 .profile-settings li:not(li:nth-last-child(2), li:last-child)::before {
   content: "";
   position: absolute;

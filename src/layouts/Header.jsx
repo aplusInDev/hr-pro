@@ -1,7 +1,7 @@
 import React from 'react'
 import '../assets/css/Header.css'
 import { Icon } from '@iconify/react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -25,22 +25,28 @@ function Header() {
           <Icon icon="codicon:account" />
           <ul className='profile-settings'>
             <li>
-              <Link to={"company"}>
+              <Link to={"/profile"}>
+                <Icon icon="mdi:account" />
+                <span>Profile</span>
+              </Link>
+            </li>
+            <li>
+              <NavLink to={"company"}>
                 <Icon icon="mdi:domain" />
                 <span>Company info</span>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to={"forms_settings"}>
+              <NavLink to={"forms_settings"}>
                 <Icon icon="marketeq:settings" />
                 <span>forms settings</span>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to={"/logout"}>
+              <NavLink to={"/logout"}>
                 <Icon icon="streamline:interface-logout-arrow-exit-frame-leave-logout-rectangle-right" />
                 <span>Logout</span>
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </li>
