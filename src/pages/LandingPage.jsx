@@ -1,9 +1,7 @@
 import React from 'react'
-import { Link, redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Alert } from '../components/ui';
 import "../assets/css/LandingPage.css";
-// import httpClient from '../services/httpClient';
-import Cookies from 'js-cookie';
 
 export default function LandingPage() {
   return (
@@ -26,13 +24,4 @@ export default function LandingPage() {
       </section>
     </div>
   );
-}
-
-export async function loader() {
-  if (Cookies.get('session_id')) {
-    return redirect('/profile');
-  }
-  else {
-    return null;
-  }
 }

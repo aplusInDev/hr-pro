@@ -6,21 +6,21 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { LandingPage, Login, Register, Profile, ErrorPage } from './pages';
-import { loader as rootLoader } from './pages/Profile';
-import { logoutLoader } from './layouts/Header';
+import { companyLoader, loginLoader, logoutLoader, profileLoader } from './pages/loaders';
 import { action as loginAction } from './pages/Login';
 import {action as registerAction } from './pages/Register';
-import { loader as landingPageLoader } from './pages/LandingPage';
+import { Company } from './components/ui';
+import { companyAction } from './pages/actions';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LandingPage />,
-    loader: landingPageLoader,
   },
   {
     path: "login",
     element: <Login />,
+    loader: loginLoader,
     action: loginAction,
     errorElement: <ErrorPage />,
   },
@@ -33,11 +33,18 @@ const router = createBrowserRouter([
   {
     path: "profile",
     element: <Profile />,
-    loader: rootLoader,
+    loader: profileLoader,
+    children: [
+      {
+        path: "company",
+        element: <Company />,
+        loader: companyLoader,
+        action: companyAction,
+      }
+    ]
   },
   {
     path: "logout",
-    // action: logoutAction,
     loader: logoutLoader,
   },
 ]);

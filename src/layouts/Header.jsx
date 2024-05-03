@@ -1,15 +1,16 @@
 import React from 'react'
 import '../assets/css/Header.css'
 import { Icon } from '@iconify/react';
-import { redirect, Link } from 'react-router-dom';
-import httpClient from '../services/httpClient';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
     <header className='main-header'>
-      <h1>
-        <span>hr</span> pro
-      </h1>
+      <Link to={"/"}>
+        <h1>
+          <span>hr</span> pro
+        </h1>
+      </Link>
       <ul className='header-icons'>
         <li className="dark-ground">
           <Icon icon="akar-icons:moon" />
@@ -24,10 +25,10 @@ function Header() {
           <Icon icon="codicon:account" />
           <ul className='profile-settings'>
             <li>
-              <button type='button'>
+              <Link to={"company"}>
                 <Icon icon="mdi:domain" />
                 <span>Company info</span>
-              </button>
+              </Link>
             </li>
             <li>
               <button type='button'>
@@ -49,15 +50,3 @@ function Header() {
 }
 
 export default Header
-
-export async function logoutLoader() {
-  try {
-    await httpClient.delete('http://localhost:5000/api/v1/logout');
-    // removing session_id from cookie
-    document.cookie = 'session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    return redirect('/');
-  } catch (err) {
-    console.log('erro: ', err);
-    return null;
-  }
-}

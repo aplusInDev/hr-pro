@@ -147,6 +147,7 @@ export default function Register() {
               aria-label='company phone'
               type='tel'
               name='company_phone'
+              disabled={isSubmitting}
             />
           </label>
           <label>
@@ -156,17 +157,20 @@ export default function Register() {
               aria-label='company website'
               type='url'
               name='company_website'
+              disabled={isSubmitting}
             />
           </label>
           <button 
             type='button'
             id='back'
+            disabled={isSubmitting}
             onClick={handleBack}
           >
             back
           </button>
           <button
             type='submit'
+            disabled={isSubmitting}
           >
             Sign Up
           </button>

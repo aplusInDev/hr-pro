@@ -1,0 +1,87 @@
+.profile .profile-company {
+  position: absolute;
+  top: 50px;
+  left: 200px;
+  padding: 10px 20px;
+  width: calc(100vw - 200px);
+  height: calc(100vh - 50px);
+  overflow-y: scroll;
+}
+
+.profile-company form {
+  width: 800px;
+  min-height: 800px;
+  margin: 20px auto;
+  padding: 20px 40px;
+  background-color: rgba(2, 16, 42, 0.289);
+  border-radius: 20px;
+  filter: drop-shadow(5px 12px 5px #363030);
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.profile-company form h1 {
+  color: var(--cardColor);
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #eee;
+}
+
+.profile-company form span {
+  display: block;
+  margin: 30px 0 5px 8px;
+  letter-spacing: 2px;
+}
+
+.profile-company input,
+.profile-company textarea {
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 30px;
+  padding-left: 10px;
+  background-color: rgba(129, 139, 158, 0.289);
+  resize: none;
+  border-radius: 5px;
+  color: var(--disabled-input-color);
+}
+
+.profile-company textarea {
+  height: 50px;
+}
+
+.profile-company textarea:focus,
+.profile-company input:focus {
+  background-color: #fefefe;
+  color: var(--cardColor);
+  transition: all .5s;
+}
+
+.profile-company button {
+  border: none;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+  margin-top: 160px;
+  margin-left: 10px;
+  background: none;
+  border: 2px solid #2f2e2e;
+  color: #eee;
+}
+
+.profile-company button:hover {
+  border: none;
+  background-color: #2f2e2e3c;
+  filter: drop-shadow(2px 2px 5px #363030);
+  transition: all 1s;
+}
+
+.profile-company button:disabled {
+  border: unset;
+  background: none;
+  filter: none;
+  border: 2px solid rgb(69, 62, 62);
+}
