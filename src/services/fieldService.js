@@ -27,6 +27,9 @@ export async function getFields(formId) {
 }
 
 export async function getAllFields(formName, companyId) {
+  if (!formName || !companyId) {
+    return null;
+  }
   const url = `http://localhost:5000/api/v1/fields?form_name=${formName}&company_id=${companyId}`;
   try {
     const response = await fetch(url);

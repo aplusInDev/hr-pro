@@ -85,7 +85,7 @@ input[type="radio"]:checked::after {
 
 /* styling checkbox __________________ */
 
-button[type="submit"],
+.custom-form button[type="submit"],
 input[type="submit"] {
   position: absolute;
   right: 20px;
@@ -102,13 +102,13 @@ input[type="submit"] {
   filter: drop-shadow(0px 1px 5px #5a5959);
 }
 
-button[type="button"]:not(.option-btn, .form-info-btn):hover {
+.custom-form button[type="button"]:not(.option-btn, .form-info-btn):hover {
   background-color: var(--bgColor5);
   filter: drop-shadow(0 0 5px #0893c1);
   color: white;
 }
 
-button[type="submit"]:hover,
+.custom-form button[type="submit"]:hover,
 input[type="submit"]:hover {
   background-color: var(--bgColor9);
   filter: drop-shadow(0 0 5px #8e59d4);
