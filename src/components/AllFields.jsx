@@ -29,7 +29,7 @@ export default function AllFields({fields, data}) {
                   {
                     field.options.map((option) => (
                       <label key={option}>
-                        <input type='radio' id={option} value={option}
+                        <input type='radio' id={option} name={"option"}
                           defaultChecked={option === data[`${field.name}`] || option === field.default_value}
                         />
                         <span>{option}</span>
@@ -45,7 +45,7 @@ export default function AllFields({fields, data}) {
                   {
                     field.options.map((option) => (
                       <label key={option}>
-                        <input type='checkbox' id={option} value={option}
+                        <input type='checkbox' id={option}
                           defaultChecked={option === data[`${field.name}`] || option === field.default_value}
                         />
                         <span>{option}</span>
