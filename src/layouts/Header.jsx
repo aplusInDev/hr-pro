@@ -25,10 +25,10 @@ function Header() {
           <Icon icon="codicon:account" />
           <ul className='profile-settings'>
             <li>
-              <Link to={"/profile"}>
+              <NavLink to={"profile"}>
                 <Icon icon="mdi:account" />
                 <span>Profile</span>
-              </Link>
+              </NavLink>
             </li>
             <li>
               <NavLink to={"company"}>

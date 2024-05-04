@@ -56,7 +56,7 @@ export async function action({ request }) {
     );
     console.log(response.data);
     localStorage.setItem('currentUser', JSON.stringify(response.data));
-    return redirect('/profile');
+    return redirect('/home');
   } catch (err) {
     // check if the error is 403 "account not activated"
     if (err.response.status === 403) {

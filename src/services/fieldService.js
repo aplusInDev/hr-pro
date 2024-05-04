@@ -26,6 +26,17 @@ export async function getFields(formId) {
   }
 }
 
+export async function getAllFields(formName, companyId) {
+  const url = `http://localhost:5000/api/v1/fields?form_name=${formName}&company_id=${companyId}`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return null;
+  }
+}
+
 export async function putField(fieldUrl, info) {
   try {
     const response = await fetch(fieldUrl, {
