@@ -13,10 +13,12 @@ export default function AllFields({fields, data, onChange}) {
                   <select
                     id={field.name}
                     defaultValue={data[`${field.name}`] || field.default_value}
-                    onChange={(e) => onChange({
+                    onChange={(e) => {
+                      onChange({
                       ...data,
                       [field.name]: e.target.value
-                    })}
+                      })
+                    }}
                   >
                     {
                       field.options.map((option) => (
@@ -38,7 +40,7 @@ export default function AllFields({fields, data, onChange}) {
                           name={field.name}
                           defaultChecked={option === data[`${field.name}`] || option === field.default_value}
                           onChange={(e) => {
-                            return onChange({
+                            onChange({
                               ...data,
                               [field.name]: e.target.checked ? option : '',
                             });
@@ -62,12 +64,12 @@ export default function AllFields({fields, data, onChange}) {
                           defaultChecked={option === data[`${field.name}`] || option === field.default_value}
                           onChange={(e) => {
                             if (e.target.checked) {
-                              return onChange({
+                              onChange({
                                 ...data,
                                 [field.name]: [...data[`${field.name}`], option]
                               });
                             }
-                            return onChange({
+                            onChange({
                               ...data,
                               [field.name]: data[`${field.name}`].filter((item) => item !== option)
                             });
@@ -88,11 +90,12 @@ export default function AllFields({fields, data, onChange}) {
                     type={field.type}
                     placeholder={field.description}
                     value={data[`${field.name}`] || field.default_value}
-                    onChange={(e) => onChange({
+                    onChange={(e) => {
+                      onChange({
                       ...data,
                       [field.name]: e.target.value
                     })
-                    }
+                  }}
                   />
                 </div>
               )
