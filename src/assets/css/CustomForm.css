@@ -575,7 +575,7 @@ td:last-child button > * {
 .form-preview {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 30px 20px;
   color: #fefefe;
 }
 
