@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function AllFields({fields, data}) {
+export default function AllFields({fields, data, onChange}) {
   return (
     <>
       {
@@ -11,8 +11,12 @@ export default function AllFields({fields, data}) {
                 <div key={field.id}>
                   <label htmlFor={field.name}>{field.name}</label>
                   <select
-                    id={field.name} name={field.name}
+                    id={field.name}
                     defaultValue={data[`${field.name}`] || field.default_value}
+                    onChange={(e) => onChange({
+                      ...data,
+                      [field.name]: e.target.value
+                    })}
                   >
                     {
                       field.options.map((option) => (
@@ -29,8 +33,16 @@ export default function AllFields({fields, data}) {
                   {
                     field.options.map((option) => (
                       <label key={option}>
-                        <input type='radio' id={option} name={"option"}
+                        <input type='radio'
+                          id={option}
+                          name={field.name}
                           defaultChecked={option === data[`${field.name}`] || option === field.default_value}
+                          onChange={(e) => {
+                            return onChange({
+                              ...data,
+                              [field.name]: e.target.checked ? option : '',
+                            });
+                          }}
                         />
                         <span>{option}</span>
                       </label>
@@ -45,8 +57,21 @@ export default function AllFields({fields, data}) {
                   {
                     field.options.map((option) => (
                       <label key={option}>
-                        <input type='checkbox' id={option}
+                        <input type='checkbox'
+                          id={option}
                           defaultChecked={option === data[`${field.name}`] || option === field.default_value}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              return onChange({
+                                ...data,
+                                [field.name]: [...data[`${field.name}`], option]
+                              });
+                            }
+                            return onChange({
+                              ...data,
+                              [field.name]: data[`${field.name}`].filter((item) => item !== option)
+                            });
+                          }}
                         />
                         <span>{option}</span>
                       </label>
@@ -58,8 +83,16 @@ export default function AllFields({fields, data}) {
               return (
                 <div key={field.id}>
                   <label htmlFor={field.name}>{field.name}</label>
-                  <input id={field.name} type={field.type} placeholder={field.description}
-                    defaultValue={data[`${field.name}`]}
+                  <input
+                    id={field.name}
+                    type={field.type}
+                    placeholder={field.description}
+                    value={data[`${field.name}`] || field.default_value}
+                    onChange={(e) => onChange({
+                      ...data,
+                      [field.name]: e.target.value
+                    })
+                    }
                   />
                 </div>
               )

@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react'
-import { useLoaderData, Form } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import '../assets/css/Profile.css';
 import { AllFields } from '../components';
 import { getAllFields } from '../services/fieldService';
@@ -8,8 +8,10 @@ const currentUser = localStorage.getItem('currentUser');
 const company_id = JSON.parse(currentUser)?.company_id;
 
 export default function Profile() {
-  const [fields, setFields] = useState([]);
   const employee_info = useLoaderData();
+  const [fields, setFields] = useState([]);
+  const [info, setInfo] = useState(employee_info);
+  // const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     const fetchFields = async () => {
@@ -19,11 +21,44 @@ export default function Profile() {
     fetchFields();
   }, []);
 
+  fields?.forEach(field => {
+    if(!info[field.name]) {
+      if (field.type === 'checkbox') {
+        setInfo({
+          ...info,
+          [field.name] : [field.default_value],
+        })
+      }
+      else {
+        setInfo({
+          ...info,
+          [field.name]: field.default_value
+        });
+      }
+    }
+  })
+
+  function handleChange(data) {
+    // setIsEditing(true);
+    setInfo(data);
+    console.log(data);
+  }
+
   return (
-    <Form className='form-preview'>
-      <AllFields fields={fields} data={employee_info} />
-      <button type='button' id='cancel'>cancel</button>
-      <button type='submit'>Submit</button>
-    </Form>
+    <form className='form-preview'>
+      <AllFields fields={fields} data={info} onChange={handleChange} />
+      <button
+        type='button'
+        // disabled={!isEditing}
+      >
+        cancel
+      </button>
+      <button 
+        type='submit'
+        // disabled={!isEditing}
+      >
+        Submit
+      </button>
+    </form>
   )
 }
