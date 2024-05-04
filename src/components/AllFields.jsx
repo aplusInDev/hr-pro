@@ -4,7 +4,7 @@ export default function AllFields({fields, data, onChange}) {
   return (
     <>
       {
-        fields.map((field) => {
+        fields?.map((field) => {
           switch(field.type) {
             case 'select':
               return (

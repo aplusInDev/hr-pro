@@ -11,7 +11,7 @@ export default function Profile() {
   const employee_info = useLoaderData();
   const [fields, setFields] = useState([]);
   const [info, setInfo] = useState(employee_info);
-  // const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     const fetchFields = async () => {
@@ -39,7 +39,7 @@ export default function Profile() {
   })
 
   function handleChange(data) {
-    // setIsEditing(true);
+    setIsEditing(true);
     setInfo(data);
     console.log(data);
   }
@@ -49,13 +49,13 @@ export default function Profile() {
       <AllFields fields={fields} data={info} onChange={handleChange} />
       <button
         type='button'
-        // disabled={!isEditing}
+        disabled={!isEditing}
       >
         cancel
       </button>
       <button 
         type='submit'
-        // disabled={!isEditing}
+        disabled={!isEditing}
       >
         Submit
       </button>
