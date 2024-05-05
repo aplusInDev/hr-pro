@@ -7,14 +7,12 @@ export default function Home() {
   
 
   return (
-    <>
-      <Header />
-      <div className='profile'>
-        <Sidebar />
-        <main>
-          <Outlet />
-        </main>
-      </div>
-    </>
+    <div className='profile'>
+    <Header />
+      <Sidebar />
+      <main>
+        <Outlet />
+      </main>
+    </div>
   )
 }
