@@ -17,9 +17,13 @@
 	position: absolute;
   top: 50px;
   left: 200px;
-  padding: 10px 20px;
+  padding: 20px 50px;
   width: calc(100vw - 200px);
   height: calc(100vh - 50px);
   overflow-y: scroll;
 	overflow-x: hidden;
+}
+
+.profile .form-preview {
+  width: calc(100vw - 300px);
 }

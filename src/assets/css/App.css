@@ -1,0 +1,25 @@
+.btn,
+.submit-btn {
+  background: transparent;
+  width: 90px;
+  height: 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid white;
+  color: #eee;
+  margin: 20px 4px;
+}
+
+.btn:hover,
+.submit-btn:hover{
+  filter: drop-shadow(0 0 5px var(--icon-color));
+  background-color: var(--icon-color);
+  /* color: var(--cardColor); */
+  border: none;
+}
+
+.submit-btn:hover {
+  background-color: #b71a76;
+  filter: drop-shadow(0 0 5px #b71a76);
+}
