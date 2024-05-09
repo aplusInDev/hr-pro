@@ -13,13 +13,13 @@ export default function Register() {
   const handleNext = () => {
     const form = document.querySelector('form');
     const sections = form.querySelectorAll('section');
-    sections.forEach((section, index) => {
-      if (index === 0) {
-        section.style.display = 'none';
-      } else {
-        section.style.display = 'block';
-      }
-    });
+    const allInputs = Array.from(sections[0].querySelectorAll('input'));
+    const allValid = allInputs.every(input => input.reportValidity());
+
+    if (allValid) {
+      sections[0].style.display = 'none';
+      sections[1].style.display = 'block';
+    }
   }
 
   const handleBack = () => {
