@@ -59,7 +59,7 @@ export async function action({ request }) {
     );
     console.log(response.data);
     localStorage.setItem('currentUser', JSON.stringify(response.data));
-    return redirect('/home/profile');
+    return redirect('/home');
   } catch (err) {
     localStorage.clear();
     Cookies.remove('session_id');

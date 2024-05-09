@@ -6,3 +6,4 @@ export { default as FIsRequired } from './FIsRequired';
 export { default as FDescription } from './FDescription';
 export { default as FOption } from './FOption';
 export { default as FText } from './FText';
+export { default as Btn } from './Btn';

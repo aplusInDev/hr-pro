@@ -1,11 +1,32 @@
-import React from 'react';
+import { React, useState } from 'react';
+import { Btn } from './ui';
+import httpClient from '../services/httpClient';
 
 export default function AllFields({
+  fields, employeeInfo,
 }) {
+  let initialInfo = employeeInfo.info;
+  const [isEditing, setIsEditing] = useState(false);
+  const [info, setInfo] = useState(initialInfo);
+
+  function handleChange(data) {
+    setInfo(data);
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    await httpClient.put(`/employees/${employeeInfo.id}/info`, info);
+    setIsEditing(false);
+  }
+
   return (
-    <form className='form-preview'>
+    <form
+      className='form-preview'
+      onSubmit={handleSubmit}
+    >
       {
         fields?.map((field) => {
+
           switch(field.type) {
             case 'select':
               return (
@@ -13,14 +34,13 @@ export default function AllFields({
                   <label htmlFor={field.name}>{field.name}</label>
                   <select
                     id={field.name}
-                    disabled={disabled}
-                    defaultValue={data[`${field.name}`] || field.default_value}
+                    disabled={!isEditing}
+                    defaultValue={info[`${field.name}`] || field.default_value}
                     onChange={(e) => {
-                      onChange({
-                      ...data,
+                      handleChange({
+                      ...info,
                       [field.name]: e.target.value
-                      })
-                      console.log("changing S ...", e.target.value);
+                      });
                     }}
                   >
                     {
@@ -41,14 +61,13 @@ export default function AllFields({
                         <input type='radio'
                           id={option}
                           name={field.name}
-                          disabled={disabled}
-                          defaultChecked={option === data[`${field.name}`] || option === field.default_value}
+                          disabled={!isEditing}
+                          defaultChecked={option === info[`${field.name}`] || option === field.default_value}
                           onChange={(e) => {
-                            onChange({
-                              ...data,
+                            handleChange({
+                              ...info,
                               [field.name]: e.target.checked ? option : '',
                             });
-                            console.log("changing R ...", e.target.value);
                           }}
                         />
                         <span>{option}</span>
@@ -58,6 +77,13 @@ export default function AllFields({
                 </div>
               )
             case 'checkbox':
+              if(!info[`${field.name}`]) {
+                handleChange({
+                  ...info,
+                  [field.name]: [field.default_value]
+                });
+              }
+
               return (
                 <div key={field.id}>
                   <span>{field.name}</span>
@@ -66,21 +92,20 @@ export default function AllFields({
                       <label key={option}>
                         <input type='checkbox'
                           id={option}
-                          disabled={disabled}
-                          defaultChecked={option === data[`${field.name}`] || option === field.default_value}
+                          disabled={!isEditing}
+                          defaultChecked={info[`${field.name}`]?.includes(option)}
                           onChange={(e) => {
                             if (e.target.checked) {
-                              onChange({
-                                ...data,
-                                [field.name]: [...data[`${field.name}`], option]
+                              handleChange({
+                                ...info,
+                                [field.name]: [...info[`${field.name}`], option]
                               });
-                              console.log("changing C1 ...", e.target.value);
+                            } else {
+                              handleChange({
+                                ...info,
+                                [field.name]: info[`${field.name}`].filter((item) => item !== option)
+                              });
                             }
-                            onChange({
-                              ...data,
-                              [field.name]: data[`${field.name}`].filter((item) => item !== option)
-                            });
-                            console.log("changing C2 ...", e.target.value);
                           }}
                         />
                         <span>{option}</span>
@@ -97,14 +122,13 @@ export default function AllFields({
                     id={field.name}
                     type={field.type}
                     placeholder={field.description}
-                    disabled={disabled}
-                    value={data[`${field.name}`] || field.default_value}
+                    disabled={!isEditing}
+                    value={info[`${field.name}`] || field.default_value}
                     onChange={(e) => {
-                      onChange({
-                      ...data,
+                      handleChange({
+                      ...info,
                       [field.name]: e.target.value
                     })
-                    console.log("changing I ...", e.target.value);
                   }}
                   />
                 </div>
@@ -112,6 +136,30 @@ export default function AllFields({
           }
       })
     }
+    <div>
+      {
+        isEditing ? (
+          <>
+            <Btn
+              text='cancel'
+              onClick={() => {
+                setInfo(initialInfo);
+                setIsEditing(false);
+              }}
+            />
+            <button type='submit' className='submit-btn'>Save</button>
+          </>
+        ) : (
+          <Btn
+            text='edit'
+            onClick={() => {
+              setIsEditing(true);
+              initialInfo=info;
+            }}
+          />
+        )
+      }
+    </div>
     </form>
   )
 }
