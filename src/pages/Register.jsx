@@ -1,5 +1,5 @@
 import { React, useState } from 'react'
-import { Form, redirect } from 'react-router-dom';
+import { Form, Link, redirect } from 'react-router-dom';
 import httpClient from '../services/httpClient';
 import '../assets/css/Register.css';
 
@@ -38,7 +38,9 @@ export default function Register() {
     <div className="register">
       <header>
         <div className="logo">
-          <span>hr</span><span>pro</span>
+          <Link to="/">
+            <span>hr</span><span>pro</span>
+          </Link>
         </div>
       </header>
       <Form
@@ -184,7 +186,7 @@ export async function action({ request }) {
   const formData = await request.formData();
 
   try {
-    await httpClient.post('http://localhost:5000/api/v1/accounts',
+    await httpClient.post('/accounts',
       formData,
     );
     return redirect("/login");

@@ -3,7 +3,7 @@ import { redirect } from 'react-router-dom';
 
 export default async function homeLoader() {
   try {
-    await httpClient.get('http://localhost:5000/api/v1/profile');
+    await httpClient.get('/profile');
     return true;
   } catch (err) {
     console.log('erro: ', err);

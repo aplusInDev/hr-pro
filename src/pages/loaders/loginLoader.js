@@ -5,7 +5,7 @@ import httpClient from '../../services/httpClient';
 export default async function loginLoader() {
   if (Cookies.get('session_id')) {
     try {
-      await httpClient.get('http://localhost:5000/api/v1/profile');
+      await httpClient.get('/profile');
       // return redirect('/profile');
       return redirect('/home/profile');
     } catch(err) {

@@ -1,11 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 export default function AllFields({
-  fields, data,
-  onChange, disabled
 }) {
   return (
-    <>
+    <form className='form-preview'>
       {
         fields?.map((field) => {
           switch(field.type) {
@@ -114,6 +112,6 @@ export default function AllFields({
           }
       })
     }
-    </>
+    </form>
   )
 }

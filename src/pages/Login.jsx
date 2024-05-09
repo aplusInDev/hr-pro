@@ -1,7 +1,8 @@
 import { React, useState } from 'react'
 import httpClient from '../services/httpClient';
-import { Form, redirect } from 'react-router-dom';
+import { Form, redirect, Link } from 'react-router-dom';
 import "../assets/css/Register.css";
+import Cookies from 'js-cookie';
 
 export default function Login() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -14,7 +15,9 @@ export default function Login() {
     <div className="login">
       <header>
         <div className="logo">
-          <span>hr</span><span>pro</span>
+          <Link to="/">
+            <span>hr</span><span>pro</span>
+          </Link>
         </div>
       </header>
       <Form method='post' action='/login' onSubmit={handleSubmit}>
@@ -51,18 +54,17 @@ export async function action({ request }) {
   const formData = await request.formData();
 
   try {
-    const response = await httpClient.post('http://localhost:5000/api/v1/login',
+    const response = await httpClient.post('/login',
       formData,
     );
     console.log(response.data);
     localStorage.setItem('currentUser', JSON.stringify(response.data));
     return redirect('/home/profile');
   } catch (err) {
-    // check if the error is 403 "account not activated"
-    if (err.response.status === 403) {
-      return redirect('forbidden');
-    }
-    console.log('erro: ', err);
-    return redirect('/login');
+    localStorage.clear();
+    Cookies.remove('session_id');
+
+    // return redirect('/login');
+    return null;
   }
 }
