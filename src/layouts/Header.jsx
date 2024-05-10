@@ -21,9 +21,17 @@ function Header() {
         <li className="notifications">
           <Icon icon="mingcute:notification-line" />
         </li>
-        <li className="account">
+        <li className="account"
+          onMouseEnter={() => {
+            document.querySelector('.profile-settings').style.display = 'block';
+          }}
+        >
           <Icon icon="codicon:account" />
-          <ul className='profile-settings'>
+          <ul className='profile-settings'
+            onMouseLeave={() => {
+              document.querySelector('.profile-settings').style.display = 'none';
+            }}
+          >
             <li>
               <NavLink to={"profile"}>
                 <Icon icon="mdi:account" />
