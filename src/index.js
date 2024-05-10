@@ -6,7 +6,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { LandingPage, Login, Register, Profile, ErrorPage, CustomForm, Home } from './pages';
+import { LandingPage, Login, Register, Profile, ErrorPage, CustomForm, Home, Employees } from './pages';
 import { companyLoader, loginLoader, logoutLoader, profileLoader } from './pages/loaders';
 import { action as loginAction } from './pages/Login';
 import {action as registerAction } from './pages/Register';
@@ -38,7 +38,35 @@ const router = createBrowserRouter([
       {
         path: "forms_settings",
         element: <CustomForm />,
-      }
+      },
+      {
+        path: "departments",
+        element: <Employees />,
+      },
+      {
+        path: "employees",
+        element: <Employees />,
+      },
+      {
+        path: "attendance",
+        element: <Employees />,
+      },
+      {
+        path: "leaves",
+        element: <Employees />,
+      },
+      {
+        path: "salaries",
+        element: <Employees />,
+      },
+      {
+        path: "vacancies",
+        element: <Employees />,
+      },
+      {
+        path: "training",
+        element: <Employees />,
+      },
     ],
   },
   {

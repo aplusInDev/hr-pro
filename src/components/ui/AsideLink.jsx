@@ -1,16 +1,14 @@
 import React from 'react'
 import '../../assets/css/AsideLink.css';
+import { NavLink } from 'react-router-dom';
 
-function AsideLink({link, icon, text, active, onClick}) {
+function AsideLink({link, icon, text}) {
   return (
-    <a 
-      href={link}
-      className={`aside-link ${active ? 'active' : ''}`}
-      onClick={onClick}
+    <NavLink to={link} className={`aside-link`}
     >
       <span className="icon">{icon}</span>
       <span className="text">{text}</span>
-    </a>
+    </NavLink>
   )
 }
 
