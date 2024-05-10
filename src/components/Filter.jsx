@@ -29,9 +29,9 @@ export default function Filter() {
       >
         <Icon icon='solar:filter-bold-duotone' className='filter-icon' />
       </button>
+      <Menu active={active} handleActive={handleActive} />
       <input type='submit' value='Search'/>
     </form>
-    <Menu active={active} handleActive={handleActive} />
     </>
   );
 }
