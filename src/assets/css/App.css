@@ -1,3 +1,88 @@
+/* global styles */
+
+input,
+textarea,
+select {
+  background-color: #fefefe;
+  color: var(--cardColor);
+  border: none;
+}
+
+input:not(input[type="radio"], input[type="checkbox"]):focus,
+textarea:focus {
+  outline: 1px solid #76a39c;
+  border-radius: 10px;
+}
+
+input {
+  outline: none;
+  border-radius: 10px;
+  text-align: left;
+  padding: 2px 5px;
+  font-size: 14px;
+  font-weight: 600;
+  overflow-wrap: break-word;
+}
+
+::placeholder {
+  color: var(--cardColor);
+  opacity: .7; /* Fix for Firefox */
+}
+::-ms-input-placeholder { /* For Edge 12-18 */
+  color: var(--cardColor);
+}
+
+textarea {
+  font-weight: 600;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  text-overflow: clip;
+  padding: 5px 8px;
+  height: 40px;
+}
+
+/* styling checkbox */
+input[type="checkbox"],
+input[type="radio"] {
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+input[type="checkbox"]::before,
+input[type="radio"]::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 15px;
+  height: 15px;
+  border-radius: 5px;
+  background-color: #adc1bc47;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: brightness(1.2);
+}
+
+input[type="checkbox"]::before {
+  border: none;
+}
+
+input[type="checkbox"]:checked::after,
+input[type="radio"]:checked::after {
+  content: "✔";
+  position: absolute;
+  font-size: 18px;
+  color: #76a39c;
+  text-align: left;
+  line-height: 8px;
+  border: none;
+  top: -2px;
+  left: 2px;
+}
+
 .btn,
 .submit-btn {
   background: transparent;
@@ -15,11 +100,17 @@
 .submit-btn:hover{
   filter: drop-shadow(0 0 5px var(--icon-color));
   background-color: var(--icon-color);
-  /* color: var(--cardColor); */
   border: none;
 }
 
 .submit-btn:hover {
-  background-color: #b71a76;
-  filter: drop-shadow(0 0 5px #b71a76);
+  background-color: #600765;
+  filter: drop-shadow(0 0 5px #994a9d);
+}
+
+button:disabled, button:disabled:hover {
+  border: unset;
+  background: none;
+  filter: none;
+  border: 2px solid rgb(69, 62, 62);
 }

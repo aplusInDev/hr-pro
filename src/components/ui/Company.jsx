@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import '../../assets/css/Company.css';
 import { Form , useLoaderData } from 'react-router-dom';
+import Btn from './Btn';
 
 export default function Company() {
   const [status, setStatus] = useState('idle'); // idle, editing, submitting
@@ -21,7 +22,7 @@ export default function Company() {
   return (
     <div className='profile-company'>
       <Form
-        action='/profile/company'
+        action='/home/company'
         method='put'
         onSubmit={handleIdle}
       >
@@ -107,26 +108,15 @@ export default function Company() {
         {
           status === 'idle'
             ? (
-              <button
-                type='button'
-                onClick={handleEditing}
-              >
-                edit
-              </button>
+              <Btn text='edit' onClick={handleEditing} />
             )
             : (
               <div className='btns'>
-              <button
-                id='cancel'
-                type='button'
-                onClick={handleIdle}
-              >
-                cancel
-              </button>
+              <Btn text='cancel' onClick={handleIdle} />
               <button
                 type='submit'
+                className='submit-btn'
                 disabled={status === 'editing' || status === 'submitting'}
-                // onClick={handleSubmitting}
               >
                 save
               </button>
