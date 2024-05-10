@@ -6,17 +6,23 @@ export default function AllFields({
   fields, employeeInfo,
 }) {
   let initialInfo = employeeInfo.info;
-  const [isEditing, setIsEditing] = useState(false);
   const [info, setInfo] = useState(initialInfo);
+  const [status, setStatus] = useState('idle'); // idle, editing, submitting
 
   function handleChange(data) {
     setInfo(data);
+    setStatus('changing');
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
     await httpClient.put(`/employees/${employeeInfo.id}/info`, info);
-    setIsEditing(false);
+    setStatus('idle');
+  }
+
+  function handleIdle() {
+    setStatus('idle');
+    setInfo(initialInfo);
   }
 
   return (
@@ -34,7 +40,7 @@ export default function AllFields({
                   <label htmlFor={field.name}>{field.name}</label>
                   <select
                     id={field.name}
-                    disabled={!isEditing}
+                    disabled={status === 'idle'}
                     defaultValue={info[`${field.name}`] || field.default_value}
                     onChange={(e) => {
                       handleChange({
@@ -61,7 +67,7 @@ export default function AllFields({
                         <input type='radio'
                           id={option}
                           name={field.name}
-                          disabled={!isEditing}
+                          disabled={status === 'idle'}
                           defaultChecked={option === info[`${field.name}`] || option === field.default_value}
                           onChange={(e) => {
                             handleChange({
@@ -92,7 +98,7 @@ export default function AllFields({
                       <label key={option}>
                         <input type='checkbox'
                           id={option}
-                          disabled={!isEditing}
+                          disabled={status === 'idle'}
                           defaultChecked={info[`${field.name}`]?.includes(option)}
                           onChange={(e) => {
                             if (e.target.checked) {
@@ -122,7 +128,7 @@ export default function AllFields({
                     id={field.name}
                     type={field.type}
                     placeholder={field.description}
-                    disabled={!isEditing}
+                    disabled={status === 'idle'}
                     value={info[`${field.name}`] || field.default_value}
                     onChange={(e) => {
                       handleChange({
@@ -138,22 +144,25 @@ export default function AllFields({
     }
     <div>
       {
-        isEditing ? (
+        status !== 'idle' ? (
           <>
             <Btn
               text='cancel'
-              onClick={() => {
-                setInfo(initialInfo);
-                setIsEditing(false);
-              }}
+              onClick={() => {handleIdle();}}
             />
-            <button type='submit' className='submit-btn'>Save</button>
+            <button
+              type='submit'
+              className='submit-btn'
+              disabled={status !== 'changing'}
+            >
+              Save
+            </button>
           </>
         ) : (
           <Btn
             text='edit'
             onClick={() => {
-              setIsEditing(true);
+              setStatus('editing');
               initialInfo=info;
             }}
           />
