@@ -6,8 +6,7 @@ export default async function loginLoader() {
   if (Cookies.get('session_id')) {
     try {
       await httpClient.get('/profile');
-      // return redirect('/profile');
-      return redirect('/home');
+      return redirect('/home/profile');
     } catch(err) {
       // remove session_id from the cookie
       Cookies.remove('session_id');

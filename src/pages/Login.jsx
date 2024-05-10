@@ -1,18 +1,18 @@
-import { React, useState } from 'react'
+import { React } from 'react'
 import httpClient from '../services/httpClient';
-import { Form, redirect, Link } from 'react-router-dom';
+import { Form, redirect, Link , useActionData} from 'react-router-dom';
 import "../assets/css/Register.css";
 import Cookies from 'js-cookie';
+import { Alert } from '../components/ui';
 
 export default function Login() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async () => {
-    setIsSubmitting(true);
-  }
+  const errorData = useActionData();
 
   return (
     <div className="login">
+      {
+        errorData && <Alert title="Error" body={errorData} />
+      }
       <header>
         <div className="logo">
           <Link to="/">
@@ -20,7 +20,7 @@ export default function Login() {
           </Link>
         </div>
       </header>
-      <Form method='post' action='/login' onSubmit={handleSubmit}>
+      <Form method='post' action='/login'>
         <label>
           <span>Username</span>
           <input
@@ -28,7 +28,6 @@ export default function Login() {
             aria-label='email'
             type='email'
             name='email'
-            disabled={isSubmitting}
             required
           />
         </label>
@@ -39,11 +38,13 @@ export default function Login() {
             aria-label='password'
             type='password'
             name='password'
-            disabled={isSubmitting}
             required
           />
         </label>
-        <button type='submit' disabled={isSubmitting}>Login In</button>
+        <button type='submit'
+        >
+          Login In
+        </button>
       </Form>
     </div>
   )
@@ -59,12 +60,11 @@ export async function action({ request }) {
     );
     console.log(response.data);
     localStorage.setItem('currentUser', JSON.stringify(response.data));
-    return redirect('/home');
+    return redirect('/home/profile');
   } catch (err) {
     localStorage.clear();
     Cookies.remove('session_id');
-
-    // return redirect('/login');
-    return null;
+    console.log(err);
+    return err.response.data.error;
   }
 }
