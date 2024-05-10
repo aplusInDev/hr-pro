@@ -6,6 +6,8 @@ select {
   background-color: #fefefe;
   color: var(--cardColor);
   border: none;
+  border-radius: 10px;
+  outline: none;
 }
 
 input:not(input[type="radio"], input[type="checkbox"]):focus,

@@ -13,6 +13,7 @@ import {action as registerAction } from './pages/Register';
 import { Company } from './components/ui';
 import { companyAction } from './pages/actions';
 import homeLoader from './pages/loaders/homeLader';
+import { AddEmployee } from './components';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,12 @@ const router = createBrowserRouter([
       {
         path: "employees",
         element: <Employees />,
+        children: [
+          {
+            path: 'add-employee',
+            element: <AddEmployee />
+          },
+        ]
       },
       {
         path: "attendance",

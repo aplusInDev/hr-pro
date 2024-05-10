@@ -3,7 +3,7 @@
   height: calc(100vh - 50px);
 }
 
-.add-employee {
+.new-employee {
   margin: 5px auto;
   height: 60px;
   transform: translate(45px, -20px);
@@ -11,7 +11,7 @@
   text-align: end;
 }
 
-.add-employee > button:hover {
+.new-employee > button:hover {
   background-color: unset;
   border: 1px solid var(--icon-color);
 }
