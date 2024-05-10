@@ -8,19 +8,24 @@ export default function Filter() {
   const [active, setActive] = useState(false)
 
   function handleActive() {
-    setActive(!active)
+    const inputFilter = document.getElementById("filter");
+    setActive(!active);
+    if (active) {
+      inputFilter.placeholder = 'Search ...';
+    } else {
+      inputFilter.placeholder = 'Filter by ...';
+    }
   }
 
   return (
     <>
     <form className='filter'>
       <label>
-        <span>filter by</span>
-        <input id='filter' type='text' placeholder='Search...'/>
+        <input id='filter' type='text' placeholder='Search ...'/>
       </label>
       <button type='button'
         aria-label='filter-btn'
-        onClick={handleActive}
+        onMouseEnter={handleActive}
       >
         <Icon icon='solar:filter-bold-duotone' className='filter-icon' />
       </button>

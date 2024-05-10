@@ -6,7 +6,7 @@
   border-radius: 12px;
   top: 10px;
   left: 50px;
-  padding: 0 5px 0 15px;
+  padding: 0;
 }
 
 .filter > label > span,
@@ -40,16 +40,17 @@
   border: none;
   border-radius: 7px;
   cursor: pointer;
-  margin-right: 5px;
   box-sizing: border-box;
-  padding: 0;
+  padding-top: 5px;
+  position: absolute;
+  top: 5px;
+  right: 130px;
 }
 
 .filter .filter-icon {
   color: white;
   width: 20px;
   height: 20px;
-  transform: translateY(5px);
 }
 
 .filter > input[type="submit"] {
