@@ -1,0 +1,145 @@
+.register,
+.login {
+  top: 5px;
+  right: 5px;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  padding-bottom: 50px;
+  background: linear-gradient(5deg, rgb(40, 5, 5), rgba(93, 49, 49, 0.632), #02042881, rgba(0, 75, 128, 0.768));
+	background-size: 400% 400%;
+	/* animation: gradient 15s ease infinite; */
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.register header,
+.login header {
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+  margin-bottom: 30px;
+}
+
+.register .logo,
+.login .logo {
+  width: calc(100% - 200px);
+  height: 30px;
+  padding-left: 5px;
+}
+
+.logo span {
+  display: inline-block;
+  padding: 5px 1px;
+  width: 30px;
+  height: 30px;
+  color: #000000;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.logo span:first-child {
+  color: #fefefe;
+  background-color: #000000;
+  border-radius: 50%;
+  padding-left: 5px;
+}
+
+.register form,
+.login form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  min-height: 500px;
+  margin: 50px auto;
+  padding: 20px 40px;
+  background-color: rgba(6, 23, 54, 0.289);
+  border-radius: 20px;
+  filter: drop-shadow(5px 12px 5px #363030);
+  color: #cccdd9;
+}
+
+.login form {
+  min-height: 350px;
+}
+
+.register form span,
+.login form span {
+  display: block;
+  margin: 30px 0 5px 8px;
+}
+
+.register input,
+.register textarea,
+.login input {
+  outline: none;
+  width: 100%;
+  padding-left: 10px;
+  background-color: rgba(129, 139, 158, 0.289);
+  resize: none;
+  border-radius: 5px;
+  color: var(--disabled-input-color);
+}
+
+.register textarea:focus,
+.login textarea:focus,
+.register input:focus,
+.login input:focus {
+  background-color: #fefefe;
+  color: var(--cardColor);
+  transition: all .5s;
+}
+
+.register button,
+.register input,
+.login button,
+.login input {
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 30px;
+}
+
+.register button,
+.login button {
+  margin-top: 60px;
+  color: #efefef;
+  background-color: #040404;
+}
+
+.register button:hover,
+.login button:hover {
+  background: linear-gradient(-45deg, #042a21, #253876d5, #fefefe);
+	background-size: 400% 400%;
+	animation: gradient 8s ease infinite;
+  filter: drop-shadow(5px 12px 5px #363030);
+}
+
+.register .company-info {
+  display: none;
+}
+
+.register #back {
+  width: 90px;
+  height: 30px;
+  margin-top: 20px;
+  background: none;
+  border: 1px solid #fefefe;
+}
+
+.register #back:hover {
+  border: none;
+  background-color: #2f2e2e3c;
+  filter: drop-shadow(2px 2px 5px #363030);
+}

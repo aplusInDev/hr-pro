@@ -15,6 +15,13 @@ aside ul {
   padding-top: 2px;
 }
 
+aside nav {
+  width: 200px;
+  position: absolute;
+  left: 0;
+  height: 100vh;
+}
+
 aside li {
   height: var(--field-height);
   line-height: 30px;

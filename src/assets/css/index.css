@@ -10,12 +10,26 @@
   --main-light-color: #D9D9D9;
   --aside-ground: rgb(6, 22, 33);
   --icon-color: #1A9BB7;
-  --current-button: #1A7EB7;
+  --disabled-input-color: #3bb5de;
+  --current-btn: #1A7EB7;
   --checkbox-ground: #9CBEBE;
-  --green-button: #00FF00;
-  --red-button: #FF0000;
-  /* --green-button: #1AB759; */
-  /* --red-button: #B71A1A; */
+  --green-btn: #00FF00;
+  --red-btn: #FF0000;
+  --second-green-btn: #1AB759;
+  --red-btn: #B71A1A;
+  --bgColor1: #1f2328;
+  --bgColor2: #d1f8f9;
+  --bgColor3: #ff818266;
+  --bgColor4: #636c76;
+  --bgColor5: #24292f;
+  --bgColor6: #57605a;
+  --bgColor7: #808fa3;
+  --bgColor8: #0d1117;
+  --bgColor9: #161b22f2;
+  --bgColor10: #30363d;
+  --btnColor: #20bb3d;
+  --cardColor: #0c162d;
+  --cardFont: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
 }
 
 .dark {
@@ -26,10 +40,26 @@
 
 * {
   font: italic bold 14px 'Lato', sans-serif;
-  margin :0;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+html, body, #root {
+  font-family: 'Roboto', sans-serif;
+  color: #fff2f2;
+	height: 100vh;
+	width: 100vw;
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -37,20 +67,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  /* background-color: #677070; */
-  /* background: linear-gradient(180deg, var(--second-dark-color) 0%, #5b6165 100%); */
-  border-radius: 5px;
-  background-color: #555555;
+  background: linear-gradient(180deg, #7e8785, #5880a3);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  /* background-color: #292e2e; */
-  background-color: var(--main-light-color);
-}
-
-#root {
-  position: relative;
-  overflow-x: hidden;
-  height: 100vh;
-  width: 100vw;
+  background-color: none;
+  border-radius: 10px;
 }

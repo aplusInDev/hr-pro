@@ -1,0 +1,50 @@
+.alert-card {
+  background-color: rgb(1, 7, 18);
+  position: absolute;
+  right: 5px;
+  bottom: 20px;
+  width: 450px;
+  height: 250px;
+  border-radius: 20px;
+  filter: drop-shadow(5px 12px 5px #363030);
+  z-index: 1000;
+}
+
+.alert-card.hide {
+  animation: alert-hide 0.9s ease-in-out forwards;
+}
+
+@keyframes alert-hide {
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+    display: none;
+  }
+}
+
+.alert-card::before {
+  content: "";
+  width: 600px;
+  height: 550px;
+  background-color: transparent;
+  position: inherit;
+  top: -75px;
+  left: -75px;
+  z-index: -1;
+}
+
+.alert-card h1 {
+  color: #f2f2f2;
+  font-size: 1.8rem;
+  text-align: left;
+  padding: 30px 30px 5px;
+}
+
+.alert-card span {
+  display: inline-block;
+  color: #f2f2f2;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+}

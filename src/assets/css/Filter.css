@@ -1,0 +1,80 @@
+.filter {
+  background-color: var(--aside-ground);
+  position: absolute;
+  width: calc(100% - 120px);
+  height: 40px;
+  border-radius: 12px;
+  top: 10px;
+  left: 50px;
+  padding: 0 5px 0 15px;
+}
+
+.filter > label > span,
+.filter > label > input#filter {
+  color: var(--main-light-color)
+}
+
+.filter > label > input#filter {
+  background: transparent;
+  border: none;
+  width: calc(100% - 200px);
+  height: 40px;
+  margin: 0 5px;
+  padding: 0 15px;
+}
+
+.filter > label > input#filter:focus {
+  outline: none;
+}
+
+.filter > label > input#filter::placeholder {
+  color: var(--checkbox-ground);
+}
+
+.filter > button {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: var(--checkbox-ground);
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-right: 5px;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.filter .filter-icon {
+  color: white;
+  width: 20px;
+  height: 20px;
+  transform: translateY(5px);
+}
+
+.filter > input[type="submit"] {
+  color: var(--aside-ground);
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #657c7c;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.filter > input[type="submit"]:hover {
+  background-color: #4d5f5f;
+  color: var(--main-light-color);
+}
+
+.menu.active {
+  position: absolute;
+  background-color: var(--midnight-blue);
+  border-radius: 15px;
+  width: calc(100% - 120px);
+  height: 200px;
+  top: 52px;
+  left: 50px;
+}

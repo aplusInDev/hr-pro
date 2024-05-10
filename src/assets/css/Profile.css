@@ -1,0 +1,29 @@
+.profile {
+  background-color: var(--bgColor4);
+  margin-top: 50px;
+  width: 100vw;
+  height: calc(100vh - 50px);
+  padding: 20px 30px;
+}
+
+.profile > aside {
+  position: absolute;
+  left: 0;
+  top: 50px;
+  padding: 10px 20px;
+}
+
+.profile main {
+	position: absolute;
+  top: 50px;
+  left: 200px;
+  padding: 20px 50px;
+  width: calc(100vw - 200px);
+  height: calc(100vh - 50px);
+  overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.profile .form-preview {
+  width: calc(100vw - 300px);
+}
