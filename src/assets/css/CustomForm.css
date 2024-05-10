@@ -51,7 +51,7 @@ tbody {
 .show-preview,
 .form-preview {
   position: relative;
-  width: 1000px;
+  width: calc(100vw - 300px);
   margin: 30px auto;
   border-radius: 10px;
 }
@@ -385,18 +385,22 @@ table button:not(td:last-child button) {
 
 /* styling fields-table */
 table {
-  width: 1000px;
+  width: calc(100vw - 300px);
   margin: 0 auto;
   border-radius: 8px;
   border-spacing: 0;
 }
 
 thead {
-  background-color: var(--bgColor10);
+  background: transparent;
   height: 30px;
   color: #FAFBFC92;
   font-family: var(--cardFont);
   font-size: 14px;
+}
+
+tbody {
+  background: transparent;
 }
 
 thead tr {
@@ -406,6 +410,7 @@ thead tr {
 
 thead th {
   height: 30px;
+  background-color: var(--bgColor10);
 }
 
 tr {
@@ -415,12 +420,13 @@ tr {
 
 th:not(th:nth-child(6)),
 td:not(td:nth-child(6)) {
-  width: calc(1000px / 8);
+  width: calc((100vw - 300px) / 8);
 }
 
 td {
   padding: 20px 5px 10px;
   border-bottom: 1px solid var(--bgColor10);
+  background-color: var(--bgColor8);
 }
 
 td:not(td:nth-child(6)) {
@@ -431,8 +437,26 @@ td:not(td:nth-child(6)) {
 
 th:nth-child(6),
 td:nth-child(6) {
-  width: calc(1000px / 4);
+  width: calc((100vw - 300px) / 4);
 }
+
+/* For the first cell in the first row */
+th:first-child {
+  border-top-left-radius: 10px;
+}
+/* For the last cell in the first row */
+th:last-child {
+  border-top-right-radius: 10px;
+}
+/* For the first cell in the last row */
+tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+/* For the last cell in the last row */
+tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
 
 td:last-child {
   padding-left: 15px;
