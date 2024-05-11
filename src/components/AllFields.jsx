@@ -56,6 +56,7 @@ export default function AllFields({
                     disabled={status === 'idle'}
                     defaultValue={info[`${field.name}`] || field.default_value}
                     onChange={(e) => {
+                      e.stopPropagation();
                       handleChange({
                       ...info,
                       [field.name]: e.target.value
@@ -83,6 +84,7 @@ export default function AllFields({
                           disabled={status === 'idle'}
                           defaultChecked={option === info[`${field.name}`] || option === field.default_value}
                           onChange={(e) => {
+                            e.stopPropagation();
                             handleChange({
                               ...info,
                               [field.name]: e.target.checked ? option : '',
@@ -114,6 +116,7 @@ export default function AllFields({
                           disabled={status === 'idle'}
                           defaultChecked={info[`${field.name}`]?.includes(option)}
                           onChange={(e) => {
+                            e.stopPropagation();
                             if (e.target.checked) {
                               handleChange({
                                 ...info,
@@ -144,6 +147,7 @@ export default function AllFields({
                     disabled={status === 'idle'}
                     value={info[`${field.name}`] || field.default_value}
                     onChange={(e) => {
+                      e.stopPropagation();
                       handleChange({
                       ...info,
                       [field.name]: e.target.value
@@ -161,12 +165,16 @@ export default function AllFields({
           <>
             <Btn
               text='cancel'
-              onClick={() => {handleIdle();}}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleIdle();
+              }}
             />
             <button
               type='submit'
               className='submit-btn'
               disabled={status !== 'changing'}
+              onClick={(e) => e.stopPropagation()}
             >
               Save
             </button>
@@ -174,7 +182,8 @@ export default function AllFields({
         ) : (
           <Btn
             text='edit'
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setStatus('editing');
               initialInfo=info;
             }}

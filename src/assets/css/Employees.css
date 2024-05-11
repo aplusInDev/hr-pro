@@ -38,17 +38,12 @@
 
 .employees-container li {
   cursor: pointer;
-  background-color: red;
+  background-color: var(--bgColor9);
   width: 100%;
   min-height: 30px;
   line-height: 30px;
-  /* padding-left: 10px; */
-  /* padding-bottom: 10px; */
+  padding: 10px;
   border-radius: 10px;
-}
-
-.employees-container li.active {
-  background-color: var(--bgColor8);
 }
 
 /* styling employees-container_______________________ */
@@ -57,4 +52,5 @@
   width: 100%;
   /* background: transparent; */
   margin: 0;
+  background-color: var(--bgColor9);
 }

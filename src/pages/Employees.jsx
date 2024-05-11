@@ -8,13 +8,13 @@ export default function Employees() {
   const {employees, employeeFields} = useLoaderData();
   const [active, setActive] = useState(null);
 
-  async function handleClick(e) {
+  function handleClick(e) {
     if (active === e.target.id) {
       setActive(null);
     } else {
       setActive(e.target.id);
     }
-  }  
+  }
 
   return (
     <>
@@ -34,12 +34,13 @@ export default function Employees() {
                 key={employee.id}
                 onClick={handleClick}
               >
-                {employee.id}
                 {
-                  employee.id === active && (
+                  employee.id === active ? (
                     <Await>
                       <AllFields employee_id={active} fields={employeeFields} />
                     </Await>
+                  ) : (
+                    employee.id
                   )
                 }
               </li>
@@ -50,3 +51,19 @@ export default function Employees() {
     </>
   );
 }
+
+
+// function Test() {
+//   return (
+//     <div className='test-dv'>
+//       <h1>Test</h1>
+//       <input type='text' placeholder='test' />
+//       <Btn text='Test btn' 
+//         onClick={(e) => {
+//           e.stopPropagation();
+//           console.log('clicking on test btn');
+//         }}
+//       />
+//     </div>
+//   )
+// }
