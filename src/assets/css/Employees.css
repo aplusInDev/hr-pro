@@ -1,17 +1,60 @@
-.employees {
-  width: calc(100vw -200px);
-  height: calc(100vh - 50px);
-}
-
 .new-employee {
-  margin: 5px auto;
-  height: 60px;
-  transform: translate(45px, -20px);
-  line-height: 60px;
+  height: 40px;
+  width: 200px;
+  position: absolute;
+  right: 0;
+  margin-bottom: 10px;
+  line-height: 40px;
   text-align: end;
 }
 
-.new-employee > button:hover {
+.new-employee button {
+  width: 150px;
+  height: 30px;
+  margin: 5px auto;
+}
+
+.new-employee button:hover {
   background-color: unset;
   border: 1px solid var(--icon-color);
+}
+
+/* styling employees-container */
+.employees-container {
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; */
+  margin: 10px auto;
+  width: 100%;
+  min-height: max-content;
+}
+
+.employees-container ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 50px auto;
+}
+
+.employees-container li {
+  cursor: pointer;
+  background-color: red;
+  width: 100%;
+  min-height: 30px;
+  line-height: 30px;
+  /* padding-left: 10px; */
+  /* padding-bottom: 10px; */
+  border-radius: 10px;
+}
+
+.employees-container li.active {
+  background-color: var(--bgColor8);
+}
+
+/* styling employees-container_______________________ */
+
+.employees-container .form-preview {
+  width: 100%;
+  /* background: transparent; */
+  margin: 0;
 }

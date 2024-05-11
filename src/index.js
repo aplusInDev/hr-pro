@@ -7,7 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { LandingPage, Login, Register, Profile, ErrorPage, CustomForm, Home, Employees } from './pages';
-import { companyLoader, loginLoader, logoutLoader, profileLoader } from './pages/loaders';
+import { companyLoader, employeesLoader, loginLoader, logoutLoader, profileLoader } from './pages/loaders';
 import { action as loginAction } from './pages/Login';
 import {action as registerAction } from './pages/Register';
 import { Company } from './components/ui';
@@ -47,6 +47,7 @@ const router = createBrowserRouter([
       {
         path: "employees",
         element: <Employees />,
+        loader: employeesLoader,
         children: [
           {
             path: 'add-employee',

@@ -1,12 +1,23 @@
-import React from 'react';
-import { Filter } from '../components';
+import React, { useState } from 'react';
+import { AllFields, Filter } from '../components';
 import { Btn } from '../components/ui';
 import '../assets/css/Employees.css';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useLoaderData, Await } from 'react-router-dom';
 
 export default function Employees() {
+  const {employees, employeeFields} = useLoaderData();
+  const [active, setActive] = useState(null);
+
+  async function handleClick(e) {
+    if (active === e.target.id) {
+      setActive(null);
+    } else {
+      setActive(e.target.id);
+    }
+  }  
+
   return (
-    <div className="employees">
+    <>
       <div className="new-employee">
         <Link to='add-employee'>
           <Btn text="Add Employee" />
@@ -14,6 +25,28 @@ export default function Employees() {
       </div>
       <Filter />
       <Outlet />
-    </div>
+      <section className="employees-container">
+        <ul>
+          {
+            employees.map(employee => 
+              <li
+                id={employee.id}
+                key={employee.id}
+                onClick={handleClick}
+              >
+                {employee.id}
+                {
+                  employee.id === active && (
+                    <Await>
+                      <AllFields employee_id={active} fields={employeeFields} />
+                    </Await>
+                  )
+                }
+              </li>
+            )
+          }
+        </ul>
+      </section>
+    </>
   );
 }

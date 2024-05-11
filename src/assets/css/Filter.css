@@ -1,10 +1,10 @@
 .filter {
   background-color: var(--aside-ground);
-  width: 100%;
+  width: 700px;
   height: 40px;
   border-radius: 12px;
   position: relative;
-  padding: 0;
+  margin-bottom: 10px;
 }
 
 .filter > label > span,
@@ -15,7 +15,7 @@
 .filter > label > input#filter {
   background: transparent;
   border: none;
-  width: calc(100% - 200px);
+  width: calc(100% - 230px);
   height: 40px;
   margin: 0 5px;
   padding: 0 15px;
@@ -61,7 +61,6 @@
   border: none;
   border-radius: 7px;
   cursor: pointer;
-  transform: translateY(1px);
 }
 
 .filter > input[type="submit"]:hover {

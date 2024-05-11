@@ -3,14 +3,16 @@ import '../assets/css/Profile.css';
 import { AllFields } from '../components';
 import { useLoaderData,  Await } from 'react-router-dom';
 
+const employee_id = JSON.parse(localStorage.getItem("currentUser"))?.employee_id;
+
 export default function Profile() {
-  const { employee, employeeFields } = useLoaderData();
+  const  { employeeFields } = useLoaderData();
 
   return (
       <Await>
         <AllFields
           fields={employeeFields}
-          employeeInfo={employee}
+          employee_id={employee_id}
         />
       </Await>
   )

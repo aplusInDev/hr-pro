@@ -1,13 +1,26 @@
-import { React, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Btn } from './ui';
 import httpClient from '../services/httpClient';
 
 export default function AllFields({
-  fields, employeeInfo,
+  fields, employee_id,
 }) {
-  let initialInfo = employeeInfo.info;
-  const [info, setInfo] = useState(initialInfo);
+  const [info, setInfo] = useState({});
   const [status, setStatus] = useState('idle'); // idle, editing, submitting
+  let initialInfo = {};
+
+  useEffect(() => {
+    async function getEmployee() {
+      try {
+        const response = await httpClient.get(`/employees/${employee_id}`);
+        setInfo(response.data['info']);
+      } catch (err) {
+        console.log("erro: ", err);
+      }
+    }
+    getEmployee();
+  }, [employee_id]);
+
 
   function handleChange(data) {
     setInfo(data);
@@ -16,7 +29,7 @@ export default function AllFields({
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await httpClient.put(`/employees/${employeeInfo.id}/info`, info);
+    await httpClient.put(`/employees/${employee_id}/info`, info);
     setStatus('idle');
   }
 
