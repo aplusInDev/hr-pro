@@ -51,19 +51,3 @@ export default function Employees() {
     </>
   );
 }
-
-
-// function Test() {
-//   return (
-//     <div className='test-dv'>
-//       <h1>Test</h1>
-//       <input type='text' placeholder='test' />
-//       <Btn text='Test btn' 
-//         onClick={(e) => {
-//           e.stopPropagation();
-//           console.log('clicking on test btn');
-//         }}
-//       />
-//     </div>
-//   )
-// }
