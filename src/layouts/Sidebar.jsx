@@ -1,22 +1,17 @@
 import React from 'react';
-import { FaBuilding ,FaSignOutAlt } from "react-icons/fa";
-import { BsPersonLinesFill } from "react-icons/bs";
-import { IoCheckmarkCircleOutline } from "react-icons/io5";
-import { FaMoneyBills } from "react-icons/fa6";
-import { MdOutlineWork } from "react-icons/md";
-import { PiCertificateBold } from "react-icons/pi";
+import { Icon } from '@iconify/react';
 import { AsideLink } from '../components/ui';
 import '../assets/css/Sidebar.css';
 
 
 const fields = [
-    {link: 'departments', icon: <FaBuilding />, text: 'Departments'},
-    {link: 'employees', icon: <BsPersonLinesFill />, text: 'Employees'},
-    {link: 'attendance', icon: <IoCheckmarkCircleOutline />, text: 'Attendance'},
-    {link: 'leaves', icon: <FaSignOutAlt />, text: 'Leaves'},
-    {link: 'salaries', icon: <FaMoneyBills />, text: 'Salaries'},
-    {link: 'vacancies', icon: <MdOutlineWork />, text: 'Vacancies'},
-    {link: 'training', icon: <PiCertificateBold />, text: 'Training'},
+    {link: 'departments', icon: <Icon icon="openmoji:department-store" />, text: 'Departments'},
+    {link: 'jobs', icon: <Icon icon="hugeicons:new-job" />, text: 'Jobs'},
+    {link: 'employees', icon: <Icon icon="raphael:employee" />, text: 'Employees'},
+    {link: 'attendance', icon: <Icon icon="simple-line-icons:check" />, text: 'Attendance'},
+    {link: 'absences', icon: <Icon icon="flat-color-icons:leave" />, text: 'Absences'},
+    {link: 'leaves', icon: <Icon icon="fluent-mdl2:leave-user" />, text: 'Leaves'},
+    {link: 'training', icon: <Icon icon="ph:certificate-duotone" />, text: 'Training'},
 ]
 
 
