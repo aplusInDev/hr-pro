@@ -5,13 +5,13 @@ import '../assets/css/Sidebar.css';
 
 
 const fields = [
-    {link: 'departments', icon: <Icon icon="openmoji:department-store" />, text: 'Departments'},
-    {link: 'jobs', icon: <Icon icon="hugeicons:new-job" />, text: 'Jobs'},
-    {link: 'employees', icon: <Icon icon="raphael:employee" />, text: 'Employees'},
-    {link: 'attendance', icon: <Icon icon="simple-line-icons:check" />, text: 'Attendance'},
-    {link: 'absences', icon: <Icon icon="flat-color-icons:leave" />, text: 'Absences'},
-    {link: 'leaves', icon: <Icon icon="fluent-mdl2:leave-user" />, text: 'Leaves'},
-    {link: 'training', icon: <Icon icon="ph:certificate-duotone" />, text: 'Training'},
+  {link: 'departments', icon: <Icon icon="openmoji:department-store" />, text: 'Departments'},
+  {link: 'jobs', icon: <Icon icon="hugeicons:new-job" />, text: 'Jobs'},
+  {link: 'employees', icon: <Icon icon="raphael:employee" />, text: 'Employees'},
+  {link: 'attendance', icon: <Icon icon="simple-line-icons:check" />, text: 'Attendance'},
+  {link: 'absences', icon: <Icon icon="flat-color-icons:leave" />, text: 'Absences'},
+  {link: 'leaves', icon: <Icon icon="fluent-mdl2:leave-user" />, text: 'Leaves'},
+  {link: 'training', icon: <Icon icon="ph:certificate-duotone" />, text: 'Training'},
 ]
 
 
