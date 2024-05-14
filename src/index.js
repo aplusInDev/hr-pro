@@ -6,14 +6,20 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { LandingPage, Login, Register, Profile, ErrorPage, CustomForm, Home, Employees } from './pages';
-import { companyLoader, employeesLoader, loginLoader, logoutLoader, profileLoader } from './pages/loaders';
+import {
+  LandingPage, Login, Register, Profile, ErrorPage, CustomForm,
+  Home, Employees, Departments,
+} from './pages';
+import {
+  companyLoader, employeesLoader, loginLoader, logoutLoader,
+  profileLoader, departmentsLoader,
+} from './pages/loaders';
 import { action as loginAction } from './pages/Login';
 import {action as registerAction } from './pages/Register';
 import { Company } from './components/ui';
 import { companyAction } from './pages/actions';
 import homeLoader from './pages/loaders/homeLader';
-import { AddEmployee } from './components';
+import { AddEmployee, AddDepartment } from './components';
 
 const router = createBrowserRouter([
   {
@@ -42,7 +48,14 @@ const router = createBrowserRouter([
       },
       {
         path: "departments",
-        element: <Employees />,
+        element: <Departments />,
+        loader: departmentsLoader,
+        children: [
+          {
+            path: 'add-department',
+            element: <AddDepartment />
+          },
+        ]
       },
       {
         path: "employees",

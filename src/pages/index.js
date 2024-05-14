@@ -7,3 +7,4 @@ export { default as ErrorPage } from './ErrorPage'
 export {default as CustomForm} from './CustomForm'
 export { default as Home } from './Home'
 export { default as Employees } from './Employees';
+export { default as Departments } from './Departments';
