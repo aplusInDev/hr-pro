@@ -5,3 +5,4 @@ export { default as companyLoader } from './companyLoader.js';
 export { default as employeesLoader } from './employeesLoader.js';
 export { default as departmentsLoader } from './departmentsLoader.js';
 export { default as jobsLoader } from './jobsLoader.js';
+export { default as addEmployeeLoader } from './addEmployeeLoader.js';
