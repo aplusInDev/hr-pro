@@ -8,18 +8,18 @@ import {
 } from "react-router-dom";
 import {
   LandingPage, Login, Register, Profile, ErrorPage, CustomForm,
-  Home, Employees, Departments,
+  Home, Employees, Departments, Jobs,
 } from './pages';
 import {
   companyLoader, employeesLoader, loginLoader, logoutLoader,
-  profileLoader, departmentsLoader,
+  profileLoader, departmentsLoader, jobsLoader,
 } from './pages/loaders';
 import { action as loginAction } from './pages/Login';
 import {action as registerAction } from './pages/Register';
 import { Company } from './components/ui';
 import { companyAction } from './pages/actions';
 import homeLoader from './pages/loaders/homeLader';
-import { AddEmployee, AddDepartment } from './components';
+import { AddEmployee, AddDepartment, AddJob } from './components';
 
 const router = createBrowserRouter([
   {
@@ -58,6 +58,17 @@ const router = createBrowserRouter([
         ]
       },
       {
+        path: "jobs",
+        element: <Jobs />,
+        loader: jobsLoader,
+        children: [
+          {
+            path: 'add-job',
+            element: <AddJob />
+          },
+        ]
+      },
+      {
         path: "employees",
         element: <Employees />,
         loader: employeesLoader,
@@ -74,14 +85,6 @@ const router = createBrowserRouter([
       },
       {
         path: "leaves",
-        element: <Employees />,
-      },
-      {
-        path: "salaries",
-        element: <Employees />,
-      },
-      {
-        path: "vacancies",
         element: <Employees />,
       },
       {
