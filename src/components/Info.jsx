@@ -1,26 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Btn } from './ui';
 import httpClient from '../services/httpClient';
 
-export default function AllFields({
-  fields, employee_id,
+export default function Info({
+  fields, obj_id, path,
 }) {
   const [info, setInfo] = useState({});
   const [status, setStatus] = useState('idle'); // idle, editing, submitting
-  let initialInfo = {};
 
   useEffect(() => {
-    async function getEmployee() {
+    async function getInfo() {
       try {
-        const response = await httpClient.get(`/employees/${employee_id}`);
+        const response = await httpClient.get(`/${path}/${obj_id}`);
         setInfo(response.data['info']);
       } catch (err) {
         console.log("erro: ", err);
       }
     }
-    getEmployee();
-  }, [employee_id]);
-
+    getInfo();
+  }, [obj_id, path]);
 
   function handleChange(data) {
     setInfo(data);
@@ -29,13 +27,16 @@ export default function AllFields({
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await httpClient.put(`/employees/${employee_id}/info`, info);
+    if (path === 'employees') {
+      await httpClient.put(`/${path}/${obj_id}/info`, info);
+    } else {
+      await httpClient.put(`/${path}/${obj_id}`, info);
+    }
     setStatus('idle');
   }
 
   function handleIdle() {
     setStatus('idle');
-    setInfo(initialInfo);
   }
 
   return (
@@ -186,7 +187,6 @@ export default function AllFields({
             onClick={(e) => {
               e.stopPropagation();
               setStatus('editing');
-              initialInfo=info;
             }}
           />
         )

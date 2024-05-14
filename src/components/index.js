@@ -7,3 +7,4 @@ export { default as NewForm } from './NewForm';
 export { default as FormPreview } from './FormPreview.jsx'
 export { default as AllFields } from './AllFields.jsx';
 export { default as AddEmployee } from './AddEmployee.jsx';
+export { default as Info } from './Info.jsx';
