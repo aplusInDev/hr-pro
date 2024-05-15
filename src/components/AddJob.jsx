@@ -46,7 +46,7 @@ export default function AddJob() {
             />
         </label>
         <div className="btns">
-          <Link to='/home/departments'>
+          <Link to='/home/jobs'>
             <Btn text="cancel" />
           </Link>
           <button
