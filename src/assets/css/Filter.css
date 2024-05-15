@@ -1,12 +1,10 @@
 .filter {
   background-color: var(--aside-ground);
-  position: absolute;
-  width: calc(100% - 120px);
+  width: 700px;
   height: 40px;
   border-radius: 12px;
-  top: 10px;
-  left: 50px;
-  padding: 0 5px 0 15px;
+  position: relative;
+  margin-bottom: 10px;
 }
 
 .filter > label > span,
@@ -17,7 +15,7 @@
 .filter > label > input#filter {
   background: transparent;
   border: none;
-  width: calc(100% - 200px);
+  width: calc(100% - 230px);
   height: 40px;
   margin: 0 5px;
   padding: 0 15px;
@@ -40,16 +38,17 @@
   border: none;
   border-radius: 7px;
   cursor: pointer;
-  margin-right: 5px;
   box-sizing: border-box;
-  padding: 0;
+  padding-top: 5px;
+  position: absolute;
+  top: 5px;
+  right: 130px;
 }
 
 .filter .filter-icon {
   color: white;
   width: 20px;
   height: 20px;
-  transform: translateY(5px);
 }
 
 .filter > input[type="submit"] {
@@ -73,8 +72,8 @@
   position: absolute;
   background-color: var(--midnight-blue);
   border-radius: 15px;
-  width: calc(100% - 120px);
+  width: calc(100% - 160px);
   height: 200px;
-  top: 52px;
-  left: 50px;
+  top: 45px;
+  left: 0;
 }

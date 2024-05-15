@@ -1,13 +1,24 @@
-import { React, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Btn } from './ui';
 import httpClient from '../services/httpClient';
 
-export default function AllFields({
-  fields, employeeInfo,
+export default function Info({
+  fields, obj_id, path,
 }) {
-  let initialInfo = employeeInfo.info;
-  const [info, setInfo] = useState(initialInfo);
+  const [info, setInfo] = useState({});
   const [status, setStatus] = useState('idle'); // idle, editing, submitting
+
+  useEffect(() => {
+    async function getInfo() {
+      try {
+        const response = await httpClient.get(`/${path}/${obj_id}`);
+        setInfo(response.data['info']);
+      } catch (err) {
+        console.log("erro: ", err);
+      }
+    }
+    getInfo();
+  }, [obj_id, path]);
 
   function handleChange(data) {
     setInfo(data);
@@ -16,19 +27,23 @@ export default function AllFields({
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await httpClient.put(`/employees/${employeeInfo.id}/info`, info);
+    if (path === 'employees') {
+      await httpClient.put(`/${path}/${obj_id}/info`, info);
+    } else {
+      await httpClient.put(`/${path}/${obj_id}`, info);
+    }
     setStatus('idle');
   }
 
   function handleIdle() {
     setStatus('idle');
-    setInfo(initialInfo);
   }
 
   return (
     <form
       className='form-preview'
       onSubmit={handleSubmit}
+      onClick={(e) => e.stopPropagation()}
     >
       {
         fields?.map((field) => {
@@ -43,6 +58,7 @@ export default function AllFields({
                     disabled={status === 'idle'}
                     defaultValue={info[`${field.name}`] || field.default_value}
                     onChange={(e) => {
+                      e.stopPropagation();
                       handleChange({
                       ...info,
                       [field.name]: e.target.value
@@ -70,6 +86,7 @@ export default function AllFields({
                           disabled={status === 'idle'}
                           defaultChecked={option === info[`${field.name}`] || option === field.default_value}
                           onChange={(e) => {
+                            e.stopPropagation();
                             handleChange({
                               ...info,
                               [field.name]: e.target.checked ? option : '',
@@ -101,6 +118,7 @@ export default function AllFields({
                           disabled={status === 'idle'}
                           defaultChecked={info[`${field.name}`]?.includes(option)}
                           onChange={(e) => {
+                            e.stopPropagation();
                             if (e.target.checked) {
                               handleChange({
                                 ...info,
@@ -131,6 +149,7 @@ export default function AllFields({
                     disabled={status === 'idle'}
                     value={info[`${field.name}`] || field.default_value}
                     onChange={(e) => {
+                      e.stopPropagation();
                       handleChange({
                       ...info,
                       [field.name]: e.target.value
@@ -148,12 +167,16 @@ export default function AllFields({
           <>
             <Btn
               text='cancel'
-              onClick={() => {handleIdle();}}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleIdle();
+              }}
             />
             <button
               type='submit'
               className='submit-btn'
               disabled={status !== 'changing'}
+              onClick={(e) => e.stopPropagation()}
             >
               Save
             </button>
@@ -161,9 +184,9 @@ export default function AllFields({
         ) : (
           <Btn
             text='edit'
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setStatus('editing');
-              initialInfo=info;
             }}
           />
         )

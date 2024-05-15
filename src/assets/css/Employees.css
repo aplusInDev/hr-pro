@@ -1,0 +1,59 @@
+.new-employee {
+  height: 40px;
+  width: 200px;
+  position: absolute;
+  right: 0;
+  margin-bottom: 10px;
+  line-height: 40px;
+  text-align: end;
+}
+
+.new-employee button {
+  width: 150px;
+  height: 30px;
+  margin: 5px auto;
+}
+
+.new-employee button:hover {
+  background-color: unset;
+  border: 1px solid var(--icon-color);
+}
+
+/* styling employees-container */
+.employees-container {
+  margin: 10px auto;
+  width: 100%;
+  min-height: max-content;
+}
+
+.employees-container ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 50px auto;
+}
+
+.employees-container li {
+  cursor: pointer;
+  background-color: var(--bgColor9);
+  width: 100%;
+  min-height: 30px;
+  line-height: 30px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.employees-container li > span {
+  margin-left: 5px;
+}
+
+/* styling employees-container_______________________ */
+
+.employees-container .form-preview {
+  width: 100%;
+  /* background: transparent; */
+  margin: 0;
+  margin-top: 20px;
+  padding-top: 10px;
+  background-color: var(--bgColor9);
+}
