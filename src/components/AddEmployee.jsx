@@ -5,9 +5,11 @@ import '../assets/css/AddEmployee.css';
 import httpClient from '../services/httpClient';
 
 export default function AddEmployee() {
-  const [data, setData] = useState({role: 'employee'});
+  const [data, setData] = useState({});
   const navigate = useNavigate();
   const { departments, jobs } = useLoaderData();
+
+  // setData({...data, "department": departments[0], "job_title": jobs[0]});
 
   function handleChange(e) {
     setData({
@@ -18,6 +20,10 @@ export default function AddEmployee() {
   
   async function handleSubmit(e) {
     e.preventDefault();
+    if (!data["job title"])
+      data["job title"] = jobs[0];
+    if (!data["department"])
+      data["department"] = departments[0]
     try {
       const formData = new FormData();
       for (const key in data) {
@@ -83,8 +89,13 @@ export default function AddEmployee() {
             id="department"
             onChange={handleChange}
           >
-            {departments.map((job, index) => (
-              <option key={index} value={job}>{job}</option>
+            {departments.map((department, index) => (
+              <option key={index}
+                value={department}
+                defaultChecked={department === departments[0]}
+              >
+                {department}
+              </option>
             ))}
           </select>
         </label>
@@ -96,7 +107,12 @@ export default function AddEmployee() {
             onChange={handleChange}
           >
             {jobs.map((job, index) => (
-              <option key={index} value={job}>{job}</option>
+              <option key={index}
+                value={job}
+                defaultChecked={job === jobs[0]}
+              >
+                {job}
+              </option>
             ))}
           </select>
         </label>

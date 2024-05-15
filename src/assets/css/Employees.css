@@ -21,9 +21,6 @@
 
 /* styling employees-container */
 .employees-container {
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around; */
   margin: 10px auto;
   width: 100%;
   min-height: max-content;
@@ -52,5 +49,7 @@
   width: 100%;
   /* background: transparent; */
   margin: 0;
+  margin-top: 20px;
+  padding-top: 10px;
   background-color: var(--bgColor9);
 }
