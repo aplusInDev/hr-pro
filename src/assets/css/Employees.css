@@ -43,6 +43,10 @@
   border-radius: 10px;
 }
 
+.employees-container li > span {
+  margin-left: 5px;
+}
+
 /* styling employees-container_______________________ */
 
 .employees-container .form-preview {

@@ -42,7 +42,11 @@ export default function Employees() {
                       path='employees'
                     />
                   ) : (
-                    employee.id
+                    <>
+                      <span>{employee.first_name}</span>
+                      <span>{employee.last_name}</span>
+                      <span>({employee.job_title})</span>
+                    </>
                   )
                 }
               </li>

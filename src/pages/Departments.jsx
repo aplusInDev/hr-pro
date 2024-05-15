@@ -42,7 +42,7 @@ export default function Departments() {
                       path='departments'
                     />
                   ) : (
-                    department.id
+                    <span>{department.name}</span>
                   )
                 }
               </li>

@@ -42,7 +42,7 @@ export default function Jobs() {
                       path='jobs'
                     />
                   ) : (
-                    job.id
+                    <span>{job.title}</span>
                   )
                 }
               </li>
