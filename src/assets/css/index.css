@@ -72,6 +72,6 @@ html, body, #root {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: none;
+  background-color: transparent;
   border-radius: 10px;
 }

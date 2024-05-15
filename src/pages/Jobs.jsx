@@ -4,8 +4,8 @@ import { Btn } from '../components/ui';
 import '../assets/css/Employees.css';
 import { Outlet, Link, useLoaderData } from 'react-router-dom';
 
-export default function Employees() {
-  const {employees, employeeFields} = useLoaderData();
+export default function Jobs() {
+  const {jobs, jobsFields} = useLoaderData();
   const [active, setActive] = useState(null);
 
   function handleClick(e) {
@@ -19,8 +19,8 @@ export default function Employees() {
   return (
     <>
       <div className="new-employee">
-        <Link to='add-employee'>
-          <Btn text="Add Employee" />
+        <Link to='add-job'>
+          <Btn text="Add Job" />
         </Link>
       </div>
       <Filter />
@@ -28,25 +28,21 @@ export default function Employees() {
       <section className="employees-container">
         <ul>
           {
-            employees.map(employee => 
+            jobs.map(job => 
               <li
-                id={employee.id}
-                key={employee.id}
+                id={job.id}
+                key={job.id}
                 onClick={handleClick}
               >
                 {
-                  employee.id === active ? (
+                  job.id === active ? (
                   <Info
-                      fields={employeeFields}
-                      obj_id={employee.id}
-                      path='employees'
+                      fields={jobsFields}
+                      obj_id={job.id}
+                      path='jobs'
                     />
                   ) : (
-                    <>
-                      <span>{employee.first_name}</span>
-                      <span>{employee.last_name}</span>
-                      <span>({employee.job_title})</span>
-                    </>
+                    <span>{job.title}</span>
                   )
                 }
               </li>

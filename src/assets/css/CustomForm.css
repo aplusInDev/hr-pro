@@ -389,6 +389,7 @@ table {
   margin: 0 auto;
   border-radius: 8px;
   border-spacing: 0;
+  filter: drop-shadow(0 0 5px #000);
 }
 
 thead {
@@ -401,16 +402,17 @@ thead {
 
 tbody {
   background: transparent;
+  filter: unset;
 }
 
 thead tr {
   height: 30px;
-  line-height: 30px;
 }
 
 thead th {
   height: 30px;
-  background-color: var(--bgColor10);
+  line-height: 30px;
+  background-color: var(--bgColor8);
 }
 
 tr {
@@ -426,7 +428,7 @@ td:not(td:nth-child(6)) {
 td {
   padding: 20px 5px 10px;
   border-bottom: 1px solid var(--bgColor10);
-  background-color: var(--bgColor8);
+  background-color: var(--bgColor5);
 }
 
 td:not(td:nth-child(6)) {
@@ -512,8 +514,6 @@ td:last-child button > * {
 
 /* styling form-preview */
 .form-preview {
-  display: flex;
-  flex-direction: column;
   padding: 45px 20px;
   color: #fefefe;
 }

@@ -3,7 +3,7 @@ import React from 'react'
 export default function Btn(props) {
   return (
     <button
-      className='btn'
+      className={`btn ${props.className}`}
       type='button'
       onClick={props.onClick}
     >

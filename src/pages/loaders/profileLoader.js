@@ -8,9 +8,9 @@ export default async function profileLoader() {
   const employee_id = currentUser?.employee_id;
 
   try {
-    const employee = await httpClient.get(`/employees/${employee_id}`);
     const employeeFields = await httpClient.get(`/fields?form_name=employee&company_id=${company_id}`);
-    return defer({employee: employee.data, employeeFields: employeeFields.data});
+    const employee = await httpClient.get(`/employees/${employee_id}`)
+    return defer({employeeFields: employeeFields.data, employee: employee.data});
   } catch (err) {
     console.log('erro: ', err);
     return redirect('/login');
