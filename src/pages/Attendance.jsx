@@ -19,8 +19,9 @@ const Attendance = () => {
 
   const handleDrop = (event) => {
     event.preventDefault();
+    const dropppedFile = event.dataTransfer.files[0];
     // check if the uploaded file is excel file to continue or not
-    if (event.dataTransfer.files[0].type !== 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+    if (dropppedFile.type !== 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
       setShow(false);
       setFile(null);
       setError('Invalid file type. Please upload an excel file');
@@ -32,11 +33,11 @@ const Attendance = () => {
     }
     setError(null);
     setShow(true);
-    setMessage(`Click upload to upload ${event.dataTransfer.files[0].name} file`);
-    setFile(event.dataTransfer.files[0]); // Set the file to state
+    setMessage(`Click upload to upload ${dropppedFile.name} file`);
+    setFile(dropppedFile); // Set the file to state
     // const excelFile = event.target.files[0];
     const reader = new FileReader();
-    reader.readAsArrayBuffer(file);
+    reader.readAsArrayBuffer(dropppedFile);
     reader.onload = (event) => {
       const arrayBuffer = event.target.result;
       const workbook = XLSX.read(arrayBuffer, { type: 'array' });
@@ -44,7 +45,7 @@ const Attendance = () => {
       const worksheet = workbook.Sheets[sheetName];
       const jsonData = XLSX.utils.sheet_to_json(worksheet);
       // setData(jsonData);
-      // setError(null);
+      setError(null);
       console.log(jsonData);
     };
     reader.onerror = (error) => {
