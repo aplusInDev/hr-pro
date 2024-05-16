@@ -14,10 +14,29 @@ const fields = [
   {link: 'training', icon: <Icon icon="ph:certificate-duotone" />, text: 'Training'},
 ]
 
-
 function  Sidebar() {
+
+  function handleClick() {
+    const texts = Array.from(document.querySelectorAll('.text'));
+    const sideBar = document.querySelector('aside');
+    const main = document.querySelector('main');
+
+    texts.forEach(text => {
+      text.classList.toggle('hide');
+
+    });
+    sideBar.classList.toggle('slim');
+    main.classList.toggle('wide');
+  }
+
   return (
     <aside>
+      <span
+        className='expand-slim'
+        onClick={handleClick}
+      >
+        <Icon icon="fluent:ios-arrow-24-regular" />
+      </span>
       <nav>
         <ul>
           {fields.map((field, index) => (

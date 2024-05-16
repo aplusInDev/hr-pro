@@ -3,21 +3,27 @@
   color: var(--icon-color);
   padding-left: 5px;
   margin: 0 5px;
-  width: 185px;
+  padding-right: 10px;
   height: var(--field-height);
   display: flex;
   align-items: center;
 }
 
 aside li:hover > .aside-link,
-aside a.active {
-  background-color: var(--main-light-color);
+.aside-link.active {
+  background-color: var(--color5);
   border-radius: 5px;
+  color: var(--icon-color);
+  opacity: 1;
 }
 
-aside a.active {
-  opacity: .5;
-  color: var(--second-dark-color);
+aside li > .aside-link {
+  color: var(--color2);
+  opacity: .7;
+}
+
+.aside-link.active {
+  opacity: .8;
   transition: opacity .5s step-end, color .5s step-end;
 }
 
@@ -35,6 +41,11 @@ aside a.active::before {
   align-items: center;
   width: var(--field-height);
   height: var(--field-height);
+}
+
+.aside-link > .icon > * {
+  width: 20px;
+  height: 20px;
 }
 
 .aside-link > .text {
