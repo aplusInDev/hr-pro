@@ -47,6 +47,10 @@
   --seconde-dark-color: #000205;
 }
 
+.error {
+  color: #ff0000;
+}
+
 * {
   font: italic bold 14px 'Lato', sans-serif;
   margin: 0;

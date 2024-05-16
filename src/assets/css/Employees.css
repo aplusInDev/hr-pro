@@ -35,7 +35,7 @@
 
 .employees-container li {
   cursor: pointer;
-  background-color: var(--bgColor9);
+  background-color: var(--midnight-black);
   width: 100%;
   min-height: 30px;
   line-height: 30px;
@@ -55,5 +55,5 @@
   margin: 0;
   margin-top: 20px;
   padding-top: 10px;
-  background-color: var(--bgColor9);
+  background: transparent;
 }

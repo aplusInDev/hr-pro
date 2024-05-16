@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import {
   LandingPage, Login, Register, Profile, ErrorPage, CustomForm,
-  Home, Employees, Departments, Jobs, FileUpload
+  Home, Employees, Departments, Jobs, Attendance
 } from './pages';
 import {
   companyLoader, employeesLoader, loginLoader, logoutLoader,
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
       },
       {
         path: "attendance",
-        element: <FileUpload />,
+        element: <Attendance />,
       },
       {
         path: "leaves",

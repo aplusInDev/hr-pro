@@ -8,13 +8,29 @@
   border-radius: 20px;
   filter: drop-shadow(5px 12px 5px #363030);
   z-index: 1000;
+  transform: translateX(100%);
+}
+
+.alert-card.show {
+  animation: alert-show 0.9s ease-in-out forwards;
 }
 
 .alert-card.hide {
   animation: alert-hide 0.9s ease-in-out forwards;
 }
 
+@keyframes alert-show {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 @keyframes alert-hide {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
   to {
     transform: translateX(100%);
     opacity: 0;
