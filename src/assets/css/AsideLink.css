@@ -9,8 +9,7 @@
   align-items: center;
 }
 
-aside li:hover > .aside-link,
-.aside-link.active {
+aside li:hover > .aside-link:not(.aside-link.active) {
   background-color: var(--color5);
   border-radius: 5px;
   color: var(--icon-color);
@@ -23,8 +22,12 @@ aside li > .aside-link {
 }
 
 .aside-link.active {
+  background-color: var(--color5);
+  border-radius: 5px;
+  color: var(--icon-color);
   opacity: .8;
   transition: opacity .5s step-end, color .5s step-end;
+  pointer-events: none;
 }
 
 aside a.active::before {
