@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../assets/css/Attendance.css';
+import * as XLSX from 'xlsx';
 
 const initialP = 'Drag and drop an excel file here';
 
@@ -9,6 +10,7 @@ const Attendance = () => {
   const [message, setMessage] = useState(initialP);
   const [show, setShow] = useState(false);
   const [error, setError] = useState(null);
+  // const [data, setData] = useState(null);
 
   const handleDragOver = (event) => {
     event.preventDefault(); // Prevent default behavior (Prevent file from being opened)
@@ -32,6 +34,22 @@ const Attendance = () => {
     setShow(true);
     setMessage(`Click upload to upload ${event.dataTransfer.files[0].name} file`);
     setFile(event.dataTransfer.files[0]); // Set the file to state
+    // const excelFile = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsArrayBuffer(file);
+    reader.onload = (event) => {
+      const arrayBuffer = event.target.result;
+      const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+      const jsonData = XLSX.utils.sheet_to_json(worksheet);
+      // setData(jsonData);
+      // setError(null);
+      console.log(jsonData);
+    };
+    reader.onerror = (error) => {
+      setError(error.message);
+    };
   };
 
   const handleFileChange = (event) => {
