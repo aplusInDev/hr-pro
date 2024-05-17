@@ -30,6 +30,10 @@ aside li > .aside-link {
   pointer-events: none;
 }
 
+.aside-link:not(.slim .aside-link) {
+  padding-right: 40px;
+}
+
 aside a.active::before {
   content: '';
   width: 2px;

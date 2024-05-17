@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../assets/css/Attendance.css';
 import * as XLSX from 'xlsx';
+import { excelDateToFormattedString, excelTimeToFormatedString } from '../utils/excelUtils';
+import { ExcelTable } from '../components';
 
 const initialP = 'Drag and drop an excel file here';
 
@@ -35,6 +37,8 @@ const Attendance = () => {
     setShow(true);
     setMessage(`Click upload to upload ${dropppedFile.name} file`);
     setFile(dropppedFile); // Set the file to state
+
+    // read the excel file
     const reader = new FileReader();
     reader.readAsArrayBuffer(dropppedFile);
     reader.onload = (event) => {
@@ -51,7 +55,10 @@ const Attendance = () => {
             row[key] = row[key].toString();
           }
           if (typeof row[key] === 'number' && row[key] > 0 && row[key] < 1) {
-            row[key] = excelTimeToJSDate(row[key]);
+            row[key] = excelTimeToFormatedString(row[key]);
+          } else if (typeof row[key] === 'number' && row[key] > 0) {
+            // Assuming row[key] is the Excel date serial number
+            row[key] = excelDateToFormattedString(row[key]);
           }
         }
       });
@@ -113,26 +120,7 @@ const Attendance = () => {
       </div>
       <div>
         {
-          data && (
-            <table>
-              <thead>
-                <tr>
-                  {Object.keys(data[0]).map((col, index) => (
-                    <th key={index}>{col}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {data.map((row, index) => (
-                  <tr key={index}>
-                    {Object.values(row).map((value, index) => (
-                      <td key={index}>{value}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )
+          data && <ExcelTable data={data} />
         }
       </div>
     </div>
@@ -140,25 +128,3 @@ const Attendance = () => {
 };
 
 export default Attendance;
-
-function excelTimeToJSDate(excelTime) {
-  // Convert Excel time to JavaScript Date object
-  const secondsInDay = 86400;
-  const excelEpoch = new Date(Date.UTC(1899, 11, 30));
-  const excelTimeInMilliseconds = excelTime * secondsInDay * 1000;
-  const jsDate = new Date(excelEpoch.getTime() + excelTimeInMilliseconds);
-
-  // Extract hours, minutes, and seconds
-  const hours = jsDate.getUTCHours();
-  const minutes = jsDate.getUTCMinutes();
-  const seconds = jsDate.getUTCSeconds();
-
-  // Format the time string
-  const timeString = [
-    hours.toString().padStart(2, '0'),
-    minutes.toString().padStart(2, '0'),
-    seconds.toString().padStart(2, '0')
-  ].join(':') + ' ' + (hours >= 12 ? 'PM' : 'AM');
-
-  return timeString;
-}
