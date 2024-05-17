@@ -1,3 +1,5 @@
+import * as XLSX from 'xlsx';
+
 export function excelTimeToFormatedString(excelTime) {
   // Convert Excel time to JavaScript Date object
   const secondsInDay = 86400;
@@ -36,4 +38,38 @@ export function excelDateToFormattedString(serial) {
   const formattedDate = `${day.toString().padStart(2, '0')}-${month.toString().padStart(2, '0')}-${year}`;
 
   return formattedDate;
+}
+
+export async function excelFileReader(dropppedFile) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+      reader.readAsArrayBuffer(dropppedFile);
+      reader.onload = (event) => {
+        const arrayBuffer = event.target.result;
+        const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet);
+  
+        jsonData.forEach(row => {
+          for (let key in row) {
+            // check if the value is a boolean to convert it to string
+            if (typeof row[key] === 'boolean') {
+              row[key] = row[key].toString();
+            }
+            if (typeof row[key] === 'number' && row[key] > 0 && row[key] < 1) {
+              row[key] = excelTimeToFormatedString(row[key]);
+            } else if (typeof row[key] === 'number' && row[key] > 0) {
+              // Assuming row[key] is the Excel date serial number
+              row[key] = excelDateToFormattedString(row[key]);
+            }
+          }
+        });
+        resolve(jsonData);
+      };
+      reader.onerror = (error) => {
+        console.log("error: ", error)
+        reject(error);
+      };
+  });
 }
