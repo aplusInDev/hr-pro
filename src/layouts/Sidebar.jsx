@@ -35,7 +35,7 @@ function  Sidebar() {
         className='expand-slim'
         onClick={handleClick}
       >
-        <Icon icon="fluent:ios-arrow-24-regular" />
+        <Icon icon="mage:dots-menu" />
       </span>
       <nav>
         <ul>

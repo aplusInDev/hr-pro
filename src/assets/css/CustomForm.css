@@ -420,8 +420,8 @@ tr {
   justify-content: space-around;
 }
 
-th:not(th:nth-child(6)),
-td:not(td:nth-child(6)) {
+.custom-form th:not(th:nth-child(6)),
+.custom-form td:not(td:nth-child(6)) {
   width: calc((100vw - 300px) / 8);
 }
 

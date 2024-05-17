@@ -6,6 +6,10 @@
   left: 0;
 }
 
+main.wide .attendance {
+  width: calc(100vw - 80px);
+}
+
 .attendance input[type="file"] {
   display: none;
 }
@@ -39,4 +43,13 @@
 
 .attendance table {
   width: calc(100% - 220px);
+}
+
+.attendance td,
+.attendance th {
+  width: 100%;
+}
+
+.attendance tbody tr:last-child {
+  margin-bottom: 50px;
 }

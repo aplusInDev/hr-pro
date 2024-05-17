@@ -11,11 +11,6 @@ aside.slim {
   width: 80px;
 }
 
-main.wide {
-  width: calc(100vw - 80px);
-  left: 70px;
-}
-
 aside ul {
   list-style: none;
   padding: 0;
@@ -45,9 +40,12 @@ aside li {
   text-align: center;
   cursor: pointer;
   position: absolute;
-  right: -15px;
+  left: 15px;
   z-index: 1;
-  color: var(--color2);
+  color: var(--color4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .expand-slim:hover {
@@ -57,8 +55,6 @@ aside li {
 .expand-slim > * {
   width: 20px;
   height: 20px;
-  margin-right: 5px;
-  margin-top: 4px;
 }
 
 span.hide {

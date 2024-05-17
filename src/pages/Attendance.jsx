@@ -10,7 +10,7 @@ const Attendance = () => {
   const [message, setMessage] = useState(initialP);
   const [show, setShow] = useState(false);
   const [error, setError] = useState(null);
-  // const [data, setData] = useState(null);
+  const [data, setData] = useState(null);
 
   const handleDragOver = (event) => {
     event.preventDefault(); // Prevent default behavior (Prevent file from being opened)
@@ -35,7 +35,6 @@ const Attendance = () => {
     setShow(true);
     setMessage(`Click upload to upload ${dropppedFile.name} file`);
     setFile(dropppedFile); // Set the file to state
-    // const excelFile = event.target.files[0];
     const reader = new FileReader();
     reader.readAsArrayBuffer(dropppedFile);
     reader.onload = (event) => {
@@ -44,9 +43,20 @@ const Attendance = () => {
       const sheetName = workbook.SheetNames[0];
       const worksheet = workbook.Sheets[sheetName];
       const jsonData = XLSX.utils.sheet_to_json(worksheet);
-      // setData(jsonData);
+
+      jsonData.forEach(row => {
+        for (let key in row) {
+          // check if the value is a boolean to convert it to string
+          if (typeof row[key] === 'boolean') {
+            row[key] = row[key].toString();
+          }
+          if (typeof row[key] === 'number' && row[key] > 0 && row[key] < 1) {
+            row[key] = excelTimeToJSDate(row[key]);
+          }
+        }
+      });
+      setData(jsonData);
       setError(null);
-      console.log(jsonData);
     };
     reader.onerror = (error) => {
       setError(error.message);
@@ -102,10 +112,53 @@ const Attendance = () => {
         }
       </div>
       <div>
-        {/* display droped table here */}
+        {
+          data && (
+            <table>
+              <thead>
+                <tr>
+                  {Object.keys(data[0]).map((col, index) => (
+                    <th key={index}>{col}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((row, index) => (
+                  <tr key={index}>
+                    {Object.values(row).map((value, index) => (
+                      <td key={index}>{value}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )
+        }
       </div>
     </div>
   );
 };
 
 export default Attendance;
+
+function excelTimeToJSDate(excelTime) {
+  // Convert Excel time to JavaScript Date object
+  const secondsInDay = 86400;
+  const excelEpoch = new Date(Date.UTC(1899, 11, 30));
+  const excelTimeInMilliseconds = excelTime * secondsInDay * 1000;
+  const jsDate = new Date(excelEpoch.getTime() + excelTimeInMilliseconds);
+
+  // Extract hours, minutes, and seconds
+  const hours = jsDate.getUTCHours();
+  const minutes = jsDate.getUTCMinutes();
+  const seconds = jsDate.getUTCSeconds();
+
+  // Format the time string
+  const timeString = [
+    hours.toString().padStart(2, '0'),
+    minutes.toString().padStart(2, '0'),
+    seconds.toString().padStart(2, '0')
+  ].join(':') + ' ' + (hours >= 12 ? 'PM' : 'AM');
+
+  return timeString;
+}
