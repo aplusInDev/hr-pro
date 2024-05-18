@@ -123,7 +123,6 @@ const Attendance = () => {
       setError(null);
       setMessage(initialP);
     }, 3000);
-    setFile(null);
     setShow(false);
   };
 
