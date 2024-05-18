@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import '../assets/css/Attendance.css';
 import { excelFileReader } from '../utils/excelUtils';
 import { ExcelTable } from '../components';
-import { handleDownload } from '../helpers/excelHelpers';
+import httpClient from '../services/httpClient';
 
+
+const company_id = JSON.parse(localStorage.getItem('currentUser'))?.company_id;
 const initialP = 'Drag and drop an Excel file here';
 
 const Attendance = () => {
@@ -13,11 +14,36 @@ const Attendance = () => {
   const [show, setShow] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
+  const [selectedDate, setSelectedDate] = useState('');
+
+  const handleChange = (event) => {
+    setSelectedDate(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (selectedDate) {
+      try {
+        const responseFile = await httpClient.get(`/companies/${company_id}/attendance?date=${selectedDate}`, {
+          responseType: 'blob',
+        });
+        const responseBlob = new Blob([responseFile.data], {
+          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        });
+        const jsonData = await excelFileReader(responseBlob);
+        setData(jsonData);
+      } catch (err) {
+        console.error('Error downloading file:', err);
+      }
+    } else {
+      console.log("Please select a valid date");
+    }
+  }
+  
 
   const handleDragOver = (event) => {
     event.preventDefault();
     setMessage('Drop the Excel file here');
-    // setTimeout(() => setMessage(initialP), 2000);
   };
 
   const handleDrop = async (event) => {
@@ -62,33 +88,18 @@ const Attendance = () => {
     if (file) {
       const formData = new FormData();
       formData.append('file', file);
-
+      
       try {
-        const responseFile = await axios.post('http://localhost:5001/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-          responseType: 'blob', // instructs axios to handle the response as a Blob
-        });
-        handleDownload(responseFile);
+        const response = await httpClient.post(`/companies/${company_id}/attendance`,
+          formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        );
         setMessage('File uploaded successfully.');
         setTimeout(() => setMessage(initialP), 5000);
-        try {
-          const responseBlob = new Blob([responseFile.data], {
-            type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-          });
-          const jsonData = await excelFileReader(responseBlob);
-          setData(jsonData);
-          console.log("jsonData: ", jsonData);
-        } catch (err) {
-          setError("Warrning: Unexpected error when trying to display the file content (",
-          err.message, ").");
-          setTimeout(() => {
-            setMessage(initialP);
-            setError(null);
-          }, 2000);
-          console.log(err);
-        }
+        console.log(response.data);
       } catch (err) {
         console.error('Error uploading file:', err);
       }
@@ -106,6 +117,23 @@ const Attendance = () => {
           </button>
         )}
       </div>
+      <form
+        onSubmit={handleSubmit}
+      >
+        <label htmlFor="selectedDate">Select Date:</label>
+        <input
+          type="date"
+          id="selectedDate"
+          value={selectedDate}
+          onChange={handleChange}
+        />
+        <button
+          type="submit"
+          className='submit-btn'
+        >
+          Submit
+        </button>
+      </form>
       <div>{data && <ExcelTable data={data} />}</div>
     </div>
   );
