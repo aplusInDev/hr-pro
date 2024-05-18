@@ -9,7 +9,7 @@
   align-items: center;
 }
 
-aside li:hover > .aside-link:not(.aside-link.active) {
+li:hover > .aside-link:not(.aside-link.active) {
   background-color: var(--color5);
   border-radius: 5px;
   color: var(--icon-color);

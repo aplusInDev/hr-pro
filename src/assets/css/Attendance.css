@@ -53,3 +53,39 @@ main.wide .attendance {
 .attendance tbody tr:last-child {
   margin-bottom: 50px;
 }
+
+.attendance form {
+  padding: 5px 5px 2px 100px;
+  margin: 5px auto 20px;
+  width: 95%;
+}
+
+.or-div {
+  text-align: center;
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  color: #656d6fb9;
+}
+
+.or-div::before,
+.or-div::after {
+  content: "";
+  position: absolute;
+  width: 45%;
+  background-color: #656d6fb9;
+  height: 1px;
+  top: 50%;
+}
+
+.or-div::before {
+  left: 10px;
+}
+
+.or-div::after {
+  right: 10px;
+}
+
+.attendance input[type="date"] {
+  margin: 10px 0 15px 0;
+}

@@ -25,8 +25,8 @@
 }
 
 main.wide {
-  width: calc(100vw - 80px);
-  left: 70px;
+  width: calc(100vw - 90px);
+  left: 80px;
 }
 
 .profile .form-preview {

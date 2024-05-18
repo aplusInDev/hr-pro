@@ -11,12 +11,7 @@
 .new-employee button {
   width: 150px;
   height: 30px;
-  margin: 5px auto;
-}
-
-.new-employee button:hover {
-  background-color: unset;
-  border: 1px solid var(--icon-color);
+  margin: 5px 10px;
 }
 
 /* styling employees-container */

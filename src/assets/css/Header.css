@@ -91,6 +91,11 @@ li:last-child:hover .profile-settings {
   text-align: left;
   margin: 5px 0;
   position: relative;
+  border-radius: 10px;
+}
+
+.profile-settings li a {
+  border-radius: 10px;
 }
 
 .profile-settings li a.active {
@@ -108,7 +113,6 @@ li:last-child:hover .profile-settings {
 }
 
 .profile-settings li:last-child {
-  border-radius: 10px;
   border: 1px solid #726c6c;
   margin-top: 20px;
   margin-bottom: 0;

@@ -1,19 +1,11 @@
-// import axios from 'axios';
-
-export const handleDownload = async (response) => {
+export const handleDownload = async (response, fileName) => {
   try {
-    // const response = await axios({
-    //   method: 'GET',
-    //   url: '/download_response', // Your Flask endpoint
-    //   responseType: 'blob', // Important to process the response as a Blob
-    // });
-
     // Create a URL for the Blob
     const fileURL = window.URL.createObjectURL(new Blob([response.data]));
     // Create a temporary anchor tag to trigger download
     const fileLink = document.createElement('a');
     fileLink.href = fileURL;
-    fileLink.setAttribute('download', 'file.xlsx'); // Name the file
+    fileLink.setAttribute('download', fileName); // Name the file
     document.body.appendChild(fileLink);
     
     fileLink.click(); // Trigger the download

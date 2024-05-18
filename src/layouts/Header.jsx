@@ -22,16 +22,17 @@ function Header() {
           <Icon icon="mingcute:notification-line" />
         </li>
         <li className="account"
-          onMouseEnter={() => {
-            document.querySelector('.profile-settings').style.display = 'block';
+          onClick={() => {
+            // check if display is none change it to block
+            if (document.querySelector('.profile-settings').style.display === 'none') {
+              document.querySelector('.profile-settings').style.display = 'block';
+            } else {
+              document.querySelector('.profile-settings').style.display = 'none';
+            }
           }}
         >
           <Icon icon="codicon:account" />
-          <ul className='profile-settings'
-            onMouseLeave={() => {
-              document.querySelector('.profile-settings').style.display = 'none';
-            }}
-          >
+          <ul className='profile-settings'>
             <li>
               <NavLink to={"profile"}>
                 <Icon icon="mdi:account" />
