@@ -53,7 +53,7 @@ const Attendance = () => {
         }
       }
     } else {
-      console.log("Please select a valid date");
+      setError("Please select a valid date");
     }
   }
   
@@ -87,7 +87,6 @@ const Attendance = () => {
     try {
       const jsonData = await excelFileReader(droppedFile);
       setData(jsonData);
-      console.log("jsonData: ", jsonData);
     } catch (err) {
       setError("Warrning: Unexpected error when trying to display the file content (",
       err.message, ").");
@@ -108,7 +107,7 @@ const Attendance = () => {
       formData.append('file', file);
       
       try {
-        const response = await httpClient.post(`/companies/${company_id}/attendance`,
+        await httpClient.post(`/companies/${company_id}/attendance`,
           formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
@@ -116,12 +115,16 @@ const Attendance = () => {
           }
         );
         setMessage('File uploaded successfully.');
-        setTimeout(() => setMessage(initialP), 5000);
-        console.log(response.data);
       } catch (err) {
-        console.error('Error uploading file:', err);
+        setError(err.response.data['error']);
       }
     }
+    setTimeout(() => {
+      setError(null);
+      setMessage(initialP);
+    }, 3000);
+    setFile(null);
+    setShow(false);
   };
 
   return (
