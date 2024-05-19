@@ -129,7 +129,9 @@ const Attendance = () => {
   return (
     <div className="attendance" onDragOver={handleDragOver} onDrop={handleDrop}>
       <div className="drag-drop-container">
-        <input type="file" onChange={handleFileChange} />
+        <label>
+          <input type="file" title='attendance file' onChange={handleFileChange} />
+        </label>
         {error ? <p className="error">{error}</p> : <p>{message}</p>}
         {show && (
           <button className="btn" onClick={handleFileUpload}>
