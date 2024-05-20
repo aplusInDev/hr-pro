@@ -22,16 +22,13 @@ function Header() {
           <Icon icon="mingcute:notification-line" />
         </li>
         <li className="account"
-          onMouseEnter={() => {
-            document.querySelector('.profile-settings').style.display = 'block';
+          onClick={() => {
+            const profileSettings = document.querySelector('.profile-settings');
+            profileSettings.classList.toggle('show');
           }}
         >
           <Icon icon="codicon:account" />
-          <ul className='profile-settings'
-            onMouseLeave={() => {
-              document.querySelector('.profile-settings').style.display = 'none';
-            }}
-          >
+          <ul className='profile-settings'>
             <li>
               <NavLink to={"profile"}>
                 <Icon icon="mdi:account" />

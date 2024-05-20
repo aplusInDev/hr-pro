@@ -9,3 +9,5 @@ export { default as Home } from './Home'
 export { default as Employees } from './Employees';
 export { default as Departments } from './Departments';
 export { default as Jobs } from './Jobs';
+export { default as Attendance } from './Attendance';
+export { default as Absences } from './Absences';

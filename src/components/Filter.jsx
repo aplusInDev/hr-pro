@@ -25,11 +25,13 @@ export default function Filter() {
       </label>
       <button type='button'
         aria-label='filter-btn'
-        onMouseEnter={handleActive}
+        onClick={handleActive}
       >
         <Icon icon='solar:filter-bold-duotone' className='filter-icon' />
       </button>
-      <Menu active={active} handleActive={handleActive} />
+      <Menu active={active} handleActive={() => {
+        setTimeout(handleActive, 500)
+      }} />
       <input type='submit' value='Search'/>
     </form>
     </>

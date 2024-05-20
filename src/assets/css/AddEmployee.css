@@ -1,19 +1,18 @@
 .add-employee {
-  /* background-color: red; */
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   position: absolute;
   z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .add-employee > form {
+  background-color: #2d3030ff;
   width: 500px;
   min-height: fit-content;
-  background-color: var(--bgColor8);
   border-radius: 10px;
-  box-shadow: 0 0 10px 0 var(--bgColor10);
   padding: 30px 20px 5px;
   margin: 100px auto;
 }
@@ -31,4 +30,9 @@
 
 .add-employee span {
   margin: 5px;
+}
+
+.add-employee .btn {
+  border: none;
+  background-color: #656d6fb9;
 }

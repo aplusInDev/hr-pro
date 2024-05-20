@@ -45,7 +45,7 @@ export default function Employees() {
                     <>
                       <span>{employee.first_name}</span>
                       <span>{employee.last_name}</span>
-                      <span>({employee.job_title})</span>
+                      <div>{employee.job_title}</div>
                     </>
                   )
                 }

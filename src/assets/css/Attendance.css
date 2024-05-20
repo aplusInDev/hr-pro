@@ -1,0 +1,85 @@
+.attendance {
+  width: calc(100vw - 200px);
+  height: calc(100vh - 50px);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+main.wide .attendance {
+  width: calc(100vw - 80px);
+}
+
+.attendance input[type="file"] {
+  display: none;
+}
+
+.drag-drop-container {
+  width: calc(100% - 220px);
+  margin: 30px auto;
+  height: 70px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--color4);
+  text-align: center;
+  line-height: 100px;
+  position: relative;
+  color: var(--color2);
+}
+
+.drag-drop-container .btn {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  margin: 0;
+}
+
+.attendance table {
+  width: calc(100% - 220px);
+}
+
+.attendance td,
+.attendance th {
+  width: 100%;
+}
+
+.attendance tbody tr:last-child {
+  margin-bottom: 50px;
+}
+
+.attendance form {
+  padding: 5px 5px 2px 100px;
+  margin: 5px auto 20px;
+  width: 95%;
+}
+
+.or-div {
+  text-align: center;
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  color: #656d6fb9;
+}
+
+.or-div::before,
+.or-div::after {
+  content: "";
+  position: absolute;
+  width: 45%;
+  background-color: #656d6fb9;
+  height: 1px;
+  top: 50%;
+}
+
+.or-div::before {
+  left: 10px;
+}
+
+.or-div::after {
+  right: 10px;
+}
+
+.attendance input[type="date"] {
+  margin: 10px 15px 0 0;
+  height: 30px;
+}

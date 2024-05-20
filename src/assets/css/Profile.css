@@ -1,5 +1,5 @@
 .profile {
-  background-color: var(--bgColor4);
+  background-color: var(--color8);
   margin-top: 50px;
   width: 100vw;
   height: calc(100vh - 50px);
@@ -15,13 +15,18 @@
 
 .profile main {
 	position: absolute;
-  top: 50px;
+  top: 60px;
   left: 200px;
   padding: 20px 50px;
-  width: calc(100vw - 200px);
-  height: calc(100vh - 50px);
+  width: calc(100vw - 210px);
+  height: calc(100vh - 75px);
   overflow-y: scroll;
 	overflow-x: hidden;
+}
+
+main.wide {
+  width: calc(100vw - 90px);
+  left: 80px;
 }
 
 .profile .form-preview {

@@ -39,7 +39,7 @@ input[type="submit"]:hover {
 .show-preview,
 .form-preview,
 tbody {
-  background-color: var(--bgColor8);
+  background-color: var(--midnight-black);
   font-family: var(--cardFont);
   filter: drop-shadow(0 0 5px #000);
   color: rgba(250, 251, 252, 0.571);
@@ -412,7 +412,7 @@ thead tr {
 thead th {
   height: 30px;
   line-height: 30px;
-  background-color: var(--bgColor8);
+  background-color: var(--midnight-black);
 }
 
 tr {
@@ -420,8 +420,8 @@ tr {
   justify-content: space-around;
 }
 
-th:not(th:nth-child(6)),
-td:not(td:nth-child(6)) {
+.custom-form th:not(th:nth-child(6)),
+.custom-form td:not(td:nth-child(6)) {
   width: calc((100vw - 300px) / 8);
 }
 
@@ -515,7 +515,12 @@ td:last-child button > * {
 /* styling form-preview */
 .form-preview {
   padding: 45px 20px;
-  color: #fefefe;
+  /* color: #fefefe; */
+  color: var(--color5);
+}
+
+.form-preview label {
+  font-size: 17px;
 }
 
 .form-preview h1 {

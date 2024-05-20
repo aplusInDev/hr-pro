@@ -100,16 +100,15 @@ input[type="radio"]:checked::after {
   margin: 20px 4px;
 }
 
-.btn:hover,
-.submit-btn:hover{
-  filter: drop-shadow(0 0 5px var(--icon-color));
-  background-color: var(--icon-color);
-  border: none;
+.btn:hover{
+  border-color: #656d6fb9;
+  background-color: #656d6fb9;
+  color: var(--color13);
 }
 
 .submit-btn:hover {
-  background-color: #600765;
-  filter: drop-shadow(0 0 5px #994a9d);
+  background: none;
+  border: 1px solid var(--icon-color);
 }
 
 button:disabled, button:disabled:hover {

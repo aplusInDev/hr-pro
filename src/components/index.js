@@ -10,3 +10,4 @@ export { default as AddEmployee } from './AddEmployee.jsx';
 export { default as Info } from './Info.jsx';
 export { default as AddDepartment } from './AddDepartment.jsx';
 export { default as AddJob } from './AddJob.jsx';
+export { default as ExcelTable } from './ExcelTable.jsx';

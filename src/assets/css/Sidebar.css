@@ -7,6 +7,10 @@ aside {
   color: var(--icon-color);
 }
 
+aside.slim {
+  width: 80px;
+}
+
 aside ul {
   list-style: none;
   padding: 0;
@@ -16,7 +20,6 @@ aside ul {
 }
 
 aside nav {
-  width: 200px;
   position: absolute;
   left: 0;
   height: 100vh;
@@ -26,4 +29,34 @@ aside li {
   height: var(--field-height);
   line-height: 30px;
   padding: 25px 5px;
+}
+
+.expand-slim {
+  background-color: var(--color3);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  left: 15px;
+  z-index: 1;
+  color: var(--color4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.expand-slim:hover {
+  color: var(--icon-color);
+}
+
+.expand-slim > * {
+  width: 20px;
+  height: 20px;
+}
+
+span.hide {
+  display: none;
 }

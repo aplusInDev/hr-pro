@@ -1,5 +1,5 @@
 .filter {
-  background-color: var(--aside-ground);
+  background-color: var(--midnight-black);
   width: 700px;
   height: 40px;
   border-radius: 12px;
@@ -70,10 +70,11 @@
 
 .menu.active {
   position: absolute;
-  background-color: var(--midnight-blue);
+  background-color: #657c7c;
   border-radius: 15px;
   width: calc(100% - 160px);
   height: 200px;
   top: 45px;
   left: 0;
+  z-index: 1;
 }

@@ -30,6 +30,21 @@
   --btnColor: #20bb3d;
   --cardColor: #0c162d;
   --cardFont: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  --color1: #eddad1;
+  --color2: #ded5d2;
+  --color3: #5f5764;
+  --color4: #6698c4;
+  --color5: #f2ebe8;
+  --color6: #608081;
+  --color7: #ceebef;
+  --color8: #1e2024;
+  --color9: #292b35;
+  --color10: #0a7d91;
+  --color11: #0a7d91;
+  --color12: #8045e5;
+  --color13: #99a0ab;
+  --color14: #7687a1;
+  --pfontColor: #48566b;
 }
 
 .dark {
@@ -38,14 +53,8 @@
   --seconde-dark-color: #000205;
 }
 
-.light {
-  --color1: #eddad1;
-  --color2: #ded5d2;
-  --color3: #5f5764;
-  --color4: #6698c4;
-  --color5: #f2ebe8;
-  --color6: #608081;
-  --color7: #ceebef;
+.error {
+  color: #ff0000;
 }
 
 * {
