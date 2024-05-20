@@ -11,7 +11,7 @@
 .new-employee button {
   width: 150px;
   height: 30px;
-  margin: 5px 10px;
+  margin: 5px 15px;
 }
 
 /* styling employees-container */
@@ -38,8 +38,34 @@
   border-radius: 10px;
 }
 
+.employees-container li[class="active"] {
+  background-color: rgb(0, 0, 0, 0.2);
+  padding-top: 30px;
+  position: relative;
+}
+
+.employees-container li[class="active"] span:first-child {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  width: 15px;
+  height: 15px;
+  background-color: rgba(23, 191, 242, 0.69);
+  border-radius: 50%;
+  line-height: 15px;
+  text-align: center;
+  pointer-events: none;
+}
+
 .employees-container li > span {
-  margin-left: 5px;
+  margin-left: 10px;
+}
+
+.employees-container li > div {
+  margin-left: 10px;
+  font-size: .9em;
+  color: var(--color13);
 }
 
 /* styling employees-container_______________________ */
@@ -51,4 +77,30 @@
   margin-top: 20px;
   padding-top: 10px;
   background: transparent;
+}
+
+.employees-container table {
+  width: 100%;
+}
+
+.employees-container table textarea {
+  resize: none;
+}
+
+.employees-container td,
+.employees-container th {
+  width: 100%;
+  text-align: center;
+}
+
+.employees-container .submit-btn {
+  width: 100px;
+}
+
+.employees-container .submit-btn svg {
+  margin-left: 3px;
+}
+
+.employees-container .submit-btn:hover {
+  color: var(--pfontColor);
 }

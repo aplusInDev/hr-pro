@@ -18,8 +18,8 @@
   top: 60px;
   left: 200px;
   padding: 20px 50px;
-  width: calc(100vw - 200px);
-  height: calc(100vh - 65px);
+  width: calc(100vw - 210px);
+  height: calc(100vh - 75px);
   overflow-y: scroll;
 	overflow-x: hidden;
 }

@@ -23,12 +23,8 @@ function Header() {
         </li>
         <li className="account"
           onClick={() => {
-            // check if display is none change it to block
-            if (document.querySelector('.profile-settings').style.display === 'none') {
-              document.querySelector('.profile-settings').style.display = 'block';
-            } else {
-              document.querySelector('.profile-settings').style.display = 'none';
-            }
+            const profileSettings = document.querySelector('.profile-settings');
+            profileSettings.classList.toggle('show');
           }}
         >
           <Icon icon="codicon:account" />

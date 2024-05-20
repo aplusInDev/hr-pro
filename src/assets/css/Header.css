@@ -67,8 +67,12 @@
   position: relative;
 }
 
-li:last-child:focus .profile-settings,
+/* li:last-child:focus .profile-settings,
 li:last-child:hover .profile-settings {
+  display: block;
+} */
+
+.profile-settings.show {
   display: block;
 }
 
@@ -79,7 +83,7 @@ li:last-child:hover .profile-settings {
   padding: 15px 5px;
   position: absolute;
   top: 45px;
-  right: -5px;
+  right: 5px;
   border-radius: 20px;
   background-color: #d3cece;
   z-index: 1;

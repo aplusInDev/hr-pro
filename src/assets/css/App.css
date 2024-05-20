@@ -103,7 +103,7 @@ input[type="radio"]:checked::after {
 .btn:hover{
   border-color: #656d6fb9;
   background-color: #656d6fb9;
-  color: var(--midnight-black);
+  color: var(--color13);
 }
 
 .submit-btn:hover {

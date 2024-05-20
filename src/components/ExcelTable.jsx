@@ -7,7 +7,9 @@ export default function ExcelTable(data) {
       return null;
     }
     return(
-      <table>
+      <table
+        onClick={(e) => e.stopPropagation()}
+      >
         <thead>
           <tr>
             {Object.keys(data[0]).map((col, index) => (
@@ -18,8 +20,17 @@ export default function ExcelTable(data) {
         <tbody>
           {data.map((row, index) => (
             <tr key={index}>
-              {Object.values(row).map((value, index) => (
-                <td key={index}>{value}</td>
+              {Object.keys(row).map((key, index) => (
+                <td key={index}>
+                  {key === 'reason' ? (
+                    <textarea
+                      rows='2'
+                      cols='30'
+                      defaultValue={row[key]}
+                      readOnly
+                    />
+                  ) : (row[key])}
+                </td>
               ))}
             </tr>
           ))}
