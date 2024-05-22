@@ -1,5 +1,6 @@
 import { defer } from "react-router-dom";
 import httpClient from "../../services/httpClient";
+import { redirect } from "react-router-dom";
 
 export default async function departmentLoader() {
   const company_id = JSON.parse(localStorage.getItem("currentUser"))?.company_id;
@@ -11,6 +12,9 @@ export default async function departmentLoader() {
     return defer({departments: response.data, departmentsFields: departmentFields.data});
   } catch (err) {
     console.log("erro: ", err);
+    if (err.response.status === 401 || err.response.status === 403) {
+      return redirect("/home/forbidden");
+    }
     return null;
   }
 }

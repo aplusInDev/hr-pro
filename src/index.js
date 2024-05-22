@@ -9,7 +9,7 @@ import {
 import {
   LandingPage, Login, Register, Profile, CustomForm,
   Home, Employees, Departments, Jobs, Attendance,
-  Absences
+  Absences, Forbidden,
 } from './pages';
 import {
   companyLoader, employeesLoader, loginLoader, logoutLoader,
@@ -47,6 +47,10 @@ const router = createBrowserRouter([
     element: <Home />,
     loader: homeLoader,
     children: [
+      {
+        path: "forbidden",
+        element: <Forbidden />,
+      },
       {
         path: "profile",
         element: <Profile />,
