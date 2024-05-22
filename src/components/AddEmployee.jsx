@@ -4,6 +4,9 @@ import { Link, useNavigate, useLoaderData } from 'react-router-dom';
 import '../assets/css/AddEmployee.css';
 import httpClient from '../services/httpClient';
 
+
+const companyId = JSON.parse(localStorage.getItem("currentUser"))?.company_id;
+
 export default function AddEmployee() {
   const [data, setData] = useState({});
   const navigate = useNavigate();
@@ -29,7 +32,7 @@ export default function AddEmployee() {
       for (const key in data) {
         formData.append(key, data[key]);
       }
-      const response = await httpClient.post('/add_employee', formData);
+      const response = await httpClient.post(`/add_employee?company_id=${companyId}`, formData);
       console.log(response);
       navigate('/home/employees');
     } catch (err) {
