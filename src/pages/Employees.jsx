@@ -3,14 +3,17 @@ import { Info, Filter } from '../components';
 import { Btn } from '../components/ui';
 import '../assets/css/Employees.css';
 import { Outlet, Link, useLoaderData } from 'react-router-dom';
+import { Icon } from '@iconify/react';
 
 export default function Employees() {
   const {employees, employeeFields} = useLoaderData();
   const [active, setActive] = useState(null);
+  const [show, setShow] = useState(true);
 
   function handleClick(e) {
+    setShow(true);
     if (active === e.target.id) {
-      setActive(null);
+      return;
     } else {
       setActive(e.target.id);
     }
@@ -30,24 +33,39 @@ export default function Employees() {
           {
             employees.map(employee => 
               <li
-                id={employee.id}
                 key={employee.id}
-                onClick={handleClick}
+                className={show && employee.id === active ? 'show' : 'hide'}
               >
                 {
                   employee.id === active ? (
-                  <Info
-                      fields={employeeFields}
-                      obj_id={employee.id}
-                      path='employees'
-                    />
+                  <>
+                    <span
+                      className='close'
+                      onClick={() => setShow(false)}
+                    >
+                      <Icon icon="material-symbols-light:close" />
+                    </span>
+                    <Info
+                        fields={employeeFields}
+                        obj_id={employee.id}
+                        path='employees'
+                      />
+                  </>
                   ) : (
-                    <>
-                      <span>{employee.first_name} {employee.last_name}</span>
-                      <div>{employee.position_info.job_title}</div>
-                    </>
+                    null
                   )
                 }
+                <div className="main-info">
+                  <span
+                    id={employee.id}
+                    onClick={handleClick}
+                  >
+                    {employee.first_name} {employee.last_name}
+                  </span>
+                  <div>
+                    {employee.position_info.job_title}
+                  </div>
+                </div>
               </li>
             )
           }
