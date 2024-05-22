@@ -8,7 +8,7 @@ import { Icon } from '@iconify/react';
 export default function Employees() {
   const {employees, employeeFields} = useLoaderData();
   const [active, setActive] = useState(null);
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   function handleClick(e) {
     setShow(true);
@@ -30,43 +30,41 @@ export default function Employees() {
       <Outlet />
       <section className="employees-container">
         <ul>
-          {
-            employees.map(employee => 
-              <li
-                key={employee.id}
-                className={show && employee.id === active ? 'show' : 'hide'}
-              >
-                {
-                  employee.id === active ? (
-                  <>
-                    <span
-                      className='close'
-                      onClick={() => setShow(false)}
-                    >
-                      <Icon icon="material-symbols-light:close" />
-                    </span>
-                    <Info
-                        fields={employeeFields}
-                        obj_id={employee.id}
-                        path='employees'
-                      />
-                  </>
-                  ) : (
-                    null
-                  )
-                }
-                <div className="main-info">
-                  <span
-                    id={employee.id}
-                    onClick={handleClick}
+          {employees.map(employee => 
+            <li
+              key={employee.id}
+              className={show && employee.id === active ? 'show' : 'hide'}
+            >
+              <div className="main-info">
+                <span
+                  id={employee.id}
+                  onClick={handleClick}
                   >
-                    {employee.first_name} {employee.last_name}
-                  </span>
-                  <div>
-                    {employee.position_info.job_title}
-                  </div>
+                  {employee.first_name} {employee.last_name}
+                </span>
+                <div>
+                  {employee.position_info.job_title}
                 </div>
-              </li>
+              </div>
+              {employee.id === active ? (
+                <>
+                  <span
+                    className='close'
+                    onClick={() => setShow(false)}
+                  >
+                    <Icon icon="material-symbols-light:close" />
+                  </span>
+                  <Info
+                      fields={employeeFields}
+                      obj_id={employee.id}
+                      path='employees'
+                    />
+                </>
+                ) : (
+                  null
+                )
+              }
+            </li>
             )
           }
         </ul>

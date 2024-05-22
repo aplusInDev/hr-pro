@@ -84,6 +84,7 @@ span.close svg {
 }
 
 li.hide > form,
+li.hide > .absence-info,
 li.hide > span.close {
   display: none;
 }
@@ -92,11 +93,13 @@ li.show > .main-info {
   display: none;
 }
 
+.absent-info > span,
 li.hide > .main-info > span {
   /* background-color: red; */
   margin: 5px;
   cursor: pointer;
 }
+.absent-info > div,
 li.hide > .main-info > div {
   font-size: .9em;
   color: var(--color13);
@@ -116,6 +119,7 @@ li.hide > .main-info > div {
 
 .employees-container table {
   width: 100%;
+  margin-top: 40px;
 }
 
 .employees-container table textarea {
