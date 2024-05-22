@@ -47,6 +47,7 @@ export default function Info({
     >
       {
         fields?.map((field) => {
+          field.name = field.name.replace(/ /g, '_');
 
           switch(field.type) {
             case 'select':
