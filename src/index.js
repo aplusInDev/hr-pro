@@ -7,7 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import {
-  LandingPage, Login, Register, Profile, ErrorPage, CustomForm,
+  LandingPage, Login, Register, Profile, CustomForm,
   Home, Employees, Departments, Jobs, Attendance,
   Absences
 } from './pages';
@@ -26,6 +26,21 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <LandingPage />,
+  },
+  {
+    path: "login",
+    element: <Login />,
+    loader: loginLoader,
+    action: loginAction,
+  },
+  {
+    path: "register",
+    element: <Register />,
+    action: registerAction,
+  },
+  {
+    path: "logout",
+    loader: logoutLoader,
   },
   {
     path: "/home",
@@ -99,23 +114,6 @@ const router = createBrowserRouter([
         element: <Employees />,
       },
     ],
-  },
-  {
-    path: "login",
-    element: <Login />,
-    loader: loginLoader,
-    action: loginAction,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "register",
-    element: <Register />,
-    action: registerAction,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "logout",
-    loader: logoutLoader,
   },
 ]);
 
