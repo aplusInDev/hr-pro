@@ -16,8 +16,6 @@ export default function Employees() {
   async function handleClick(e) {
     setShow(true);
     if (activeId === e.target.id) {
-      // setActiveId(null);
-      // setData(null);
       console.log("one");
       return;
     } else {
@@ -37,7 +35,6 @@ export default function Employees() {
       });
       const jsonData = await excelFileReader(responseBlob);
       if(jsonData.length !== 0) {
-        // setActiveId(employeeId);
         setData(jsonData);
       } else {
         setData(null);
@@ -46,7 +43,6 @@ export default function Employees() {
       setError(null);
     } catch(err) {
       setData(null);
-      // setActiveId(null);
       console.log(err)
     }
   }
