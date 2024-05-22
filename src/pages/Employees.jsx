@@ -43,9 +43,8 @@ export default function Employees() {
                     />
                   ) : (
                     <>
-                      <span>{employee.first_name}</span>
-                      <span>{employee.last_name}</span>
-                      <div>{employee.job_title}</div>
+                      <span>{employee.first_name} {employee.last_name}</span>
+                      <div>{employee.position_info.job_title}</div>
                     </>
                   )
                 }

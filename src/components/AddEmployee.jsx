@@ -23,8 +23,8 @@ export default function AddEmployee() {
   
   async function handleSubmit(e) {
     e.preventDefault();
-    if (!data["job title"])
-      data["job title"] = jobs[0];
+    if (!data["job_title"])
+      data["job_title"] = jobs[0];
     if (!data["department"])
       data["department"] = departments[0]
     try {
@@ -105,8 +105,8 @@ export default function AddEmployee() {
         <label>
           <span>job title</span>
           <select
-            name="job title"
-            id="job title"
+            name="job_title"
+            id="job_title"
             onChange={handleChange}
           >
             {jobs.map((job, index) => (
