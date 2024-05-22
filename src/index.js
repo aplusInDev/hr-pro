@@ -20,7 +20,7 @@ import {action as registerAction } from './pages/Register';
 import { Company } from './components/ui';
 import { companyAction } from './pages/actions';
 import homeLoader from './pages/loaders/homeLader';
-import { AddEmployee, AddDepartment, AddJob } from './components';
+import { AddEmployee, AddDepartment, AddJob, RequestLeave } from './components';
 
 const router = createBrowserRouter([
   {
@@ -116,6 +116,12 @@ const router = createBrowserRouter([
       {
         path: "my-leaves",
         element: <EmployeeLeaves />,
+        children: [
+          {
+            path: 'request-leave',
+            element: <RequestLeave />,
+          }
+        ]
       },
       {
         path: "training",
