@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Filter, ExcelTable } from '../components';
-import { Btn } from '../components/ui';
 import '../assets/css/Employees.css';
-import { Outlet, Link, useLoaderData } from 'react-router-dom';
+import { Outlet, useLoaderData } from 'react-router-dom';
 import { excelFileReader } from '../utils/excelUtils';
 import httpClient from '../services/httpClient';
 import { Icon } from '@iconify/react';
@@ -54,11 +53,6 @@ export default function Employees() {
 
   return (
     <>
-      <div className="new-employee">
-        <Link to='add-employee'>
-          <Btn text="Add Employee" />
-        </Link>
-      </div>
       <Filter />
       <Outlet />
       <section className="employees-container">
