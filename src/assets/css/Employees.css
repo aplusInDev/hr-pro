@@ -43,9 +43,12 @@
   transition: background-color .5s ease-in-out;
 }
 
-li.show {
+/* will removed */
+li.show,
+li.hide {
   position: relative;
 }
+/* will removed___________ */
 
 .employees-container span.close {
   cursor: pointer;
@@ -137,5 +140,15 @@ li.hide > .main-info > div {
 }
 
 .employees-container .submit-btn:hover {
+  color: var(--pfontColor);
+}
+
+
+/* styling absences */
+.sum_absences {
+  position: absolute;
+  right: 5px;
+  font-size: 14px;
+  font-weight: 400;
   color: var(--pfontColor);
 }

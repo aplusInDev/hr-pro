@@ -63,9 +63,15 @@ export default function Employees() {
                 <div className='absent-info'>
                   <span
                     id={employee.id}
-                    onClick={handleClick}
+                    onClick={(e) => {
+                      if(employee.absences === 0) return;
+                      handleClick(e);
+                    }}
                     >
                     {employee.first_name} {employee.last_name}
+                  </span>
+                  <span className='sum_absences'>
+                    {employee.absences} absences
                   </span>
                   <div>
                     {employee.position_info.job_title}
