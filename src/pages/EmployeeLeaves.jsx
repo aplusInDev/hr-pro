@@ -14,7 +14,7 @@ export default function EmployeeLeaves() {
           <Btn text="Request Leave" />
         </Link>
       </div>
-      <section className="employees-container">
+      <section className="employees-container employee-leaves">
         <ul>
           {leaves.map(leave => 
             <li key={leave.id}>

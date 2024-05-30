@@ -1,0 +1,79 @@
+.employee-leaves {
+  margin: 10px auto;
+  width: 100%;
+  min-height: max-content;
+}
+
+.employee-leaves ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 50px auto;
+}
+
+.employee-leaves li {
+  background-color: var(--midnight-black);
+  width: 100%;
+  min-height: 30px;
+  line-height: 30px;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.employee-leaves li:hover {
+  background-color: var(--color2);
+  color: var(--midnight-black);
+  filter: brightness(.7);
+  transition: background-color .5s ease-in-out;
+}
+
+.employee-leaves p {
+  /* background-color: red; */
+  padding: 2px;
+}
+
+.employee-leaves span {
+  /* background-color: blue; */
+  padding: 3px;
+  margin: 2px 2px;
+}
+
+.employee-leaves span:first-child {
+  display: inline-block;
+  width: 100px;
+  /* background-color: red; */
+  margin-right: 10px;
+}
+
+li:hover button {
+  border-color: var(--midnight-black);
+  color: var(--midnight-black);
+}
+
+li:hover button:last-child:hover {
+  background-color: red;
+  color: white;
+  border-color: red;
+}
+
+li:hover button:first-child:hover {
+  border-color: var(--btnColor);
+  background-color: unset;
+  color: var(--btnColor);
+}
+
+.employee-leaves .btns {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  width: 200px;
+  height: 40px;
+  /* background-color: red; */
+}
+
+.employee-leaves button {
+  /* background-color:blue; */
+  margin: auto auto 5px 5px;
+}

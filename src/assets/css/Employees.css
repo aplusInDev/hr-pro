@@ -35,6 +35,7 @@
   line-height: 30px;
   padding: 10px;
   border-radius: 10px;
+  position: relative; /* added before adding new absence to replace li.show, li.hide */
 }
 
 .employees-container li.hide:hover {
@@ -44,10 +45,10 @@
 }
 
 /* will removed */
-li.show,
+/* li.show,
 li.hide {
   position: relative;
-}
+} */
 /* will removed___________ */
 
 .employees-container span.close {
