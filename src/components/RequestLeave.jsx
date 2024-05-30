@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { Btn } from './ui';
 import { Link, useNavigate, useLoaderData } from 'react-router-dom';
 import '../assets/css/AddEmployee.css';
-// import httpClient from '../services/httpClient';
+import httpClient from '../services/httpClient';
 
 
 // const companyId = JSON.parse(localStorage.getItem("currentUser"))?.company_id;
 
 export default function RequestLeave() {
+  const employee_id = JSON.parse(localStorage.getItem('currentUser')).employee_id;
   const [data, setData] = useState({});
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   function handleChange(e) {
     setData({
@@ -20,21 +21,17 @@ export default function RequestLeave() {
   
   async function handleSubmit(e) {
     e.preventDefault();
-    // if (!data["job_title"])
-    //   data["job_title"] = jobs[0];
-    // if (!data["department"])
-    //   data["department"] = departments[0]
-    // try {
-    //   const formData = new FormData();
-    //   for (const key in data) {
-    //     formData.append(key, data[key]);
-    //   }
-    //   const response = await httpClient.post(`/add_employee?company_id=${companyId}`, formData);
-    //   console.log(response);
-    //   navigate('/home/employees');
-    // } catch (err) {
-    //   console.error(err);
-    // }
+    try {
+      const formData = new FormData();
+      for (const key in data) {
+        formData.append(key, data[key]);
+      }
+      const response = await httpClient.post(`/employees/${employee_id}/leaves`, formData);
+      console.log("response: ", response);
+      navigate('/home/my-leaves');
+    } catch (err) {
+      console.log("error: ", err);
+    }
     console.log("request leave: ", data);
   }
 
