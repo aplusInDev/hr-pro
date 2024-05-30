@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Btn } from './ui';
-import { Link, useNavigate, useLoaderData } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../assets/css/AddEmployee.css';
 import httpClient from '../services/httpClient';
 

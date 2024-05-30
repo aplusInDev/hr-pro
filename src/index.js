@@ -14,6 +14,7 @@ import {
 import {
   companyLoader, employeesLoader, loginLoader, logoutLoader,
   profileLoader, departmentsLoader, jobsLoader, addEmployeeLoader,
+  employeeLeavesLoader,
 } from './pages/loaders';
 import { action as loginAction } from './pages/Login';
 import {action as registerAction } from './pages/Register';
@@ -116,6 +117,7 @@ const router = createBrowserRouter([
       {
         path: "my-leaves",
         element: <EmployeeLeaves />,
+        loader: employeeLeavesLoader,
         children: [
           {
             path: 'request-leave',
