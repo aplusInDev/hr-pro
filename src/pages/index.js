@@ -14,3 +14,4 @@ export { default as Absences } from './Absences';
 export { default as Forbidden } from './Forbidden';
 export { default as Leaves } from './Leaves';
 export { default as EmployeeLeaves } from './EmployeeLeaves';
+export { default as Trainings } from './Trainings';
