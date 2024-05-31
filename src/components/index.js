@@ -11,3 +11,4 @@ export { default as Info } from './Info.jsx';
 export { default as AddDepartment } from './AddDepartment.jsx';
 export { default as AddJob } from './AddJob.jsx';
 export { default as ExcelTable } from './ExcelTable.jsx';
+export { default as RequestLeave } from './RequestLeave';

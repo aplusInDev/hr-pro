@@ -4,6 +4,8 @@ import { Icon } from '@iconify/react';
 import { NavLink, Link } from 'react-router-dom';
 
 function Header() {
+  const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
+
   return (
     <header className='main-header'>
       <Link to={"/"}>
@@ -41,12 +43,14 @@ function Header() {
                 <span>Company info</span>
               </NavLink>
             </li>
-            <li>
-              <NavLink to={"forms_settings"}>
-                <Icon icon="marketeq:settings" />
-                <span>forms settings</span>
-              </NavLink>
-            </li>
+            {role === "admin" && (
+              <li>
+                <NavLink to={"forms_settings"}>
+                  <Icon icon="marketeq:settings" />
+                  <span>forms settings</span>
+                </NavLink>
+              </li>
+            )}
             <li>
               <NavLink to={"/logout"}>
                 <Icon icon="streamline:interface-logout-arrow-exit-frame-leave-logout-rectangle-right" />

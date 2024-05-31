@@ -11,3 +11,6 @@ export { default as Departments } from './Departments';
 export { default as Jobs } from './Jobs';
 export { default as Attendance } from './Attendance';
 export { default as Absences } from './Absences';
+export { default as Forbidden } from './Forbidden';
+export { default as Leaves } from './Leaves';
+export { default as EmployeeLeaves } from './EmployeeLeaves';

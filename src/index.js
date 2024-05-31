@@ -7,20 +7,22 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import {
-  LandingPage, Login, Register, Profile, ErrorPage, CustomForm,
+  LandingPage, Login, Register, Profile, CustomForm,
   Home, Employees, Departments, Jobs, Attendance,
-  Absences
+  Absences, Forbidden, Leaves, EmployeeLeaves,
 } from './pages';
 import {
   companyLoader, employeesLoader, loginLoader, logoutLoader,
   profileLoader, departmentsLoader, jobsLoader, addEmployeeLoader,
+  employeeLeavesLoader,
+  leavesLoader,
 } from './pages/loaders';
 import { action as loginAction } from './pages/Login';
 import {action as registerAction } from './pages/Register';
 import { Company } from './components/ui';
 import { companyAction } from './pages/actions';
 import homeLoader from './pages/loaders/homeLader';
-import { AddEmployee, AddDepartment, AddJob } from './components';
+import { AddEmployee, AddDepartment, AddJob, RequestLeave } from './components';
 
 const router = createBrowserRouter([
   {
@@ -28,10 +30,29 @@ const router = createBrowserRouter([
     element: <LandingPage />,
   },
   {
+    path: "login",
+    element: <Login />,
+    loader: loginLoader,
+    action: loginAction,
+  },
+  {
+    path: "register",
+    element: <Register />,
+    action: registerAction,
+  },
+  {
+    path: "logout",
+    loader: logoutLoader,
+  },
+  {
     path: "/home",
     element: <Home />,
     loader: homeLoader,
     children: [
+      {
+        path: "forbidden",
+        element: <Forbidden />,
+      },
       {
         path: "profile",
         element: <Profile />,
@@ -92,30 +113,25 @@ const router = createBrowserRouter([
       },
       {
         path: "leaves",
-        element: <Employees />,
+        element: <Leaves />,
+        loader: leavesLoader,
+      },
+      {
+        path: "my-leaves",
+        element: <EmployeeLeaves />,
+        loader: employeeLeavesLoader,
+        children: [
+          {
+            path: 'request-leave',
+            element: <RequestLeave />,
+          }
+        ]
       },
       {
         path: "training",
         element: <Employees />,
       },
     ],
-  },
-  {
-    path: "login",
-    element: <Login />,
-    loader: loginLoader,
-    action: loginAction,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "register",
-    element: <Register />,
-    action: registerAction,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "logout",
-    loader: logoutLoader,
   },
 ]);
 

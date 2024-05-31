@@ -4,6 +4,9 @@ import { Link, useNavigate, useLoaderData } from 'react-router-dom';
 import '../assets/css/AddEmployee.css';
 import httpClient from '../services/httpClient';
 
+
+const companyId = JSON.parse(localStorage.getItem("currentUser"))?.company_id;
+
 export default function AddEmployee() {
   const [data, setData] = useState({});
   const navigate = useNavigate();
@@ -20,8 +23,8 @@ export default function AddEmployee() {
   
   async function handleSubmit(e) {
     e.preventDefault();
-    if (!data["job title"])
-      data["job title"] = jobs[0];
+    if (!data["job_title"])
+      data["job_title"] = jobs[0];
     if (!data["department"])
       data["department"] = departments[0]
     try {
@@ -29,7 +32,7 @@ export default function AddEmployee() {
       for (const key in data) {
         formData.append(key, data[key]);
       }
-      const response = await httpClient.post('/add_employee', formData);
+      const response = await httpClient.post(`/add_employee?company_id=${companyId}`, formData);
       console.log(response);
       navigate('/home/employees');
     } catch (err) {
@@ -102,8 +105,8 @@ export default function AddEmployee() {
         <label>
           <span>job title</span>
           <select
-            name="job title"
-            id="job title"
+            name="job_title"
+            id="job_title"
             onChange={handleChange}
           >
             {jobs.map((job, index) => (

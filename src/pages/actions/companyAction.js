@@ -2,9 +2,10 @@ import httpClient from "../../services/httpClient";
 
 export default async function companyAction({ request }) {
   const formData = await request.formData();
+  const companyId = JSON.parse(localStorage.getItem('currentUser'))?.company_id;
 
   try {
-    const data = await httpClient.put('http://localhost:5000/api/v1/company',
+    const data = await httpClient.put(`/companies/${companyId}`,
       formData,
     );
     console.log(data);

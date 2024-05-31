@@ -6,6 +6,7 @@ import Btn from './Btn';
 export default function Company() {
   const [status, setStatus] = useState('idle'); // idle, editing, submitting
   const data = useLoaderData();
+  const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
 
   function handleEditing() {
     setStatus("editing");
@@ -106,22 +107,22 @@ export default function Company() {
           />
         </label>
         {
-          status === 'idle'
-            ? (
-              <Btn text='edit' onClick={handleEditing} />
-            )
-            : (
-              <div className='btns'>
-              <Btn text='cancel' onClick={handleIdle} />
-              <button
-                type='submit'
-                className='submit-btn'
-                disabled={status === 'editing' || status === 'submitting'}
-              >
-                save
-              </button>
-              </div>
-            )
+          role === 'admin' && (status === 'idle'
+          ? (
+            <Btn text='edit' onClick={handleEditing} />
+          )
+          : (
+            <div className='btns'>
+            <Btn text='cancel' onClick={handleIdle} />
+            <button
+              type='submit'
+              className='submit-btn'
+              disabled={status === 'editing' || status === 'submitting'}
+            >
+              save
+            </button>
+            </div>
+          ))
         }
       </Form>
     </div>

@@ -29,43 +29,81 @@
 }
 
 .employees-container li {
-  cursor: pointer;
   background-color: var(--midnight-black);
   width: 100%;
   min-height: 30px;
   line-height: 30px;
   padding: 10px;
   border-radius: 10px;
+  position: relative; /* added before adding new absence to replace li.show, li.hide */
 }
 
-.employees-container li[class="active"] {
-  background-color: rgb(0, 0, 0, 0.2);
-  padding-top: 30px;
+.employees-container li.hide:hover {
+  background-color: var(--color2);
+  filter: brightness(.7);
+  transition: background-color .5s ease-in-out;
+}
+
+/* will removed */
+/* li.show,
+li.hide {
   position: relative;
-}
+} */
+/* will removed___________ */
 
-.employees-container li[class="active"] span:first-child {
-  display: inline-block;
+.employees-container span.close {
+  cursor: pointer;
   position: absolute;
+  right: 10px;
   top: 10px;
-  right: 20px;
-  width: 15px;
-  height: 15px;
-  background-color: rgba(23, 191, 242, 0.69);
   border-radius: 50%;
-  line-height: 15px;
+  width: 25px;
+  height: 25px;
+  background-color: var(--color3);
+  line-height: 25px;
   text-align: center;
-  pointer-events: none;
+  filter: brightness(.8);
 }
 
-.employees-container li > span {
-  margin-left: 10px;
+span.close svg {
+  color: var(--color13);
+  width: 20px;
+  height: 20px;
+  margin: 2px;
+  filter: brightness(1.2);
 }
 
-.employees-container li > div {
-  margin-left: 10px;
+li.hide > form,
+li.hide > .absence-info,
+li.hide > span.close {
+  display: none;
+}
+
+li.show > .main-info {
+  display: none;
+}
+
+li.hide > .absent-info > span,
+li.hide > .main-info > span {
+  margin: 5px;
+  cursor: pointer;
+}
+
+li.hide:hover > .absent-info > span,
+li.hide:hover > .main-info > span {
+  color: var(--color8);
+}
+
+li.hide:hover > .absent-info > div,
+li.hide:hover > .main-info > div {
+  color: var(--color3);
+}
+
+.absent-info > div,
+li.hide > .main-info > div {
   font-size: .9em;
   color: var(--color13);
+  margin-top: 2px;
 }
 
 /* styling employees-container_______________________ */
@@ -81,6 +119,7 @@
 
 .employees-container table {
   width: 100%;
+  margin-top: 40px;
 }
 
 .employees-container table textarea {
@@ -102,5 +141,15 @@
 }
 
 .employees-container .submit-btn:hover {
+  color: var(--pfontColor);
+}
+
+
+/* styling absences */
+.sum_absences {
+  position: absolute;
+  right: 5px;
+  font-size: 14px;
+  font-weight: 400;
   color: var(--pfontColor);
 }

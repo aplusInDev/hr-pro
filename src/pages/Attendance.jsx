@@ -7,10 +7,9 @@ import { Icon } from '@iconify/react';
 import { handleDownload } from '../helpers/excelHelpers';
 
 
-const company_id = JSON.parse(localStorage.getItem('currentUser'))?.company_id;
-const initialP = 'Drag and drop an Excel file here';
-
 const Attendance = () => {
+  const company_id = JSON.parse(localStorage.getItem('currentUser'))?.company_id;
+  const initialP = 'Drag and drop an Excel file here';
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState(initialP);
   const [show, setShow] = useState(false);
@@ -28,6 +27,7 @@ const Attendance = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(company_id);
     if (selectedDate) {
       setDateStatus('submitted');
       try {

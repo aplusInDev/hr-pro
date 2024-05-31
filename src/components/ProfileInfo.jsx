@@ -32,6 +32,7 @@ export default function ProfileInfo({
     >
       {
         fields?.map((field) => {
+          field.name = field.name.replace(/ /g, '_');
 
           switch(field.type) {
             case 'select':

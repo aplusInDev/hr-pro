@@ -3,7 +3,8 @@ import { Btn } from './ui';
 import httpClient from '../services/httpClient';
 
 export default function Info({
-  fields, obj_id, path,
+  fields, obj_id,
+  path, class_name='',
 }) {
   const [info, setInfo] = useState({});
   const [status, setStatus] = useState('idle'); // idle, editing, submitting
@@ -39,14 +40,17 @@ export default function Info({
     setStatus('idle');
   }
 
+  class_name = class_name !== '' ? "form-preview" : "form-preview " + class_name
+
   return (
     <form
-      className='form-preview'
+      className={class_name}
       onSubmit={handleSubmit}
       onClick={(e) => e.stopPropagation()}
     >
       {
         fields?.map((field) => {
+          field.name = field.name.replace(/ /g, '_');
 
           switch(field.type) {
             case 'select':
