@@ -1,3 +1,7 @@
+.new-employee + .employee-leaves {
+  margin-top: 100px;
+}
+
 .employee-leaves {
   margin: 10px auto;
   width: 100%;
@@ -39,7 +43,7 @@
   position: relative;
 }
 
-.employee-leaves li:hover {
+.employee-leaves li:not(li.active, .details li):hover {
   background-color: var(--color3);
   filter: brightness(.7);
   transition: background-color .5s ease-in-out;
@@ -54,7 +58,7 @@
   margin: 2px 2px;
 }
 
-.employee-leaves span:first-child {
+.employee-leaves span:first-child:not(.close) {
   display: inline-block;
   width: 100px;
   margin-right: 10px;
@@ -88,4 +92,59 @@
 
 .employee-leaves button {
   margin: auto auto 5px 5px;
+}
+
+/* styling trainings */
+.training-title,
+.close {
+  cursor: pointer;
+}
+.employee-leaves .close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.employee-leaves .details {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin: 10px auto;
+  padding: 10px 5px;
+  position: relative;
+}
+
+.employee-leaves .details::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: var(--color4);
+  opacity: .3;
+  top: 0;
+}
+
+.details .trainees,
+.details .non-trainees {
+  width: 50%;
+  padding: 10px;
+  margin: 0;
+  height: 150px;
+}
+
+.details ul {
+  height: 130px;
+  overflow-y: scroll;
+  margin: 15px auto;
+  padding: 5px 15px 5px 0;
+}
+
+.details li {
+  position: static;
+  margin: 0;
+  padding: 2px 5px;
+}
+
+.details li:hover {
+  border: 1px solid var(--color4);
 }
