@@ -77,6 +77,7 @@ export default function Leaves() {
                   <div className='btns'>
                     <Btn
                       text="accept"
+                      className="accept"
                       disabled={updatingLeaveId}
                       onClick={() => {
                         updateLeaveStatus(leave.id, "approved");
@@ -84,6 +85,7 @@ export default function Leaves() {
                     />
                     <Btn
                       text="reject"
+                      className="reject"
                       disabled={updatingLeaveId}
                       onClick={() => {
                         updateLeaveStatus(leave.id, "rejected");

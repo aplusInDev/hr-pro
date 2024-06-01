@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import { Link, Outlet, useLoaderData } from 'react-router-dom';
 import { Btn } from '../components/ui';
-import { Icon } from '@iconify/react/dist/iconify.js';
+import { Icon } from '@iconify/react';
+import httpClient from '../services/httpClient';
 
 export default function Trainings() {
-  const trainings = useLoaderData();
+  const {trainings, employees} = useLoaderData();
   const [activeTrainingId, setActiveTrainingId] = useState(null);
+  const [trainees, setTrainees] = useState({});
+  const [nonTrainees, setNonTrainees] = useState([]);
+  const [addedTrainees, setAddedTrainees] = useState([]);
+  const [error, setError] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
 
   function handleClick(id) {
@@ -13,8 +19,31 @@ export default function Trainings() {
       console.log("already active");
       return;
     } else {
+      const traineesNames = Object.keys(trainings.find(training => training.id === id).trainees);
       setActiveTrainingId(id);
+      setTrainees(trainings.find(training => training.id === id).trainees);
+      setNonTrainees(employees.filter(employee => !traineesNames.includes(employee)));
       console.log('new active id');
+    }
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setUploading(true);
+    const formData = new FormData();
+    formData.append('trainees', JSON.stringify(addedTrainees));
+    try {
+      const response = await httpClient.post(`/trainings/${activeTrainingId}/trainees`, formData);
+      setUploading(false);
+      setAddedTrainees([]);
+      setTrainees(response.data.trainees);
+      setNonTrainees(employees.filter(employee => !Object.keys(response.data.trainees).includes(employee)));
+    } catch (err) {
+      setUploading(false);
+      setError("Failed to add trainees. Please try again.");
+      setTimeout(() => {
+        setError(null);
+      }, 5*1000);
     }
   }
 
@@ -33,6 +62,8 @@ export default function Trainings() {
             className={training.id === activeTrainingId ? 'active' : ''}
           >
             <div className="main-info">
+              {uploading && <p>Uploading...</p>}
+              {error && <p className='error'>{error}</p>}
               <p className='training-title'
                 onClick={() => {
                   handleClick(training.id);
@@ -55,11 +86,43 @@ export default function Trainings() {
               </span>
               <div className="details">
                 <div className="trainees">
+                  {addedTrainees.length > 0 && <form className="added-trainees"
+                    onSubmit={handleSubmit}
+                  >
+                    <h1>Added Trainees</h1>
+                    {addedTrainees.map((employee) => (
+                      <div key={employee}>
+                        <span>{employee}</span>
+                        <span
+                          className='remove'
+                          onClick={() => {
+                            setAddedTrainees(addedTrainees.filter(emp => emp !== employee));
+                            setNonTrainees([...nonTrainees, employee]);
+                          }}
+                        >
+                          <Icon icon="material-symbols-light:close" />
+                        </span>
+                      </div>
+                    ))}
+                    <div className="btns">
+                      <Btn text="cancel"
+                        onClick={() => {
+                          setAddedTrainees([]);
+                          setNonTrainees(employees);
+                        }}
+                      />
+                      <button type='submit'
+                        className='submit-btn'
+                      >
+                        save
+                      </button>
+                    </div>
+                  </form>}
                   <h1>Trainees</h1>
                   <ul>
-                  {trainees.map(trainee => (
-                    <li key={Object.keys(trainee)[0]}>
-                      <p>{Object.keys(trainee)[0]}</p>
+                  {Object.keys(trainees).map((employee) => (
+                    <li key={employee}>
+                      <p>{employee}</p>
                     </li>
                   ))}
                   </ul>
@@ -68,8 +131,17 @@ export default function Trainings() {
                   <h1>Non Trainees</h1>
                   <ul>
                   {nonTrainees.map(employee => (
-                    <li key={Object.keys(employee)[0]}>
-                      <p>{Object.keys(employee)[0]}</p>
+                    <li key={employee}>
+                      <span>{employee}</span>
+                      <span className='add'
+                        onClick={() => {
+                          const addedTraineesSet = new Set([...addedTrainees, employee]);
+                          setAddedTrainees([...addedTraineesSet]);
+                          setNonTrainees(nonTrainees.filter(emp => emp !== employee));
+                        }}
+                      >
+                        add
+                      </span>
                     </li>
                   ))}
                   </ul>
@@ -83,36 +155,3 @@ export default function Trainings() {
     </>
   );
 }
-
-
-const trainees = [
-  {"aplus1 test": "0123456"},
-  {"aplus2 test": "1123456"},
-  {"aplus3 test": "2123456"},
-  {"aplus4 test": "3123456"},
-];
-
-const employees = [
-  {"aplus1 test": "0123456"},
-  {"aplus2 test": "1123456"},
-  {"aplus3 test": "2123456"},
-  {"aplus4 test": "3123456"},
-  {"aplus5 test": "4123456"},
-  {"aplus6 test": "5123456"},
-  {"aplus7 test": "6123456"},
-  {"aplus8 test": "7123456"},
-  {"aplus9 test": "8123456"},
-];
-
-// convert trainees to a lookup object
-const traineesLokkup = trainees.reduce((acc, trainee) => {
-  const key = Object.keys(trainee)[0];
-  acc[key] = true;
-  return acc;
-}, {});
-
-// filter employees that are not trainees
-const nonTrainees = employees.filter(employee => {
-  const key = Object.keys(employee)[0];
-  return !traineesLokkup[key];
-});

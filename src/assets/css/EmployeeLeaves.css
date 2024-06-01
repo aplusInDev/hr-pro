@@ -64,18 +64,20 @@
   margin-right: 10px;
 }
 
-.employee-leaves li:hover button {
+li:hover button.accept,
+li:hover button.reject {
   border-color: var(--midnight-black);
   color: var(--midnight-black);
 }
 
-.employee-leaves li:hover button:last-child:hover {
+.btn.reject:hover,
+.btn.accept:hover {
   background-color: red;
   color: white;
   border-color: red;
 }
 
-.employee-leaves li:hover button:first-child:hover {
+.btn.accept:hover {
   border-color: var(--btnColor);
   background-color: unset;
   color: var(--btnColor);
@@ -129,7 +131,7 @@
   width: 50%;
   padding: 10px;
   margin: 0;
-  height: 150px;
+  height: 170px;
 }
 
 .details ul {
@@ -147,4 +149,77 @@
 
 .details li:hover {
   border: 1px solid var(--color4);
+}
+
+.non-trainees li {
+  position: relative;
+}
+
+.non-trainees li:hover {
+  border-color: var(--color3);
+}
+
+.non-trainees span:last-child {
+  /* background-color: blue; */
+  position: absolute;
+  border: 1px solid var(--color4);
+  border-radius: 5px;
+  right: 5px;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* styling added-trainees */
+.added-trainees {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 80px;
+  overflow-y: scroll;
+  border: 1px solid var(--color4);
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+.added-trainees h1 {
+  height: 20px;
+  line-height: 20px;
+}
+
+.added-trainees div:not(.btns) {
+  height: 20px;
+  line-height: 20px;
+  margin: 5px;
+  border: 1px solid var(--color4);
+  border-radius: 5px;
+}
+
+.added-trainees span {
+  margin: 0;
+}
+
+.added-trainees span:first-child {
+  padding: 2px;
+}
+
+.added-trainees span:last-child {
+  cursor: pointer;
+}
+
+.added-trainees svg {
+  width: 15px;
+  height: 15px;
+}
+
+.added-trainees .btns {
+  position: static;
+}
+
+.added-trainees:hover {
+  border: 1px solid var(--color3);
+}
+
+.added-trainees ~ ul{
+  height: 50px;
 }
