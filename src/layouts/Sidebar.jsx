@@ -11,7 +11,7 @@ const fields = [
   {link: 'attendance', icon: <Icon icon="simple-line-icons:check" />, text: 'Attendance'},
   {link: 'absences', icon: <Icon icon="flat-color-icons:leave" />, text: 'Absences'},
   {link: 'leaves', icon: <Icon icon="fluent-mdl2:leave-user" />, text: 'Leaves'},
-  {link: 'training', icon: <Icon icon="ph:certificate-duotone" />, text: 'Training'},
+  {link: 'trainings', icon: <Icon icon="ph:certificate-duotone" />, text: 'Training'},
 ]
 
 function  Sidebar() {

@@ -10,19 +10,22 @@ import {
   LandingPage, Login, Register, Profile, CustomForm,
   Home, Employees, Departments, Jobs, Attendance,
   Absences, Forbidden, Leaves, EmployeeLeaves,
+  Trainings,
 } from './pages';
 import {
   companyLoader, employeesLoader, loginLoader, logoutLoader,
   profileLoader, departmentsLoader, jobsLoader, addEmployeeLoader,
   employeeLeavesLoader,
   leavesLoader,
+  addTraingLoader,
+  trainingsLoader,
 } from './pages/loaders';
 import { action as loginAction } from './pages/Login';
 import {action as registerAction } from './pages/Register';
 import { Company } from './components/ui';
 import { companyAction } from './pages/actions';
 import homeLoader from './pages/loaders/homeLader';
-import { AddEmployee, AddDepartment, AddJob, RequestLeave } from './components';
+import { AddEmployee, AddDepartment, AddJob, RequestLeave, AddTraining } from './components';
 
 const router = createBrowserRouter([
   {
@@ -128,8 +131,16 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: "training",
-        element: <Employees />,
+        path: "trainings",
+        element: <Trainings />,
+        loader: trainingsLoader,
+        children: [
+          {
+            path: 'add-training',
+            element: <AddTraining />,
+            loader: addTraingLoader,
+          }
+        ]
       },
     ],
   },

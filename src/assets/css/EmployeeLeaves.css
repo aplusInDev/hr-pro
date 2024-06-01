@@ -1,3 +1,7 @@
+.new-employee + .employee-leaves {
+  margin-top: 100px;
+}
+
 .employee-leaves {
   margin: 10px auto;
   width: 100%;
@@ -39,7 +43,7 @@
   position: relative;
 }
 
-.employee-leaves li:hover {
+.employee-leaves li:not(li.active, .details li):hover {
   background-color: var(--color3);
   filter: brightness(.7);
   transition: background-color .5s ease-in-out;
@@ -54,24 +58,26 @@
   margin: 2px 2px;
 }
 
-.employee-leaves span:first-child {
+.employee-leaves span:first-child:not(.close) {
   display: inline-block;
   width: 100px;
   margin-right: 10px;
 }
 
-.employee-leaves li:hover button {
+li:hover button.accept,
+li:hover button.reject {
   border-color: var(--midnight-black);
   color: var(--midnight-black);
 }
 
-.employee-leaves li:hover button:last-child:hover {
+.btn.reject:hover,
+.btn.accept:hover {
   background-color: red;
   color: white;
   border-color: red;
 }
 
-.employee-leaves li:hover button:first-child:hover {
+.btn.accept:hover {
   border-color: var(--btnColor);
   background-color: unset;
   color: var(--btnColor);
@@ -88,4 +94,155 @@
 
 .employee-leaves button {
   margin: auto auto 5px 5px;
+}
+
+/* styling trainings */
+.training-title,
+.close {
+  cursor: pointer;
+}
+.employee-leaves .close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.employee-leaves .details {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin: 10px auto;
+  padding: 10px 5px;
+  position: relative;
+}
+
+.employee-leaves .details::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: var(--color4);
+  opacity: .3;
+  top: 0;
+}
+
+.details .trainees,
+.details .non-trainees {
+  width: 50%;
+  padding: 10px;
+  margin: 0;
+  height: 170px;
+}
+
+.details ul {
+  height: 130px;
+  overflow-y: scroll;
+  margin: 15px auto;
+  padding: 5px 15px 5px 0;
+}
+
+.details li {
+  position: relative;
+  margin: 0;
+  padding: 2px 5px;
+}
+
+.details li:hover {
+  border: 1px solid var(--color3);
+}
+
+.trainees span:last-child,
+.non-trainees span:last-child {
+  position: absolute;
+  right: 5px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.trainees li:hover span:last-child {
+  border-radius: 50%;
+  border: 1px solid var(--color3);
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  margin: 2px;
+}
+
+.trainees span:last-child svg {
+  width: 15px;
+  height: 15px;
+}
+
+.non-trainees:hover span:last-child:not(.remove) {
+  border: 1px solid var(--color4);
+  border-radius: 5px;
+}
+
+/* styling added-trainees */
+.added-trainees {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 80px;
+  overflow-y: scroll;
+  border: 1px solid var(--color4);
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+.added-trainees h1 {
+  height: 20px;
+  line-height: 20px;
+}
+
+.added-trainees div:not(.btns) {
+  height: 20px;
+  line-height: 20px;
+  margin: 5px;
+  border: 1px solid var(--color4);
+  border-radius: 5px;
+}
+
+.added-trainees span {
+  margin: 0;
+}
+
+.added-trainees span.remove {
+  position: static;
+}
+
+.added-trainees span:first-child {
+  padding: 2px;
+}
+
+.added-trainees span:last-child {
+  cursor: pointer;
+}
+
+.added-trainees svg {
+  width: 15px;
+  height: 15px;
+}
+
+.added-trainees .btns {
+  position: static;
+}
+
+.added-trainees:hover {
+  border: 1px solid var(--color3);
+}
+
+.added-trainees ~ ul{
+  height: 50px;
+}
+
+/* styling delete trainees */
+.deleted-trainees {
+  height: 150px;
+}
+
+.deleted-trainees ~ ul,
+.deleted-trainees + h1 {
+  display: none;
 }

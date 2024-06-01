@@ -26,6 +26,12 @@ input {
   overflow-wrap: break-word;
 }
 
+/* styling disabled input */
+input:disabled {
+  background-color: inherit;
+  color: inherit;
+}
+
 ::placeholder {
   color: var(--cardColor);
   opacity: .7; /* Fix for Firefox */
