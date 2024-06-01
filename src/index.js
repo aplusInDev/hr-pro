@@ -118,6 +118,12 @@ const router = createBrowserRouter([
         path: "leaves",
         element: <Leaves />,
         loader: leavesLoader,
+        children: [
+          {
+            path: 'request-leave',
+            element: <RequestLeave />,
+          }
+        ]
       },
       {
         path: "my-leaves",
