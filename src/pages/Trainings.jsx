@@ -12,7 +12,41 @@ export default function Trainings() {
   const [addedTrainees, setAddedTrainees] = useState([]);
   const [error, setError] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const [deletetedTrainees, setDeletedTrainees] = useState({});
 
+
+  function handleAdd(employee) {
+    const addedTraineesSet = new Set([...addedTrainees, employee]);
+    setDeletedTrainees({});
+    setAddedTrainees([...addedTraineesSet]);
+    setNonTrainees(nonTrainees.filter(emp => emp !== employee));
+  }
+
+  function handleRemove(employee) {
+    setAddedTrainees(addedTrainees.filter(emp => emp !== employee));
+    setNonTrainees([...nonTrainees, employee]);
+  }
+
+  function handleCancel() {
+    setAddedTrainees([]);
+    setNonTrainees(employees);
+  }
+
+  function handleAddDeleted(trainee) {
+    setAddedTrainees([]);
+    setDeletedTrainees({...deletetedTrainees, [trainee]: trainees[trainee]});
+    delete trainees[trainee];
+  }
+
+  function handleRemoveDeleted(trainee) {
+    setTrainees({...trainees, [trainee]: deletetedTrainees[trainee]});
+    delete deletetedTrainees[trainee];
+  }
+
+  function handleCancelDeleted() {
+    setTrainees({...trainees, ...deletetedTrainees})
+    setDeletedTrainees({});
+  }
 
   function handleClick(id) {
     if(id === activeTrainingId) {
@@ -47,6 +81,26 @@ export default function Trainings() {
     }
   }
 
+  async function handleSubmitDeleted(e) {
+    e.preventDefault();
+    setUploading(true);
+    const formData = new FormData();
+    formData.append('trainees', JSON.stringify(Object.keys(deletetedTrainees)));
+    try {
+      const response = await httpClient.delete(`/trainings/${activeTrainingId}/trainees`, {data: formData});
+      setDeletedTrainees({});
+      setTrainees(response.data.trainees);
+      setNonTrainees(employees.filter(employee => !Object.keys(response.data.trainees).includes(employee)));
+    } catch (err) {
+      setError("Failed to delete trainees. Please try again");
+      setTimeout(() => {
+        setError(null);
+      }, 5*1000);
+    } finally {
+      setUploading(false);
+    }
+  }
+
   return (
     <>
     <Outlet />
@@ -76,6 +130,12 @@ export default function Trainings() {
                 <span>description</span>
                 <span>{training.description}</span>
               </p>
+              <p>
+                <span>date</span>
+                <span>
+                  {training.start_date} - {training.end_date}
+                </span>
+              </p>
             </div>
             {training.id === activeTrainingId && (<>
               <span
@@ -95,10 +155,7 @@ export default function Trainings() {
                         <span>{employee}</span>
                         <span
                           className='remove'
-                          onClick={() => {
-                            setAddedTrainees(addedTrainees.filter(emp => emp !== employee));
-                            setNonTrainees([...nonTrainees, employee]);
-                          }}
+                          onClick={() => handleRemove(employee)}
                         >
                           <Icon icon="material-symbols-light:close" />
                         </span>
@@ -106,10 +163,7 @@ export default function Trainings() {
                     ))}
                     <div className="btns">
                       <Btn text="cancel"
-                        onClick={() => {
-                          setAddedTrainees([]);
-                          setNonTrainees(employees);
-                        }}
+                        onClick={handleCancel}
                       />
                       <button type='submit'
                         className='submit-btn'
@@ -120,25 +174,56 @@ export default function Trainings() {
                   </form>}
                   <h1>Trainees</h1>
                   <ul>
-                  {Object.keys(trainees).map((employee) => (
-                    <li key={employee}>
-                      <p>{employee}</p>
+                  {Object.keys(trainees).map((trainee) => (
+                    <li key={trainee}>
+                      <span>{trainee}</span>
+                      <span
+                        onClick={() => {
+                          handleAddDeleted(trainee);
+                        }}
+                      >
+                        <Icon icon="material-symbols-light:close" />
+                      </span>
                     </li>
                   ))}
                   </ul>
                 </div>
                 <div className="non-trainees">
+                  {Object.keys(deletetedTrainees).length > 0 && <form className="added-trainees deleted-trainees"
+                    onSubmit={(e) =>{
+                      handleSubmitDeleted(e);
+                    }}
+                  >
+                    <h1>Deleted Trainees</h1>
+                    {Object.keys(deletetedTrainees).map((trainee) => (
+                      <div key={trainee}>
+                        <span>{trainee}</span>
+                        <span
+                          className='remove'
+                          onClick={() => handleRemoveDeleted(trainee)}
+                        >
+                          <Icon icon="material-symbols-light:close" />
+                        </span>
+                      </div>
+                    ))}
+                    <div className="btns">
+                      <Btn text="cancel"
+                        onClick={handleCancelDeleted}
+                      />
+                      <button type='submit'
+                        className='submit-btn'
+                      >
+                        save
+                      </button>
+                    </div>
+                  </form>}
                   <h1>Non Trainees</h1>
                   <ul>
                   {nonTrainees.map(employee => (
                     <li key={employee}>
                       <span>{employee}</span>
                       <span className='add'
-                        onClick={() => {
-                          const addedTraineesSet = new Set([...addedTrainees, employee]);
-                          setAddedTrainees([...addedTraineesSet]);
-                          setNonTrainees(nonTrainees.filter(emp => emp !== employee));
-                        }}
+                        onClick={() => handleAdd(employee)}
                       >
                         add
                       </span>

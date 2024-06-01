@@ -142,31 +142,40 @@ li:hover button.reject {
 }
 
 .details li {
-  position: static;
+  position: relative;
   margin: 0;
   padding: 2px 5px;
 }
 
 .details li:hover {
-  border: 1px solid var(--color4);
+  border: 1px solid var(--color3);
 }
 
-.non-trainees li {
-  position: relative;
-}
-
-.non-trainees li:hover {
-  border-color: var(--color3);
-}
-
+.trainees span:last-child,
 .non-trainees span:last-child {
-  /* background-color: blue; */
   position: absolute;
-  border: 1px solid var(--color4);
-  border-radius: 5px;
   right: 5px;
   margin: 0;
   cursor: pointer;
+}
+
+.trainees li:hover span:last-child {
+  border-radius: 50%;
+  border: 1px solid var(--color3);
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  margin: 2px;
+}
+
+.trainees span:last-child svg {
+  width: 15px;
+  height: 15px;
+}
+
+.non-trainees:hover span:last-child:not(.remove) {
+  border: 1px solid var(--color4);
+  border-radius: 5px;
 }
 
 /* styling added-trainees */
@@ -199,6 +208,10 @@ li:hover button.reject {
   margin: 0;
 }
 
+.added-trainees span.remove {
+  position: static;
+}
+
 .added-trainees span:first-child {
   padding: 2px;
 }
@@ -222,4 +235,14 @@ li:hover button.reject {
 
 .added-trainees ~ ul{
   height: 50px;
+}
+
+/* styling delete trainees */
+.deleted-trainees {
+  height: 150px;
+}
+
+.deleted-trainees ~ ul,
+.deleted-trainees + h1 {
+  display: none;
 }
