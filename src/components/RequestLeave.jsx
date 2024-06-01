@@ -5,8 +5,6 @@ import '../assets/css/AddEmployee.css';
 import httpClient from '../services/httpClient';
 
 
-// const companyId = JSON.parse(localStorage.getItem("currentUser"))?.company_id;
-
 export default function RequestLeave() {
   const employee_id = JSON.parse(localStorage.getItem('currentUser')).employee_id;
   const [data, setData] = useState({});
@@ -28,7 +26,7 @@ export default function RequestLeave() {
       }
       const response = await httpClient.post(`/employees/${employee_id}/leaves`, formData);
       console.log("response: ", response);
-      navigate('/home/my-leaves');
+      navigate('/home/leaves');
     } catch (err) {
       console.log("error: ", err);
     }
@@ -77,7 +75,7 @@ export default function RequestLeave() {
             />
         </label>
         <div className="btns">
-          <Link to='/home/my-leaves'>
+          <Link to='/home/leaves'>
             <Btn text="cancel" />
           </Link>
           <button
