@@ -234,6 +234,14 @@ export default function Trainings() {
                 </div>
               </div>
           </>)}
+          {role === "employee" && !training.is_evaluated && (
+            <Btn text="evaluate"
+              className="evaluate"
+              onClick={() => {
+                console.log("evaluate");
+              }}
+            />
+          )}
           </li>
         ))}
         </ul>
