@@ -7,12 +7,13 @@ export default async function leavesLoader() {
   const role = JSON.parse(localStorage.getItem("currentUser"))?.role;
 
   try {
-    let response;
+    let url;
     if(role === "employee") {
-      response = await httpClient.get(`/employees/${employee_id}/leaves`);
+      url = `/employees/${employee_id}/leaves`;
     } else {
-      response = await httpClient.get(`/leaves?company_id=${company_id}&year=2024`);
+      url = `/leaves?company_id=${company_id}&year=2024`;
     }
+    const response = await httpClient.get(url);
     console.log(response.data);
 
     return response.data;
