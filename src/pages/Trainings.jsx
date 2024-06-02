@@ -5,6 +5,7 @@ import { Icon } from '@iconify/react';
 import httpClient from '../services/httpClient';
 
 export default function Trainings() {
+  const role = JSON.parse(localStorage.getItem("currentUser"))?.role;
   const {trainings, employees} = useLoaderData();
   const [activeTrainingId, setActiveTrainingId] = useState(null);
   const [trainees, setTrainees] = useState({});
@@ -137,7 +138,7 @@ export default function Trainings() {
                 </span>
               </p>
             </div>
-            {training.id === activeTrainingId && (<>
+            {training.id === activeTrainingId && role !== "employee" && (<>
               <span
                 className='close'
                 onClick={() => setActiveTrainingId(null)}
