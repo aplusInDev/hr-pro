@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link, Outlet, useLoaderData } from 'react-router-dom';
+import { Link, Outlet, useLoaderData, useNavigate } from 'react-router-dom';
 import { Btn } from '../components/ui';
 import { Icon } from '@iconify/react';
 import httpClient from '../services/httpClient';
 
 export default function Trainings() {
+  const role = JSON.parse(localStorage.getItem("currentUser"))?.role;
   const {trainings, employees} = useLoaderData();
   const [activeTrainingId, setActiveTrainingId] = useState(null);
   const [trainees, setTrainees] = useState({});
@@ -13,6 +14,7 @@ export default function Trainings() {
   const [error, setError] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [deletetedTrainees, setDeletedTrainees] = useState({});
+  const navigate = useNavigate();
 
 
   function handleAdd(employee) {
@@ -104,11 +106,13 @@ export default function Trainings() {
   return (
     <>
     <Outlet />
-    <div className="new-employee">
-      <Link to='add-training'>
-        <Btn text="create training" />
-      </Link>
-    </div>
+    {role !== "employee" && (
+      <div className="new-employee">
+        <Link to='add-training'>
+          <Btn text="create training" />
+        </Link>
+      </div>
+    )}
     <section className="employee-leaves">
         <ul>
         {trainings.map(training => (
@@ -137,7 +141,7 @@ export default function Trainings() {
                 </span>
               </p>
             </div>
-            {training.id === activeTrainingId && (<>
+            {training.id === activeTrainingId && role !== "employee" && (<>
               <span
                 className='close'
                 onClick={() => setActiveTrainingId(null)}
@@ -233,6 +237,14 @@ export default function Trainings() {
                 </div>
               </div>
           </>)}
+          {role === "employee" && !training.is_evaluated && (
+            <Btn text="evaluate"
+              className="evaluate"
+              onClick={() => {
+                navigate(`/home/evaluation/${training.id}`)
+              }}
+            />
+          )}
           </li>
         ))}
         </ul>
