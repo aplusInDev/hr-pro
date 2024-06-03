@@ -10,3 +10,4 @@ export { default as employeeLeavesLoader } from './employeeLeavesLoader.js';
 export { default as leavesLoader } from './leavesLoader.js';
 export { default as trainingsLoader } from './trainingsLoader.js';
 export { default as addTraingLoader } from './addTrainingLoader.js';
+export { default as evaluationLoader } from './evaluationLoader.js';

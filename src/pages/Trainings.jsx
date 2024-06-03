@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Outlet, useLoaderData } from 'react-router-dom';
+import { Link, Outlet, useLoaderData, useNavigate } from 'react-router-dom';
 import { Btn } from '../components/ui';
 import { Icon } from '@iconify/react';
 import httpClient from '../services/httpClient';
@@ -14,6 +14,7 @@ export default function Trainings() {
   const [error, setError] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [deletetedTrainees, setDeletedTrainees] = useState({});
+  const navigate = useNavigate();
 
 
   function handleAdd(employee) {
@@ -105,11 +106,13 @@ export default function Trainings() {
   return (
     <>
     <Outlet />
-    <div className="new-employee">
-      <Link to='add-training'>
-        <Btn text="create training" />
-      </Link>
-    </div>
+    {role !== "employee" && (
+      <div className="new-employee">
+        <Link to='add-training'>
+          <Btn text="create training" />
+        </Link>
+      </div>
+    )}
     <section className="employee-leaves">
         <ul>
         {trainings.map(training => (
@@ -238,7 +241,7 @@ export default function Trainings() {
             <Btn text="evaluate"
               className="evaluate"
               onClick={() => {
-                console.log("evaluate");
+                navigate(`/home/evaluation/${training.id}`)
               }}
             />
           )}
