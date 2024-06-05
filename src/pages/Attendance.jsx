@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import '../assets/css/Attendance.css';
 import { excelFileReader } from '../utils/excelUtils';
 import { ExcelTable, AttendanceForm } from '../components';
-import httpClient from '../services/httpClient';
 import { DragDropContainer } from '../components/ui';
 
 
 const Attendance = () => {
-  const company_id = JSON.parse(localStorage.getItem('currentUser'))?.company_id;
   // const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
   const initialP = 'Drag and drop an Excel file here';
   const [file, setFile] = useState(null);
@@ -57,43 +55,17 @@ const Attendance = () => {
     }
   };
 
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-  };
-
-  const handleFileUpload = async () => {
-    if (file) {
-      const formData = new FormData();
-      formData.append('file', file);
-      
-      try {
-        await httpClient.post(`/companies/${company_id}/attendance`,
-          formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          }
-        );
-        setMessage('File uploaded successfully.');
-      } catch (err) {
-        setError(err.response.data['error']);
-      }
-    }
-    setTimeout(() => {
-      setError(null);
-      setMessage(initialP);
-    }, 3000);
-    setShow(false);
-  };
-
   return (
     <div className="attendance" onDragOver={handleDragOver} onDrop={handleDrop}>
-      <DragDropContainer 
-        handleFileChange={handleFileChange}
-        handleFileUpload={handleFileUpload}
+      <DragDropContainer
         error={error}
+        setError={setError}
         message={message}
+        setMessage={setMessage}
         show={show}
+        setShow={setShow}
+        file={file}
+        setFile={setFile}
       />
       <div className='or-div'>or</div>
       <AttendanceForm
