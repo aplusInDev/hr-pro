@@ -5,10 +5,12 @@ import { ExcelTable } from '../components';
 import httpClient from '../services/httpClient';
 import { Icon } from '@iconify/react';
 import { handleDownload } from '../helpers/excelHelpers';
+import { DragDropContainer } from '../components/ui';
 
 
 const Attendance = () => {
   const company_id = JSON.parse(localStorage.getItem('currentUser'))?.company_id;
+  // const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
   const initialP = 'Drag and drop an Excel file here';
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState(initialP);
@@ -128,17 +130,13 @@ const Attendance = () => {
 
   return (
     <div className="attendance" onDragOver={handleDragOver} onDrop={handleDrop}>
-      <div className="drag-drop-container">
-        <label>
-          <input type="file" title='attendance file' onChange={handleFileChange} />
-        </label>
-        {error ? <p className="error">{error}</p> : <p>{message}</p>}
-        {show && (
-          <button className="btn" onClick={handleFileUpload}>
-            Upload
-          </button>
-        )}
-      </div>
+      <DragDropContainer 
+        handleFileChange={handleFileChange}
+        handleFileUpload={handleFileUpload}
+        error={error}
+        message={message}
+        show={show}
+      />
       <div className='or-div'>or</div>
       <form
         onSubmit={handleSubmit}
