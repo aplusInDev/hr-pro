@@ -5,15 +5,14 @@ import { getFields } from '../services/fieldService';
 import '../assets/css/CustomForm.css'
 
 
-const currentUser = localStorage.getItem('currentUser');
-const company_id = JSON.parse(currentUser)?.company_id;
-const allFormsUrl = `http://localhost:5000/api/v1/companies/${company_id}/forms`;
 const initialForm = {
   name: '',
   description: ''
 }
 
 export default function CustomForm() {
+  const company_id = JSON.parse(localStorage.getItem('currentUser'))?.company_id;
+  const allFormsUrl = `http://localhost:5000/api/v1/companies/${company_id}/forms`;
   const [forms, setForms] = useState([]);
   const [form, setForm] = useState(initialForm);
   const [fields, setFields] = useState([]);
@@ -35,7 +34,7 @@ export default function CustomForm() {
       }
     };
     fetchForms();
-  }, []);
+  }, [allFormsUrl]);
 
   function handleShowPreview() {
     setIsShowPreview(!isShowPreview);
