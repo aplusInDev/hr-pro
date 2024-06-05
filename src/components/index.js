@@ -14,3 +14,4 @@ export { default as ExcelTable } from './ExcelTable.jsx';
 export { default as RequestLeave } from './RequestLeave';
 export { default as AddTraining } from './AddTraining';
 export { default as AttendanceForm } from './AttendanceForm';
+export { default as Company } from './Company';

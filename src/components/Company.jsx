@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
-import '../../assets/css/Company.css';
+import '../assets/css/Company.css';
 import { Form , useLoaderData } from 'react-router-dom';
-import Btn from './Btn';
+import { Btn } from './ui';
 
 export default function Company() {
   const [status, setStatus] = useState('idle'); // idle, editing, submitting

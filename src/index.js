@@ -23,10 +23,12 @@ import {
 } from './pages/loaders';
 import { action as loginAction } from './pages/Login';
 import {action as registerAction } from './pages/Register';
-import { Company } from './components/ui';
 import { companyAction } from './pages/actions';
 import homeLoader from './pages/loaders/homeLader';
-import { AddEmployee, AddDepartment, AddJob, RequestLeave, AddTraining } from './components';
+import {
+  AddEmployee, AddDepartment, AddJob,
+  RequestLeave, AddTraining, Company,
+} from './components';
 import Evaluation from './pages/Evaluation';
 
 const router = createBrowserRouter([
