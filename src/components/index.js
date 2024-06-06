@@ -11,6 +11,7 @@ export { default as Info } from './Info.jsx';
 export { default as AddDepartment } from './AddDepartment.jsx';
 export { default as AddJob } from './AddJob.jsx';
 export { default as ExcelTable } from './ExcelTable.jsx';
+export { default as AbsencesTable } from './AbsencesTable.jsx';
 export { default as RequestLeave } from './RequestLeave';
 export { default as AddTraining } from './AddTraining';
 export { default as AttendanceForm } from './AttendanceForm';

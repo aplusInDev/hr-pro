@@ -20,6 +20,7 @@ import {
   addTraingLoader,
   trainingsLoader,
   evaluationLoader,
+  absencesLoader,
 } from './pages/loaders';
 import { action as loginAction } from './pages/Login';
 import {action as registerAction } from './pages/Register';
@@ -116,7 +117,7 @@ const router = createBrowserRouter([
       {
         path: "absences",
         element: <Absences />,
-        loader: employeesLoader,
+        loader: absencesLoader,
       },
       {
         path: "leaves",

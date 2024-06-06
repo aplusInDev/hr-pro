@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Filter, ExcelTable } from '../components';
+import { AbsencesTable } from '../components';
 import '../assets/css/Employees.css';
-import { Outlet, useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import { excelFileReader } from '../utils/excelUtils';
 import httpClient from '../services/httpClient';
 import { Icon } from '@iconify/react';
 
 export default function Employees() {
-  const { employees } = useLoaderData();
+  const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
+  const { employees, absences } = useLoaderData();
   const [activeId, setActiveId] = useState(null);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -49,62 +50,64 @@ export default function Employees() {
 
   return (
     <>
-      <Filter />
-      <Outlet />
+      {/* <Filter />
+      <Outlet /> */}
       <section className="employees-container">
         {error && <h2 className='error'>{error}</h2>}
-        <ul>
-          {
-            employees.map(employee =>
-              <li
-                key={employee.id}
-                className={show && employee.id === activeId ? 'show' : 'hide'}
-              >
-                <div className='absent-info'>
-                  <span
-                    id={employee.id}
-                    onClick={(e) => {
-                      if(employee.absences === 0) return;
-                      handleClick(e);
-                    }}
-                    >
-                    {employee.first_name} {employee.last_name}
-                  </span>
-                  <span className='sum_absences'>
-                    {employee.absences} absences
-                  </span>
-                  <div>
-                    {employee.position_info.job_title}
-                  </div>
+        {role === 'employee'? (
+            <AbsencesTable data={absences} />
+          ):(
+          <ul>
+          {employees.map(employee =>
+            <li
+              key={employee.id}
+              className={show && employee.id === activeId ? 'show' : 'hide'}
+            >
+              <div className='absent-info'>
+                <span
+                  id={employee.id}
+                  onClick={(e) => {
+                    if(employee.absences === 0) return;
+                    handleClick(e);
+                  }}
+                  >
+                  {employee.first_name} {employee.last_name}
+                </span>
+                <span className='sum_absences'>
+                  {employee.absences} absences
+                </span>
+                <div>
+                  {employee.position_info.job_title}
                 </div>
-                {employee.id === activeId && data ? (
-                  <div className='absence-info'>
-                    <span
-                      className='close'
-                      onClick={() => setShow(false)}
-                    >
-                      <Icon icon="material-symbols-light:close" />
-                    </span>
-                    <ExcelTable data={data} />
-                    <button
-                      type='button'
-                      className='submit-btn'
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        console.log('download');
-                      }}
-                    >
-                      Download
-                      <Icon icon="akar-icons:download" />
-                    </button>
-                  </div>
-                  ) : (
-                    null
-                )}
-              </li>
-            )
-          }
-        </ul>
+              </div>
+              {employee.id === activeId && data ? (
+                <div className='absence-info'>
+                  <span
+                    className='close'
+                    onClick={() => setShow(false)}
+                  >
+                    <Icon icon="material-symbols-light:close" />
+                  </span>
+                  <AbsencesTable data={data} />
+                  <button
+                    type='button'
+                    className='submit-btn'
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      console.log('download');
+                    }}
+                  >
+                    Download
+                    <Icon icon="akar-icons:download" />
+                  </button>
+                </div>
+                ) : (
+                  null
+              )}
+            </li>
+          )}
+          </ul>
+        )}
       </section>
     </>
   );

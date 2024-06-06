@@ -11,3 +11,4 @@ export { default as leavesLoader } from './leavesLoader.js';
 export { default as trainingsLoader } from './trainingsLoader.js';
 export { default as addTraingLoader } from './addTrainingLoader.js';
 export { default as evaluationLoader } from './evaluationLoader.js';
+export { default as absencesLoader } from './absencesLoader.js';

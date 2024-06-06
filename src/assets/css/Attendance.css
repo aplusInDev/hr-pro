@@ -87,6 +87,8 @@ main.wide .attendance {
 .attendance select {
   margin: 0 15px 0 10px;
   height: 30px;
-  max-height: 50px;
-  overflow: hidden;
+}
+
+.attendance select::part(button) {
+  background-color: red;
 }
