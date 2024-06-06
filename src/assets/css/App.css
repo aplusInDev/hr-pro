@@ -27,7 +27,8 @@ input {
 }
 
 /* styling disabled input */
-input:disabled {
+input:disabled,
+textarea:disabled {
   background-color: inherit;
   color: inherit;
 }
