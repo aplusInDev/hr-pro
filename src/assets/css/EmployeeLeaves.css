@@ -72,15 +72,14 @@ li:hover button.reject {
 
 .btn.reject:hover,
 .btn.accept:hover {
-  background-color: red;
+  background-color: rgb(255,0,0,0.5);
   color: white;
-  border-color: red;
+  border: none;
+  /* border-color: rgb(255,0,0,0.5); */
 }
 
 .btn.accept:hover {
-  border-color: var(--btnColor);
-  background-color: unset;
-  color: var(--btnColor);
+  background-color: rgb(0, 255, 0, 0.5);
 }
 
 .employee-leaves .btns {
@@ -249,6 +248,18 @@ li:hover button.reject {
 
 .evaluate {
   position: absolute;
+  right: 170px;
+  bottom: 10px;
+}
+
+.show-evaluations {
+  position: absolute;
   right: 10px;
   bottom: 10px;
+  padding: 2px 15px;
+}
+
+.evaluate:hover,
+.show-evaluations:hover {
+  background-color: var(--midnight-black);
 }

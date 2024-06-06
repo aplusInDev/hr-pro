@@ -31,14 +31,12 @@ export default function Evaluation() {
     const trainingId = loaderData.trainingId;
     const trainee_id = JSON.parse(localStorage.getItem("currentUser"))?.employee_id;
     try {
-      const response = await httpClient.post(
+      await httpClient.post(
         `/evaluation?trainee_id=${trainee_id}&training_id=${trainingId}`, evaluationData);
-      console.log(response.data);
       navigate('/home/trainings');
     } catch (err) {
       console.log("err: ", err.response.data.error);
     }
-    // console.log(evaluationData)
   }
 
   return (
@@ -87,9 +85,9 @@ export default function Evaluation() {
           value={false} onChange={handleChange}
           defaultChecked={true}
         />
-
-        {/* <button type="reset" className='btn'>clear</button> */}
-        <button type='submit' className='submit-btn'> submit </button>
+        <button type='submit' className='submit-btn'>
+          submit
+        </button>
       </form>
     </section>
   )
