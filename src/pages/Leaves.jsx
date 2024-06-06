@@ -65,10 +65,12 @@ export default function Leaves() {
               <p>
                 {updatingLeaveId === leave.id && 'Updating...'}
               </p>
-              <p>
-                <span>employee</span>
-                <span>{leave.employee}</span>
-              </p>
+              {role !== "employee" && (
+                <p>
+                  <span>employee</span>
+                  <span>{leave.employee}</span>
+                </p>
+              )}
               <p>
                 <span>type</span>
                 <span>{leave.leave_type}</span>
