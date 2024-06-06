@@ -1,0 +1,37 @@
+.absent-info {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.employee-short-info {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.employee-short-info > span:first-child {
+  cursor: pointer;
+  color: var(--color5);
+}
+
+.absences-container li.hide:hover span:first-child {
+  color: var(--color8);
+}
+
+.employee-short-info > span:last-child {
+  font-size: 12px;
+}
+
+.absences-short-info {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.absences-short-info > span {
+  text-align: end;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 200;
+  color: var(--color14);
+}

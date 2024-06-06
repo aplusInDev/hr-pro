@@ -29,7 +29,8 @@
 }
 
 .employees-container li {
-  background-color: var(--midnight-black);
+  background-color: rgb(0, 0, 0, 0.5);
+  filter: drop-shadow(0 0 5px var(--color3));
   width: 100%;
   min-height: 30px;
   line-height: 30px;
@@ -43,13 +44,6 @@
   filter: brightness(.7);
   transition: background-color .5s ease-in-out;
 }
-
-/* will removed */
-/* li.show,
-li.hide {
-  position: relative;
-} */
-/* will removed___________ */
 
 .employees-container span.close {
   cursor: pointer;
@@ -141,15 +135,5 @@ li.hide > .main-info > div {
 }
 
 .employees-container .submit-btn:hover {
-  color: var(--pfontColor);
-}
-
-
-/* styling absences */
-.sum_absences {
-  position: absolute;
-  right: 5px;
-  font-size: 14px;
-  font-weight: 400;
   color: var(--pfontColor);
 }
