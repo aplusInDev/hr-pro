@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import '../assets/css/Attendance.css';
 import { excelFileReader } from '../utils/excelUtils';
 import { ExcelTable, AttendanceForm } from '../components';
-import { DragDropContainer } from '../components/ui';
+import { CalendarForm, DragDropContainer } from '../components/ui';
 
 
 const Attendance = () => {
-  // const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
+  const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
   const initialP = 'Drag and drop an Excel file here';
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState(initialP);
@@ -54,26 +54,34 @@ const Attendance = () => {
       }, 2000);
     }
   };
-
+  
   return (
     <div className="attendance" onDragOver={handleDragOver} onDrop={handleDrop}>
-      <DragDropContainer
-        error={error}
-        setError={setError}
-        message={message}
-        setMessage={setMessage}
-        show={show}
-        setShow={setShow}
-        file={file}
-        setFile={setFile}
-      />
-      <div className='or-div'>or</div>
-      <AttendanceForm
-        setData={setData}
-        setError={setError}
-        dateStatus={dateStatus}
-        setDateStatus={setDateStatus}
-      />
+      {error && <p className="error">{error}</p>}
+      {role === "employee"? (
+        <CalendarForm 
+          setData={setData}
+          setError={setError}
+        />
+        ) : (
+          <>
+          <DragDropContainer
+            message={message}
+            setMessage={setMessage}
+            show={show}
+            setShow={setShow}
+            file={file}
+            setFile={setFile}
+          />
+          <div className='or-div'>or</div>
+          <AttendanceForm
+            setData={setData}
+            dateStatus={dateStatus}
+            setDateStatus={setDateStatus}
+          />
+        </>
+        )
+      }
       <div>{data && <ExcelTable data={data} />}</div>
     </div>
   );

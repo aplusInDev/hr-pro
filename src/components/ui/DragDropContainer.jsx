@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import httpClient from '../../services/httpClient';
 
 
 export default function DragDropContainer({
-  error, setError, show, setShow,
-  message, setMessage, file, setFile,
+  show, setShow, message, setMessage, file, setFile,
 }) {
   const company_id = JSON.parse(localStorage.getItem("currentUser"))?.company_id;
   const initialP = 'Drag and drop an Excel file here';
+  const [error, setError] = useState(null);
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);

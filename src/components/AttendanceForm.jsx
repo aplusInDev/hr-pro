@@ -5,12 +5,11 @@ import { handleDownload } from '../helpers/excelHelpers';
 import { excelFileReader } from '../utils/excelUtils';
 
 export default function AttendanceForm({
-  setData, setError,
-  dateStatus, setDateStatus
+  setData, dateStatus, setDateStatus
 }) {
   const company_id = JSON.parse(localStorage.getItem('currentUser'))?.company_id;
   const [selectedDate, setSelectedDate] = useState('');
-  const [dateError, setDateError] = useState(null);
+  const [Error, setError] = useState(null);
   const [responseFile, setResponseFile] = useState(null);
 
   const handleChange = (event) => {
@@ -20,32 +19,32 @@ export default function AttendanceForm({
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (selectedDate) {
-      setDateStatus('submitted');
-      try {
-        const responseFile = await httpClient.get(`/companies/${company_id}/attendance?date=${selectedDate}`, {
-          responseType: 'blob',
-        });
-        const responseBlob = new Blob([responseFile.data], {
-          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-        });
-        const jsonData = await excelFileReader(responseBlob);
-        setData(jsonData);
-        setDateError(null);
-        setResponseFile(responseFile);
-      } catch (err) {
-        // check if error status code is 404
-        setDateStatus('idle');
-        setData(null);
-        setResponseFile(null);
-        if (err.response.status === 404) {
-          setDateError("No attendance data found for the selected date");
-        } else {
-          setDateError("Request failed. Please try again later.");
-        }
+    if (!selectedDate) {
+      setError('Please select a date');
+      return;
+    }
+    setDateStatus('submitted');
+    try {
+      const responseFile = await httpClient.get(`/companies/${company_id}/attendance?date=${selectedDate}`, {
+        responseType: 'blob',
+      });
+      const responseBlob = new Blob([responseFile.data], {
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+      });
+      const jsonData = await excelFileReader(responseBlob);
+      setData(jsonData);
+      setError(null);
+      setResponseFile(responseFile);
+    } catch (err) {
+      // check if error status code is 404
+      setDateStatus('idle');
+      setData(null);
+      setResponseFile(null);
+      if (err.response.status === 404) {
+        setError("No attendance data found for the selected date");
+      } else {
+        setError("Request failed. Please try again later.");
       }
-    } else {
-      setError("Please select a valid date");
     }
   }
 
@@ -87,8 +86,8 @@ export default function AttendanceForm({
           )
         }
         {
-          dateError && (
-            <p className='error'>{dateError}</p>
+          Error && (
+            <p className='error'>{Error}</p>
           )
         }
       </form>
