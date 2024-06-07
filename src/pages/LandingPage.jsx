@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Alert, Logo } from '../components/ui';
+import { Alert, Btn, Logo } from '../components/ui';
 import "../assets/css/LandingPage.css";
 
 export default function LandingPage() {
@@ -9,8 +9,12 @@ export default function LandingPage() {
       <header>
         <Logo />
         <div className="btns">
-          <button type='button'><Link to={'login'}>Login In</Link></button>
-          <button type='button'><Link to={'register'}>Sign Up</Link></button>
+          <Link to={'login'}>
+            <Btn text="login" className="submit-btn" />
+          </Link>
+          <Link to={'register'}>
+            <Btn text="register" />
+          </Link>
         </div>
       </header>
       <Alert

@@ -33,40 +33,17 @@
 
 .landing-page .btns {
   position: absolute;
-  width: 200px;
   right: 2px;
   top: 2px;
+  width: 220px;
   padding: 5px 10px;
+  display: flex;
+  flex-flow: row nowrap;
 }
 
-.landing-page a {
-  color: #eeeeee;
-}
-
-.landing-page .btns > button {
-  background: transparent;
-  width: 80px;
-  height: 25px;
-  border: none;
-  border-radius: 10px;
-  filter: drop-shadow(0px 1px 5px #1c1818);
-}
-
-.landing-page .btns > button:hover {
-  border: none;
-  background: linear-gradient(-45deg, #042a21, #253876d5, #fefefe);
-	background-size: 400% 400%;
-	animation: gradient 8s ease infinite;
-  filter: drop-shadow(5px 12px 5px #363030);
-}
-
-.landing-page .btns > button:first-child {
-  border: 1px solid #5b809f;
-}
-
-.landing-page .btns > button:last-child {
-  margin-left: 5px;
-  background-color: #011220;
+.landing-page .btns > a:last-child button {
+  background-color: var(--icon-color);
+  border-color: var(--icon-color);
 }
 
 .landing-page section {
