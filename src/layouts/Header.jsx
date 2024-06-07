@@ -13,6 +13,20 @@ function Header() {
       <ul className='header-icons'>
         <li className="dark-ground">
           <Icon icon="akar-icons:moon" />
+          <ul className="dark-light">
+            <li>
+              <Icon icon="akar-icons:moon" />
+              <span>Dark mode</span>
+            </li>
+            <li>
+              <Icon icon="akar-icons:sun" />
+              <span>Light mode</span>
+            </li>
+            <li>
+            <Icon icon="marketeq:settings" />
+              <span>Auto</span>
+            </li>
+          </ul>
         </li>
         <li className="translation">
           <Icon icon="carbon:language" />
