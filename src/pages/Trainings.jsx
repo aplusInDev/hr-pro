@@ -51,15 +51,13 @@ export default function Trainings() {
   }
 
   function handleClick(id) {
-    if(id === activeTrainingId) {
-      console.log("already active");
+    if(id === activeTrainingId || role === "employee") {
       return;
     } else {
       const traineesNames = Object.keys(trainings.find(training => training.id === id).trainees);
       setActiveTrainingId(id);
       setTrainees(trainings.find(training => training.id === id).trainees);
       setNonTrainees(employees.filter(employee => !traineesNames.includes(employee)));
-      console.log('new active id');
     }
   }
 
@@ -236,15 +234,23 @@ export default function Trainings() {
                   </ul>
                 </div>
               </div>
-          </>)}
-          {role === "employee" && !training.is_evaluated && (
-            <Btn text="evaluate"
-              className="evaluate"
-              onClick={() => {
-                navigate(`/home/evaluation/${training.id}`)
-              }}
-            />
-          )}
+            </>)}
+            {training.id !== activeTrainingId && (
+              <Btn text="show evaluations"
+                className="show-evaluations"
+                onClick={() => {
+                  console.log(training.evaluations);
+                }}
+              />
+            )}
+            {role === "employee" && !training.is_evaluated && (
+              <Btn text="evaluate"
+                className="evaluate submit-btn"
+                onClick={() => {
+                  navigate(`/home/evaluation/${training.id}`)
+                }}
+              />
+            )}
           </li>
         ))}
         </ul>

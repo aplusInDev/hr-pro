@@ -83,3 +83,12 @@ main.wide .attendance {
   margin: 10px 15px 0 0;
   height: 30px;
 }
+
+.attendance select {
+  margin: 0 15px 0 10px;
+  height: 30px;
+}
+
+.attendance select::part(button) {
+  background-color: red;
+}

@@ -8,6 +8,7 @@ export default function Btn(props) {
       onClick={props.onClick}
     >
       {props.text}
+      {props.children}
     </button>
   )
 }

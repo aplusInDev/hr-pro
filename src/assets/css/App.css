@@ -27,7 +27,8 @@ input {
 }
 
 /* styling disabled input */
-input:disabled {
+input:disabled,
+textarea:disabled {
   background-color: inherit;
   color: inherit;
 }
@@ -109,7 +110,6 @@ input[type="radio"]:checked::after {
 .btn:hover{
   border-color: #656d6fb9;
   background-color: #656d6fb9;
-  /* color: var(--color13); */
   color: var(--color5);
 }
 

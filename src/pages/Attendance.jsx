@@ -1,61 +1,19 @@
 import React, { useState } from 'react';
 import '../assets/css/Attendance.css';
 import { excelFileReader } from '../utils/excelUtils';
-import { ExcelTable } from '../components';
-import httpClient from '../services/httpClient';
-import { Icon } from '@iconify/react';
-import { handleDownload } from '../helpers/excelHelpers';
+import { ExcelTable, AttendanceForm } from '../components';
+import { CalendarForm, DragDropContainer } from '../components/ui';
 
 
 const Attendance = () => {
-  const company_id = JSON.parse(localStorage.getItem('currentUser'))?.company_id;
+  const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
   const initialP = 'Drag and drop an Excel file here';
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState(initialP);
   const [show, setShow] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
-  const [selectedDate, setSelectedDate] = useState('');
   const [dateStatus, setDateStatus] = useState('idle'); // idle, changing, submitted
-  const [dateError, setDateError] = useState(null);
-  const [responseFile, setResponseFile] = useState(null);
-
-  const handleChange = (event) => {
-    setSelectedDate(event.target.value);
-    if (dateStatus !== 'changing') setDateStatus('changing');
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log(company_id);
-    if (selectedDate) {
-      setDateStatus('submitted');
-      try {
-        const responseFile = await httpClient.get(`/companies/${company_id}/attendance?date=${selectedDate}`, {
-          responseType: 'blob',
-        });
-        const responseBlob = new Blob([responseFile.data], {
-          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-        });
-        const jsonData = await excelFileReader(responseBlob);
-        setData(jsonData);
-        setDateError(null);
-        setResponseFile(responseFile);
-      } catch (err) {
-        // check if error status code is 404
-        setDateStatus('idle');
-        setData(null);
-        setResponseFile(null);
-        if (err.response.status === 404) {
-          setDateError("No attendance data found for the selected date");
-        } else {
-          setDateError("Request failed. Please try again later.");
-        }
-      }
-    } else {
-      setError("Please select a valid date");
-    }
-  }
   
 
   const handleDragOver = (event) => {
@@ -96,92 +54,34 @@ const Attendance = () => {
       }, 2000);
     }
   };
-
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-  };
-
-  const handleFileUpload = async () => {
-    if (file) {
-      const formData = new FormData();
-      formData.append('file', file);
-      
-      try {
-        await httpClient.post(`/companies/${company_id}/attendance`,
-          formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          }
-        );
-        setMessage('File uploaded successfully.');
-      } catch (err) {
-        setError(err.response.data['error']);
-      }
-    }
-    setTimeout(() => {
-      setError(null);
-      setMessage(initialP);
-    }, 3000);
-    setShow(false);
-  };
-
+  
   return (
     <div className="attendance" onDragOver={handleDragOver} onDrop={handleDrop}>
-      <div className="drag-drop-container">
-        <label>
-          <input type="file" title='attendance file' onChange={handleFileChange} />
-        </label>
-        {error ? <p className="error">{error}</p> : <p>{message}</p>}
-        {show && (
-          <button className="btn" onClick={handleFileUpload}>
-            Upload
-          </button>
-        )}
-      </div>
-      <div className='or-div'>or</div>
-      <form
-        onSubmit={handleSubmit}
-      >
-        <label htmlFor="selectedDate">
-          <div>select attendance date</div>
-        </label>
-        <input
-          type="date"
-          id="selectedDate"
-          value={selectedDate}
-          onChange={handleChange}
+      {error && <p className="error">{error}</p>}
+      {role === "employee"? (
+        <CalendarForm 
+          setData={setData}
+          setError={setError}
         />
-        {
-          dateStatus === 'submitted' && (
-            <button
-              type='button'
-              className='submit-btn'
-              onClick={() => {
-                const fileName = `attendance-${selectedDate}.xlsx`;
-                handleDownload(responseFile, fileName);;
-              }}
-            >
-              download <Icon icon="akar-icons:download" />
-            </button>
-          )
-        }
-        {
-          dateStatus === 'changing' && (
-            <button
-              type="submit"
-              className='submit-btn'
-            >
-              Submit
-            </button>
-          )
-        }
-        {
-          dateError && (
-            <p>{dateError}</p>
-          )
-        }
-      </form>
+        ) : (
+          <>
+          <DragDropContainer
+            message={message}
+            setMessage={setMessage}
+            show={show}
+            setShow={setShow}
+            file={file}
+            setFile={setFile}
+          />
+          <div className='or-div'>or</div>
+          <AttendanceForm
+            setData={setData}
+            dateStatus={dateStatus}
+            setDateStatus={setDateStatus}
+          />
+        </>
+        )
+      }
       <div>{data && <ExcelTable data={data} />}</div>
     </div>
   );

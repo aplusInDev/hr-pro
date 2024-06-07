@@ -22,14 +22,7 @@ export default function ExcelTable(data) {
             <tr key={index}>
               {Object.keys(row).map((key, index) => (
                 <td key={index}>
-                  {key === 'reason' ? (
-                    <textarea
-                      rows='2'
-                      cols='30'
-                      defaultValue={row[key]}
-                      readOnly
-                    />
-                  ) : (row[key])}
+                  {row[key]}
                 </td>
               ))}
             </tr>
