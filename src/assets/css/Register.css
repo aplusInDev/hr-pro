@@ -1,27 +1,11 @@
 .register,
 .login {
-  top: 5px;
-  right: 5px;
+  position: relative;
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
   scroll-behavior: smooth;
-  padding-bottom: 50px;
-  background: linear-gradient(5deg, rgb(40, 5, 5), rgba(93, 49, 49, 0.632), #02042881, rgba(0, 75, 128, 0.768));
-	background-size: 400% 400%;
-	/* animation: gradient 15s ease infinite; */
-}
-
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  background-color: var(--midnight-black);
 }
 
 .register header,
@@ -34,20 +18,17 @@
 
 .register form,
 .login form {
+  position: absolute;
+  top: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   width: 500px;
-  min-height: 500px;
-  margin: 50px auto;
-  padding: 20px 40px;
-  background-color: rgba(6, 23, 54, 0.289);
-  border-radius: 20px;
-  filter: drop-shadow(5px 12px 5px #363030);
-  color: #cccdd9;
-}
-
-.login form {
-  min-height: 350px;
+  height: 100%;
+  padding: 40px;
+  color: var(--midnight-black);
+  /* background-color: #a0a6a8; */
+  background-color: #717b98;
 }
 
 .register form span,
@@ -96,10 +77,8 @@
 
 .register button:hover,
 .login button:hover {
-  background: linear-gradient(-45deg, #042a21, #253876d5, #fefefe);
-	background-size: 400% 400%;
-	animation: gradient 8s ease infinite;
-  filter: drop-shadow(5px 12px 5px #363030);
+  background-color: #2f2e2e3c;
+  filter: drop-shadow(1px 1px 5px #363030);
 }
 
 .register .company-info {
