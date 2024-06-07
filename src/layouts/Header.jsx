@@ -21,15 +21,20 @@ function Header() {
           <ul className="dark-light">
             <li>
               <Icon icon="akar-icons:moon" />
-              <span>Dark mode</span>
+              <span id='dark'
+                 onClick={handleChangeMode}
+              >Dark mode</span>
             </li>
             <li>
               <Icon icon="akar-icons:sun" />
-              <span>Light mode</span>
+              <span id='light'
+              onClick={handleChangeMode}
+              >Light mode</span>
             </li>
             <li>
             <Icon icon="marketeq:settings" />
-              <span>Auto</span>
+              <span id='auto'
+              onClick={handleChangeMode}>Auto</span>
             </li>
           </ul>
         </li>
@@ -81,3 +86,19 @@ function Header() {
 }
 
 export default Header
+
+function handleChangeMode(e) {
+  const them = e.target.id;
+  const profile = document.querySelector('.profile');
+
+  if (them === 'dark') {
+    profile.classList.add('dark-mode');
+    localStorage.setItem('theme', 'dark');
+  } else if (them === 'light') {
+    profile.classList.remove('dark-mode');
+    localStorage.setItem('theme', 'light');
+  } else {
+    profile.classList.remove('dark-mode');
+    localStorage.removeItem('theme');
+  }
+}

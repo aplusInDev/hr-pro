@@ -11,7 +11,7 @@
 
 .employee-short-info > span:first-child {
   cursor: pointer;
-  color: var(--color5);
+  color: var(--midnight-black);
 }
 
 .absences-container li.hide:hover span:first-child {

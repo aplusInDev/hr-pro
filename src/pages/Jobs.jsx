@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Info, Filter } from '../components';
+import { Info } from '../components';
 import { Btn } from '../components/ui';
 import '../assets/css/Employees.css';
 import { Outlet, Link, useLoaderData } from 'react-router-dom';
@@ -23,7 +23,7 @@ export default function Jobs() {
           <Btn text="Add Job" />
         </Link>
       </div>
-      <Filter />
+      {/* <Filter /> */}
       <Outlet />
       <section className="employees-container">
         <ul>

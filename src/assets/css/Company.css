@@ -14,8 +14,7 @@
   min-height: 700px;
   margin: 20px auto;
   padding: 20px 40px;
-  /* background-color: rgba(2, 16, 42, 0.289); */
-  background-color: var(--midnight-black);
+  background-color: var(--primary-card-gb);
   border-radius: 20px;
   filter: drop-shadow(5px 12px 5px #363030);
   display: flex;

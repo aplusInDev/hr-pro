@@ -29,8 +29,7 @@
 }
 
 .employees-container li {
-  background-color: rgb(0, 0, 0, 0.5);
-  filter: drop-shadow(0 0 5px var(--color3));
+  background-color: var(--primary-card-gb);
   width: 100%;
   min-height: 30px;
   line-height: 30px;
@@ -81,6 +80,7 @@ li.hide > .absent-info > span,
 li.hide > .main-info > span {
   margin: 5px;
   cursor: pointer;
+  color: var(--color8);
 }
 
 li.hide:hover > .absent-info > span,
@@ -104,7 +104,6 @@ li.hide > .main-info > div {
 
 .employees-container .form-preview {
   width: 100%;
-  /* background: transparent; */
   margin: 0;
   margin-top: 20px;
   padding-top: 10px;

@@ -102,8 +102,8 @@ input[type="radio"]:checked::after {
   border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
-  border: 1px solid white;
-  color: #eee;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   margin: 20px 4px;
 }
 

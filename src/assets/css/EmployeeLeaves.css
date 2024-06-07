@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
   padding: 10px;
 }
 
@@ -34,19 +34,23 @@
 }
 
 .employee-leaves li {
-  background-color: var(--midnight-black);
+  /* background-color: var(--midnight-black); */
+  background-color: var(--primary-card-gb);
+  filter: drop-shadow(0 0 5px var(--color3));
   width: 100%;
   min-height: 30px;
   line-height: 30px;
   padding: 10px;
   border-radius: 10px;
   position: relative;
+  color: var(--primary-color);
 }
 
 .employee-leaves li:not(li.active, .details li):hover {
   background-color: var(--color3);
   filter: brightness(.7);
   transition: background-color .5s ease-in-out;
+  color: var(--color5);
 }
 
 .employee-leaves p {
@@ -65,9 +69,10 @@
 }
 
 li:hover button.accept,
-li:hover button.reject {
-  border-color: var(--midnight-black);
-  color: var(--midnight-black);
+li:hover button.reject,
+li:hover .show-evaluations {
+  border-color: var(--color5);
+  color: var(--color5);
 }
 
 .btn.reject:hover,
@@ -75,7 +80,6 @@ li:hover button.reject {
   background-color: rgb(255,0,0,0.5);
   color: white;
   border: none;
-  /* border-color: rgb(255,0,0,0.5); */
 }
 
 .btn.accept:hover {
