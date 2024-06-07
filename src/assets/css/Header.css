@@ -113,7 +113,12 @@
   margin-left: 15px;
 }
 
+.dark-light.show {
+  display: block;
+}
+
 .dark-light {
+  display: none;
   width: 180px;
   min-height: 100px;
   padding: 15px 5px;

@@ -11,7 +11,12 @@ function Header() {
     <header className='main-header'>
       <Logo />
       <ul className='header-icons'>
-        <li className="dark-ground">
+        <li className="dark-ground"
+          onClick={() => {
+            const darkLight = document.querySelector('.dark-light');
+            darkLight.classList.toggle('show');
+          }}
+        >
           <Icon icon="akar-icons:moon" />
           <ul className="dark-light">
             <li>

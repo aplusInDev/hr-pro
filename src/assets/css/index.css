@@ -8,7 +8,6 @@
   --midnight-blue: #000320;
   --second-dark-color: #000205;
   --main-light-color: #D9D9D9;
-  --aside-ground: rgb(6, 22, 33);
   --icon-color: #1A9BB7;
   --disabled-input-color: #3bb5de;
   --current-btn: #1A7EB7;
@@ -45,12 +44,15 @@
   --color13: #99a0ab;
   --color14: #7687a1;
   --pfontColor: #48566b;
-}
-
-.dark {
-  --footer-height: 44px;
-  --midnight-black: #0A0E0B;
-  --seconde-dark-color: #000205;
+  --primary-bg: #0A0E0B;
+  --secondary-gb: #000205;
+  --aside-ground: rgb(37, 155, 233);
+  }
+  
+  .dark {
+  --aside-ground: rgb(6, 22, 33);
+  --primary-bg: #0A0E0B;
+  --secondary-gb: #000205;
 }
 
 .error {
