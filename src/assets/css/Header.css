@@ -8,32 +8,6 @@
   left: 0;
 }
 
-.main-header h1 {
-  font: italic bold 25px 'Lato', sans-serif;
-  color: #F2F2F2;
-  width: 200px;
-  height: 40px;
-  padding-left: 10px;
-  padding-top: 10px;
-  display: flex;
-  flex-flow: row nowrap;
-}
-
-.main-header h1 > span {
-  font: italic bold 25px 'Lato', sans-serif;
-  background-color: #F2F2F2;
-  border-radius: 50%;
-  color: #000000;
-  width: 35px;
-  height: 35px;
-  margin-right: 5px;
-  padding-left: 4px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-
 .main-header ul.header-icons {
   display: flex;
   flex-flow: row nowrap;
@@ -66,11 +40,6 @@
 .header-icons > li:last-child {
   position: relative;
 }
-
-/* li:last-child:focus .profile-settings,
-li:last-child:hover .profile-settings {
-  display: block;
-} */
 
 .profile-settings.show {
   display: block;

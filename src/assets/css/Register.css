@@ -32,30 +32,6 @@
   margin-bottom: 30px;
 }
 
-.register .logo,
-.login .logo {
-  width: calc(100% - 200px);
-  height: 30px;
-  padding-left: 5px;
-}
-
-.logo span {
-  display: inline-block;
-  padding: 5px 1px;
-  width: 30px;
-  height: 30px;
-  color: #000000;
-  font-weight: 600;
-  font-size: 1.3rem;
-}
-
-.logo span:first-child {
-  color: #fefefe;
-  background-color: #000000;
-  border-radius: 50%;
-  padding-left: 5px;
-}
-
 .register form,
 .login form {
   display: flex;

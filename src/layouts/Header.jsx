@@ -1,18 +1,15 @@
 import React from 'react'
 import '../assets/css/Header.css'
 import { Icon } from '@iconify/react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { Logo } from '../components/ui';
 
 function Header() {
   const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
 
   return (
     <header className='main-header'>
-      <Link to={"/"}>
-        <h1>
-          <span>hr</span> pro
-        </h1>
-      </Link>
+      <Logo />
       <ul className='header-icons'>
         <li className="dark-ground">
           <Icon icon="akar-icons:moon" />

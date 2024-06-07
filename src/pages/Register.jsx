@@ -1,7 +1,8 @@
 import { React, useState } from 'react'
-import { Form, Link, redirect } from 'react-router-dom';
+import { Form, redirect } from 'react-router-dom';
 import httpClient from '../services/httpClient';
 import '../assets/css/Register.css';
+import { Logo } from '../components/ui';
 
 export default function Register() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,11 +38,7 @@ export default function Register() {
   return (
     <div className="register">
       <header>
-        <div className="logo">
-          <Link to="/">
-            <span>hr</span><span>pro</span>
-          </Link>
-        </div>
+        <Logo />
       </header>
       <Form
         method='post'
