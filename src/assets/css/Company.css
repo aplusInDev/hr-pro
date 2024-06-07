@@ -16,10 +16,11 @@
   padding: 20px 40px;
   background-color: var(--primary-card-gb);
   border-radius: 20px;
-  filter: drop-shadow(5px 12px 5px #363030);
+  filter: drop-shadow(5px 5px 5px #363030);
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  color: var(--primary-color);
 }
 
 .profile-company form h1 {
@@ -28,7 +29,7 @@
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: 600;
-  color: #eee;
+  color: var(--primary-color);
 }
 
 .profile-company form span {

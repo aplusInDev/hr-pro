@@ -8,6 +8,13 @@
   left: 0;
 }
 
+header a {
+  width: 100px;
+  display: inline-block;
+  height: 50px;
+  padding: 5px 0;
+}
+
 .main-header ul.header-icons {
   display: flex;
   flex-flow: row nowrap;
@@ -28,7 +35,8 @@
   padding-top: 5px;
 }
 
-.header-icons > li:hover {
+.header-icons > li:hover,
+.dark-ground.active {
   color: rgb(98, 161, 182);
 }
 
@@ -145,6 +153,7 @@
   gap: 10px;
 }
 
-.dark-light > li:hover {
+.dark-light > li:hover,
+.dark-light > li.active {
   background-color: #acb4b5;
 }

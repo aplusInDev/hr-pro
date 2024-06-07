@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../assets/css/Header.css'
 import { Icon } from '@iconify/react';
 import { NavLink } from 'react-router-dom';
 import { Logo } from '../components/ui';
 
 function Header() {
+  const initialMode = localStorage.getItem('theme') || 'auto';
   const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
+  const [mode, setMode] = useState(initialMode); // auto, dark, light
+
+  useEffect(() => {
+    handleChangeMode(mode);
+  }, [mode]);
 
   return (
     <header className='main-header'>
       <Logo />
       <ul className='header-icons'>
-        <li className="dark-ground"
+        <li className={mode==='dark'? 'dark-ground active': 'dark-ground'}
           onClick={() => {
             const darkLight = document.querySelector('.dark-light');
             darkLight.classList.toggle('show');
@@ -19,22 +25,23 @@ function Header() {
         >
           <Icon icon="akar-icons:moon" />
           <ul className="dark-light">
-            <li>
+            <li className={mode==='dark'? 'active': ''}
+              onClick={() => {setMode("dark")}}
+            >
               <Icon icon="akar-icons:moon" />
-              <span id='dark'
-                 onClick={handleChangeMode}
-              >Dark mode</span>
+              <span>Dark mode</span>
             </li>
-            <li>
+            <li className={mode==='light'? 'active': ''}
+              onClick={() => {setMode("light")}}
+            >
               <Icon icon="akar-icons:sun" />
-              <span id='light'
-              onClick={handleChangeMode}
-              >Light mode</span>
+              <span>Light mode</span>
             </li>
-            <li>
+            <li className={mode==='auto'? 'active': ''}
+              onClick={() => {setMode("auto")}}
+            >
             <Icon icon="marketeq:settings" />
-              <span id='auto'
-              onClick={handleChangeMode}>Auto</span>
+              <span>Auto</span>
             </li>
           </ul>
         </li>
@@ -87,18 +94,44 @@ function Header() {
 
 export default Header
 
-function handleChangeMode(e) {
-  const them = e.target.id;
-  const profile = document.querySelector('.profile');
-
-  if (them === 'dark') {
-    profile.classList.add('dark-mode');
+function handleChangeMode(theme) {
+  if (theme === 'dark') {
     localStorage.setItem('theme', 'dark');
-  } else if (them === 'light') {
-    profile.classList.remove('dark-mode');
+    enableDarkMode();
+    } else if (theme === 'light') {
     localStorage.setItem('theme', 'light');
-  } else {
-    profile.classList.remove('dark-mode');
-    localStorage.removeItem('theme');
+    disableDarkMode()
+    } else {
+    localStorage.setItem('theme', 'auto');
+    handleAutoTheme();
   }
+}
+
+window
+  .matchMedia('(prefers-color-scheme: dark)')
+  .addEventListener('change', (e) => (handleAutoTheme()));
+
+function handleAutoTheme() {
+  const darkGround = document.querySelector('.dark-ground');
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    enableDarkMode();
+    darkGround.classList.add('active');
+    } else {
+      disableDarkMode();
+      darkGround.classList.remove('active');
+  }
+}
+
+function enableDarkMode() {
+  const profile = document.querySelector('.profile');
+  const darkGround = document.querySelector('.dark-ground');
+  darkGround.classList.add('active');
+  profile.classList.add('dark-mode');
+}
+  
+function disableDarkMode() {
+  const profile = document.querySelector('.profile');
+  const darkGround = document.querySelector('.dark-ground');
+  profile.classList.remove('dark-mode');
+  darkGround.classList.remove('active');
 }
