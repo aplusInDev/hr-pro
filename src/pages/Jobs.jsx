@@ -33,7 +33,9 @@ export default function Jobs() {
           {
             jobs.map(job => 
               <li key={job.id}
-                className={show && job.id === activeId ? 'active' : 'hide'}
+              className={"main-item " + (
+                show && job.id === activeId ? 'active' : 'hide'
+              )}
               >
                 <div className="main-info">
                   <span

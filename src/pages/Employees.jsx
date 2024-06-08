@@ -33,7 +33,9 @@ export default function Employees() {
           {employees.map(employee => 
             <li
               key={employee.id}
-              className={show && employee.id === activeId ? 'show' : 'hide'}
+              className={"main-item " + (
+                show && employee.id === activeId ? 'active' : 'hide'
+              )}
             >
               <div className="main-info">
                 <span

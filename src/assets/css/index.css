@@ -53,10 +53,10 @@
   --color21: #a8c7fa;
   --color22: #eaf1fb;
   --pfontColor: #48566b;
-  --primary-bg: var(--color2);
+  --primary-bg: #add8e61f;
   --secondary-gb: var(--color15);
   --aside-ground: rgb(37, 155, 233);
-  --primary-card-gb: var(--color7);
+  --primary-card-gb: rgba(187, 202, 214, 0.803);
   --primary-color: #0A0E0B;
   --primary-aside-color: var(--color1);
   }
@@ -95,6 +95,7 @@ html, body, #root {
 	height: 100vh;
 	width: 100vw;
   overflow: hidden;
+  background-color: var(--primary-bg);
 }
 
 ::-webkit-scrollbar {

@@ -5,7 +5,7 @@
   height: 100vh;
   overflow-y: scroll;
   scroll-behavior: smooth;
-  background-color: var(--midnight-black);
+  /* background-color: var(--midnight-black); */
 }
 
 .register header,

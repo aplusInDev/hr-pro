@@ -49,8 +49,6 @@ export default function Employees() {
 
   return (
     <>
-      {/* <Filter />
-      <Outlet /> */}
       <section className="employees-container absences-container">
         {error && <h2 className='error'>{error}</h2>}
         {role === 'employee'? (
@@ -60,7 +58,9 @@ export default function Employees() {
           {employees.map(employee =>
             <li
               key={employee.id}
-              className={show && employee.id === activeId ? 'show' : 'hide'}
+              className={"main-item " + (
+                show && employee.id === activeId ? 'active' : 'hide'
+              )}
             >
               <div className='absent-info'>
                 <div className='employee-short-info'>

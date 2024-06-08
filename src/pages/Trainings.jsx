@@ -115,7 +115,9 @@ export default function Trainings() {
         <ul>
         {trainings.map(training => (
           <li key={training.id}
-            className={training.id === activeTrainingId ? 'active' : ''}
+            className={'main-item ' + (
+              training.id === activeTrainingId ? 'active-card' : ''
+            )}
           >
             <div className="main-info">
               {uploading && <p>Uploading...</p>}

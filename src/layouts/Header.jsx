@@ -123,14 +123,14 @@ function handleAutoTheme() {
 }
 
 function enableDarkMode() {
-  const profile = document.querySelector('.profile');
+  const profile = document.querySelector('#root');
   const darkGround = document.querySelector('.dark-ground');
   darkGround.classList.add('active');
   profile.classList.add('dark-mode');
 }
   
 function disableDarkMode() {
-  const profile = document.querySelector('.profile');
+  const profile = document.querySelector('#root');
   const darkGround = document.querySelector('.dark-ground');
   profile.classList.remove('dark-mode');
   darkGround.classList.remove('active');

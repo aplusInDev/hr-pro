@@ -124,3 +124,17 @@ button:disabled, button:disabled:hover {
   filter: none;
   border: 2px solid rgb(69, 62, 62);
 }
+
+.main-item {
+  background-color: #cee0e74f;
+  filter: brightness(.7);
+  }
+  
+.main-item:not(.active-card):hover {
+  filter: brightness(.2);
+}
+
+.active-card {
+  background-color: var(--primary-card-gb);
+  filter: brightness(.8);
+}

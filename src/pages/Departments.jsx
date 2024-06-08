@@ -33,7 +33,9 @@ export default function Departments() {
           {
             departments.map(department => 
               <li key={department.id}
-                className={show && department.id === activeId ? 'active' : 'hide'}
+                className={"main-item " + (
+                  show && department.id === activeId ? 'active' : 'hide'
+                )}
               >
                 <div className="main-info">
                   <span

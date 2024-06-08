@@ -56,6 +56,7 @@ export default function AttendanceForm({
           <div>select attendance date</div>
         </label>
         <input
+          className='main-item'
           type="date"
           id="selectedDate"
           value={selectedDate}

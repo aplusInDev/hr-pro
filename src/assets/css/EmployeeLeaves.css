@@ -34,9 +34,8 @@
 }
 
 .employee-leaves li {
-  /* background-color: var(--midnight-black); */
-  background-color: var(--primary-card-gb);
-  filter: drop-shadow(0 0 5px var(--color3));
+  /* background-color: var(--primary-card-gb); */
+  /* filter: drop-shadow(0 0 5px var(--color3)); */
   width: 100%;
   min-height: 30px;
   line-height: 30px;
@@ -46,12 +45,12 @@
   color: var(--primary-color);
 }
 
-.employee-leaves li:not(li.active, .details li):hover {
+/* .employee-leaves li:not(li.active, .details li):hover {
   background-color: var(--color3);
   filter: brightness(.7);
   transition: background-color .5s ease-in-out;
   color: var(--color5);
-}
+} */
 
 .employee-leaves p {
   padding: 2px;

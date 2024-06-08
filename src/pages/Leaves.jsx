@@ -60,7 +60,9 @@ export default function Leaves() {
     </div>
       <ul>
         {leaves.map(leave => (
-          <li key={leave.id}>
+          <li key={leave.id}
+            className="main-item"
+          >
             <div className="main-info">
               <p>
                 {updatingLeaveId === leave.id && 'Updating...'}

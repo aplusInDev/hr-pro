@@ -40,7 +40,7 @@ input[type="submit"]:hover {
 tbody {
   background-color: var(--primary-card-gb);
   font-family: var(--cardFont);
-  filter: drop-shadow(0 0 5px #000);
+  /* filter: drop-shadow(0 0 5px #000); */
   /* color: rgba(250, 251, 252, 0.571); */
   color: var(--primary-color);
   font-size: 14px;
