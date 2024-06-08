@@ -3,16 +3,19 @@ import { Info } from '../components';
 import { Btn } from '../components/ui';
 import '../assets/css/Employees.css';
 import { Outlet, Link, useLoaderData } from 'react-router-dom';
+import { Icon } from '@iconify/react/dist/iconify.js';
 
 export default function Departments() {
   const {departments, departmentsFields} = useLoaderData();
-  const [active, setActive] = useState(null);
+  const [activeId, setActiveId] = useState(null);
+  const [show, setShow] = useState(false);
 
-  function handleClick(e) {
-    if (active === e.target.id) {
-      setActive(null);
+  function handleChangeId(id) {
+    setShow(true);
+    if(activeId === id) {
+      return
     } else {
-      setActive(e.target.id);
+      setActiveId(id);
     }
   }
 
@@ -29,20 +32,33 @@ export default function Departments() {
         <ul>
           {
             departments.map(department => 
-              <li
-                id={department.id}
-                key={department.id}
-                onClick={handleClick}
+              <li key={department.id}
+                className={show && department.id === activeId ? 'active' : 'hide'}
               >
+                <div className="main-info">
+                  <span
+                    onClick={() => handleChangeId(department.id)}
+                  >
+                    {department.name}
+                  </span>
+                </div>
                 {
-                  department.id === active ? (
-                  <Info
-                      fields={departmentsFields}
-                      obj_id={department.id}
-                      path='departments'
-                    />
+                  department.id === activeId ? (
+                    <>
+                      <span
+                        className='close'
+                        onClick={() => setShow(false)}
+                      >
+                        <Icon icon="material-symbols-light:close" />
+                      </span>
+                      <Info
+                        fields={departmentsFields}
+                        obj_id={department.id}
+                        path='departments'
+                      />
+                    </>
                   ) : (
-                    <span>{department.name}</span>
+                    null
                   )
                 }
               </li>
