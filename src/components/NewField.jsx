@@ -71,8 +71,8 @@ async function handleSubmit(e) {
           <CustomOptions obj={field} onChange={setField} key={"k"+ nextId++} />
         </label>
       </span>
-      <button type='button' onClick={() => setField(initialField)}>Clear</button>
-      <input type='submit' value='Add Field' onClick={handleSubmit} />
+      <button className='secondary-btn' type='button' onClick={() => setField(initialField)}>Clear</button>
+      <input className='primary-btn' type='submit' value='Add Field' onClick={handleSubmit} />
     </form>
   );
 }

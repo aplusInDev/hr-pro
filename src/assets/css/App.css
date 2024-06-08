@@ -28,8 +28,9 @@ input {
 
 /* styling disabled input */
 input:disabled,
-textarea:disabled {
-  background-color: inherit;
+textarea:disabled,
+select:disabled {
+  background-color: unset;
   color: inherit;
 }
 
@@ -69,7 +70,8 @@ input[type="radio"]::before {
   width: 15px;
   height: 15px;
   border-radius: 5px;
-  background-color: #adc1bc47;
+  /* background-color: #adc1bc47; */
+  background-color: var(--primary-btn-color);
   cursor: pointer;
   transition: all 0.3s ease;
   filter: brightness(1.2);
@@ -84,7 +86,7 @@ input[type="radio"]:checked::after {
   content: "✔";
   position: absolute;
   font-size: 18px;
-  color: #76a39c;
+  /* color: #76a39c; */
   text-align: left;
   line-height: 8px;
   border: none;
@@ -103,38 +105,89 @@ input[type="radio"]:checked::after {
   cursor: pointer;
   font-weight: bold;
   border: 1px solid var(--primary-color);
-  color: var(--primary-color);
+  /* color: var(--primary-color); */
   margin: 20px 4px;
 }
 
 .btn:hover{
-  border-color: #656d6fb9;
-  background-color: #656d6fb9;
-  color: var(--color5);
+  opacity: .5;
 }
 
 .submit-btn:hover {
-  background: none;
-  border: 1px solid var(--icon-color);
+  background-color: var(--primary-btn-color);
+  color: var(--primary-color);
+  border-color: var(--primary-btn-color);
+  opacity: 1;
 }
 
 button:disabled, button:disabled:hover {
-  border: unset;
-  background: none;
-  filter: none;
-  border: 2px solid rgb(69, 62, 62);
+  background: none !important;
+  filter: none !important;
+  border: 1px solid var(--primary-disabled-color) !important;
+  color: var(--primary-disabled-color) !important;
 }
 
 .main-item {
-  background-color: #cee0e74f;
-  filter: brightness(.7);
-  }
-  
-.main-item:not(.active-card):hover {
-  filter: brightness(.2);
+  background-color: var(--primary-card-gb);
+}
+
+.main-item:not(.active-card, .active):hover {
+  background-color: #0331435e;
 }
 
 .active-card {
   background-color: var(--primary-card-gb);
   filter: brightness(.8);
 }
+
+span.close {
+  background-color: var(--secondary-btn-gb);
+  filter: drop-shadow(0px 0px 25px var(--primary-color));
+  color: var(--primary-color);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+span.close svg {
+  width: 20px;
+  height: 20px;
+  filter: brightness(1.2);
+}
+
+
+.primary-btn,
+.secondary-btn {
+  color: var(--secondary-color);
+  border: none;
+}
+
+.primary-btn {
+  background-color: #5d2eaff3;
+}
+
+.secondary-btn {
+  background-color: rgba(47, 47, 167, 0.896);
+  /* background-color: rgba(47, 47, 167, 0.671); */
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+  opacity: .8;
+  color: var(--secondary-color);
+}
+
+.primary-btn:hover {
+  background-color: #5d2eaff3 !important;
+}
+.secondary-btn:hover {
+  background-color: rgba(47, 47, 167, 0.896) !important;
+  /* background-color: rgba(47, 47, 167, 0.671); */
+}
+

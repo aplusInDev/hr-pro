@@ -40,6 +40,7 @@ export default function NewForm({ onAdd }) {
           onChange={(e) => setNewForm({ ...newForm, description: e.target.value })}
         />
         <button type='submit'
+          className='primary-btn'
           onClick={handleAdd}
         >
           Create Form

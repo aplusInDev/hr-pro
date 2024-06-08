@@ -13,15 +13,15 @@ input[type="submit"] {
   padding: 0 15px;
   color: #d8dddc;
   border: none;
-  background-color: var(--bgColor9);
+  /* background-color: var(--bgColor9); */
   filter: drop-shadow(0 0 1px #fff);
   text-align: center;
 }
 
-.custom-form button[type="button"]:not(.option-btn, .form-info-btn):hover {
+/* .custom-form button[type="button"]:not(.option-btn, .form-info-btn):hover {
   background-color: var(--bgColor5);
   opacity: .5;
-}
+} */
 
 .custom-form button[type="submit"]:hover,
 input[type="submit"]:hover {
@@ -84,8 +84,8 @@ tbody {
   height: 90px;
   border-radius: 10px;
   margin: -2px;
-  background-color: #4a5163;
-  color: #bcbebf;
+  background-color: var(--secondary-color);
+  /* color: #bcbebf; */
 }
 
 .forms-list > ul {
@@ -151,9 +151,9 @@ table td:last-child button {
   text-align: center;
   cursor: pointer;
   padding-top: 2px;
-  color: white;
+  /* color: white; */
   border-radius: 5px;
-  background-color: var(--bgColor5);
+  background-color: transparent;
   border: none;
 }
 
@@ -165,25 +165,26 @@ table td:last-child button {
 .forms-list button:first-of-type,
 .options-list button:first-of-type,
 table td:last-child button:first-of-type {
-  color: #76a39c;
+  /* color: #76a39c; */
+  color: var(--primary-color);
 }
 
 .forms-list button:first-of-type:hover,
 .options-list button:first-of-type:hover,
 table td:last-child button:first-of-type:hover {
-  filter: brightness(1.2) drop-shadow(1px 2px 7px #4b7f8f);
+  /* color: #767676; */
+  color: var(--primary-btn-color);
 }
 
-.forms-list button:last-of-type,
+/* .forms-list button:last-of-type,
 .options-list button:last-of-type,
 table td:last-child button:last-of-type {
   background-color: #32071a;
   color: hsl(10, 50%, 50%);
-}
+} */
 .forms-list button:last-of-type:hover,
 .options-list button:last-of-type:hover,
 table td:last-child button:last-of-type:hover {
-  filter: brightness(1.2) drop-shadow(1px 2px 5px #b15b85);
   color: hsl(10, 100%, 50%);
 }
 
@@ -245,7 +246,7 @@ table td:last-child button:last-of-type:hover {
 .form-info > .new-form {
   position: absolute;
   padding-left: 20px;
-  width: 700px;
+  width: 670px;
   height: 90%;
   top: 5%;
   display: flex;
@@ -272,7 +273,7 @@ table td:last-child button:last-of-type:hover {
 }
 
 .all-forms textarea {
-  width: 420px;
+  width: 405px;
 }
 
 /* 2. styling .new-form */
@@ -360,23 +361,30 @@ table select > * {
 }
 
 .new-field > button[type="button"] {
-  left: 130px;
+  /* left: 130px; */
   border-radius: 10px !important;
 }
 
-.new-field input[type="submit"] {
+/* .new-field input[type="submit"] {
+  left: 20px;
+} */
+
+.new-field .primary-btn {
+  left: 130px;
+}
+  
+.new-field .secondary-btn {
   left: 20px;
 }
 
-.new-field button:not(.option-btn),
 table button:not(td:last-child button) {
   border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
   padding: 5px 10px;
   margin-left: 5px;
-  background-color: var(--bgColor5);
-  color: white;
+  /* background-color: var(--bgColor5);
+  color: white; */
   border: none;
 }
 
@@ -388,7 +396,7 @@ table {
   margin: 0 auto;
   border-radius: 8px;
   border-spacing: 0;
-  filter: drop-shadow(0 0 5px #000);
+  /* filter: drop-shadow(0 0 5px #000); */
 }
 
 thead {
@@ -411,7 +419,8 @@ thead tr {
 thead th {
   height: 30px;
   line-height: 30px;
-  background-color: var(--midnight-black);
+  background-color: var(--secondary-thead-gb);
+  color: var(--primary-color);
 }
 
 tr {
@@ -426,8 +435,15 @@ tr {
 
 td {
   padding: 20px 5px 10px;
-  border-bottom: 1px solid var(--bgColor10);
-  background-color: var(--bgColor5);
+  /* border-bottom: 1px solid var(--bgColor10); */
+}
+
+tr:nth-child(odd) td {
+  background-color: rgba(56, 74, 81, 0.422);
+}
+
+tr:nth-child(even) td {
+  background-color: rgba(56, 71, 81, 0.471);
 }
 
 td:not(td:nth-child(6)) {
@@ -502,8 +518,8 @@ td:last-child button > * {
 }
 
 .show-preview > button {
-  background-color: var(--color9);
-  color: #fefefe;
+  /* background-color: var(--color9);
+  color: #fefefe; */
   padding: 5px 10px;
   border-radius: 10px;
   border: none;

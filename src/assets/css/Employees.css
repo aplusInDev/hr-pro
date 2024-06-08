@@ -44,6 +44,10 @@
   filter: brightness(.7);
 } */
 
+.employees-container li.active > .main-info {
+  display: none;
+}
+
 .employees-container span.close {
   cursor: pointer;
   position: absolute;
@@ -52,18 +56,10 @@
   border-radius: 50%;
   width: 25px;
   height: 25px;
-  background-color: var(--color3);
+  /* background-color: var(--color3); */
+  /* filter: brightness(.8); */
   line-height: 25px;
   text-align: center;
-  filter: brightness(.8);
-}
-
-span.close svg {
-  color: var(--color13);
-  width: 20px;
-  height: 20px;
-  margin: 2px;
-  filter: brightness(1.2);
 }
 
 li.hide > form,
@@ -133,6 +129,6 @@ li.hide > .main-info > div {
   margin-left: 3px;
 }
 
-.employees-container .submit-btn:hover {
+/* .employees-container .submit-btn:hover {
   color: var(--pfontColor);
-}
+} */

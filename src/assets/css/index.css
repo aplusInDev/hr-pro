@@ -53,12 +53,23 @@
   --color21: #a8c7fa;
   --color22: #eaf1fb;
   --pfontColor: #48566b;
+  --aside-ground: rgb(37, 155, 233);
+  /* ---------------------------------------- */
+  /* --primary-card-gb: rgba(187, 202, 214, 0.803); */
+  --primary-color: #0A0E0B;
+  --secondary-color: #f2f2f2;
+  --primary-disabled-color: rgba(16, 16, 16, 0.3);
   --primary-bg: #add8e61f;
   --secondary-gb: var(--color15);
-  --aside-ground: rgb(37, 155, 233);
-  --primary-card-gb: rgba(187, 202, 214, 0.803);
-  --primary-color: #0A0E0B;
+  --primary-card-gb: #b0bfc4b2;
   --primary-aside-color: var(--color1);
+  --primary-btn-gb: #022c3a13;
+  --secondary-btn-gb: #e8eef013;
+  --primary-btn-color: #686f71bd;
+  --primary-thead-gb: #bcbebf;
+  --secondary-thead-gb: var(--primary-card-gb);
+  --primary-tbody-gb: var(--primary-btn-color);
+  --secondary-tbody-gb: var(--primary-btn-gb);
   }
   
 .dark-mode {
