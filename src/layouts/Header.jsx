@@ -109,7 +109,13 @@ function handleChangeMode(theme) {
 
 window
   .matchMedia('(prefers-color-scheme: dark)')
-  .addEventListener('change', (e) => (handleAutoTheme()));
+  .addEventListener('change', () => {
+    const theme = localStorage.getItem('theme');
+
+    if (theme === 'auto') {
+      handleAutoTheme();
+    }
+  });
 
 function handleAutoTheme() {
   const darkGround = document.querySelector('.dark-ground');
