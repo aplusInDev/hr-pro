@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Btn } from './ui';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import '../assets/css/AddEmployee.css';
 import httpClient from '../services/httpClient';
 
 const company_id = JSON.parse(localStorage.getItem('currentUser'))?.company_id;
 
 export default function AddDepartment() {
+  const setDepartmentList = useOutletContext();
   const [data, setData] = useState({});
   const navigate = useNavigate();
 
@@ -25,7 +26,7 @@ export default function AddDepartment() {
         formData.append(key, data[key]);
       }
       const response = await httpClient.post(`/companies/${company_id}/departments`, formData);
-      console.log(response);
+      setDepartmentList(prev => [...prev, response.data]);
       navigate('/home/departments');
     } catch (err) {
       console.error(err);
