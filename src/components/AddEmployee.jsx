@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Btn } from './ui';
-import { Link, useNavigate, useLoaderData } from 'react-router-dom';
+import {
+  Link, useNavigate, useLoaderData,
+  useOutletContext
+} from 'react-router-dom';
 import '../assets/css/AddEmployee.css';
 import httpClient from '../services/httpClient';
 
@@ -8,6 +11,7 @@ import httpClient from '../services/httpClient';
 const companyId = JSON.parse(localStorage.getItem("currentUser"))?.company_id;
 
 export default function AddEmployee() {
+  const setEmployeesLsit = useOutletContext();
   const [data, setData] = useState({});
   const navigate = useNavigate();
   const { departments, jobs } = useLoaderData();
@@ -33,7 +37,7 @@ export default function AddEmployee() {
         formData.append(key, data[key]);
       }
       const response = await httpClient.post(`/add_employee?company_id=${companyId}`, formData);
-      console.log(response);
+      setEmployeesLsit(prev => [...prev, response.data]);
       navigate('/home/employees');
     } catch (err) {
       console.error(err);

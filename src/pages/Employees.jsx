@@ -9,6 +9,7 @@ export default function Employees() {
   const {employees, employeeFields} = useLoaderData();
   const [activeId, setActive] = useState(null);
   const [show, setShow] = useState(false);
+  const [employeesList, setEmployeesLsit] = useState(employees);
 
   function handleClick(id) {
     setShow(true);
@@ -26,11 +27,10 @@ export default function Employees() {
           <Btn text="Add Employee" />
         </Link>
       </div>
-      {/* <Filter /> */}
-      <Outlet />
+      <Outlet context={setEmployeesLsit} />
       <section className="employees-container">
         <ul>
-          {employees.map(employee => 
+          {employeesList.map(employee => 
             <li
               key={employee.id}
               className={"main-item " + (
