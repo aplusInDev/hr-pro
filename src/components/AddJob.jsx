@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Btn } from './ui';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import '../assets/css/AddEmployee.css';
 import httpClient from '../services/httpClient';
 
@@ -9,6 +9,7 @@ const company_id = JSON.parse(localStorage.getItem('currentUser'))?.company_id;
 export default function AddJob() {
   const [data, setData] = useState({});
   const navigate = useNavigate();
+  const setJobsList = useOutletContext();
 
   function handleChange(e) {
     setData({
@@ -25,7 +26,7 @@ export default function AddJob() {
         formData.append(key, data[key]);
       }
       const response = await httpClient.post(`/companies/${company_id}/jobs`, formData);
-      console.log(response);
+      setJobsList(prev => [...prev, response.data]);
       navigate('/home/jobs');
     } catch (err) {
       console.error(err);

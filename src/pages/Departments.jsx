@@ -27,7 +27,6 @@ export default function Departments() {
           <Btn text="Add Department" />
         </Link>
       </div>
-      {/* <Filter /> */}
       <Outlet context={setDepartmentList} />
       <section className="employees-container">
         <ul>
