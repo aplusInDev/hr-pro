@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Btn } from './ui';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import '../assets/css/AddEmployee.css';
 import httpClient from '../services/httpClient';
 
@@ -8,6 +8,7 @@ import httpClient from '../services/httpClient';
 export default function RequestLeave() {
   const employee_id = JSON.parse(localStorage.getItem('currentUser')).employee_id;
   const [data, setData] = useState({});
+  const setLeaves = useOutletContext();
   const navigate = useNavigate();
 
   function handleChange(e) {
@@ -25,7 +26,7 @@ export default function RequestLeave() {
         formData.append(key, data[key]);
       }
       const response = await httpClient.post(`/employees/${employee_id}/leaves`, formData);
-      console.log("response: ", response);
+      setLeaves(prev => [...prev, response.data]);
       navigate('/home/leaves');
     } catch (err) {
       console.log("error: ", err);

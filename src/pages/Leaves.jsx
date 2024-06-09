@@ -65,7 +65,7 @@ export default function Leaves() {
 
   return (
     <>
-    <Outlet />
+    <Outlet context={setLeaves} />
     <section className="employee-leaves">
       <div className="header">
       {role === "employee" && (<>
