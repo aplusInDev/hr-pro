@@ -8,15 +8,28 @@ export default function Info({
 }) {
   const [info, setInfo] = useState({});
   const [status, setStatus] = useState('idle'); // idle, editing, submitting
+  const [employee, setEmployee] = useState(null);
+  const [departmentsNames, setDepartmentsNames] = useState([]);
+  const [jobsTitles, setJobsTitles] = useState([]);
 
   useEffect(() => {
     async function getInfo() {
       try {
         const response = await httpClient.get(`/${path}/${obj_id}`);
         setInfo(response.data['info']);
+        if (path === 'employees') {
+          setEmployee(response.data);
+          getEmployeePosition(response.data.company_id);
+        }
       } catch (err) {
         console.log("erro: ", err);
       }
+    }
+    async function getEmployeePosition(company_id) {
+      const depNames = await httpClient.get(`/companies/${company_id}/departments_names`);
+      const jbsTitles = await httpClient.get(`/companies/${company_id}/jobs_titles`);
+      setDepartmentsNames(depNames.data);
+      setJobsTitles(jbsTitles.data);
     }
     getInfo();
   }, [obj_id, path]);
@@ -43,6 +56,7 @@ export default function Info({
   class_name = class_name !== '' ? "form-preview" : "form-preview " + class_name
 
   return (
+  <>
     <form
       className={class_name}
       onSubmit={handleSubmit}
@@ -163,11 +177,10 @@ export default function Info({
                 </div>
               )
           }
-      })
-    }
-    <div>
-      {
-        status !== 'idle' ? (
+        })
+      }
+      <div>
+        {status !== 'idle' ? (
           <>
             <Btn
               text='cancel'
@@ -185,17 +198,60 @@ export default function Info({
               Save
             </button>
           </>
-        ) : (
-          <Btn
-            text='edit'
-            onClick={(e) => {
-              e.stopPropagation();
-              setStatus('editing');
-            }}
-          />
-        )
-      }
-    </div>
+          ) : (
+            <Btn
+              text='edit'
+              onClick={(e) => {
+                e.stopPropagation();
+                setStatus('editing');
+              }}
+            />
+          )
+        }
+      </div>
     </form>
+    {path === "employees" && (
+      <div className="employee_position_info">
+        <div className="employee_dep">
+          <label htmlFor="dep_name"><span>Department</span></label>
+          <select
+            id="dep_name"
+            disabled={status === 'idle'}
+            defaultValue={employee?.department_info.department_name}
+            onChange={(e) => {
+              e.stopPropagation();
+              handleChange({
+                ...info,
+                department_id: departmentsNames.find((dep) => dep.department_name === e.target.value).id
+              });
+            }}
+          >
+            {departmentsNames.map((option) => (
+              <option key={option} value={option}>{option}</option>
+            ))}
+          </select>
+        </div>
+        <div className="employee_pos">
+          <label htmlFor="job_title"><span>Position</span></label>
+          <select
+            id="job_title"
+            disabled={status === 'idle'}
+            defaultValue={employee?.position_info.job_title}
+            onChange={(e) => {
+              e.stopPropagation();
+              handleChange({
+                ...info,
+                job_id: jobsTitles.find((job) => job.job_title === e.target.value).id
+              });
+            }}
+          >
+            {jobsTitles.map((option) => (
+              <option key={option} value={option}>{option}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+    )}
+  </>
   )
 }
