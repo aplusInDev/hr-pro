@@ -6,6 +6,7 @@ import { excelFileReader } from '../utils/excelUtils';
 import httpClient from '../services/httpClient';
 import { Icon } from '@iconify/react';
 import '../assets/css/Absences.css';
+import { handleDownload } from '../helpers/excelHelpers';
 
 export default function Employees() {
   const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
@@ -14,6 +15,7 @@ export default function Employees() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [show, setShow] = useState(false);
+  const [file, setFile] = useState(null);
 
   async function handleClick(id) {
     setShow(true);
@@ -36,8 +38,10 @@ export default function Employees() {
       const jsonData = await excelFileReader(responseBlob);
       if(jsonData.length !== 0) {
         setData(jsonData);
+        setFile(responseFile);
       } else {
         setData(null);
+        setFile(null);
         console.log("no data");
       }
       setError(null);
@@ -106,9 +110,9 @@ export default function Employees() {
                   <button
                     type='button'
                     className='submit-btn'
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      console.log('download');
+                    onClick={() => {
+                      const fileName = `absences-${employee.first_name}-${employee.last_name}.xlsx`;
+                      handleDownload(file, fileName);
                     }}
                   >
                     Download
