@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import httpClient from '../../services/httpClient';
-import { excelFileReader } from '../../utils/excelUtils';
+import httpClient from '../services/httpClient';
+import { excelFileReader } from '../utils/excelUtils';
 import { Icon } from '@iconify/react/dist/iconify.js';
-import { handleDownload } from '../../helpers/excelHelpers';
+import { handleDownload } from '../helpers/excelHelpers';
 
 
 const CalendarForm = ({ setData, }) => {

@@ -8,9 +8,8 @@ import { Icon } from '@iconify/react';
 import '../assets/css/Absences.css';
 import { handleDownload } from '../helpers/excelHelpers';
 
-export default function Employees() {
-  const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
-  const { employees, absences } = useLoaderData();
+export default function Absences() {
+  const { employees } = useLoaderData();
   const [activeId, setActiveId] = useState(null);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -29,7 +28,7 @@ export default function Employees() {
 
   async function fetchEmployeeAbsences (employeeId) {
     try {
-      const responseFile = await httpClient.get(`/employees/${employeeId}/absences_sheet`, {
+      const responseFile = await httpClient.get(`/employees/${employeeId}/absences_sheet?year=2024`, {
         responseType: 'blob',
       });
       const responseBlob = new Blob([responseFile.data], {
@@ -55,10 +54,7 @@ export default function Employees() {
     <>
       <section className="employees-container absences-container">
         {error && <h2 className='error'>{error}</h2>}
-        {role === 'employee'? (
-            <AbsencesTable data={absences} />
-          ):(
-          <ul>
+        <ul>
           {employees.map(employee =>
             <li
               key={employee.id}
@@ -124,8 +120,7 @@ export default function Employees() {
               )}
             </li>
           )}
-          </ul>
-        )}
+        </ul>
       </section>
     </>
   );
