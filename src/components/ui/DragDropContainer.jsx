@@ -45,7 +45,7 @@ export default function DragDropContainer({
         </label>
         {error ? <p className="error">{error}</p> : <p>{message}</p>}
         {show && (
-          <button className="btn" onClick={handleFileUpload}>
+          <button className="btn new-btn" onClick={handleFileUpload}>
             Upload
           </button>
         )}

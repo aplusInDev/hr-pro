@@ -64,7 +64,9 @@ const EmployeeAbsences = () => {
   return (
     <section className="employees-container absences-container">
       {error && <p className="error">{error}</p>}
-      <form onSubmit={handleSubmit}>
+      <form className='calendar-form'
+        onSubmit={handleSubmit}
+      >
         <label htmlFor="year">Year:</label>
         <select className='main-item' id="year" name="year" value={year} onChange={handleYearChange} required>
           <option value="">-- Select Year --</option>

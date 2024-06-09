@@ -9,12 +9,26 @@ import '../assets/css/Absences.css';
 import { handleDownload } from '../helpers/excelHelpers';
 
 export default function Absences() {
+  for (let i = currentYear - 10; i <= currentYear + 10; i++) {
+    yearsSet.add(i.toString());
+  }
   const { employees } = useLoaderData();
   const [activeId, setActiveId] = useState(null);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [show, setShow] = useState(false);
   const [file, setFile] = useState(null);
+  const [year, setYear] = useState(currentYear);
+
+  const handleYearChange = (e) => {
+    setYear(e.target.value);
+    setActiveId(null);
+  };
+
+  async function handleYearSubmit(e) {
+    e.preventDefault();
+    console.log(year);
+  }
 
   async function handleClick(id) {
     setShow(true);
@@ -28,7 +42,7 @@ export default function Absences() {
 
   async function fetchEmployeeAbsences (employeeId) {
     try {
-      const responseFile = await httpClient.get(`/employees/${employeeId}/absences_sheet?year=2024`, {
+      const responseFile = await httpClient.get(`/employees/${employeeId}/absences_sheet?year=${year}`, {
         responseType: 'blob',
       });
       const responseBlob = new Blob([responseFile.data], {
@@ -54,6 +68,20 @@ export default function Absences() {
     <>
       <section className="employees-container absences-container">
         {error && <h2 className='error'>{error}</h2>}
+        <form className='calendar-form'
+          onSubmit={handleYearSubmit}
+        >
+        <label htmlFor="year">Year:</label>
+        <select className='main-item' id="year" name="year" value={year} onChange={handleYearChange} required>
+          <option value="">-- Select Year --</option>
+          {[...yearsSet].map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+        <button type="submit" className='submit-btn new-btn'>Submit</button>
+      </form>
         <ul>
           {employees.map(employee =>
             <li
@@ -125,3 +153,6 @@ export default function Absences() {
     </>
   );
 }
+
+const yearsSet = new Set();
+const currentYear = new Date().getFullYear();

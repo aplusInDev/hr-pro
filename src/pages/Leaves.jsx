@@ -94,7 +94,9 @@ export default function Leaves() {
             }}
           />
         </div>
-      <form onSubmit={handleSubmitYear}>
+      <form className='calendar-form'
+        onSubmit={handleSubmitYear}
+      >
         <label htmlFor="year">Year:</label>
         <select className='main-item' id="year" name="year" value={year} onChange={handleYearChange} required>
           <option value="">-- Select Year --</option>

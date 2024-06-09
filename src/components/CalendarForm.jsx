@@ -64,7 +64,9 @@ const CalendarForm = ({ setData, }) => {
   return (
     <>
     {error && <p className="error">{error}</p>}
-    <form onSubmit={handleSubmit}>
+    <form className='calendar-form'
+      onSubmit={handleSubmit}
+    >
       <label htmlFor="month">Month:</label>
       <select className='main-item' id="month" name="month" value={month} onChange={handleMonthChange} required>
         {months.map((option) => (
