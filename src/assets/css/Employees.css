@@ -94,8 +94,6 @@
   border-radius: 50%;
   width: 25px;
   height: 25px;
-  /* background-color: var(--color3); */
-  /* filter: brightness(.8); */
   line-height: 25px;
   text-align: center;
 }
