@@ -15,6 +15,7 @@ export default function Trainings() {
   const [uploading, setUploading] = useState(false);
   const [deletetedTrainees, setDeletedTrainees] = useState({});
   const [showEvaluation, setShowEvaluation] = useState(null);
+  const [trainingsList, setTrainingsList] = useState(trainings);
   const navigate = useNavigate();
 
 
@@ -55,10 +56,10 @@ export default function Trainings() {
     if(id === activeTrainingId || role === "employee") {
       return;
     } else {
-      const traineesNames = Object.keys(trainings.find(training => training.id === id).trainees);
+      const traineesNames = Object.keys(trainingsList.find(training => training.id === id).trainees);
       setShowEvaluation(null);
       setActiveTrainingId(id);
-      setTrainees(trainings.find(training => training.id === id).trainees);
+      setTrainees(trainingsList.find(training => training.id === id).trainees);
       setNonTrainees(employees.filter(employee => !traineesNames.includes(employee)));
     }
   }
@@ -105,7 +106,7 @@ export default function Trainings() {
 
   return (
     <>
-    <Outlet />
+    <Outlet context={setTrainingsList} />
     {role !== "employee" && (
       <div className="new-employee">
         <Link to='add-training'>
@@ -115,7 +116,7 @@ export default function Trainings() {
     )}
     <section className="employee-leaves">
         <ul>
-        {trainings.map(training => (
+        {trainingsList.map(training => (
           <li key={training.id}
             className={'main-item ' + (
               training.id === activeTrainingId ? 'active-card' : ''
