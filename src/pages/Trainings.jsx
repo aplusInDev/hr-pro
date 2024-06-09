@@ -248,7 +248,6 @@ export default function Trainings() {
                 className="show-evaluations"
                 onClick={() => {
                   setShowEvaluation(training.id);
-                  console.log("true");
                 }}
               />
             )}
