@@ -8,10 +8,11 @@ export default async function leavesLoader() {
 
   try {
     let url;
+    const currentYear = new Date().getFullYear();
     if(role === "employee") {
-      url = `/employees/${employee_id}/leaves`;
+      url = `/employees/${employee_id}/leaves?year=${currentYear}`;
     } else {
-      url = `/leaves?company_id=${company_id}&year=2024`;
+      url = `/leaves?company_id=${company_id}&year=${currentYear}`;
     }
     const response = await httpClient.get(url);
 
