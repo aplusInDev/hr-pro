@@ -14,6 +14,8 @@ export default function Trainings() {
   const [error, setError] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [deletetedTrainees, setDeletedTrainees] = useState({});
+  const [showEvaluation, setShowEvaluation] = useState(null);
+  const [trainingsList, setTrainingsList] = useState(trainings);
   const navigate = useNavigate();
 
 
@@ -54,9 +56,10 @@ export default function Trainings() {
     if(id === activeTrainingId || role === "employee") {
       return;
     } else {
-      const traineesNames = Object.keys(trainings.find(training => training.id === id).trainees);
+      const traineesNames = Object.keys(trainingsList.find(training => training.id === id).trainees);
+      setShowEvaluation(null);
       setActiveTrainingId(id);
-      setTrainees(trainings.find(training => training.id === id).trainees);
+      setTrainees(trainingsList.find(training => training.id === id).trainees);
       setNonTrainees(employees.filter(employee => !traineesNames.includes(employee)));
     }
   }
@@ -103,7 +106,7 @@ export default function Trainings() {
 
   return (
     <>
-    <Outlet />
+    <Outlet context={setTrainingsList} />
     {role !== "employee" && (
       <div className="new-employee">
         <Link to='add-training'>
@@ -113,7 +116,7 @@ export default function Trainings() {
     )}
     <section className="employee-leaves">
         <ul>
-        {trainings.map(training => (
+        {trainingsList.map(training => (
           <li key={training.id}
             className={'main-item ' + (
               training.id === activeTrainingId ? 'active-card' : ''
@@ -237,11 +240,15 @@ export default function Trainings() {
                 </div>
               </div>
             </>)}
-            {training.id !== activeTrainingId && (
+            {(
+              training.id !== activeTrainingId
+              && showEvaluation !== training.id
+              && training.evaluations.length > 0
+              ) && (
               <Btn text="show evaluations"
                 className="show-evaluations"
                 onClick={() => {
-                  console.log(training.evaluations);
+                  setShowEvaluation(training.id);
                 }}
               />
             )}
@@ -253,10 +260,53 @@ export default function Trainings() {
                 }}
               />
             )}
+            {(
+              showEvaluation === training.id
+              && training.id !== activeTrainingId
+              && training.evaluations.length > 0
+              ) && (
+              <div className="evaluations-list">
+                <span className="close close-evaluation"
+                  onClick={() => setShowEvaluation(null)}
+                >
+                  <Icon icon="material-symbols-light:close" />
+                </span>
+                {training.evaluations.map((evaluation, idx) => (
+                  <div key={idx} className="evaluation">
+                    <span>{evaluation.trainee}</span>
+                    <span>
+                      {evaluation.score} / 5
+                      (
+                        {evaluationString(evaluation.score)}
+                        {evaluation.score < 3 ? '👎' : '👍'}
+                      )
+                    </span>
+                    <p>{evaluation.feedback}</p>
+                  </div>
+                ))}
+              </div>
+            )}
           </li>
         ))}
         </ul>
     </section>
     </>
   );
+}
+
+const evaluationString = (score) => {
+  switch(score) {
+    case 1:
+      return 'Poor';
+    case 2:
+      return 'Fair';
+    case 3:
+      return 'Good';
+    case 4:
+      return 'Very Good';
+    case 5:
+      return 'Excellent';
+    default:
+      return 'Unknown';
+  }
 }

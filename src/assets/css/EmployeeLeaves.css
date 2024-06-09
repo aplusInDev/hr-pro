@@ -251,8 +251,12 @@ li:hover .show-evaluations {
 
 .evaluate {
   position: absolute;
-  right: 170px;
+  right: 17px;
   bottom: 10px;
+}
+
+.show-evaluations + .evaluate {
+  right: 170px;
 }
 
 .show-evaluations {
@@ -266,4 +270,18 @@ li:hover .show-evaluations {
 .show-evaluations:hover {
   background-color: var(--primary-color);
   color: var(--secondary-color);
+}
+
+.evaluations-list {
+  background-color: var(--primary-thead-gb);
+  border-radius: 5px;
+  padding: 5px 10px;
+  position: relative;
+}
+
+.evaluations-list .close {
+  width: 20px;
+  height: 20px;
+  top: 5px;
+  right: 5px;
 }

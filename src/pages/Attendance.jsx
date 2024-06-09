@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../assets/css/Attendance.css';
 import { excelFileReader } from '../utils/excelUtils';
-import { ExcelTable, AttendanceForm } from '../components';
-import { CalendarForm, DragDropContainer } from '../components/ui';
+import { ExcelTable, AttendanceForm, CalendarForm } from '../components';
+import { DragDropContainer } from '../components/ui';
 
 
 const Attendance = () => {

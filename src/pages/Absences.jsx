@@ -6,14 +6,29 @@ import { excelFileReader } from '../utils/excelUtils';
 import httpClient from '../services/httpClient';
 import { Icon } from '@iconify/react';
 import '../assets/css/Absences.css';
+import { handleDownload } from '../helpers/excelHelpers';
 
-export default function Employees() {
-  const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
-  const { employees, absences } = useLoaderData();
+export default function Absences() {
+  for (let i = currentYear - 10; i <= currentYear + 10; i++) {
+    yearsSet.add(i.toString());
+  }
+  const { employees } = useLoaderData();
   const [activeId, setActiveId] = useState(null);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [show, setShow] = useState(false);
+  const [file, setFile] = useState(null);
+  const [year, setYear] = useState(currentYear);
+
+  const handleYearChange = (e) => {
+    setYear(e.target.value);
+    setActiveId(null);
+  };
+
+  async function handleYearSubmit(e) {
+    e.preventDefault();
+    console.log(year);
+  }
 
   async function handleClick(id) {
     setShow(true);
@@ -27,7 +42,7 @@ export default function Employees() {
 
   async function fetchEmployeeAbsences (employeeId) {
     try {
-      const responseFile = await httpClient.get(`/employees/${employeeId}/absences_sheet`, {
+      const responseFile = await httpClient.get(`/employees/${employeeId}/absences_sheet?year=${year}`, {
         responseType: 'blob',
       });
       const responseBlob = new Blob([responseFile.data], {
@@ -36,8 +51,10 @@ export default function Employees() {
       const jsonData = await excelFileReader(responseBlob);
       if(jsonData.length !== 0) {
         setData(jsonData);
+        setFile(responseFile);
       } else {
         setData(null);
+        setFile(null);
         console.log("no data");
       }
       setError(null);
@@ -51,10 +68,21 @@ export default function Employees() {
     <>
       <section className="employees-container absences-container">
         {error && <h2 className='error'>{error}</h2>}
-        {role === 'employee'? (
-            <AbsencesTable data={absences} />
-          ):(
-          <ul>
+        <form className='calendar-form'
+          onSubmit={handleYearSubmit}
+        >
+        <label htmlFor="year">Year:</label>
+        <select className='main-item' id="year" name="year" value={year} onChange={handleYearChange} required>
+          <option value="">-- Select Year --</option>
+          {[...yearsSet].map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+        <button type="submit" className='submit-btn new-btn'>Submit</button>
+      </form>
+        <ul>
           {employees.map(employee =>
             <li
               key={employee.id}
@@ -106,9 +134,9 @@ export default function Employees() {
                   <button
                     type='button'
                     className='submit-btn'
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      console.log('download');
+                    onClick={() => {
+                      const fileName = `absences-${employee.first_name}-${employee.last_name}.xlsx`;
+                      handleDownload(file, fileName);
                     }}
                   >
                     Download
@@ -120,9 +148,11 @@ export default function Employees() {
               )}
             </li>
           )}
-          </ul>
-        )}
+        </ul>
       </section>
     </>
   );
 }
+
+const yearsSet = new Set();
+const currentYear = new Date().getFullYear();

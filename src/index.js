@@ -9,18 +9,15 @@ import {
 import {
   LandingPage, Login, Register, Profile, CustomForm,
   Home, Employees, Departments, Jobs, Attendance,
-  Absences, Forbidden, Leaves, EmployeeLeaves,
-  Trainings,
+  Absences, Forbidden, Leaves, Trainings,
+  EmployeeAbsences,
 } from './pages';
 import {
   companyLoader, employeesLoader, loginLoader, logoutLoader,
   profileLoader, departmentsLoader, jobsLoader, addEmployeeLoader,
-  employeeLeavesLoader,
-  leavesLoader,
-  addTraingLoader,
-  trainingsLoader,
-  evaluationLoader,
+  leavesLoader, addTraingLoader, trainingsLoader, evaluationLoader,
   absencesLoader,
+  employeeAbsencesLoader,
 } from './pages/loaders';
 import { action as loginAction } from './pages/Login';
 import {action as registerAction } from './pages/Register';
@@ -120,20 +117,14 @@ const router = createBrowserRouter([
         loader: absencesLoader,
       },
       {
+        path: "my_absences",
+        element: <EmployeeAbsences />,
+        loader: employeeAbsencesLoader,
+      },
+      {
         path: "leaves",
         element: <Leaves />,
         loader: leavesLoader,
-        children: [
-          {
-            path: 'request-leave',
-            element: <RequestLeave />,
-          }
-        ]
-      },
-      {
-        path: "my-leaves",
-        element: <EmployeeLeaves />,
-        loader: employeeLeavesLoader,
         children: [
           {
             path: 'request-leave',

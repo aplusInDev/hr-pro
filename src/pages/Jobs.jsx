@@ -9,6 +9,7 @@ export default function Jobs() {
   const {jobs, jobsFields} = useLoaderData();
   const [activeId, setActiveId] = useState(null);
   const [show, setShow] = useState(false);
+  const [jobsList, setJobsList] = useState(jobs);
 
   function handleChangeId(id) {
     setShow(true);
@@ -26,12 +27,11 @@ export default function Jobs() {
           <Btn text="Add Job" />
         </Link>
       </div>
-      {/* <Filter /> */}
-      <Outlet />
+      <Outlet context={setJobsList} />
       <section className="employees-container">
         <ul>
           {
-            jobs.map(job => 
+            jobsList.map(job => 
               <li key={job.id}
               className={"main-item " + (
                 show && job.id === activeId ? 'active' : 'hide'

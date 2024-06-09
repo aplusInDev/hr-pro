@@ -9,6 +9,7 @@ export default function Departments() {
   const {departments, departmentsFields} = useLoaderData();
   const [activeId, setActiveId] = useState(null);
   const [show, setShow] = useState(false);
+  const [departmentList, setDepartmentList] = useState(departments);
 
   function handleChangeId(id) {
     setShow(true);
@@ -26,12 +27,11 @@ export default function Departments() {
           <Btn text="Add Department" />
         </Link>
       </div>
-      {/* <Filter /> */}
-      <Outlet />
+      <Outlet context={setDepartmentList} />
       <section className="employees-container">
         <ul>
           {
-            departments.map(department => 
+            departmentList.map(department => 
               <li key={department.id}
                 className={"main-item " + (
                   show && department.id === activeId ? 'active' : 'hide'

@@ -51,6 +51,7 @@ export default function AttendanceForm({
   return (
     <form
         onSubmit={handleSubmit}
+        className='calendar-form'
       >
         <label htmlFor="selectedDate">
           <div>select attendance date</div>
