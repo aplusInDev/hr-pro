@@ -55,7 +55,10 @@ export default function CustomForm() {
         setFields={setFields}
       />
       <section className='show-preview'>
-        <button type='button' onClick={handleShowPreview}>
+        <button type='button'
+          className='secondary-btn'
+          onClick={handleShowPreview}
+        >
           show {isShowPreview? "fields" : "preview"}
         </button>
       </section>

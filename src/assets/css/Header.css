@@ -1,37 +1,18 @@
 .main-header {
   width: 100vw;
   height: 50px;
-  background-color: var(--midnight-black);
-  outline: 2px solid var(--b-dark);
+  background-color: var(--primary-header-gb);
+  /* outline: 2px solid var(--b-dark); */
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.main-header h1 {
-  font: italic bold 25px 'Lato', sans-serif;
-  color: #F2F2F2;
-  width: 200px;
-  height: 40px;
-  padding-left: 10px;
-  padding-top: 10px;
-  display: flex;
-  flex-flow: row nowrap;
-}
-
-.main-header h1 > span {
-  font: italic bold 25px 'Lato', sans-serif;
-  background-color: #F2F2F2;
-  border-radius: 50%;
-  color: #000000;
-  width: 35px;
-  height: 35px;
-  margin-right: 5px;
-  padding-left: 4px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+header a {
+  width: 100px;
+  display: inline-block;
+  height: 50px;
+  padding: 5px 0;
 }
 
 .main-header ul.header-icons {
@@ -44,6 +25,7 @@
   position: absolute;
   top: 0;
   right: 0;
+  color: var(--new-primary-color);
 }
 
 .header-icons > li {
@@ -54,7 +36,8 @@
   padding-top: 5px;
 }
 
-.header-icons > li:hover {
+.header-icons > li:hover,
+.dark-ground.active {
   color: rgb(98, 161, 182);
 }
 
@@ -66,11 +49,6 @@
 .header-icons > li:last-child {
   position: relative;
 }
-
-/* li:last-child:focus .profile-settings,
-li:last-child:hover .profile-settings {
-  display: block;
-} */
 
 .profile-settings.show {
   display: block;
@@ -100,6 +78,7 @@ li:last-child:hover .profile-settings {
 
 .profile-settings li a {
   border-radius: 10px;
+  line-height: 10px;
 }
 
 .profile-settings li a.active {
@@ -142,4 +121,41 @@ li:last-child:hover .profile-settings {
 
 .profile-settings span {
   margin-left: 15px;
+}
+
+.dark-light.show {
+  display: block;
+}
+
+.dark-light {
+  display: none;
+  width: 180px;
+  min-height: 100px;
+  padding: 15px 5px;
+  position: absolute;
+  top: 55px;
+  right: 150px;
+  border-radius: 20px;
+  background-color: #d3cece;
+  z-index: 1;
+}
+
+.dark-light > li {
+  height: 25px;
+  line-height: 25px;
+  text-align: left;
+  margin: 5px 0;
+  position: relative;
+  border-radius: 10px;
+  cursor: pointer;
+  padding-left: 15px;
+  color: var(--midnight-black);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dark-light > li:hover,
+.dark-light > li.active {
+  background-color: #acb4b5;
 }

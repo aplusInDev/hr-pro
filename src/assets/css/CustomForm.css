@@ -5,30 +5,29 @@ input[type="submit"] {
   position: absolute;
   right: 20px;
   bottom: 6px;
-  width: 100px;
+  min-width: 100px;
   height: 25px;
   border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
-  padding: 0 5px;
-  background-color: var(--bgColor10);
+  padding: 0 15px;
   color: #d8dddc;
   border: none;
-  filter: drop-shadow(0px 1px 5px #5a5959);
+  /* background-color: var(--bgColor9); */
+  filter: drop-shadow(0 0 1px #fff);
+  text-align: center;
 }
 
-.custom-form button[type="button"]:not(.option-btn, .form-info-btn):hover {
+/* .custom-form button[type="button"]:not(.option-btn, .form-info-btn):hover {
   background-color: var(--bgColor5);
-  filter: drop-shadow(0 0 5px #0893c1);
-  color: white;
-}
+  opacity: .5;
+} */
 
 .custom-form button[type="submit"]:hover,
 input[type="submit"]:hover {
   background-color: var(--bgColor9);
-  filter: drop-shadow(0 0 5px #8e59d4);
-  color: white;
-  opacity: 0.8;
+  filter: none;
+  opacity: 0.6;
 }
 
 /* global styles ___________ */
@@ -39,10 +38,11 @@ input[type="submit"]:hover {
 .show-preview,
 .form-preview,
 tbody {
-  background-color: var(--midnight-black);
+  background-color: var(--primary-card-gb);
   font-family: var(--cardFont);
-  filter: drop-shadow(0 0 5px #000);
-  color: rgba(250, 251, 252, 0.571);
+  /* filter: drop-shadow(0 0 5px #000); */
+  /* color: rgba(250, 251, 252, 0.571); */
+  color: var(--primary-color);
   font-size: 14px;
 }
 
@@ -84,8 +84,8 @@ tbody {
   height: 90px;
   border-radius: 10px;
   margin: -2px;
-  background-color: #4a5163;
-  color: #bcbebf;
+  background-color: var(--secondary-color);
+  /* color: #bcbebf; */
 }
 
 .forms-list > ul {
@@ -151,9 +151,9 @@ table td:last-child button {
   text-align: center;
   cursor: pointer;
   padding-top: 2px;
-  color: white;
+  /* color: white; */
   border-radius: 5px;
-  background-color: var(--bgColor5);
+  background-color: transparent;
   border: none;
 }
 
@@ -165,25 +165,26 @@ table td:last-child button {
 .forms-list button:first-of-type,
 .options-list button:first-of-type,
 table td:last-child button:first-of-type {
-  color: #76a39c;
+  /* color: #76a39c; */
+  color: var(--primary-color);
 }
 
 .forms-list button:first-of-type:hover,
 .options-list button:first-of-type:hover,
 table td:last-child button:first-of-type:hover {
-  filter: brightness(1.2) drop-shadow(1px 2px 7px #4b7f8f);
+  /* color: #767676; */
+  color: var(--primary-btn-color);
 }
 
-.forms-list button:last-of-type,
+/* .forms-list button:last-of-type,
 .options-list button:last-of-type,
 table td:last-child button:last-of-type {
   background-color: #32071a;
   color: hsl(10, 50%, 50%);
-}
+} */
 .forms-list button:last-of-type:hover,
 .options-list button:last-of-type:hover,
 table td:last-child button:last-of-type:hover {
-  filter: brightness(1.2) drop-shadow(1px 2px 5px #b15b85);
   color: hsl(10, 100%, 50%);
 }
 
@@ -245,7 +246,7 @@ table td:last-child button:last-of-type:hover {
 .form-info > .new-form {
   position: absolute;
   padding-left: 20px;
-  width: 700px;
+  width: 670px;
   height: 90%;
   top: 5%;
   display: flex;
@@ -272,7 +273,7 @@ table td:last-child button:last-of-type:hover {
 }
 
 .all-forms textarea {
-  width: 420px;
+  width: 405px;
 }
 
 /* 2. styling .new-form */
@@ -360,24 +361,30 @@ table select > * {
 }
 
 .new-field > button[type="button"] {
-  left: 130px;
+  /* left: 130px; */
   border-radius: 10px !important;
 }
 
-.new-field input[type="submit"] {
+/* .new-field input[type="submit"] {
+  left: 20px;
+} */
+
+.new-field .primary-btn {
+  left: 130px;
+}
+  
+.new-field .secondary-btn {
   left: 20px;
 }
 
-.new-field button:not(.option-btn),
 table button:not(td:last-child button) {
-  border-radius: 5px;
+  border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
-  padding: 0 5px;
+  padding: 5px 10px;
   margin-left: 5px;
-  background-color: var(--bgColor5);
-  filter: brightness(1.2) drop-shadow(1px 1px 3px #5a5959);
-  color: white;
+  /* background-color: var(--bgColor5);
+  color: white; */
   border: none;
 }
 
@@ -389,7 +396,7 @@ table {
   margin: 0 auto;
   border-radius: 8px;
   border-spacing: 0;
-  filter: drop-shadow(0 0 5px #000);
+  /* filter: drop-shadow(0 0 5px #000); */
 }
 
 thead {
@@ -412,7 +419,8 @@ thead tr {
 thead th {
   height: 30px;
   line-height: 30px;
-  background-color: var(--midnight-black);
+  background-color: var(--secondary-thead-gb);
+  color: var(--primary-color);
 }
 
 tr {
@@ -427,8 +435,15 @@ tr {
 
 td {
   padding: 20px 5px 10px;
-  border-bottom: 1px solid var(--bgColor10);
-  background-color: var(--bgColor5);
+  /* border-bottom: 1px solid var(--bgColor10); */
+}
+
+tr:nth-child(odd) td {
+  background-color: var(--primary-tbody-gb);
+}
+
+tr:nth-child(even) td {
+  background-color: var(--secondary-tbody-gb);
 }
 
 td:not(td:nth-child(6)) {
@@ -503,11 +518,10 @@ td:last-child button > * {
 }
 
 .show-preview > button {
-  background-color: var(--cardColor);
-  filter: drop-shadow(0 0 5px #6c7071);
-  color: #fefefe;
+  /* background-color: var(--color9);
+  color: #fefefe; */
   padding: 5px 10px;
-  border-radius: 15px;
+  border-radius: 10px;
   border: none;
 }
 /* styling .show-preview section ________________________*/
@@ -515,8 +529,7 @@ td:last-child button > * {
 /* styling form-preview */
 .form-preview {
   padding: 45px 20px;
-  /* color: #fefefe; */
-  color: var(--color5);
+  color: var(--primary-color);
 }
 
 .form-preview label {

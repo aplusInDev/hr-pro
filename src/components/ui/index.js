@@ -8,3 +8,4 @@ export { default as FText } from './FText';
 export { default as Btn } from './Btn';
 export { default as DragDropContainer } from './DragDropContainer';
 export { default as CalendarForm } from './CalendarForm';
+export { default as Logo } from './Logo';

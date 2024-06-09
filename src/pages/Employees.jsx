@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Info, Filter } from '../components';
+import { Info } from '../components';
 import { Btn } from '../components/ui';
 import '../assets/css/Employees.css';
 import { Outlet, Link, useLoaderData } from 'react-router-dom';
@@ -7,15 +7,15 @@ import { Icon } from '@iconify/react';
 
 export default function Employees() {
   const {employees, employeeFields} = useLoaderData();
-  const [active, setActive] = useState(null);
+  const [activeId, setActive] = useState(null);
   const [show, setShow] = useState(false);
 
-  function handleClick(e) {
+  function handleClick(id) {
     setShow(true);
-    if (active === e.target.id) {
+    if (activeId === id) {
       return;
     } else {
-      setActive(e.target.id);
+      setActive(id);
     }
   }
 
@@ -26,19 +26,21 @@ export default function Employees() {
           <Btn text="Add Employee" />
         </Link>
       </div>
-      <Filter />
+      {/* <Filter /> */}
       <Outlet />
       <section className="employees-container">
         <ul>
           {employees.map(employee => 
             <li
               key={employee.id}
-              className={show && employee.id === active ? 'show' : 'hide'}
+              className={"main-item " + (
+                show && employee.id === activeId ? 'active' : 'hide'
+              )}
             >
               <div className="main-info">
                 <span
                   id={employee.id}
-                  onClick={handleClick}
+                  onClick={() => handleClick(employee.id)}
                   >
                   {employee.first_name} {employee.last_name}
                 </span>
@@ -46,7 +48,7 @@ export default function Employees() {
                   {employee.position_info.job_title}
                 </div>
               </div>
-              {employee.id === active ? (
+              {employee.id === activeId ? (
                 <>
                   <span
                     className='close'

@@ -12,6 +12,8 @@
   width: 150px;
   height: 30px;
   margin: 5px 15px;
+  border: 1px solid var(--new-primary-color);
+  color: var(--new-primary-color);
 }
 
 /* styling employees-container */
@@ -29,8 +31,7 @@
 }
 
 .employees-container li {
-  background-color: rgb(0, 0, 0, 0.5);
-  filter: drop-shadow(0 0 5px var(--color3));
+  /* background-color: var(--primary-card-gb); */
   width: 100%;
   min-height: 30px;
   line-height: 30px;
@@ -39,10 +40,14 @@
   position: relative; /* added before adding new absence to replace li.show, li.hide */
 }
 
-.employees-container li.hide:hover {
+/* .employees-container li.hide:hover {
   background-color: var(--color2);
-  filter: brightness(.7);
   transition: background-color .5s ease-in-out;
+  filter: brightness(.7);
+} */
+
+.employees-container li.active > .main-info {
+  display: none;
 }
 
 .employees-container span.close {
@@ -53,18 +58,10 @@
   border-radius: 50%;
   width: 25px;
   height: 25px;
-  background-color: var(--color3);
+  /* background-color: var(--color3); */
+  /* filter: brightness(.8); */
   line-height: 25px;
   text-align: center;
-  filter: brightness(.8);
-}
-
-span.close svg {
-  color: var(--color13);
-  width: 20px;
-  height: 20px;
-  margin: 2px;
-  filter: brightness(1.2);
 }
 
 li.hide > form,
@@ -81,6 +78,7 @@ li.hide > .absent-info > span,
 li.hide > .main-info > span {
   margin: 5px;
   cursor: pointer;
+  color: var(--color8);
 }
 
 li.hide:hover > .absent-info > span,
@@ -96,7 +94,7 @@ li.hide:hover > .main-info > div {
 .absent-info > div,
 li.hide > .main-info > div {
   font-size: .9em;
-  color: var(--color13);
+  color: var(--pfontColor);
   margin-top: 2px;
 }
 
@@ -104,7 +102,6 @@ li.hide > .main-info > div {
 
 .employees-container .form-preview {
   width: 100%;
-  /* background: transparent; */
   margin: 0;
   margin-top: 20px;
   padding-top: 10px;
@@ -134,6 +131,6 @@ li.hide > .main-info > div {
   margin-left: 3px;
 }
 
-.employees-container .submit-btn:hover {
+/* .employees-container .submit-btn:hover {
   color: var(--pfontColor);
-}
+} */

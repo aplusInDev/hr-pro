@@ -1,9 +1,9 @@
 import { React } from 'react'
 import httpClient from '../services/httpClient';
-import { Form, redirect, Link , useActionData} from 'react-router-dom';
+import { Form, redirect , useActionData} from 'react-router-dom';
 import "../assets/css/Register.css";
 import Cookies from 'js-cookie';
-import { Alert } from '../components/ui';
+import { Alert, Logo } from '../components/ui';
 
 export default function Login() {
   const errorData = useActionData();
@@ -14,11 +14,7 @@ export default function Login() {
         errorData && <Alert title="Error" body={errorData} />
       }
       <header>
-        <div className="logo">
-          <Link to="/">
-            <span>hr</span><span>pro</span>
-          </Link>
-        </div>
+        <Logo />
       </header>
       <Form method='post' action='/login'>
         <label>

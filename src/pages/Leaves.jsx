@@ -44,14 +44,18 @@ export default function Leaves() {
         </div>
       </>)}
       <Btn text="pending"
-        className={active === "pending" ? "active" : ""}
+        className={"new-btn " + (
+          active === "pending" ? "active" : "")
+        }
         onClick={() => {
           setLeaves(pendingLeaves);
           setActive("pending");
         }}
       />
       <Btn text="approved"
-        className={active === "approved" ? "active" : ""}
+        className={"new-btn " + (
+          active === "approved" ? "active" : "")
+        }
         onClick={() => {
           setLeaves(approvedLeaves);
           setActive("approved");
@@ -60,7 +64,9 @@ export default function Leaves() {
     </div>
       <ul>
         {leaves.map(leave => (
-          <li key={leave.id}>
+          <li key={leave.id}
+            className="main-item"
+          >
             <div className="main-info">
               <p>
                 {updatingLeaveId === leave.id && 'Updating...'}

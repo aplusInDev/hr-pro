@@ -1,5 +1,5 @@
 .profile {
-  background-color: var(--color8);
+  /* background-color: var(--primary-bg); */
   margin-top: 50px;
   width: 100vw;
   height: calc(100vh - 50px);

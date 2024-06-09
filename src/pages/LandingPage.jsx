@@ -1,18 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Alert } from '../components/ui';
+import { Alert, Btn, Logo } from '../components/ui';
 import "../assets/css/LandingPage.css";
 
 export default function LandingPage() {
   return (
     <div className="landing-page">
       <header>
-        <div className="logo">
-          <span>hr</span><span>pro</span>
-        </div>
+        <Logo />
         <div className="btns">
-          <button type='button'><Link to={'login'}>Login In</Link></button>
-          <button type='button'><Link to={'register'}>Sign Up</Link></button>
+          <Link to={'login'}>
+            <Btn text="login" className="submit-btn new-btn" />
+          </Link>
+          <Link to={'register'}>
+            <Btn text="register" />
+          </Link>
         </div>
       </header>
       <Alert

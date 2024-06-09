@@ -15,15 +15,13 @@ export default function Employees() {
   const [error, setError] = useState(null);
   const [show, setShow] = useState(false);
 
-  async function handleClick(e) {
+  async function handleClick(id) {
     setShow(true);
-    if (activeId === e.target.id) {
-      console.log("one");
+    if (activeId === id) {
       return;
     } else {
-      console.log("two");
-      setActiveId(e.target.id);
-      await fetchEmployeeAbsences(e.target.id);
+      setActiveId(id);
+      await fetchEmployeeAbsences(id);
     }
   }
 
@@ -51,8 +49,6 @@ export default function Employees() {
 
   return (
     <>
-      {/* <Filter />
-      <Outlet /> */}
       <section className="employees-container absences-container">
         {error && <h2 className='error'>{error}</h2>}
         {role === 'employee'? (
@@ -62,15 +58,16 @@ export default function Employees() {
           {employees.map(employee =>
             <li
               key={employee.id}
-              className={show && employee.id === activeId ? 'show' : 'hide'}
+              className={"main-item " + (
+                show && employee.id === activeId ? 'active' : 'hide'
+              )}
             >
               <div className='absent-info'>
                 <div className='employee-short-info'>
                   <span
-                    id={employee.id}
-                    onClick={(e) => {
+                    onClick={() => {
                       if(employee.absences === 0) return;
-                      handleClick(e);
+                      handleClick(employee.id);
                     }}
                     >
                     {employee.first_name} {employee.last_name}
@@ -82,16 +79,16 @@ export default function Employees() {
                 <div className="absences-short-info">
                   {(employee.id !== activeId || !show) && (
                     <span className='sum_absences'>
-                      {employee.absences_total_days} day in {employee.absences} absences
+                      {employee.absences_total_days} day in {employee.absences} absence(s)
                     </span>
                   )}
                   {employee.absences > 0 && (employee.id !== activeId || !show) && (
                     <>
                       <span className='justified-absences'>
-                        {employee.justified_absences_days} day in {employee.justified_absences} justified absences
+                        {employee.justified_absences_days} day in {employee.justified_absences} justified absence(s)
                       </span>
                       <span className='unjustified-absences'>
-                        {employee.unjustified_absences_days} day in {employee.unjustified_absences} justified absences
+                        {employee.unjustified_absences_days} day in {employee.unjustified_absences} unjustified absence(s)
                       </span>
                     </>
                   )}

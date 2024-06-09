@@ -19,7 +19,7 @@ export default function DragDropContainer({
       formData.append('file', file);
       
       try {
-        await httpClient.post(`/companies/${company_id}/attendance`,
+        await httpClient.post(`/companies/${company_id}/attendance_async`,
           formData, {
             headers: {
               'Content-Type': 'multipart/form-data',

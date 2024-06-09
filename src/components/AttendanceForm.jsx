@@ -56,6 +56,7 @@ export default function AttendanceForm({
           <div>select attendance date</div>
         </label>
         <input
+          className='main-item'
           type="date"
           id="selectedDate"
           value={selectedDate}
@@ -65,7 +66,7 @@ export default function AttendanceForm({
           dateStatus === 'submitted' && (
             <button
               type='button'
-              className='submit-btn'
+              className='submit-btn new-btn'
               onClick={() => {
                 const fileName = `attendance-${selectedDate}.xlsx`;
                 handleDownload(responseFile, fileName);;
@@ -79,7 +80,7 @@ export default function AttendanceForm({
           dateStatus === 'changing' && (
             <button
               type="submit"
-              className='submit-btn'
+              className='submit-btn new-btn'
             >
               Submit
             </button>

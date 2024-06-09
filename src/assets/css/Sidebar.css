@@ -1,10 +1,11 @@
 aside {
   --field-height: 30px;
-  background-color: var(--second-dark-color);
+  /* background-color: var(--second-dark-color); */
+  background-color: var(--sidebar-bg);
   width: 200px;
   height: calc(100vh - 50px);
-  border-top: 1px solid var(--b-dark);
-  color: var(--icon-color);
+  /* border-top: 1px solid var(--b-dark); */
+  /* color: var(--icon-color); */
 }
 
 aside.slim {
@@ -42,7 +43,7 @@ aside li {
   position: absolute;
   left: 15px;
   z-index: 1;
-  color: var(--color4);
+  /* color: var(--color4); */;
   display: flex;
   justify-content: center;
   align-items: center;

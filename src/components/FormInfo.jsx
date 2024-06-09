@@ -85,9 +85,11 @@ export default function FormInfo({
           <h3>form description</h3>
             <FDescription obj={form} onChange={handleChange} />
         </label>
-        <button type='submit' onClick={(e) => {
-          e.preventDefault();
-          handleEdit(form);
+        <button type='submit'
+          className='secondary-btn'
+          onClick={(e) => {
+            e.preventDefault();
+            handleEdit(form);
         }}>
           Update Form
         </button>

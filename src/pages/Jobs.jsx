@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
-import { Info, Filter } from '../components';
+import { Info } from '../components';
 import { Btn } from '../components/ui';
 import '../assets/css/Employees.css';
 import { Outlet, Link, useLoaderData } from 'react-router-dom';
+import { Icon } from '@iconify/react/dist/iconify.js';
 
 export default function Jobs() {
   const {jobs, jobsFields} = useLoaderData();
-  const [active, setActive] = useState(null);
+  const [activeId, setActiveId] = useState(null);
+  const [show, setShow] = useState(false);
 
-  function handleClick(e) {
-    if (active === e.target.id) {
-      setActive(null);
+  function handleChangeId(id) {
+    setShow(true);
+    if(activeId === id) {
+      return
     } else {
-      setActive(e.target.id);
+      setActiveId(id);
     }
   }
 
@@ -23,28 +26,38 @@ export default function Jobs() {
           <Btn text="Add Job" />
         </Link>
       </div>
-      <Filter />
+      {/* <Filter /> */}
       <Outlet />
       <section className="employees-container">
         <ul>
           {
             jobs.map(job => 
-              <li
-                id={job.id}
-                key={job.id}
-                onClick={handleClick}
+              <li key={job.id}
+              className={"main-item " + (
+                show && job.id === activeId ? 'active' : 'hide'
+              )}
               >
-                {
-                  job.id === active ? (
-                  <Info
+                <div className="main-info">
+                  <span
+                    onClick={() => handleChangeId(job.id)}
+                  >
+                    {job.title}
+                  </span>
+                </div>
+                {job.id === activeId && (
+                  <>
+                    <span className="close"
+                      onClick={() => setShow(false)}
+                    >
+                      <Icon icon="material-symbols-light:close" />
+                    </span>
+                    <Info
                       fields={jobsFields}
                       obj_id={job.id}
                       path='jobs'
                     />
-                  ) : (
-                    <span>{job.title}</span>
-                  )
-                }
+                  </>
+                )}
               </li>
             )
           }

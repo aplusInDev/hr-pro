@@ -24,7 +24,7 @@ main.wide .attendance {
   text-align: center;
   line-height: 100px;
   position: relative;
-  color: var(--color2);
+  color: var(--new-primary-color);
 }
 
 .drag-drop-container .btn {
@@ -51,6 +51,7 @@ main.wide .attendance {
   padding: 5px 5px 2px 100px;
   margin: 5px auto 20px;
   width: 95%;
+  color: var(--new-primary-color);
 }
 
 .or-div {
@@ -87,8 +88,4 @@ main.wide .attendance {
 .attendance select {
   margin: 0 15px 0 10px;
   height: 30px;
-}
-
-.attendance select::part(button) {
-  background-color: red;
 }
