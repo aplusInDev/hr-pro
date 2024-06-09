@@ -6,18 +6,21 @@
 .evaluation-container .close {
   position: absolute;
   right: 10px;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--color3);
+  border: 1px solid var(--new-primary-color);
+  opacity: .5;
 }
 
 .evaluation-container .close svg {
+  color: var(--new-primary-color);
   width: 30px;
   height: 30px;
+  opacity: .8;
 }
 
 /* Styling the form */
@@ -25,9 +28,9 @@
   max-width: 500px;
   margin: 20px auto;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid transparent;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: var(--primary-card-gb);
   position: absolute;
   top: 50px;
   left: 50%;
@@ -36,7 +39,7 @@
 }
 
 #trainingEvaluationForm h2 {
-  color: #333;
+  color: var(--primary-font-color);
   text-align: center;
   margin-bottom: 20px;
 }
@@ -45,7 +48,7 @@
 #trainingEvaluationForm label {
   display: block;
   margin-top: 10px;
-  color: #666;
+  color: var(--secondary-font-color);
 }
 
 #trainingEvaluationForm input[type="text"],
@@ -81,5 +84,19 @@
 }
 
 #trainingEvaluationForm input[type="radio"]::before {
-  border: 1px solid red;
+  background-color: #3333335e;
+}
+
+.anonimous-choice {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.anonimous-choice > div {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 10px;
+  align-items: center;
 }

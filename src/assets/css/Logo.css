@@ -1,19 +1,21 @@
 .logo {
   font: italic bold 25px 'Lato', sans-serif;
   color: #F2F2F2;
-  width: 150px;
-  height: 40px;
+  width: 200px;
+  height: 50px;
   padding-left: 10px;
   padding-top: 5px;
   display: flex;
   flex-flow: row nowrap;
+  /* background-color: var(--sidebar-bg); */
+  transform: translateY(-5px);
 }
 
 .logo > span:first-child {
   font: italic bold 20px 'Lato', sans-serif;
-  background-color: #F2F2F2;
+  background-color: var(--new-primary-color);
   border-radius: 50%;
-  color: #000000;
+  color: var(--new-secondary-color);
   width: 30px;
   height: 30px;
   margin-right: 5px;
@@ -28,4 +30,5 @@
   height: 30px;
   line-height: 30px;
   font-size: 18px;
+  color: var(--new-primary-color);
 }

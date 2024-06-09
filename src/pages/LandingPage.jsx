@@ -10,7 +10,7 @@ export default function LandingPage() {
         <Logo />
         <div className="btns">
           <Link to={'login'}>
-            <Btn text="login" className="submit-btn" />
+            <Btn text="login" className="submit-btn new-btn" />
           </Link>
           <Link to={'register'}>
             <Btn text="register" />

@@ -17,7 +17,8 @@ li:hover > .aside-link:not(.aside-link.active) {
 }
 
 aside li > .aside-link {
-  color: var(--color2);
+  /* color: var(--color2); */
+  color: var(--new-primary-color);
   opacity: .7;
 }
 

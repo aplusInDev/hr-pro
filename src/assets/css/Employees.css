@@ -12,6 +12,8 @@
   width: 150px;
   height: 30px;
   margin: 5px 15px;
+  border: 1px solid var(--new-primary-color);
+  color: var(--new-primary-color);
 }
 
 /* styling employees-container */
@@ -92,7 +94,7 @@ li.hide:hover > .main-info > div {
 .absent-info > div,
 li.hide > .main-info > div {
   font-size: .9em;
-  color: var(--color13);
+  color: var(--pfontColor);
   margin-top: 2px;
 }
 

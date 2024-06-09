@@ -1,8 +1,8 @@
 .main-header {
   width: 100vw;
   height: 50px;
-  background-color: var(--midnight-black);
-  outline: 2px solid var(--b-dark);
+  background-color: var(--primary-header-gb);
+  /* outline: 2px solid var(--b-dark); */
   position: absolute;
   top: 0;
   left: 0;
@@ -25,6 +25,7 @@ header a {
   position: absolute;
   top: 0;
   right: 0;
+  color: var(--new-primary-color);
 }
 
 .header-icons > li {

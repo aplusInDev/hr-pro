@@ -264,5 +264,6 @@ li:hover .show-evaluations {
 
 .evaluate:hover,
 .show-evaluations:hover {
-  background-color: var(--midnight-black);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 }

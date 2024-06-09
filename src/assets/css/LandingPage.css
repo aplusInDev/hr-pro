@@ -47,4 +47,5 @@
 
 .landing-page section {
   padding: 10px;
+  color: var(--new-primary-color);
 }

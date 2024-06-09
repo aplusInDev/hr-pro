@@ -24,7 +24,7 @@ main.wide .attendance {
   text-align: center;
   line-height: 100px;
   position: relative;
-  color: var(--primary-color);
+  color: var(--new-primary-color);
 }
 
 .drag-drop-container .btn {
@@ -51,7 +51,7 @@ main.wide .attendance {
   padding: 5px 5px 2px 100px;
   margin: 5px auto 20px;
   width: 95%;
-  color: var(--primary-color);
+  color: var(--new-primary-color);
 }
 
 .or-div {

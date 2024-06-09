@@ -132,7 +132,7 @@ button:disabled, button:disabled:hover {
 }
 
 .main-item:not(.active-card, .active):hover {
-  background-color: #0331435e;
+  background-color: var(--secondary-item-gb);
 }
 
 .active-card {
@@ -189,5 +189,14 @@ span.close svg {
 .secondary-btn:hover {
   background-color: rgba(47, 47, 167, 0.896) !important;
   /* background-color: rgba(47, 47, 167, 0.671); */
+}
+
+.new-btn:not(.new-btn.active) {
+  color: var(--new-primary-color);
+  border: 1px solid var(--new-primary-color);
+}
+
+.var-color {
+  color: var(--new-primary-color);
 }
 

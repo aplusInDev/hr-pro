@@ -59,25 +59,44 @@
   --primary-color: #0A0E0B;
   --secondary-color: #f2f2f2;
   --primary-disabled-color: rgba(16, 16, 16, 0.3);
-  --primary-bg: #add8e61f;
+  /* --primary-bg: #add8e61f; */
+  /* --primary-bg: #ade6dc29; */
+  --primary-bg: #cdd2ce90;
   --secondary-gb: var(--color15);
   --primary-card-gb: #b0bfc4b2;
+  /* --primary-card-gb: var(--sidebar-bg); */
   --primary-aside-color: var(--color1);
   --primary-btn-gb: #022c3a13;
   --secondary-btn-gb: #e8eef013;
   --primary-btn-color: #686f71bd;
   --primary-thead-gb: #bcbebf;
   --secondary-thead-gb: var(--primary-card-gb);
-  --primary-tbody-gb: var(--primary-btn-color);
-  --secondary-tbody-gb: var(--primary-btn-gb);
-  }
-  
+  --primary-tbody-gb: rgba(56, 74, 81, 0.422);
+  --secondary-tbody-gb: rgba(56, 71, 81, 0.471);
+  --secondary-item-gb: #0331435e;
+  --new-primary-color: var(--primary-color);
+  --new-secondary-color: #fefefe;
+  /* --primary-header-gb: #a8aba99a; */
+  --primary-header-gb: #b0bfc4c2;
+  /* --sidebar-bg: #acb0ad90; */
+  --sidebar-bg: #b0bfc4a9;
+  /* --sidebar-bg: var(--second-dark-color); */
+  --primary-font-color: #333;
+  --secondary-font-color: #666;
+}
+
 .dark-mode {
-  --primary-color: #fdfdfd;
-  --aside-ground: rgb(6, 22, 33);
   --primary-bg: #0A0E0B;
-  --secondary-gb: #000205;
-  --primary-card-gb: rgba(78, 83, 86, 0.762);
+  --secondary-thead-gb: rgba(68, 87, 94, 0.878);
+  --primary-tbody-gb: rgba(150, 165, 177, 0.647);
+  --secondary-tbody-gb: rgba(161, 169, 175, 0.718);
+  --secondary-item-gb: #9ab9c5a9;
+  --new-primary-color: #fefefe;
+  --new-secondary-color: var(--primary-color);
+  /* --sidebar-bg: #c0edcb; */
+  --sidebar-bg: var(--second-dark-color);
+  --primary-header-gb: var(--midnight-black);
+  --secondary-font-color: #3d3b3b;
 }
 
 .error {

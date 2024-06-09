@@ -73,18 +73,24 @@ export default function Evaluation() {
           rows="4" onChange={handleChange}
         />
 
-        <label>anonimous</label>
-        <label htmlFor='yes'>yes</label>
-        <input type="radio"
-          id="yes" name='anonimous'
-          value={true} onChange={handleChange}
-        />
-        <label htmlFor='no'>no</label>
-        <input type="radio"
-          id="no" name='anonimous'
-          value={false} onChange={handleChange}
-          defaultChecked={true}
-        />
+        <div className="anonimous-choice">
+          <label>anonimous</label>
+          <div>
+            <label htmlFor='yes'>yes</label>
+            <input type="radio"
+              id="yes" name='anonimous'
+              value={true} onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor='no'>no</label>
+            <input type="radio"
+              id="no" name='anonimous'
+              value={false} onChange={handleChange}
+              defaultChecked={true}
+            />
+          </div>
+        </div>
         <button type='submit' className='submit-btn'>
           submit
         </button>

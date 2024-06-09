@@ -66,7 +66,7 @@ const CalendarForm = ({ setData, }) => {
     {error && <p className="error">{error}</p>}
     <form onSubmit={handleSubmit}>
       <label htmlFor="month">Month:</label>
-      <select id="month" name="month" value={month} onChange={handleMonthChange} required>
+      <select className='main-item' id="month" name="month" value={month} onChange={handleMonthChange} required>
         {months.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
@@ -74,7 +74,7 @@ const CalendarForm = ({ setData, }) => {
         ))}
       </select>
       <label htmlFor="year">Year:</label>
-      <select id="year" name="year" value={year} onChange={handleYearChange} required>
+      <select className='main-item' id="year" name="year" value={year} onChange={handleYearChange} required>
         <option value="">-- Select Year --</option>
         {[...yearsSet].map((option) => (
           <option key={option} value={option}>
@@ -94,7 +94,7 @@ const CalendarForm = ({ setData, }) => {
           download <Icon icon="akar-icons:download" />
         </button>
         ): (
-        <button type="submit" className='submit-btn'>Submit</button>
+        <button type="submit" className='submit-btn new-btn'>Submit</button>
       )}
     </form>
     </>

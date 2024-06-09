@@ -439,11 +439,11 @@ td {
 }
 
 tr:nth-child(odd) td {
-  background-color: rgba(56, 74, 81, 0.422);
+  background-color: var(--primary-tbody-gb);
 }
 
 tr:nth-child(even) td {
-  background-color: rgba(56, 71, 81, 0.471);
+  background-color: var(--secondary-tbody-gb);
 }
 
 td:not(td:nth-child(6)) {
