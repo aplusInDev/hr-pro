@@ -54,7 +54,7 @@
   color: var(--primary-color);
   display: flex;
   flex-flow: row wrap;
-  gap: 150px;
+  gap: 10px;
 }
 
 .employee_position_info:not(li.active > .employee_position_info) {
@@ -64,11 +64,26 @@
 }
 
 .employee_position_info > div {
+  width: 40%;
   padding: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 10px;
+  align-items: center;
 }
 
-.employee_position_info span {
-  margin: auto 10px;
+.employee_position_info .btn {
+  background-color: inherit;
+  width: 20px;
+  height: 20px;
+}
+
+.employee_position_info .btn:hover {
+  opacity: 0.6;
+}
+
+.employee_position_info select {
+  height: 30px;
 }
 
 .employees-container span.close {

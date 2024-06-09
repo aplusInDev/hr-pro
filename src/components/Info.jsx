@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Btn } from './ui';
 import httpClient from '../services/httpClient';
+import { Icon } from '@iconify/react/dist/iconify.js';
 
 export default function Info({
   fields, obj_id,
@@ -11,6 +12,10 @@ export default function Info({
   const [employee, setEmployee] = useState(null);
   const [departmentsNames, setDepartmentsNames] = useState([]);
   const [jobsTitles, setJobsTitles] = useState([]);
+  const [depEditStatus, setDepEditStatus] = useState("idle"); // idle, editing, submitting
+  const [jobEditStatus, setJobEditStatus] = useState("idle"); // idle, editing, submitting
+  const [newDep, setNewDep] = useState(null);
+  const [newJob, setNewJob] = useState(null);
 
   useEffect(() => {
     async function getInfo() {
@@ -37,6 +42,44 @@ export default function Info({
   function handleChange(data) {
     setInfo(data);
     setStatus('changing');
+  }
+
+  function handleJobChange(e) {
+    setNewJob(e.target.value);
+    setJobEditStatus("changing");
+    console.log(e.target.value);
+  }
+    
+  function handleDepChange(e) {
+    setNewDep(e.target.value);
+    setDepEditStatus("changing");
+    console.log(e.target.value);
+  }
+
+  async function handleDepSubmit(e) {
+    e.preventDefault();
+    setDepEditStatus("submitting");
+    try {
+      const response = await httpClient.put(`/employees/${obj_id}`, {department_name: newDep});
+      console.log(response.data);
+    } catch(err) {
+      console.log("erro: ", err);
+    } finally {
+      setDepEditStatus("idle")
+    }
+  }
+
+  async function handleJobSubmit(e) {
+    e.preventDefault();
+    setJobEditStatus("submitting");
+    try {
+      const response = await httpClient.put(`/employees/${obj_id}`, {job_title: newJob});
+      console.log(response.data);
+    } catch(err) {
+      console.log("erro: ", err);
+    } finally {
+      setJobEditStatus("idle")
+    }
   }
 
   async function handleSubmit(e) {
@@ -216,39 +259,55 @@ export default function Info({
           <label htmlFor="dep_name"><span>Department</span></label>
           <select
             id="dep_name"
-            disabled={status === 'idle'}
+            disabled={depEditStatus === 'idle'}
             defaultValue={employee?.department_info.department_name}
-            onChange={(e) => {
-              e.stopPropagation();
-              handleChange({
-                ...info,
-                department_id: departmentsNames.find((dep) => dep.department_name === e.target.value).id
-              });
-            }}
+            onChange={handleDepChange}
           >
             {departmentsNames.map((option) => (
               <option key={option} value={option}>{option}</option>
             ))}
           </select>
+          {depEditStatus === "idle" && (
+            <Btn text=""
+              onClick={() => setDepEditStatus("editing")}
+            >
+              <Icon icon="akar-icons:edit" />
+            </Btn>
+          )}
+          {depEditStatus === "changing" && (
+            <Btn text=""
+              onClick={handleDepSubmit}
+            >
+              <Icon icon="akar-icons:check" />
+            </Btn>
+          )}
         </div>
         <div className="employee_pos">
           <label htmlFor="job_title"><span>Position</span></label>
           <select
             id="job_title"
-            disabled={status === 'idle'}
+            disabled={jobEditStatus === 'idle'}
             defaultValue={employee?.position_info.job_title}
-            onChange={(e) => {
-              e.stopPropagation();
-              handleChange({
-                ...info,
-                job_id: jobsTitles.find((job) => job.job_title === e.target.value).id
-              });
-            }}
+            onChange={handleJobChange}
           >
             {jobsTitles.map((option) => (
               <option key={option} value={option}>{option}</option>
             ))}
           </select>
+          {jobEditStatus === "idle" && (
+            <Btn text=""
+              onClick={() => setJobEditStatus("editing")}
+            >
+              <Icon icon="akar-icons:edit" />
+            </Btn>
+          )}
+          {jobEditStatus === "changing" && (
+            <Btn text=""
+              onClick={handleJobSubmit}
+            >
+              <Icon icon="akar-icons:check" />
+            </Btn>
+          )}
         </div>
       </div>
     )}
