@@ -8,9 +8,9 @@ import '../assets/css/AddEmployee.css';
 import httpClient from '../services/httpClient';
 
 
-const companyId = JSON.parse(localStorage.getItem("currentUser"))?.company_id;
 
 export default function AddEmployee() {
+  const companyId = JSON.parse(localStorage.getItem("currentUser"))?.company_id;
   const setEmployeesLsit = useOutletContext();
   const [data, setData] = useState({});
   const navigate = useNavigate();

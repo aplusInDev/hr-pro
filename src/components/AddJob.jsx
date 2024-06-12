@@ -4,9 +4,9 @@ import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import '../assets/css/AddEmployee.css';
 import httpClient from '../services/httpClient';
 
-const company_id = JSON.parse(localStorage.getItem('currentUser'))?.company_id;
 
 export default function AddJob() {
+  const company_id = JSON.parse(localStorage.getItem('currentUser'))?.company_id;
   const [data, setData] = useState({});
   const navigate = useNavigate();
   const setJobsList = useOutletContext();
