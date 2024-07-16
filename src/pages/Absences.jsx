@@ -11,21 +11,24 @@ export default function Absences() {
   for (let i = currentYear - 10; i <= currentYear + 10; i++) {
     yearsSet.add(i.toString());
   }
-  const { employees } = useLoaderData();
+  const { initialEmployees } = useLoaderData();
   const [activeId, setActiveId] = useState(null);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [show, setShow] = useState(false);
   const [year, setYear] = useState(currentYear);
+  const [employees, setEmployees] = useState(initialEmployees);
 
-  const handleYearChange = (e) => {
+  const handleYearChange = async (e) => {
+    const companyId = JSON.parse(localStorage.getItem("currentUser"))?.company_id;
     setYear(e.target.value);
     setActiveId(null);
-  };
-
-  async function handleYearSubmit(e) {
-    e.preventDefault();
-    console.log(year);
+    try {
+      const response = await httpClient.get(`/companies/${companyId}/employees_absences?year=${e.target.value}`);
+      setEmployees(response.data);
+    } catch (err) {
+      console.log("erro: ", err);
+    }
   }
 
   async function handleClick(id) {
@@ -72,9 +75,7 @@ export default function Absences() {
     <>
       <section className="employees-container absences-container">
         {error && <h2 className='error'>{error}</h2>}
-        <form className='calendar-form'
-          onSubmit={handleYearSubmit}
-        >
+        <form className='calendar-form'>
         <label htmlFor="year">Year:</label>
         <select className='main-item' id="year" name="year" value={year} onChange={handleYearChange} required>
           <option value="">-- Select Year --</option>
@@ -84,7 +85,6 @@ export default function Absences() {
             </option>
           ))}
         </select>
-        <button type="submit" className='submit-btn new-btn'>Submit</button>
       </form>
         <ul>
           {employees.map(employee =>
@@ -98,7 +98,7 @@ export default function Absences() {
                 <div className='employee-short-info'>
                   <span
                     onClick={() => {
-                      if(employee.absences === 0) return;
+                      if(employee.absences_info.absences === 0) return;
                       handleClick(employee.id);
                     }}
                     >
@@ -111,16 +111,23 @@ export default function Absences() {
                 <div className="absences-short-info">
                   {(employee.id !== activeId || !show) && (
                     <span className='sum_absences'>
-                      {employee.absences_total_days} day in {employee.absences} absence(s)
+                      {employee.absences_info.absences_total_days} day in&nbsp;
+                      {employee.absences_info.absences} absence(s)
                     </span>
                   )}
-                  {employee.absences > 0 && (employee.id !== activeId || !show) && (
+                  {employee.absences_info.absences > 0 && (employee.id !== activeId || !show) && (
                     <>
                       <span className='justified-absences'>
-                        {employee.justified_absences_days} day in {employee.justified_absences} justified absence(s)
+                        {employee.absences_info.justified_absences_days}&nbsp;
+                        day in&nbsp;
+                        {employee.absences_info.justified_absences}&nbsp;
+                        justified absence(s)
                       </span>
                       <span className='unjustified-absences'>
-                        {employee.unjustified_absences_days} day in {employee.unjustified_absences} unjustified absence(s)
+                        {employee.absences_info.unjustified_absences_days}&nbsp;
+                        day in&nbsp;
+                        {employee.absences_info.unjustified_absences}&nbsp;
+                        unjustified absence(s)
                       </span>
                     </>
                   )}

@@ -49,10 +49,9 @@ function AbsenceRow({ row }) {
     e.preventDefault();
     setEditStatus("submitting");
     try {
-      const response = await httpClient.put(`/absences/${row.id}`, {
+      await httpClient.put(`/absences/${row.id}`, {
         reason: changedData,
       });
-      console.log(response.data);
     } catch(err) {
       console.log(err);
     } finally {
