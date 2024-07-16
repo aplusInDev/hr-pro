@@ -285,3 +285,12 @@ li:hover .show-evaluations {
   top: 5px;
   right: 5px;
 }
+
+.evaluations-list span:first-child {
+  margin-left: 10px;
+}
+
+.evaluations-list p {
+  font-size: 14px;
+  font-weight: 400;
+}
