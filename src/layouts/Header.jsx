@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import '../assets/css/Header.css'
 import { Icon } from '@iconify/react';
-import { NavLink } from 'react-router-dom';
-import { Logo } from '../components/ui';
+import { NavLink, Link } from 'react-router-dom';
+import { Logo, Btn } from '../components/ui';
+import httpClient from '../services/httpClient';
 
 function Header() {
   const initialMode = localStorage.getItem('theme') || 'auto';
   const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
   const [mode, setMode] = useState(initialMode); // auto, dark, light
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     handleChangeMode(mode);
+    checkLoggin(setIsLoggedIn);
   }, [mode]);
 
   return (
     <header className='main-header'>
       <Logo />
-      <ul className='header-icons'>
+      <ul className={isLoggedIn? 'header-icons' : 'guest-icons'}>
         <li className={mode==='dark'? 'dark-ground active': 'dark-ground'}
           onClick={() => {
             const darkLight = document.querySelector('.dark-light');
@@ -48,46 +51,58 @@ function Header() {
         <li className="translation">
           <Icon icon="carbon:language" />
         </li>
-        <li className="notifications">
-          <Icon icon="mingcute:notification-line" />
-        </li>
-        <li className="account"
-          onClick={() => {
-            const profileSettings = document.querySelector('.profile-settings');
-            profileSettings.classList.toggle('show');
-          }}
-        >
-          <Icon icon="codicon:account" />
-          <ul className='profile-settings'>
-            <li>
-              <NavLink to={"profile"}>
-                <Icon icon="mdi:account" />
-                <span>Profile</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={"company"}>
-                <Icon icon="mdi:domain" />
-                <span>Company info</span>
-              </NavLink>
-            </li>
-            {role === "admin" && (
+        {isLoggedIn && (<>
+          <li className="notifications">
+            <Icon icon="mingcute:notification-line" />
+          </li>
+          <li className="account"
+            onClick={() => {
+              const profileSettings = document.querySelector('.profile-settings');
+              profileSettings.classList.toggle('show');
+            }}
+          >
+            <Icon icon="codicon:account" />
+            <ul className='profile-settings'>
               <li>
-                <NavLink to={"forms_settings"}>
-                  <Icon icon="marketeq:settings" />
-                  <span>forms settings</span>
+                <NavLink to={"profile"}>
+                  <Icon icon="mdi:account" />
+                  <span>Profile</span>
                 </NavLink>
               </li>
-            )}
-            <li>
-              <NavLink to={"/logout"}>
-                <Icon icon="streamline:interface-logout-arrow-exit-frame-leave-logout-rectangle-right" />
-                <span>Logout</span>
-              </NavLink>
-            </li>
-          </ul>
-        </li>
+              <li>
+                <NavLink to={"company"}>
+                  <Icon icon="mdi:domain" />
+                  <span>Company info</span>
+                </NavLink>
+              </li>
+              {role === "admin" && (
+                <li>
+                  <NavLink to={"forms_settings"}>
+                    <Icon icon="marketeq:settings" />
+                    <span>forms settings</span>
+                  </NavLink>
+                </li>
+              )}
+              <li>
+                <NavLink to={"/logout"}>
+                  <Icon icon="streamline:interface-logout-arrow-exit-frame-leave-logout-rectangle-right" />
+                  <span>Logout</span>
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+        </>)}
       </ul>
+      {isLoggedIn || (<>
+        <div className="btns">
+        <Link to={'login'}>
+          <Btn text="login" className="submit-btn new-btn" />
+        </Link>
+        <Link to={'register'}>
+          <Btn text="register" />
+        </Link>
+      </div>
+      </>)}
     </header>
   );
 }
@@ -140,4 +155,19 @@ function disableDarkMode() {
   const darkGround = document.querySelector('.dark-ground');
   profile.classList.remove('dark-mode');
   darkGround.classList.remove('active');
+}
+
+async function checkLoggin(setIsLoggedIn) {
+  try {
+    const isLoggedIn = await httpClient.get('/check_login');
+    if (isLoggedIn.data.message === 'ok') {
+      setIsLoggedIn(true);
+    } else {
+      localStorage.removeItem('currentUser');
+      setIsLoggedIn(false);
+    }
+  } catch(error) {
+    console.log(error);
+    setIsLoggedIn(false);
+  }
 }

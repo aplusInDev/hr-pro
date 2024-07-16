@@ -2,7 +2,6 @@
   width: 100vw;
   height: 50px;
   background-color: var(--primary-header-gb);
-  /* outline: 2px solid var(--b-dark); */
   position: absolute;
   top: 0;
   left: 0;
@@ -28,7 +27,45 @@ header a {
   color: var(--new-primary-color);
 }
 
-.header-icons > li {
+.main-header ul.guest-icons {
+  /* background-color: red; */
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  right: 50%;
+  top: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  color: var(--new-primary-color);
+}
+
+.main-header .btns {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 220px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+
+.main-header button {
+  margin: 0;
+}
+
+.main-header .btns > a:last-child button {
+  background-color: var(--icon-color);
+  border-color: var(--icon-color);
+}
+
+.main-header .btns > a:first-child button:hover {
+  border-color: transparent;
+}
+
+.header-icons > li,
+.guest-icons > li {
   width: 30px;
   height: 30px;
   line-height: 30px;
@@ -37,11 +74,13 @@ header a {
 }
 
 .header-icons > li:hover,
+.guest-icons > li:hover,
 .dark-ground.active {
   color: rgb(98, 161, 182);
 }
 
-.header-icons > li > :first-child {
+.header-icons > li > :first-child,
+.guest-icons > li > :first-child {
   width: 20px;
   height: 20px;
 }
@@ -134,7 +173,7 @@ header a {
   padding: 15px 5px;
   position: absolute;
   top: 55px;
-  right: 150px;
+  right: 10px;
   border-radius: 20px;
   background-color: #d3cece;
   z-index: 1;
