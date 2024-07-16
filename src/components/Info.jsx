@@ -9,13 +9,14 @@ export default function Info({
 }) {
   const [info, setInfo] = useState({});
   const [status, setStatus] = useState('idle'); // idle, editing, submitting
-  const [employee, setEmployee] = useState(null);
   const [departmentsNames, setDepartmentsNames] = useState([]);
   const [jobsTitles, setJobsTitles] = useState([]);
   const [depEditStatus, setDepEditStatus] = useState("idle"); // idle, editing, submitting
   const [jobEditStatus, setJobEditStatus] = useState("idle"); // idle, editing, submitting
-  const [newDep, setNewDep] = useState(null);
-  const [newJob, setNewJob] = useState(null);
+  const [dep, setDep] = useState("");
+  const [job, setJob] = useState("");
+  const [tmpDep, setTmpDep] = useState(null);
+  const [tmpJob, setTmpJob] = useState(null);
 
   useEffect(() => {
     async function getInfo() {
@@ -23,7 +24,8 @@ export default function Info({
         const response = await httpClient.get(`/${path}/${obj_id}`);
         setInfo(response.data['info']);
         if (path === 'employees') {
-          setEmployee(response.data);
+          setJob(response.data.position_info.job_title);
+          setDep(response.data.department_info.department_name);
           getEmployeePosition(response.data.company_id);
         }
       } catch (err) {
@@ -45,12 +47,14 @@ export default function Info({
   }
 
   function handleJobChange(e) {
-    setNewJob(e.target.value);
+    setTmpJob(job);
+    setJob(e.target.value);
     setJobEditStatus("changing");
   }
     
   function handleDepChange(e) {
-    setNewDep(e.target.value);
+    setTmpDep(dep);
+    setDep(e.target.value);
     setDepEditStatus("changing");
   }
 
@@ -58,10 +62,12 @@ export default function Info({
     e.preventDefault();
     setDepEditStatus("submitting");
     try {
-      const response = await httpClient.put(`/employees/${obj_id}`, {department_name: newDep});
-      setEmployee(response.data);
+      const response = await httpClient.put(`/employees/${obj_id}`, {department_name: dep});
+      setDep(response.data.department_info.department_name);
+      setTmpDep(null);
     } catch(err) {
       console.log("erro: ", err);
+      setDep(tmpDep);
     } finally {
       setDepEditStatus("idle")
     }
@@ -71,10 +77,12 @@ export default function Info({
     e.preventDefault();
     setJobEditStatus("submitting");
     try {
-      const response = await httpClient.put(`/employees/${obj_id}`, {job_title: newJob});
-      setEmployee(response.data);
+      const response = await httpClient.put(`/employees/${obj_id}`, {job_title: job});
+      setJob(response.data.position_info.job_title);
+      setTmpJob(null);
     } catch(err) {
       console.log("erro: ", err);
+      setJob(tmpJob);
     } finally {
       setJobEditStatus("idle")
     }
@@ -258,7 +266,7 @@ export default function Info({
           <select
             id="dep_name"
             disabled={depEditStatus === 'idle'}
-            value={employee?.department_info.department_name}
+            value={dep}
             onChange={handleDepChange}
           >
             {departmentsNames.map((option) => (
@@ -285,7 +293,7 @@ export default function Info({
           <select
             id="job_title"
             disabled={jobEditStatus === 'idle'}
-            value={employee?.position_info.job_title}
+            value={job}
             onChange={handleJobChange}
           >
             {jobsTitles.map((option) => (
