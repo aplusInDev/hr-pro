@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { AbsencesTable } from '../components';
 import '../assets/css/Employees.css';
 import { useLoaderData } from 'react-router-dom';
-import { excelFileReader } from '../utils/excelUtils';
 import httpClient from '../services/httpClient';
 import { Icon } from '@iconify/react';
 import '../assets/css/Absences.css';
@@ -17,7 +16,6 @@ export default function Absences() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [show, setShow] = useState(false);
-  const [file, setFile] = useState(null);
   const [year, setYear] = useState(currentYear);
 
   const handleYearChange = (e) => {
@@ -40,21 +38,27 @@ export default function Absences() {
     }
   }
 
-  async function fetchEmployeeAbsences (employeeId) {
+  async function handleDownloadClick(employee) {
     try {
-      const responseFile = await httpClient.get(`/employees/${employeeId}/absences_sheet?year=${year}`, {
+      const responseFile = await httpClient.get(`/employees/${employee.id}/absences_sheet?year=${year}`, {
         responseType: 'blob',
       });
-      const responseBlob = new Blob([responseFile.data], {
-        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-      });
-      const jsonData = await excelFileReader(responseBlob);
+      const fileName = `${employee.first_name}_${employee.last_name}-${year}_absences.xlsx`;
+      handleDownload(responseFile, fileName);
+    }
+    catch(err) {
+      console.log(err);
+    }
+  }
+
+  async function fetchEmployeeAbsences (employeeId) {
+    try {
+      const response = await httpClient.get(`/employees/${employeeId}/absences?year=${year}`);
+      const jsonData = response.data;
       if(jsonData.length !== 0) {
         setData(jsonData);
-        setFile(responseFile);
       } else {
         setData(null);
-        setFile(null);
         console.log("no data");
       }
       setError(null);
@@ -134,10 +138,7 @@ export default function Absences() {
                   <button
                     type='button'
                     className='submit-btn'
-                    onClick={() => {
-                      const fileName = `absences-${employee.first_name}-${employee.last_name}.xlsx`;
-                      handleDownload(file, fileName);
-                    }}
+                    onClick={() => {handleDownloadClick(employee)}}
                   >
                     Download
                     <Icon icon="akar-icons:download" />
