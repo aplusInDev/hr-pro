@@ -1,18 +1,14 @@
 import { React } from 'react'
 import httpClient from '../services/httpClient';
-import { Form, redirect , useActionData} from 'react-router-dom';
+import { Form, redirect } from 'react-router-dom';
 import "../assets/css/Register.css";
 import Cookies from 'js-cookie';
-import { Alert, Logo } from '../components/ui';
+import { Logo } from '../components/ui';
 
 export default function Login() {
-  const errorData = useActionData();
 
   return (
     <div className="login">
-      {
-        errorData && <Alert title="Error" body={errorData} />
-      }
       <header>
         <Logo />
       </header>
