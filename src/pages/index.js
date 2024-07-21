@@ -15,3 +15,4 @@ export { default as Forbidden } from './Forbidden';
 export { default as Leaves } from './Leaves';
 export { default as Trainings } from './Trainings';
 export { default as EmployeeAbsences } from './EmployeeAbsences';
+export { default as ResetPassword } from './ResetPassword';

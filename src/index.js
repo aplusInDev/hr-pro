@@ -10,7 +10,7 @@ import {
   LandingPage, Login, Register, Profile, CustomForm,
   Home, Employees, Departments, Jobs, Attendance,
   Absences, Forbidden, Leaves, Trainings,
-  EmployeeAbsences,
+  EmployeeAbsences, ResetPassword,
 } from './pages';
 import {
   companyLoader, employeesLoader, loginLoader, logoutLoader,
@@ -21,6 +21,7 @@ import {
 } from './pages/loaders';
 import { action as loginAction } from './pages/Login';
 import {action as registerAction } from './pages/Register';
+import { action as ResetPasswordAction } from './pages/ResetPassword';
 import { companyAction } from './pages/actions';
 import homeLoader from './pages/loaders/homeLader';
 import {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
     element: <Login />,
     loader: loginLoader,
     action: loginAction,
+  },
+  {
+    path: "reset_password",
+    element: <ResetPassword />,
+    action: ResetPasswordAction,
   },
   {
     path: "register",

@@ -7,17 +7,6 @@ import { Header } from "../layouts";
 export default function LandingPage() {
   return (
     <div className="landing-page">
-      {/* <header>
-        <Logo />
-        <div className="btns">
-          <Link to={'login'}>
-            <Btn text="login" className="submit-btn new-btn" />
-          </Link>
-          <Link to={'register'}>
-            <Btn text="register" />
-          </Link>
-        </div>
-      </header> */}
       <Header />
       <section>
         <h1>Welcome to the Landing Page</h1>

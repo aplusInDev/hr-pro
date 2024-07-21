@@ -99,8 +99,20 @@
   --secondary-font-color: #3d3b3b;
 }
 
-.error {
+.error,
+.warning,
+.message {
   color: #ff0000;
+  font-size: 16px;
+  margin: 5px auto;
+}
+
+.warning {
+  color: #deee2a;
+}
+
+.message {
+  color: #00FF00;
 }
 
 * {
