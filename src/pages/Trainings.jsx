@@ -106,190 +106,190 @@ export default function Trainings() {
 
   return (
     <main className='trainings'>
-    <Outlet context={setTrainingsList} />
-    {role !== "employee" && (
-      <div className="new-employee">
-        <Link to='add-training'>
-          <Btn text="create training" />
-        </Link>
-      </div>
-    )}
-    <section className="employee-leaves">
-        <ul>
-        {trainingsList.map(training => (
-          <li key={training.id}
-            className={'main-item ' + (
-              training.id === activeTrainingId ? 'active-card' : ''
-            )}
-          >
-            <div className="main-info">
-              {uploading && <p>Uploading...</p>}
-              {error && <p className='error'>{error}</p>}
-              <p className='training-title'
-                onClick={() => {
-                  handleClick(training.id);
-                }}
-              >
-                <span>title</span>
-                <span>{training.title}</span>
-              </p>
-              <p>
-                <span>description</span>
-                <span>{training.description}</span>
-              </p>
-              <p>
-                <span>date</span>
-                <span>
-                  {training.start_date} - {training.end_date}
-                </span>
-              </p>
-            </div>
-            {training.id === activeTrainingId && role !== "employee" && (<>
-              <span
-                className='close'
-                onClick={() => setActiveTrainingId(null)}
-              >
-                <Icon icon="material-symbols-light:close" />
-              </span>
-              <div className="details">
-                <div className="trainees">
-                  {addedTrainees.length > 0 && <form className="added-trainees"
-                    onSubmit={handleSubmit}
-                  >
-                    <h1>Added Trainees</h1>
-                    {addedTrainees.map((employee) => (
-                      <div key={employee}>
-                        <span>{employee}</span>
-                        <span
-                          className='remove'
-                          onClick={() => handleRemove(employee)}
-                        >
-                          <Icon icon="material-symbols-light:close" />
-                        </span>
-                      </div>
-                    ))}
-                    <div className="btns">
-                      <Btn text="cancel"
-                        onClick={handleCancel}
-                      />
-                      <button type='submit'
-                        className='submit-btn'
-                      >
-                        save
-                      </button>
-                    </div>
-                  </form>}
-                  <h1>Trainees</h1>
-                  <ul>
-                  {Object.keys(trainees).map((trainee) => (
-                    <li key={trainee}>
-                      <span>{trainee}</span>
-                      <span
-                        onClick={() => {
-                          handleAddDeleted(trainee);
-                        }}
-                      >
-                        <Icon icon="material-symbols-light:close" />
-                      </span>
-                    </li>
-                  ))}
-                  </ul>
-                </div>
-                <div className="non-trainees">
-                  {Object.keys(deletetedTrainees).length > 0 && <form className="added-trainees deleted-trainees"
-                    onSubmit={(e) =>{
-                      handleSubmitDeleted(e);
-                    }}
-                  >
-                    <h1>Deleted Trainees</h1>
-                    {Object.keys(deletetedTrainees).map((trainee) => (
-                      <div key={trainee}>
-                        <span>{trainee}</span>
-                        <span
-                          className='remove'
-                          onClick={() => handleRemoveDeleted(trainee)}
-                        >
-                          <Icon icon="material-symbols-light:close" />
-                        </span>
-                      </div>
-                    ))}
-                    <div className="btns">
-                      <Btn text="cancel"
-                        onClick={handleCancelDeleted}
-                      />
-                      <button type='submit'
-                        className='submit-btn'
-                      >
-                        save
-                      </button>
-                    </div>
-                  </form>}
-                  <h1>Non Trainees</h1>
-                  <ul>
-                  {nonTrainees.map(employee => (
-                    <li key={employee}>
-                      <span>{employee}</span>
-                      <span className='add'
-                        onClick={() => handleAdd(employee)}
-                      >
-                        add
-                      </span>
-                    </li>
-                  ))}
-                  </ul>
-                </div>
+      <Outlet context={setTrainingsList} />
+      {role !== "employee" && (
+        <div className="new-employee">
+          <Link to='add-training'>
+            <Btn text="create training" />
+          </Link>
+        </div>
+      )}
+      <section className="employee-leaves">
+          <ul>
+          {trainingsList.map(training => (
+            <li key={training.id}
+              className={'main-item ' + (
+                training.id === activeTrainingId ? 'active-card' : ''
+              )}
+            >
+              <div className="main-info">
+                {uploading && <p>Uploading...</p>}
+                {error && <p className='error'>{error}</p>}
+                <p className='training-title'
+                  onClick={() => {
+                    handleClick(training.id);
+                  }}
+                >
+                  <span>title</span>
+                  <span>{training.title}</span>
+                </p>
+                <p>
+                  <span>description</span>
+                  <span>{training.description}</span>
+                </p>
+                <p>
+                  <span>date</span>
+                  <span>
+                    {training.start_date} - {training.end_date}
+                  </span>
+                </p>
               </div>
-            </>)}
-            {(
-              training.id !== activeTrainingId
-              && showEvaluation !== training.id
-              && training.evaluations.length > 0
-              ) && (
-              <Btn text="show evaluations"
-                className="show-evaluations"
-                onClick={() => {
-                  setShowEvaluation(training.id);
-                }}
-              />
-            )}
-            {role === "employee" && !training.is_evaluated && (
-              <Btn text="evaluate"
-                className="evaluate submit-btn"
-                onClick={() => {
-                  navigate(`/home/evaluation/${training.id}`)
-                }}
-              />
-            )}
-            {(
-              showEvaluation === training.id
-              && training.id !== activeTrainingId
-              && training.evaluations.length > 0
-              ) && (
-              <div className="evaluations-list">
-                <span className="close close-evaluation"
-                  onClick={() => setShowEvaluation(null)}
+              {training.id === activeTrainingId && role !== "employee" && (<>
+                <span
+                  className='close'
+                  onClick={() => setActiveTrainingId(null)}
                 >
                   <Icon icon="material-symbols-light:close" />
                 </span>
-                {training.evaluations.map((evaluation, idx) => (
-                  <div key={idx} className="evaluation">
-                    <span>{evaluation.trainee}</span>
-                    <span>
-                      {evaluation.score} / 5
-                      (
-                        {evaluationString(evaluation.score)}
-                        {evaluation.score < 3 ? '👎' : '👍'}
-                      )
-                    </span>
-                    <p>{evaluation.feedback}</p>
+                <div className="details">
+                  <div className="trainees">
+                    {addedTrainees.length > 0 && <form className="added-trainees"
+                      onSubmit={handleSubmit}
+                    >
+                      <h1>Added Trainees</h1>
+                      {addedTrainees.map((employee) => (
+                        <div key={employee}>
+                          <span>{employee}</span>
+                          <span
+                            className='remove'
+                            onClick={() => handleRemove(employee)}
+                          >
+                            <Icon icon="material-symbols-light:close" />
+                          </span>
+                        </div>
+                      ))}
+                      <div className="btns">
+                        <Btn text="cancel"
+                          onClick={handleCancel}
+                        />
+                        <button type='submit'
+                          className='submit-btn'
+                        >
+                          save
+                        </button>
+                      </div>
+                    </form>}
+                    <h1>Trainees</h1>
+                    <ul>
+                    {Object.keys(trainees).map((trainee) => (
+                      <li key={trainee}>
+                        <span>{trainee}</span>
+                        <span
+                          onClick={() => {
+                            handleAddDeleted(trainee);
+                          }}
+                        >
+                          <Icon icon="material-symbols-light:close" />
+                        </span>
+                      </li>
+                    ))}
+                    </ul>
                   </div>
-                ))}
-              </div>
-            )}
-          </li>
-        ))}
-        </ul>
-    </section>
+                  <div className="non-trainees">
+                    {Object.keys(deletetedTrainees).length > 0 && <form className="added-trainees deleted-trainees"
+                      onSubmit={(e) =>{
+                        handleSubmitDeleted(e);
+                      }}
+                    >
+                      <h1>Deleted Trainees</h1>
+                      {Object.keys(deletetedTrainees).map((trainee) => (
+                        <div key={trainee}>
+                          <span>{trainee}</span>
+                          <span
+                            className='remove'
+                            onClick={() => handleRemoveDeleted(trainee)}
+                          >
+                            <Icon icon="material-symbols-light:close" />
+                          </span>
+                        </div>
+                      ))}
+                      <div className="btns">
+                        <Btn text="cancel"
+                          onClick={handleCancelDeleted}
+                        />
+                        <button type='submit'
+                          className='submit-btn'
+                        >
+                          save
+                        </button>
+                      </div>
+                    </form>}
+                    <h1>Non Trainees</h1>
+                    <ul>
+                    {nonTrainees.map(employee => (
+                      <li key={employee}>
+                        <span>{employee}</span>
+                        <span className='add'
+                          onClick={() => handleAdd(employee)}
+                        >
+                          add
+                        </span>
+                      </li>
+                    ))}
+                    </ul>
+                  </div>
+                </div>
+              </>)}
+              {(
+                training.id !== activeTrainingId
+                && showEvaluation !== training.id
+                && training.evaluations.length > 0
+                ) && (
+                <Btn text="show evaluations"
+                  className="show-evaluations"
+                  onClick={() => {
+                    setShowEvaluation(training.id);
+                  }}
+                />
+              )}
+              {role === "employee" && !training.is_evaluated && (
+                <Btn text="evaluate"
+                  className="evaluate submit-btn"
+                  onClick={() => {
+                    navigate(`/home/evaluation/${training.id}`)
+                  }}
+                />
+              )}
+              {(
+                showEvaluation === training.id
+                && training.id !== activeTrainingId
+                && training.evaluations.length > 0
+                ) && (
+                <div className="evaluations-list">
+                  <span className="close close-evaluation"
+                    onClick={() => setShowEvaluation(null)}
+                  >
+                    <Icon icon="material-symbols-light:close" />
+                  </span>
+                  {training.evaluations.map((evaluation, idx) => (
+                    <div key={idx} className="evaluation">
+                      <span>{evaluation.trainee}</span>
+                      <span>
+                        {evaluation.score} / 5
+                        (
+                          {evaluationString(evaluation.score)}
+                          {evaluation.score < 3 ? '👎' : '👍'}
+                        )
+                      </span>
+                      <p>{evaluation.feedback}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </li>
+          ))}
+          </ul>
+      </section>
     </main>
   );
 }

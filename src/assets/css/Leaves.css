@@ -2,14 +2,14 @@
   margin-top: 100px;
 }
 
-.employee-leaves:not(.trainings .employee-leaves) {
+/* .employee-leaves:not(.trainings .employee-leaves) {
   width: calc(100vw - 200px);
   height: calc(100vh - 50px);
   margin-top: 50px;
   margin-left: 200px;
   padding: 30px;
   min-height: max-content;
-}
+} */
 
 .employee-leaves .header {
   display: flex;

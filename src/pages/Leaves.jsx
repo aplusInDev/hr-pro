@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Outlet, useLoaderData } from 'react-router-dom';
 import { Btn } from '../components/ui';
-import '../assets/css/EmployeeLeaves.css';
+import '../assets/css/Leaves.css';
 import httpClient from '../services/httpClient';
 
 
@@ -64,9 +64,8 @@ export default function Leaves() {
   }
 
   return (
-    <>
-    <Outlet context={setLeaves} />
     <main className="employee-leaves">
+      <Outlet context={setLeaves} />
       <div className="header">
       {role === "employee" && (<>
         <div className="new-employee">
@@ -162,7 +161,6 @@ export default function Leaves() {
         ))}
       </ul>
     </main>
-  </>
   );
 }
 
