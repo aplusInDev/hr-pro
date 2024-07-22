@@ -15,7 +15,7 @@ function Header({ isConnected, showBtns=true }) {
 
   return (
     <header className='main-header'>
-      <Logo />
+      <Logo uri={isConnected? '/home': '/'} />
       <ul className={isConnected? 'header-icons' : 'guest-icons'}>
         <li className={mode==='dark'? 'dark-ground active': 'dark-ground'}
           onClick={() => {

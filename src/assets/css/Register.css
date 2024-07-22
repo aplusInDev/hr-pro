@@ -1,4 +1,4 @@
-.register,
+.register-page,
 .login-page {
   position: relative;
   width: 100vw;
@@ -8,7 +8,7 @@
   scroll-behavior: smooth;
 }
 
-.register form,
+.register,
 .login {
   position: absolute;
   top: 50px;
@@ -87,17 +87,24 @@
 }
 
 .register-link,
-.reset_password-link {
+.reset_password-link,
+.login-link {
   color: rgb(76, 74, 74);
   margin: 5px;
 }
 
 .register-link > span:last-child,
-.reset_password-link > span:last-child {
+.reset_password-link > span:last-child,
+.login-link > span:last-child {
   color: rgba(168, 190, 193, 0.97);
 }
 
-.register-link:hover > span,
-.reset_password-link:hover > span {
+.register-link:hover > span:last-child,
+.reset_password-link:hover > span:last-child,
+.login-link:hover > span:last-child {
   text-decoration: underline;
+}
+
+.login-link {
+  margin-top: 20px;
 }

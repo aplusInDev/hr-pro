@@ -14,8 +14,9 @@ import {
   leavesLoader, addTraingLoader, trainingsLoader, evaluationLoader,
   absencesLoader, employeeAbsencesLoader, rootLoader,
 } from './pages/loaders';
-import { companyAction, loginAction } from './pages/actions';
-import {action as registerAction } from './pages/Register';
+import {
+  companyAction, loginAction, registerAction,
+} from './pages/actions';
 import { action as ResetPasswordAction } from './pages/ResetPassword';
 import { action as UpdatePasswordAction } from './pages/UpdatePassword';
 import {

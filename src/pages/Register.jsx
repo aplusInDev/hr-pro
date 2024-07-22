@@ -1,14 +1,34 @@
-import { React, useState } from 'react'
-import { Form, redirect } from 'react-router-dom';
-import httpClient from '../services/httpClient';
+import { React, useEffect, useState } from 'react'
+import { Form, useActionData, Link, useNavigate } from 'react-router-dom';
 import '../assets/css/Register.css';
+import { Header } from '../layouts';
 
 export default function Register() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
+  const [message, setMessage] = useState(null);
+  const actionData = useActionData();
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
   }
+
+  useEffect(() => {
+    if (isSubmitting && actionData?.error) {
+      setIsSubmitting(false);
+      setError(actionData.error);
+      setTimeout(() => {
+        setError(null);
+      }, 5*1000);
+    }
+    if (actionData?.message) {
+      setMessage(actionData.message);
+      setTimeout(() => {
+        navigate("/login");
+      }, 5*1000);
+    }
+  }, [actionData, isSubmitting, navigate]);
 
   const handleNext = () => {
     const form = document.querySelector('form');
@@ -35,15 +55,16 @@ export default function Register() {
   }
 
   return (
-    <div className="register">
-      {/* <header>
-        <Logo />
-      </header> */}
+    <div className="register-page">
+      <Header showBtns={false} />
       <Form
         method='post'
         action='/register'
         onSubmit={handleSubmit}
+        className='register'
         >
+        {error && <p className='error'>{error}</p>}
+        {message && <p className='message'>{message}</p>}
         <section className='admin-info'>
           <label>
             <span>first name</span>
@@ -87,6 +108,12 @@ export default function Register() {
               required
             />
           </label>
+          <Link to='/login'>
+            <div className='login-link'>
+                <span>Already have an account?</span>
+                <span> Login!</span>
+            </div>
+          </Link>
           <button
             type='button'
             onClick={handleNext}
@@ -136,6 +163,7 @@ export default function Register() {
               aria-label='email'
               type='email'
               name='company_email'
+              disabled={isSubmitting}
             />
           </label>
           <label>
@@ -176,18 +204,4 @@ export default function Register() {
       </Form>
     </div>
   )
-}
-
-export async function action({ request }) {
-  const formData = await request.formData();
-
-  try {
-    await httpClient.post('/accounts',
-      formData,
-    );
-    return redirect("/login");
-  } catch (err) {
-    console.log('error: ', err);
-    return null;
-  }
 }
