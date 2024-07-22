@@ -9,6 +9,7 @@ function Header({ isConnected, showBtns=true }) {
   const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
   const [mode, setMode] = useState(initialMode); // auto, dark, light
 
+
   useEffect(() => {
     handleChangeMode(mode);
   }, [mode]);
@@ -17,7 +18,7 @@ function Header({ isConnected, showBtns=true }) {
     <header className='main-header'>
       <Logo uri={isConnected? '/home': '/'} />
       <ul className={isConnected? 'header-icons' : 'guest-icons'}>
-        <li className={mode==='dark'? 'dark-ground active': 'dark-ground'}
+        <li className={`dark-ground ${mode==='dark'? 'active': ''}`}
           onClick={() => {
             const darkLight = document.querySelector('.dark-light');
             darkLight.classList.toggle('show');
