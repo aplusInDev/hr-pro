@@ -16,9 +16,9 @@ import {
 } from './pages/loaders';
 import {
   companyAction, loginAction, registerAction,
+  updatePasswordAction,
 } from './pages/actions';
 import { action as ResetPasswordAction } from './pages/ResetPassword';
-import { action as UpdatePasswordAction } from './pages/UpdatePassword';
 import {
   AddEmployee, AddDepartment, AddJob,
   RequestLeave, AddTraining,
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
       {
         path: "update_password",
         element: <UpdatePassword />,
-        action: UpdatePasswordAction,
+        action: updatePasswordAction,
       },
       {
         path: "departments",
