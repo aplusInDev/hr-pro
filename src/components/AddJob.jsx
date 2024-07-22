@@ -27,7 +27,7 @@ export default function AddJob() {
       }
       const response = await httpClient.post(`/companies/${company_id}/jobs`, formData);
       setJobsList(prev => [...prev, response.data]);
-      navigate('jobs');
+      navigate('/jobs');
     } catch (err) {
       console.error(err);
     }
@@ -47,7 +47,7 @@ export default function AddJob() {
             />
         </label>
         <div className="btns">
-          <Link to='jobs'>
+          <Link to='/jobs'>
             <Btn text="cancel" />
           </Link>
           <button

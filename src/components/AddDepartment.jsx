@@ -27,7 +27,7 @@ export default function AddDepartment() {
       }
       const response = await httpClient.post(`/companies/${company_id}/departments`, formData);
       setDepartmentList(prev => [...prev, response.data]);
-      navigate('departments');
+      navigate('/departments');
     } catch (err) {
       console.error(err);
     }
@@ -47,7 +47,7 @@ export default function AddDepartment() {
             />
         </label>
         <div className="btns">
-          <Link to='departments'>
+          <Link to='/departments'>
             <Btn text="cancel" />
           </Link>
           <button

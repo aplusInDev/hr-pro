@@ -17,16 +17,6 @@
 }
 
 /* styling employees-container */
-.employees,
-.jobs,
-.departments {
-  height: calc(100vh - 50px);
-  width: calc(100vw - 200px);
-  margin-top: 50px;
-  margin-left: 200px;
-  padding: 30px;
-}
-
 .employees-container ul {
   display: flex;
   flex-direction: column;
@@ -168,7 +158,3 @@ li.hide > .main-info > div {
 .employees-container .submit-btn svg {
   margin-left: 3px;
 }
-
-/* .employees-container .submit-btn:hover {
-  color: var(--pfontColor);
-} */

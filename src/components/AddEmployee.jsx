@@ -10,13 +10,11 @@ import httpClient from '../services/httpClient';
 
 
 export default function AddEmployee() {
-  const companyId = JSON.parse(localStorage.getItem("currentUser"))?.company_id;
   const setEmployeesLsit = useOutletContext();
   const [data, setData] = useState({});
   const navigate = useNavigate();
   const { departments, jobs } = useLoaderData();
 
-  // setData({...data, "department": departments[0], "job_title": jobs[0]});
 
   function handleChange(e) {
     setData({
@@ -36,9 +34,9 @@ export default function AddEmployee() {
       for (const key in data) {
         formData.append(key, data[key]);
       }
-      const response = await httpClient.post(`/add_employee?company_id=${companyId}`, formData);
+      const response = await httpClient.post(`/add_employee`, formData);
       setEmployeesLsit(prev => [...prev, response.data]);
-      navigate('employees');
+      navigate('/employees');
     } catch (err) {
       console.error(err);
     }
@@ -124,7 +122,7 @@ export default function AddEmployee() {
           </select>
         </label>
         <div className="btns">
-          <Link to='employees'>
+          <Link to='/employees'>
             <Btn text="cancel" />
           </Link>
           <button
