@@ -256,7 +256,7 @@ export default function Trainings() {
                 <Btn text="evaluate"
                   className="evaluate submit-btn"
                   onClick={() => {
-                    navigate(`/home/evaluation/${training.id}`)
+                    navigate(`/evaluation/${training.id}`)
                   }}
                 />
               )}

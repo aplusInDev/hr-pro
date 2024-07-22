@@ -62,7 +62,7 @@ const EmployeeAbsences = () => {
   };
 
   return (
-    <section className="employees-container absences-container">
+    <main className="employees-container absences-container">
       {error && <p className="error">{error}</p>}
       <form className='calendar-form'
         onSubmit={handleSubmit}
@@ -89,7 +89,7 @@ const EmployeeAbsences = () => {
         </button>
       </form>
       <AbsencesTable data={absencesList} />
-    </section>
+    </main>
   );
 };
 

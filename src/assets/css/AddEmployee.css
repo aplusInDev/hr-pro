@@ -11,9 +11,6 @@
 }
 
 .add-employee > form {
-  /* position: absolute;
-  top: 25%;
-  left: 25%; */
   background-color:#737b87;
   width: 500px;
   min-height: fit-content;
@@ -38,11 +35,12 @@
   color: var(--color8);
 }
 
-/* .add-employee button {
-  color: var(--color8);
-} */
-
 .add-employee .btn {
   border: none;
   background-color: #656d6fb9;
+}
+
+.employee-leaves .add-employee form {
+  position: relative;
+  padding-bottom: 50px;
 }
