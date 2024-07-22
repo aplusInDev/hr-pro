@@ -17,10 +17,14 @@
 }
 
 /* styling employees-container */
-.employees-container {
-  margin: 10px auto;
-  width: 100%;
-  min-height: max-content;
+.employees,
+.jobs,
+.departments {
+  height: calc(100vh - 50px);
+  width: calc(100vw - 200px);
+  margin-top: 50px;
+  margin-left: 200px;
+  padding: 30px;
 }
 
 .employees-container ul {

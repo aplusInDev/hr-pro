@@ -66,7 +66,7 @@ export default function Leaves() {
   return (
     <>
     <Outlet context={setLeaves} />
-    <section className="employee-leaves">
+    <main className="employee-leaves">
       <div className="header">
       {role === "employee" && (<>
         <div className="new-employee">
@@ -161,7 +161,7 @@ export default function Leaves() {
           </li>
         ))}
       </ul>
-    </section>
+    </main>
   </>
   );
 }

@@ -105,7 +105,7 @@ export default function Trainings() {
   }
 
   return (
-    <>
+    <main className='trainings'>
     <Outlet context={setTrainingsList} />
     {role !== "employee" && (
       <div className="new-employee">
@@ -290,7 +290,7 @@ export default function Trainings() {
         ))}
         </ul>
     </section>
-    </>
+    </main>
   );
 }
 

@@ -21,7 +21,7 @@ export default function Jobs() {
   }
 
   return (
-    <>
+    <main className='jobs'>
       <div className="new-employee">
         <Link to='add-job'>
           <Btn text="Add Job" />
@@ -63,6 +63,6 @@ export default function Jobs() {
           }
         </ul>
       </section>
-    </>
+    </main>
   );
 }
