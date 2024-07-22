@@ -2,23 +2,25 @@ import { React } from 'react'
 import httpClient from '../services/httpClient';
 import { Form, useNavigate, useActionData } from 'react-router-dom';
 import "../assets/css/Register.css";
-// import { Header } from '../layouts';
 import Cookies from 'js-cookie';
 
 export default function UpdatePassword() {
   const actionData = useActionData();
   const navigate = useNavigate();
 
-  if (actionData && !actionData.warning) {
+  if (actionData && (actionData.message || actionData.error)) {
     setTimeout(() => {
       navigate('/login');
     }, 10*1000);
   }
 
   return (
-    <div className="login">
-      {/* <Header /> */}
-      <Form method='post' action='/update_password'>
+    <div className="login-page">
+      <Form 
+        method='post'
+        action='/update_password'
+        className='login'
+      >
         {actionData?.warning && <p className='warning'>{actionData.warning}</p>}
         {actionData?.error && <p className='error'>{actionData.error}</p>}
         {actionData?.message && <p className='message'>{actionData.message}</p>}
