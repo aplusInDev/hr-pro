@@ -6,7 +6,7 @@ import {
   Employees, Departments, Jobs, Attendance,
   Absences, Leaves, Trainings, Evaluation,
   EmployeeAbsences, ResetPassword, UpdatePassword,
-  PrivateRoute, Home,
+  PrivateRoute, Home, Company,
 } from './pages';
 import {
   companyLoader, employeesLoader, loginLoader, logoutLoader,
@@ -21,7 +21,7 @@ import { action as ResetPasswordAction } from './pages/ResetPassword';
 import { action as UpdatePasswordAction } from './pages/UpdatePassword';
 import {
   AddEmployee, AddDepartment, AddJob,
-  RequestLeave, AddTraining, Company,
+  RequestLeave, AddTraining,
 } from './components';
 
 

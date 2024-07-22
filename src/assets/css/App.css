@@ -206,6 +206,8 @@ main {
   width: calc(100vw - 200px);
   height: calc(100vh - 50px);
   padding: 20px 30px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 main.wide {

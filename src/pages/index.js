@@ -18,3 +18,4 @@ export { default as ResetPassword } from './ResetPassword';
 export { default as UpdatePassword } from './UpdatePassword';
 export { default as Evaluation } from './Evaluation';
 export { default as PrivateRoute } from './PrivateRoute';
+export { default as Company } from './Company';
