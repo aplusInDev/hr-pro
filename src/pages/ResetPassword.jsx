@@ -56,7 +56,6 @@ export async function action({ request }) {
     const response = await httpClient.post('/reset_password',
       formData,
     );
-    console.log(response.data);
     return response.data;
   } catch (err) {
     return err.response.data;

@@ -9,17 +9,17 @@ function Header() {
   const initialMode = localStorage.getItem('theme') || 'auto';
   const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
   const [mode, setMode] = useState(initialMode); // auto, dark, light
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
     handleChangeMode(mode);
-    checkLoggin(setIsLoggedIn);
+    checkLoggin(setIsConnected);
   }, [mode]);
 
   return (
     <header className='main-header'>
       <Logo />
-      <ul className={isLoggedIn? 'header-icons' : 'guest-icons'}>
+      <ul className={isConnected? 'header-icons' : 'guest-icons'}>
         <li className={mode==='dark'? 'dark-ground active': 'dark-ground'}
           onClick={() => {
             const darkLight = document.querySelector('.dark-light');
@@ -51,7 +51,7 @@ function Header() {
         <li className="translation">
           <Icon icon="carbon:language" />
         </li>
-        {isLoggedIn && (<>
+        {isConnected && (<>
           <li className="notifications">
             <Icon icon="mingcute:notification-line" />
           </li>
@@ -84,6 +84,12 @@ function Header() {
                 </li>
               )}
               <li>
+                <NavLink to={"/update_password"}>
+                  <Icon icon="carbon:password" />
+                  <span>Update password</span>
+                </NavLink>
+              </li>
+              <li>
                 <NavLink to={"/logout"}>
                   <Icon icon="streamline:interface-logout-arrow-exit-frame-leave-logout-rectangle-right" />
                   <span>Logout</span>
@@ -93,7 +99,7 @@ function Header() {
           </li>
         </>)}
       </ul>
-      {isLoggedIn || (<>
+      {isConnected || (<>
         <div className="btns">
         <Link to={'login'}>
           <Btn text="login" className="submit-btn new-btn" />
