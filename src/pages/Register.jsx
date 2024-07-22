@@ -2,7 +2,6 @@ import { React, useState } from 'react'
 import { Form, redirect } from 'react-router-dom';
 import httpClient from '../services/httpClient';
 import '../assets/css/Register.css';
-import { Logo } from '../components/ui';
 
 export default function Register() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,9 +36,9 @@ export default function Register() {
 
   return (
     <div className="register">
-      <header>
+      {/* <header>
         <Logo />
-      </header>
+      </header> */}
       <Form
         method='post'
         action='/register'

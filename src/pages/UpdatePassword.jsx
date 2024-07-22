@@ -2,7 +2,7 @@ import { React } from 'react'
 import httpClient from '../services/httpClient';
 import { Form, useNavigate, useActionData } from 'react-router-dom';
 import "../assets/css/Register.css";
-import { Header } from '../layouts';
+// import { Header } from '../layouts';
 import Cookies from 'js-cookie';
 
 export default function UpdatePassword() {
@@ -17,7 +17,7 @@ export default function UpdatePassword() {
 
   return (
     <div className="login">
-      <Header />
+      {/* <Header /> */}
       <Form method='post' action='/update_password'>
         {actionData?.warning && <p className='warning'>{actionData.warning}</p>}
         {actionData?.error && <p className='error'>{actionData.error}</p>}

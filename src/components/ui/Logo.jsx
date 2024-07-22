@@ -12,7 +12,3 @@ export default function Logo() {
     </Link>
   );
 }
-
-  // {/* <h1>
-  //   <span>hr</span> pro
-  // </h1> */}

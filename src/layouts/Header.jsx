@@ -3,17 +3,14 @@ import '../assets/css/Header.css'
 import { Icon } from '@iconify/react';
 import { NavLink, Link } from 'react-router-dom';
 import { Logo, Btn } from '../components/ui';
-import httpClient from '../services/httpClient';
 
-function Header() {
+function Header({ isConnected }) {
   const initialMode = localStorage.getItem('theme') || 'auto';
   const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
   const [mode, setMode] = useState(initialMode); // auto, dark, light
-  const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
     handleChangeMode(mode);
-    checkLoggin(setIsConnected);
   }, [mode]);
 
   return (
@@ -161,19 +158,4 @@ function disableDarkMode() {
   const darkGround = document.querySelector('.dark-ground');
   profile.classList.remove('dark-mode');
   darkGround.classList.remove('active');
-}
-
-async function checkLoggin(setIsLoggedIn) {
-  try {
-    const isLoggedIn = await httpClient.get('/check_login');
-    if (isLoggedIn.data.message === 'ok') {
-      setIsLoggedIn(true);
-    } else {
-      localStorage.removeItem('currentUser');
-      setIsLoggedIn(false);
-    }
-  } catch(error) {
-    console.log(error);
-    setIsLoggedIn(false);
-  }
 }

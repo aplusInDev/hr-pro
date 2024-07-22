@@ -242,6 +242,14 @@ table td:last-child button:last-of-type:hover {
 
 /*  1. styling .all-forms */
 
+.custom-form {
+  width: calc(100wv - 200px);
+  height: calc(100vh - 50px);
+  margin-top: 65px;
+  margin-left: 200px;
+  padding: 30px auto;
+}
+
 .form-info > .all-forms,
 .form-info > .new-form {
   position: absolute;

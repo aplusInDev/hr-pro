@@ -1,29 +1,25 @@
-.profile .profile-company {
-  position: absolute;
-  top: 5px;
-  left: 20px;
-  padding: 10px 20px;
+.company {
   width: calc(100vw - 200px);
   height: calc(100vh - 60px);
-  overflow-y: scroll;
-  overflow-x: hidden;
+  padding: 20px 30px;
+  margin-left: 200px;
+  margin-top: 50px;
 }
 
-.profile-company form {
+.company form {
   width: 800px;
   min-height: 700px;
   margin: 20px auto;
   padding: 20px 40px;
   background-color: var(--primary-card-gb);
   border-radius: 20px;
-  /* filter: drop-shadow(5px 5px 5px #363030); */
   color: var(--primary-color);
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
 }
 
-.profile-company form h1 {
+.company form h1 {
   color: var(--cardColor);
   text-align: center;
   margin-bottom: 20px;
@@ -32,14 +28,14 @@
   color: var(--primary-color);
 }
 
-.profile-company form span {
+.company form span {
   display: block;
   margin: 30px 0 5px 8px;
   letter-spacing: 2px;
 }
 
-.profile-company input,
-.profile-company textarea {
+.company input,
+.company textarea {
   outline: none;
   border: none;
   width: 100%;
@@ -48,16 +44,14 @@
   background-color: rgba(129, 139, 158, 0.289);
   resize: none;
   border-radius: 5px;
-  /* color: var(--disabled-input-color); */
 }
 
-.profile-company textarea {
+.company textarea {
   height: 50px;
 }
 
-.profile-company textarea:focus,
-.profile-company input:focus {
+.company textarea:focus,
+.company input:focus {
   background-color: #fefefe;
-  /* color: var(--cardColor); */
   transition: all .5s;
 }

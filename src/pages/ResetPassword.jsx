@@ -3,14 +3,14 @@ import httpClient from '../services/httpClient';
 import { Form, useActionData, Link } from 'react-router-dom';
 import "../assets/css/Register.css";
 import { Icon } from '@iconify/react';
-import { Header } from '../layouts';
+// import { Header } from '../layouts';
 
 export default function ResetPassword() {
   const actionData = useActionData();
 
   return (
     <div className="login">
-      <Header />
+      {/* <Header /> */}
       <Form method='post' action='/reset_password'>
         {actionData?.error && <p className='error'>{actionData.error}</p>}
         {actionData?.message && <p className='message'>{actionData.message}</p>}

@@ -3,14 +3,14 @@ import httpClient from '../services/httpClient';
 import { Form, redirect, useActionData, Link } from 'react-router-dom';
 import "../assets/css/Register.css";
 import Cookies from 'js-cookie';
-import { Header } from '../layouts';
+// import { Header } from '../layouts';
 
 export default function Login() {
   const errors = useActionData();
 
   return (
     <div className="login">
-      <Header />
+      {/* <Header /> */}
       <Form method='post' action='/login'>
         {errors?.error && <p className='error'>{errors.error}</p>}
         <label htmlFor='company_id'>Company id</label>
@@ -67,7 +67,7 @@ export async function action({ request }) {
       formData,
     );
     localStorage.setItem('currentUser', JSON.stringify(response.data));
-    return redirect('/home/profile');
+    return redirect('/home');
   } catch (err) {
     localStorage.removeItem('currentUser');
     Cookies.remove('session_id');

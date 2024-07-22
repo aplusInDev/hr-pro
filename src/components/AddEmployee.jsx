@@ -38,7 +38,7 @@ export default function AddEmployee() {
       }
       const response = await httpClient.post(`/add_employee?company_id=${companyId}`, formData);
       setEmployeesLsit(prev => [...prev, response.data]);
-      navigate('/home/employees');
+      navigate('employees');
     } catch (err) {
       console.error(err);
     }
@@ -124,7 +124,7 @@ export default function AddEmployee() {
           </select>
         </label>
         <div className="btns">
-          <Link to='/home/employees'>
+          <Link to='employees'>
             <Btn text="cancel" />
           </Link>
           <button

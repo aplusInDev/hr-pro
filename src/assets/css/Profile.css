@@ -1,34 +1,33 @@
 .profile {
-  /* background-color: var(--primary-bg); */
   margin-top: 50px;
-  width: 100vw;
+  margin-left: 200px;
+  width: calc(100vw - 200px);
   height: calc(100vh - 50px);
   padding: 20px 30px;
 }
 
-.profile > aside {
+aside {
   position: absolute;
   left: 0;
   top: 50px;
+  width: 200px;
   padding: 10px 20px;
 }
 
-.profile main {
-	position: absolute;
-  top: 60px;
-  left: 200px;
-  padding: 20px 50px;
-  width: calc(100vw - 210px);
-  height: calc(100vh - 75px);
-  overflow-y: scroll;
-	overflow-x: hidden;
-}
-
 main.wide {
+  position: absolute;
   width: calc(100vw - 90px);
   left: 80px;
+  top: 50px;
+  margin: auto;
 }
 
-.profile .form-preview {
+.profile > .employee_position_info {
   width: calc(100vw - 300px);
+  margin: 10px auto;
+}
+
+main.wide > .form-preview,
+main.wide > .employee_position_info {
+  width: calc(100vw - 140px);
 }

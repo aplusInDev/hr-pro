@@ -8,10 +8,12 @@ export default function Profile() {
 
   return (
       <Await>
-        <ProfileInfo
-          fields={employeeFields}
-          employee={employee}
-        />
+        <main className="profile">
+          <ProfileInfo
+            fields={employeeFields}
+            employee={employee}
+          />
+        </main>
       </Await>
   )
 }
