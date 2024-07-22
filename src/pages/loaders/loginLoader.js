@@ -10,7 +10,7 @@ export default async function loginLoader() {
     } catch(err) {
       // remove session_id from the cookie
       Cookies.remove('session_id');
-      localStorage.clear();
+      localStorage.removeItem('currentUser');
       return null;
     }
   }

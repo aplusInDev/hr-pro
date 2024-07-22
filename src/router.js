@@ -14,11 +14,10 @@ import {
   leavesLoader, addTraingLoader, trainingsLoader, evaluationLoader,
   absencesLoader, employeeAbsencesLoader, rootLoader,
 } from './pages/loaders';
-import { action as loginAction } from './pages/Login';
+import { companyAction, loginAction } from './pages/actions';
 import {action as registerAction } from './pages/Register';
 import { action as ResetPasswordAction } from './pages/ResetPassword';
 import { action as UpdatePasswordAction } from './pages/UpdatePassword';
-import { companyAction } from './pages/actions';
 import {
   AddEmployee, AddDepartment, AddJob,
   RequestLeave, AddTraining, Company,

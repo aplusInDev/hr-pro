@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 import { NavLink, Link } from 'react-router-dom';
 import { Logo, Btn } from '../components/ui';
 
-function Header({ isConnected }) {
+function Header({ isConnected, showBtns=true }) {
   const initialMode = localStorage.getItem('theme') || 'auto';
   const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
   const [mode, setMode] = useState(initialMode); // auto, dark, light
@@ -96,16 +96,18 @@ function Header({ isConnected }) {
           </li>
         </>)}
       </ul>
-      {isConnected || (<>
-        <div className="btns">
-        <Link to={'login'}>
-          <Btn text="login" className="submit-btn new-btn" />
-        </Link>
-        <Link to={'register'}>
-          <Btn text="register" />
-        </Link>
-      </div>
-      </>)}
+      {isConnected || ( showBtns && 
+        <>
+          <div className="btns">
+            <Link to={'login'}>
+              <Btn text="login" className="submit-btn new-btn" />
+            </Link>
+            <Link to={'register'}>
+              <Btn text="register" />
+            </Link>
+          </div>
+        </>
+      )}
     </header>
   );
 }
