@@ -57,7 +57,7 @@ export default function CustomOptions({
         disabled={disabled}
       />
       <button type='button'
-        className='add-option-button'
+        className='add-option-button secondary-btn'
         onClick={handleAddOption}
         disabled={disabled}
       >

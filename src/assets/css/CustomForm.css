@@ -301,6 +301,13 @@ table td:last-child button:last-of-type:hover {
   margin-right: 10px;
 }
 
+.add-option-button {
+  border-radius: 5px;
+  padding: 2px;
+  margin: 0 3px;
+  border: none;
+}
+
 /* styling .form-info _______________ */
 
 /* styling .new-field */
