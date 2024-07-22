@@ -33,32 +33,6 @@ aside li {
   padding: 25px 5px;
 }
 
-.expand-slim {
-  background-color: var(--color3);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  line-height: 30px;
-  text-align: center;
-  cursor: pointer;
-  position: absolute;
-  left: 15px;
-  z-index: 1;
-  /* color: var(--color4); */;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.expand-slim:hover {
-  color: var(--icon-color);
-}
-
-.expand-slim > * {
-  width: 20px;
-  height: 20px;
-}
-
 span.hide {
   display: none;
 }

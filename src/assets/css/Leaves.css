@@ -84,14 +84,6 @@ li:hover .show-evaluations {
 }
 
 /* styling trainings */
-.trainings {
-  width: calc(100vw - 200px);
-  height: calc(100vh - 50px);
-  margin-top: 50px;
-  margin-left: 200px;
-  padding: 30px;
-}
-
 .trainings-container {
   background-color: red;
 }

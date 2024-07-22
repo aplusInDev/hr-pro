@@ -13,7 +13,7 @@ export default function UpdatePassword() {
   }
 
   return (
-    <div className="login-page update-password">
+    <main className="update-password">
       <Form 
         method='post'
         action='/update_password'
@@ -51,6 +51,6 @@ export default function UpdatePassword() {
         />
         <button type='submit'>Update</button>
       </Form>
-    </div>
+    </main>
   )
 }

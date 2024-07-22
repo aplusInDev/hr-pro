@@ -30,27 +30,8 @@ function  Sidebar() {
     ]
   }
 
-  function handleClick() {
-    const texts = Array.from(document.querySelectorAll('.text'));
-    const sideBar = document.querySelector('aside');
-    const main = document.querySelector('main');
-
-    texts.forEach(text => {
-      text.classList.toggle('hide');
-
-    });
-    sideBar.classList.toggle('slim');
-    main.classList.toggle('wide');
-  }
-
   return (
     <aside>
-      <span
-        className='expand-slim'
-        onClick={handleClick}
-      >
-        <Icon icon="mage:dots-menu" />
-      </span>
       <nav>
         <ul>
           {asideLinks.map((field, index) => (

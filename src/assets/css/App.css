@@ -201,12 +201,14 @@ span.close svg {
 }
 
 main {
-  margin-top: 50px;
+  position: relative;
+  margin-top: 55px;
   margin-left: 200px;
-  width: calc(100vw - 200px);
-  height: calc(100vh - 50px);
+  width: calc(100vw - 205px);
+  height: calc(100vh - 60px);
   padding: 20px 30px;
   overflow-y: scroll;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -214,7 +216,7 @@ main.wide {
   position: absolute;
   width: calc(100vw - 90px);
   left: 80px;
-  top: 50px;
+  top: 55px;
   margin: auto;
 }
 

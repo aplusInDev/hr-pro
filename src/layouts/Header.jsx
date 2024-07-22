@@ -14,9 +14,32 @@ function Header({ isConnected, showBtns=true }) {
     handleChangeMode(mode);
   }, [mode]);
 
+  function handleClick() {
+    const texts = Array.from(document.querySelectorAll('.text'));
+    const sideBar = document.querySelector('aside');
+    const main = document.querySelector('main');
+
+    texts.forEach(text => {
+      text.classList.toggle('hide');
+
+    });
+    sideBar.classList.toggle('slim');
+    main.classList.toggle('wide');
+  }
+
   return (
     <header className='main-header'>
-      <Logo uri={isConnected? '/home': '/'} />
+      <div className='logo-container'>
+        {isConnected && (
+          <span
+            className='expand-slim'
+            onClick={handleClick}
+          >
+            <Icon icon="mage:dots-menu" />
+          </span>
+        )}
+        <Logo uri={isConnected? '/home': '/'} />
+      </div>
       <ul className={isConnected? 'header-icons' : 'guest-icons'}>
         <li className={`dark-ground ${mode==='dark'? 'active': ''}`}
           onClick={() => {
