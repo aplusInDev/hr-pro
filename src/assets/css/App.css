@@ -200,3 +200,23 @@ span.close svg {
   color: var(--new-primary-color);
 }
 
+main {
+  margin-top: 50px;
+  margin-left: 200px;
+  width: calc(100vw - 200px);
+  height: calc(100vh - 50px);
+  padding: 20px 30px;
+}
+
+main.wide {
+  position: absolute;
+  width: calc(100vw - 90px);
+  left: 80px;
+  top: 50px;
+  margin: auto;
+}
+
+main.wide > .form-preview,
+main.wide > .employee_position_info {
+  width: calc(100vw - 140px);
+}
