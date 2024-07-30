@@ -23,7 +23,10 @@ export default function NewForm({ onAdd }) {
 
   return (
     <>
-      <form className='new-form'>
+      <form 
+        className='new-form'
+        onSubmit={handleAdd}
+      >
         <input
           name='new-form-name'
           type='text'
@@ -41,7 +44,6 @@ export default function NewForm({ onAdd }) {
         />
         <button type='submit'
           className='primary-btn'
-          onClick={handleAdd}
         >
           Create Form
         </button>

@@ -90,6 +90,9 @@ function OptionReducer(state, action) {
       return state.filter((o) => o.id !== action.id);
     }
     case 'EDIT': {
+      if (state.some((o) => o.name === action.option.name)) {
+        return state;
+      }
       return state.map((o) => {
         if (o.id === action.option.id) {
           return action.option;
