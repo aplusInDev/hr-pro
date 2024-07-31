@@ -1,12 +1,11 @@
 footer {
   /* background-color: var(--midnight-black); */
-  background-color: var(--main-light-color);
+  background-color: var(--primary-header-gb);
   border-top: 1px solid rgba(0, 0, 0, .2);
-  width: calc(100vw - 200px);
-  height: 80px;
+  width: calc(100vw);
+  height: 40px;
   position: absolute;
   bottom: 0;
-  left: 200px;
-  transform: translateY(50px);
-  /* display: none; */
+  /* margin-top: 100%; */
+  color: var(--new-primary-color);
 }

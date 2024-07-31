@@ -9,6 +9,5 @@
 .landing-page section {
   padding: 10px;
   color: var(--new-primary-color);
-  position: absolute;
-  top: 55px;
+  margin-top: 55px;
 }
