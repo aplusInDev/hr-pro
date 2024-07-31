@@ -61,7 +61,8 @@
   --primary-disabled-color: rgba(16, 16, 16, 0.3);
   /* --primary-bg: #add8e61f; */
   /* --primary-bg: #ade6dc29; */
-  --primary-bg: #cdd2ce90;
+  /* --primary-bg: #cdd2ce90; */ /* old */
+  --primary-bg: #ccd4d383; /* new */
   --secondary-gb: var(--color15);
   --primary-card-gb: #b0bfc4b2;
   /* --primary-card-gb: var(--sidebar-bg); */
@@ -76,17 +77,19 @@
   --secondary-item-gb: #0331435e;
   --new-primary-color: var(--primary-color);
   --new-secondary-color: #fefefe;
-  /* --primary-header-gb: #a8aba99a; */
-  --primary-header-gb: #b0bfc4c2;
+  --primary-header-gb: #a8aba99a;
+  /* --primary-header-gb: #b0bfc4c2; */ /* old */
+  --primary-header-gb: #cdd2d4; /* new */
   /* --sidebar-bg: #acb0ad90; */
-  --sidebar-bg: #b0bfc4a9;
+  /* --sidebar-bg: #b0bfc4a9; */ /* old */
+  --sidebar-bg: var(--primary-header-gb); /* new */
   /* --sidebar-bg: var(--second-dark-color); */
   --primary-font-color: #333;
   --secondary-font-color: #666;
 }
 
 .dark-mode {
-  --primary-bg: #0A0E0B;
+  --primary-bg: var(--color9);
   --secondary-thead-gb: rgba(68, 87, 94, 0.878);
   --primary-tbody-gb: rgba(150, 165, 177, 0.647);
   --secondary-tbody-gb: rgba(161, 169, 175, 0.718);
@@ -94,8 +97,10 @@
   --new-primary-color: #fefefe;
   --new-secondary-color: var(--primary-color);
   /* --sidebar-bg: #c0edcb; */
-  --sidebar-bg: var(--second-dark-color);
-  --primary-header-gb: var(--midnight-black);
+  /* --sidebar-bg: var(--second-dark-color); */
+  /* --primary-header-gb: var(--midnight-black); */
+  --primary-header-gb: var(--color20);
+  --sidebar-bg: var(--color20);
   --secondary-font-color: #3d3b3b;
 }
 

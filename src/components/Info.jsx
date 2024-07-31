@@ -114,12 +114,13 @@ export default function Info({
       {
         fields?.map((field) => {
           field.name = field.name.replace(/ /g, '_');
+          const fieldName = field.name.replace(/_/g, ' ');
 
           switch(field.type) {
             case 'select':
               return (
                 <div key={field.id}>
-                  <label htmlFor={field.name}>{field.name}</label>
+                  <label htmlFor={field.name}>{fieldName}</label>
                   <select
                     id={field.name}
                     disabled={status === 'idle'}
@@ -143,7 +144,7 @@ export default function Info({
             case 'radio':
               return (
                 <div key={field.id}>
-                  <span>{field.name}</span>
+                  <span>{fieldName}</span>
                   {
                     field.options.map((option) => (
                       <label key={option}>
@@ -176,7 +177,7 @@ export default function Info({
 
               return (
                 <div key={field.id}>
-                  <span>{field.name}</span>
+                  <span>{fieldName}</span>
                   {
                     field.options.map((option) => (
                       <label key={option}>
@@ -208,10 +209,11 @@ export default function Info({
             default:
               return (
                 <div key={field.id}>
-                  <label htmlFor={field.name}>{field.name}</label>
+                  <label htmlFor={field.name}>{fieldName}</label>
                   <input
                     id={field.name}
                     type={field.type}
+                    autoComplete='off'
                     placeholder={field.description}
                     disabled={status === 'idle'}
                     value={info[`${field.name}`] || field.default_value}
