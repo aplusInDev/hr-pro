@@ -148,13 +148,11 @@ html, body, #root {
 	height: 100vh;
 	width: 100vw;
   overflow: hidden;
-  /* background-color: var(--primary-bg); */
 }
 
-/* #root {
-  display: flex;
-  flex-direction: column;
-} */
+main {
+  background-color: var(--primary-bg);
+}
 
 ::-webkit-scrollbar {
   width: 8px;

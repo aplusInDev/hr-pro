@@ -201,10 +201,9 @@ span.close svg {
 
 main {
   position: relative;
-  margin-top: 55px;
   margin-left: 200px;
   width: calc(100vw - 205px);
-  height: calc(100vh - 60px);
+  height: calc(100vh - 50px);
   padding: 20px 30px;
   overflow-y: scroll;
   overflow-x: hidden;
