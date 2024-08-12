@@ -86,11 +86,15 @@
   /* --sidebar-bg: var(--second-dark-color); */
   --primary-font-color: #333;
   --secondary-font-color: #666;
+  --main-heading-color: #161d26;
+  --main-pcolor: #232b37;
 }
 
 .dark-mode {
   /* --primary-bg: var(--color9); */
-  --primary-bg: #303030ef;
+  --main-heading-color: #f1f1f1a0;
+  --main-pcolor: #738297;
+  --primary-bg: #000000e2;
   --secondary-thead-gb: rgba(68, 87, 94, 0.878);
   --primary-tbody-gb: rgba(150, 165, 177, 0.647);
   --secondary-tbody-gb: rgba(161, 169, 175, 0.718);
@@ -144,7 +148,7 @@ html, body, #root {
 	height: 100vh;
 	width: 100vw;
   overflow: hidden;
-  background-color: var(--primary-bg);
+  /* background-color: var(--primary-bg); */
 }
 
 /* #root {

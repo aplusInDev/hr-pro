@@ -9,6 +9,12 @@ export default function Login() {
   return (
     <div className="login-page">
       <Header showBtns={false} />
+      <section className='intro'>
+      <h1>
+        Welcome to the HR pro app
+      </h1>
+      <span>Empowering HR with Digital Efficiency for a Greener, More Productive Workforce</span>
+    </section>
       <Form method='post' action='/login' className='login'>
         {errors?.error && <p className='error'>{errors.error}</p>}
         <label htmlFor='company_id'>Company id</label>

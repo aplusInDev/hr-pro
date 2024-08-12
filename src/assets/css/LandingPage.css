@@ -22,7 +22,7 @@
 }
 
 .intro h1 {
-  color: #161d26;
+  color: var(--main-heading-color);
   margin-top: 100px;
   font-size: 6rem;
   line-height: 6.8rem;
@@ -33,7 +33,7 @@
   font-size: 2.4rem;
   line-height: 3.2rem;
   font-weight: 400;
-  color: #232b37;
+  color: var(--main-pcolor);
 }
 
 .intro button {
@@ -78,7 +78,7 @@
   font-size: 3rem;
   line-height: 3.6rem;
   margin-top: 50px;
-  color: #161d26;
+  color: var(--main-heading-color);
   text-indent: 20px;
   width: 90%;
   padding-left: 100px;
@@ -87,7 +87,7 @@
 .landing-page p {
   font-size: 1.6rem;
   line-height: 2.4rem;
-  color: #161d26;
+  color: var(--main-heading-color);
   text-indent: 30px;
   text-overflow: clip;
   width: 90%;
@@ -117,7 +117,7 @@
 .features_list h3 {
   font-size: 2rem;
   line-height: 3rem;
-  color: #161d26;
+  color: var(--main-heading-color);
   margin-bottom: 20px;
   text-align: center;
 }
@@ -125,7 +125,7 @@
 .features_list li {
   font-size: 1.2rem;
   line-height: 2rem;
-  color: #232b37;
+  color: var(--main-pcolor);
   margin-bottom: 10px;
 }
 

@@ -57,6 +57,12 @@ export default function Register() {
   return (
     <div className="register-page">
       <Header showBtns={false} />
+      <section className='intro'>
+        <h1>
+          Welcome to the HR pro app
+        </h1>
+        <span>Empowering HR with Digital Efficiency for a Greener, More Productive Workforce</span>
+      </section>
       <Form
         method='post'
         action='/register'
@@ -66,6 +72,7 @@ export default function Register() {
         {error && <p className='error'>{error}</p>}
         {message && <p className='message'>{message}</p>}
         <section className='admin-info'>
+          <h2>Your Personal Information</h2>
           <label>
             <span>first name</span>
             <input
@@ -122,6 +129,7 @@ export default function Register() {
           </button>
         </section>
         <section className='company-info'>
+          <h2>Your Company Information</h2>
           <label>
             <span>company name</span>
             <input

@@ -5,6 +5,17 @@
   height: 100vh;
 }
 
+.register-page .intro,
+.login-page .intro {
+  background: linear-gradient(123deg, #5de8bac3, #3881caac, #6842ffa4);
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: calc(100vw - 500px);
+  height: 100%;
+  padding: 100px 50px;
+}
+
 .update-password .login {
   position: static;
   margin: 50px auto;
@@ -22,8 +33,16 @@
   width: 500px;
   height: 100%;
   padding: 40px;
-  color: var(--midnight-black);
+  color: var(--new-primary-color);
   background-color: var(--sidebar-bg);
+}
+
+.register h2 {
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  color: var(--main-heading-color);
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .register input,
@@ -100,7 +119,7 @@
 .register-link > span:last-child,
 .reset_password-link > span:last-child,
 .login-link > span:last-child {
-  color: rgba(168, 190, 193, 0.97);
+  color: rgb(70, 133, 141);
 }
 
 .register-link:hover > span:last-child,
