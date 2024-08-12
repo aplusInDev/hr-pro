@@ -2,9 +2,9 @@
   width: 100vw;
   height: 50px;
   background-color: var(--primary-header-gb);
-  position: absolute;
-  top: 0;
-  left: 0;
+  /* position: absolute; */
+  /* top: 0;
+  left: 0; */
 }
 
 .logo-container {

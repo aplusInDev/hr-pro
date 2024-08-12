@@ -542,7 +542,8 @@
   --shadow-floating-legacy: 0px 6px 12px -3px #01040966, 0px 6px 18px 0px #01040966;
   --outline-focus: #1f6feb solid 2px;
 }
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) { */
+.custom {
   [data-color-mode="auto"][data-dark-theme="dark"],
   [data-color-mode="auto"][data-dark-theme="dark"] ::backdrop {
     --topicTag-borderColor: #00000000;
