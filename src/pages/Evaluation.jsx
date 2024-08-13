@@ -33,7 +33,7 @@ export default function Evaluation() {
     try {
       await httpClient.post(
         `/evaluation?trainee_id=${trainee_id}&training_id=${trainingId}`, evaluationData);
-      navigate('/home/trainings');
+      navigate('/trainings');
     } catch (err) {
       console.log("err: ", err.response.data.error);
     }
@@ -42,7 +42,7 @@ export default function Evaluation() {
   return (
     <section className='evaluation-container'>
       <span className='close'>
-        <Link to='/home/trainings'>
+        <Link to='/trainings'>
           <Icon icon="material-symbols-light:close" />
         </Link>
       </span>

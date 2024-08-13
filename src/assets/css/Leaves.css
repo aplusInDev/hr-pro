@@ -2,12 +2,6 @@
   margin-top: 100px;
 }
 
-.employee-leaves {
-  margin: 10px auto;
-  width: 100%;
-  min-height: max-content;
-}
-
 .employee-leaves .header {
   display: flex;
   justify-content: center;
@@ -34,8 +28,6 @@
 }
 
 .employee-leaves li {
-  /* background-color: var(--primary-card-gb); */
-  /* filter: drop-shadow(0 0 5px var(--color3)); */
   width: 100%;
   min-height: 30px;
   line-height: 30px;
@@ -44,13 +36,6 @@
   position: relative;
   color: var(--primary-color);
 }
-
-/* .employee-leaves li:not(li.active, .details li):hover {
-  background-color: var(--color3);
-  filter: brightness(.7);
-  transition: background-color .5s ease-in-out;
-  color: var(--color5);
-} */
 
 .employee-leaves p {
   padding: 2px;
@@ -99,6 +84,10 @@ li:hover .show-evaluations {
 }
 
 /* styling trainings */
+.trainings-container {
+  background-color: red;
+}
+
 .training-title,
 .close {
   cursor: pointer;

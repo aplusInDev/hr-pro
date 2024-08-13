@@ -1,0 +1,7 @@
+.home h1 {
+  color: var(--main-heading-color);
+}
+
+.home p {
+  color: var(--main-pcolor);
+}

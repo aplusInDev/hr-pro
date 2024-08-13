@@ -174,7 +174,6 @@ span.close svg {
 
 .secondary-btn {
   background-color: rgba(47, 47, 167, 0.896);
-  /* background-color: rgba(47, 47, 167, 0.671); */
 }
 
 .primary-btn:hover,
@@ -200,3 +199,26 @@ span.close svg {
   color: var(--new-primary-color);
 }
 
+main {
+  position: relative;
+  margin-left: 200px;
+  width: calc(100vw - 205px);
+  height: calc(100vh - 50px);
+  padding: 20px 30px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+main.wide {
+  position: absolute;
+  width: calc(100vw - 90px);
+  left: 80px;
+  top: 55px;
+  margin: auto;
+}
+
+main.wide > .form-preview,
+main.wide > .employee_position_info {
+  width: calc(100vw - 140px);
+}

@@ -33,22 +33,23 @@ export default function ProfileInfo({
     >
       {
         fields?.map((field) => {
-          // field.name = field.name.replace(/ /g, '_');
-          const fieldName = field.name.replace(/ /g, '_');
+          field.name = field.name.replace(/ /g, '_');
+          const fieldName = field.name.replace(/_/g, ' ');
 
           switch(field.type) {
             case 'select':
               return (
                 <div key={field.id}>
-                  <label htmlFor={field.name}>{field.name}</label>
+                  <label htmlFor={field.name}>{fieldName}</label>
                   <select
                     id={field.name}
+                    name={field.name}
                     disabled={status === 'idle'}
-                    defaultValue={info[`${fieldName}`] || field.default_value}
+                    defaultValue={info[`${field.name}`] || field.default_value}
                     onChange={(e) => {
                       handleChange({
                       ...info,
-                      [fieldName]: e.target.value
+                      [field.name]: e.target.value
                       });
                     }}
                   >
@@ -63,19 +64,19 @@ export default function ProfileInfo({
             case 'radio':
               return (
                 <div key={field.id}>
-                  <span>{field.name}</span>
+                  <span>{fieldName}</span>
                   {
                     field.options.map((option) => (
-                      <label key={option}>
+                      <label key={option} htmlFor={option}>
                         <input type='radio'
                           id={option}
-                          name={fieldName}
+                          name={field.name}
                           disabled={status === 'idle'}
-                          defaultChecked={option === info[`${fieldName}`] || option === field.default_value}
+                          defaultChecked={option === info[`${field.name}`] || option === field.default_value}
                           onChange={(e) => {
                             handleChange({
                               ...info,
-                              [fieldName]: e.target.checked ? option : '',
+                              [field.name]: e.target.checked ? option : '',
                             });
                           }}
                         />
@@ -86,33 +87,34 @@ export default function ProfileInfo({
                 </div>
               )
             case 'checkbox':
-              if(!info[`${fieldName}`]) {
+              if(!info[`${field.name}`]) {
                 handleChange({
                   ...info,
-                  [fieldName]: [field.default_value]
+                  [field.name]: [field.default_value]
                 });
               }
 
               return (
                 <div key={field.id}>
-                  <span>{field.name}</span>
+                  <span>{fieldName}</span>
                   {
-                    field.options.map((option) => (
+                    field.options.map((option, index) => (
                       <label key={option}>
                         <input type='checkbox'
                           id={option}
+                          name={field.name + index}
                           disabled={status === 'idle'}
-                          defaultChecked={info[`${fieldName}`]?.includes(option)}
+                          defaultChecked={info[`${field.name}`]?.includes(option)}
                           onChange={(e) => {
                             if (e.target.checked) {
                               handleChange({
                                 ...info,
-                                [fieldName]: [...info[`${fieldName}`], option]
+                                [field.name]: [...info[`${field.name}`], option]
                               });
                             } else {
                               handleChange({
                                 ...info,
-                                [fieldName]: info[`${fieldName}`].filter((item) => item !== option)
+                                [field.name]: info[`${field.name}`].filter((item) => item !== option)
                               });
                             }
                           }}
@@ -126,17 +128,19 @@ export default function ProfileInfo({
             default:
               return (
                 <div key={field.id}>
-                  <label htmlFor={field.name}>{field.name}</label>
+                  <label htmlFor={field.name}>{fieldName}</label>
                   <input
                     id={field.name}
+                    name={field.name}
+                    autoComplete='off'
                     type={field.type}
                     placeholder={field.description}
                     disabled={status === 'idle'}
-                    value={info[`${fieldName}`] || field.default_value}
+                    value={info[`${field.name}`] || field.default_value}
                     onChange={(e) => {
                       handleChange({
                       ...info,
-                      [fieldName]: e.target.value
+                      [field.name]: e.target.value
                     })
                   }}
                   />

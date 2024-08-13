@@ -1,34 +1,4 @@
-.profile {
-  /* background-color: var(--primary-bg); */
-  margin-top: 50px;
-  width: 100vw;
-  height: calc(100vh - 50px);
-  padding: 20px 30px;
-}
-
-.profile > aside {
-  position: absolute;
-  left: 0;
-  top: 50px;
-  padding: 10px 20px;
-}
-
-.profile main {
-	position: absolute;
-  top: 60px;
-  left: 200px;
-  padding: 20px 50px;
-  width: calc(100vw - 210px);
-  height: calc(100vh - 75px);
-  overflow-y: scroll;
-	overflow-x: hidden;
-}
-
-main.wide {
-  width: calc(100vw - 90px);
-  left: 80px;
-}
-
-.profile .form-preview {
+.profile > .employee_position_info {
   width: calc(100vw - 300px);
+  margin: 10px auto;
 }

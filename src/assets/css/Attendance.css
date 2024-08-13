@@ -1,11 +1,3 @@
-.attendance {
-  width: calc(100vw - 200px);
-  height: calc(100vh - 50px);
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 main.wide .attendance {
   width: calc(100vw - 80px);
 }

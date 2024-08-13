@@ -1,12 +1,13 @@
 // import { Header, Sidebar, Main } from './layouts/index';
-import { Register } from './pages'
+import { RouterProvider } from 'react-router-dom';
+import router from './router';
 
 function App() {
   
   return (
-  <>
-    <Register />
-  </>
+    <>
+      <RouterProvider router={router}></RouterProvider>
+    </>
   );
 }
 

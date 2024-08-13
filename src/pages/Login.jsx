@@ -1,17 +1,21 @@
-import { React } from 'react'
-import httpClient from '../services/httpClient';
-import { Form, redirect, useActionData, Link } from 'react-router-dom';
+import { React } from 'react';
+import { Form, useActionData, Link } from 'react-router-dom';
 import "../assets/css/Register.css";
-import Cookies from 'js-cookie';
 import { Header } from '../layouts';
 
 export default function Login() {
   const errors = useActionData();
 
   return (
-    <div className="login">
-      <Header />
-      <Form method='post' action='/login'>
+    <div className="login-page">
+      <Header showBtns={false} />
+      <section className='intro'>
+      <h1>
+        Welcome to the HR pro app
+      </h1>
+      <span>Empowering HR with Digital Efficiency for a Greener, More Productive Workforce</span>
+    </section>
+      <Form method='post' action='/login' className='login'>
         {errors?.error && <p className='error'>{errors.error}</p>}
         <label htmlFor='company_id'>Company id</label>
         <input
@@ -56,21 +60,4 @@ export default function Login() {
       </Form>
     </div>
   )
-}
-
-
-export async function action({ request }) {
-  const formData = await request.formData();
-
-  try {
-    const response = await httpClient.post('/login',
-      formData,
-    );
-    localStorage.setItem('currentUser', JSON.stringify(response.data));
-    return redirect('/home/profile');
-  } catch (err) {
-    localStorage.removeItem('currentUser');
-    Cookies.remove('session_id');
-    return err.response.data;
-  }
 }

@@ -1,11 +1,12 @@
 aside {
   --field-height: 30px;
-  /* background-color: var(--second-dark-color); */
   background-color: var(--sidebar-bg);
   width: 200px;
   height: calc(100vh - 50px);
-  /* border-top: 1px solid var(--b-dark); */
-  /* color: var(--icon-color); */
+  position: absolute;
+  left: 0;
+  top: 50px;
+  padding: 10px 20px;
 }
 
 aside.slim {
@@ -30,32 +31,6 @@ aside li {
   height: var(--field-height);
   line-height: 30px;
   padding: 25px 5px;
-}
-
-.expand-slim {
-  background-color: var(--color3);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  line-height: 30px;
-  text-align: center;
-  cursor: pointer;
-  position: absolute;
-  left: 15px;
-  z-index: 1;
-  /* color: var(--color4); */;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.expand-slim:hover {
-  color: var(--icon-color);
-}
-
-.expand-slim > * {
-  width: 20px;
-  height: 20px;
 }
 
 span.hide {

@@ -41,7 +41,7 @@ export default function CustomForm() {
   }
 
   return (
-    <div className='custom-form'>
+    <main className='custom-form'>
       <FormInfo
         form={form}
         setForm={setForm}
@@ -67,6 +67,6 @@ export default function CustomForm() {
         ) : (
         <FieldsTable fields={fields} setFields={setFields} />
       )}
-    </div>
+    </main>
   );
 }

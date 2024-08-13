@@ -9,9 +9,13 @@ export default function ResetPassword() {
   const actionData = useActionData();
 
   return (
-    <div className="login">
-      <Header />
-      <Form method='post' action='/reset_password'>
+    <div className="login-page">
+      <Header showBtns={false} />
+      <Form 
+        method='post' 
+        action='/reset_password' 
+        className='login'
+      >
         {actionData?.error && <p className='error'>{actionData.error}</p>}
         {actionData?.message && <p className='message'>{actionData.message}</p>}
         <label htmlFor='company_id'>Company id</label>

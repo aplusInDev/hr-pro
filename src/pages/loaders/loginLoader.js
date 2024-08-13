@@ -6,11 +6,11 @@ export default async function loginLoader() {
   if (Cookies.get('session_id')) {
     try {
       await httpClient.get('/profile');
-      return redirect('/home/profile');
+      return redirect('/home');
     } catch(err) {
       // remove session_id from the cookie
       Cookies.remove('session_id');
-      localStorage.clear();
+      localStorage.removeItem('currentUser');
       return null;
     }
   }

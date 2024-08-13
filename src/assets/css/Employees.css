@@ -17,12 +17,6 @@
 }
 
 /* styling employees-container */
-.employees-container {
-  margin: 10px auto;
-  width: 100%;
-  min-height: max-content;
-}
-
 .employees-container ul {
   display: flex;
   flex-direction: column;
@@ -164,7 +158,3 @@ li.hide > .main-info > div {
 .employees-container .submit-btn svg {
   margin-left: 3px;
 }
-
-/* .employees-container .submit-btn:hover {
-  color: var(--pfontColor);
-} */

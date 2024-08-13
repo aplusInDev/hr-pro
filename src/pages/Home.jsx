@@ -1,19 +1,15 @@
-import { React } from 'react'
-import { Outlet } from 'react-router-dom';
-import { Header, Sidebar } from '../layouts';
-import '../assets/css/Profile.css';
-
+import { React } from 'react';
+import '../assets/css/Home.css';
 
 
 export default function Home() {
 
   return (
-    <div className='profile'>
-    <Header />
-      <Sidebar />
-      <main>
-        <Outlet />
-      </main>
-    </div>
+    <main className='home'>
+      <section>
+        <h1>Hi!</h1>
+        <p>Welcome to the HR pro app</p>
+      </section>
+    </main>
   );
 }

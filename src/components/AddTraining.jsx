@@ -40,7 +40,7 @@ export default function AddEmployee() {
       }
       const response = await httpClient.post(`/companies/${companyId}/trainings`, formData);
       setTrainingsList(prev => [...prev, response.data]);
-      navigate('/home/trainings');
+      navigate('/trainings');
     } catch (err) {
       console.error(err);
     }
@@ -137,7 +137,7 @@ export default function AddEmployee() {
           </select>
         </label>
         <div className="btns">
-          <Link to='/home/trainings'>
+          <Link to='/trainings'>
             <Btn text="cancel" />
           </Link>
           <button

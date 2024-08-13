@@ -56,7 +56,7 @@ const Attendance = () => {
   };
   
   return (
-    <div className="attendance" onDragOver={handleDragOver} onDrop={handleDrop}>
+    <main className="attendance" onDragOver={handleDragOver} onDrop={handleDrop}>
       {error && <p className="error">{error}</p>}
       {role === "employee"? (
         <CalendarForm 
@@ -83,7 +83,7 @@ const Attendance = () => {
         )
       }
       <div>{data && <ExcelTable data={data} />}</div>
-    </div>
+    </main>
   );
 };
 

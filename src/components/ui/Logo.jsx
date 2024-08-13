@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import '../../assets/css/Logo.css';
 
-export default function Logo() {
+export default function Logo({ uri = '/' }) {
   return (
-    <Link to={"/"}>
+    <Link to={uri}>
       <div className="logo">
         <span>hr</span>
         <span>pro</span>
@@ -12,7 +12,3 @@ export default function Logo() {
     </Link>
   );
 }
-
-  // {/* <h1>
-  //   <span>hr</span> pro
-  // </h1> */}

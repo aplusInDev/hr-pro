@@ -27,7 +27,7 @@ export default function RequestLeave() {
       }
       const response = await httpClient.post(`/employees/${employee_id}/leaves`, formData);
       setLeaves(prev => [...prev, response.data]);
-      navigate('/home/leaves');
+      navigate('/leaves');
     } catch (err) {
       console.log("error: ", err);
     }
@@ -76,7 +76,7 @@ export default function RequestLeave() {
             />
         </label>
         <div className="btns">
-          <Link to='/home/leaves'>
+          <Link to='/leaves'>
             <Btn text="cancel" />
           </Link>
           <button

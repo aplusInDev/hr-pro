@@ -1,24 +1,24 @@
-import { React } from 'react'
-import httpClient from '../services/httpClient';
+import React from 'react'
 import { Form, useNavigate, useActionData } from 'react-router-dom';
 import "../assets/css/Register.css";
-import { Header } from '../layouts';
-import Cookies from 'js-cookie';
 
 export default function UpdatePassword() {
   const actionData = useActionData();
   const navigate = useNavigate();
 
-  if (actionData && !actionData.warning) {
+  if (actionData && (actionData.message || actionData.error)) {
     setTimeout(() => {
       navigate('/login');
     }, 10*1000);
   }
 
   return (
-    <div className="login">
-      <Header />
-      <Form method='post' action='/update_password'>
+    <main className="update-password">
+      <Form 
+        method='post'
+        action='/update_password'
+        className='login'
+      >
         {actionData?.warning && <p className='warning'>{actionData.warning}</p>}
         {actionData?.error && <p className='error'>{actionData.error}</p>}
         {actionData?.message && <p className='message'>{actionData.message}</p>}
@@ -51,35 +51,6 @@ export default function UpdatePassword() {
         />
         <button type='submit'>Update</button>
       </Form>
-    </div>
+    </main>
   )
-}
-
-
-export async function action({ request }) {
-  const formData = await request.formData();
-  const password = formData.get('password');
-  const new_password = formData.get('new_password');
-  const confirm_password = formData.get('confirm_password');
-
-
-  if (new_password !== confirm_password) {
-    return { warning: 'New password and confirm password do not match' };
-  }
-
-  if (new_password === password) {
-    return { warning: 'New password must be different from the old password' };
-  }
-
-  try {
-    const response = await httpClient.post('/update_password',
-      formData,
-    );
-    return response.data;
-  } catch (err) {
-    return err.response.data;
-  } finally {
-    Cookies.remove('session_id');
-    localStorage.removeItem('currentUser');
-  }
 }

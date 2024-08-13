@@ -72,93 +72,91 @@ export default function Absences() {
   }
 
   return (
-    <>
-      <section className="employees-container absences-container">
-        {error && <h2 className='error'>{error}</h2>}
-        <form className='calendar-form'>
-        <label htmlFor="year">Year:</label>
-        <select className='main-item' id="year" name="year" value={year} onChange={handleYearChange} required>
-          <option value="">-- Select Year --</option>
-          {[...yearsSet].map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-      </form>
-        <ul>
-          {employees.map(employee =>
-            <li
-              key={employee.id}
-              className={"main-item " + (
-                show && employee.id === activeId ? 'active' : 'hide'
-              )}
-            >
-              <div className='absent-info'>
-                <div className='employee-short-info'>
-                  <span
-                    onClick={() => {
-                      if(employee.absences_info.absences === 0) return;
-                      handleClick(employee.id);
-                    }}
-                    >
-                    {employee.first_name} {employee.last_name}
-                  </span>
-                  <span>
-                    {employee.position_info.job_title}
-                  </span>
-                </div>
-                <div className="absences-short-info">
-                  {(employee.id !== activeId || !show) && (
-                    <span className='sum_absences'>
-                      {employee.absences_info.absences_total_days} day in&nbsp;
-                      {employee.absences_info.absences} absence(s)
-                    </span>
-                  )}
-                  {employee.absences_info.absences > 0 && (employee.id !== activeId || !show) && (
-                    <>
-                      <span className='justified-absences'>
-                        {employee.absences_info.justified_absences_days}&nbsp;
-                        day in&nbsp;
-                        {employee.absences_info.justified_absences}&nbsp;
-                        justified absence(s)
-                      </span>
-                      <span className='unjustified-absences'>
-                        {employee.absences_info.unjustified_absences_days}&nbsp;
-                        day in&nbsp;
-                        {employee.absences_info.unjustified_absences}&nbsp;
-                        unjustified absence(s)
-                      </span>
-                    </>
-                  )}
-                </div>
+    <main className="employees-container absences-container">
+      {error && <h2 className='error'>{error}</h2>}
+      <form className='calendar-form'>
+      <label htmlFor="year">Year:</label>
+      <select className='main-item' id="year" name="year" value={year} onChange={handleYearChange} required>
+        <option value="">-- Select Year --</option>
+        {[...yearsSet].map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    </form>
+      <ul>
+        {employees.map(employee =>
+          <li
+            key={employee.id}
+            className={"main-item " + (
+              show && employee.id === activeId ? 'active' : 'hide'
+            )}
+          >
+            <div className='absent-info'>
+              <div className='employee-short-info'>
+                <span
+                  onClick={() => {
+                    if(employee.absences_info.absences === 0) return;
+                    handleClick(employee.id);
+                  }}
+                  >
+                  {employee.first_name} {employee.last_name}
+                </span>
+                <span>
+                  {employee.position_info.job_title}
+                </span>
               </div>
-              {employee.id === activeId && data ? (
-                <div className='absence-info'>
-                  <span
-                    className='close'
-                    onClick={() => setShow(false)}
-                  >
-                    <Icon icon="material-symbols-light:close" />
+              <div className="absences-short-info">
+                {(employee.id !== activeId || !show) && (
+                  <span className='sum_absences'>
+                    {employee.absences_info.absences_total_days} day in&nbsp;
+                    {employee.absences_info.absences} absence(s)
                   </span>
-                  <AbsencesTable data={data} />
-                  <button
-                    type='button'
-                    className='submit-btn'
-                    onClick={() => {handleDownloadClick(employee)}}
-                  >
-                    Download
-                    <Icon icon="akar-icons:download" />
-                  </button>
-                </div>
-                ) : (
-                  null
-              )}
-            </li>
-          )}
-        </ul>
-      </section>
-    </>
+                )}
+                {employee.absences_info.absences > 0 && (employee.id !== activeId || !show) && (
+                  <>
+                    <span className='justified-absences'>
+                      {employee.absences_info.justified_absences_days}&nbsp;
+                      day in&nbsp;
+                      {employee.absences_info.justified_absences}&nbsp;
+                      justified absence(s)
+                    </span>
+                    <span className='unjustified-absences'>
+                      {employee.absences_info.unjustified_absences_days}&nbsp;
+                      day in&nbsp;
+                      {employee.absences_info.unjustified_absences}&nbsp;
+                      unjustified absence(s)
+                    </span>
+                  </>
+                )}
+              </div>
+            </div>
+            {employee.id === activeId && data ? (
+              <div className='absence-info'>
+                <span
+                  className='close'
+                  onClick={() => setShow(false)}
+                >
+                  <Icon icon="material-symbols-light:close" />
+                </span>
+                <AbsencesTable data={data} />
+                <button
+                  type='button'
+                  className='submit-btn'
+                  onClick={() => {handleDownloadClick(employee)}}
+                >
+                  Download
+                  <Icon icon="akar-icons:download" />
+                </button>
+              </div>
+              ) : (
+                null
+            )}
+          </li>
+        )}
+      </ul>
+    </main>
   );
 }
 
