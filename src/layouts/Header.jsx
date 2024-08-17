@@ -7,34 +7,32 @@ import { Logo, Btn } from '../components/ui';
 function Header({ isConnected, showBtns=true }) {
   const initialMode = localStorage.getItem('theme') || 'auto';
   const role = JSON.parse(localStorage.getItem('currentUser'))?.role;
+  const asideState = localStorage.getItem("asideState");
   const [mode, setMode] = useState(initialMode); // auto, dark, light
 
 
   useEffect(() => {
     handleChangeMode(mode);
-  }, [mode]);
-
-  function handleClick() {
-    const texts = Array.from(document.querySelectorAll('.text'));
-    const sideBar = document.querySelector('aside');
-
-    texts.forEach(text => {
-      text.classList.toggle('hide');
-
-    });
-    sideBar.classList.toggle('slim');
-  }
+    if (asideState === 'slim') {
+      const texts = Array.from(document.querySelectorAll('.text'));
+      const sideBar = document.querySelector('aside');
+      texts.forEach(text => {
+        text.classList.add('hide');
+      });
+      sideBar.classList.add('slim');
+    }
+  }, [mode, asideState]);
 
   return (
     <header className='main-header'>
       <div className='logo-container'>
         {isConnected && (
-          <span
+          <button
             className='expand-slim'
             onClick={handleClick}
           >
             <Icon icon="mage:dots-menu" />
-          </span>
+          </button>
         )}
         <Logo uri={isConnected? '/home': '/'} />
       </div>
@@ -182,4 +180,20 @@ function disableDarkMode() {
   const darkGround = document.querySelector('.dark-ground');
   profile.classList.remove('dark-mode');
   darkGround.classList.remove('active');
+}
+
+function handleClick() {
+  const texts = Array.from(document.querySelectorAll('.text'));
+  const sideBar = document.querySelector('aside');
+
+  if (sideBar.classList.contains('slim')) {
+    localStorage.setItem("asideState", "normal");
+  } else {
+    localStorage.setItem("asideState", "slim");
+  }
+  texts.forEach(text => {
+    text.classList.toggle('hide');
+
+  });
+  sideBar.classList.toggle('slim');
 }
