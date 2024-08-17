@@ -25,13 +25,12 @@
 }
 
 .employees-container li {
-  /* background-color: var(--primary-card-gb); */
   width: 100%;
   min-height: 30px;
   line-height: 30px;
   padding: 10px;
   border-radius: 10px;
-  position: relative; /* added before adding new absence to replace li.show, li.hide */
+  position: relative;
 }
 
 .employees-container li.active > .main-info {

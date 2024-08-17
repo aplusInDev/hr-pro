@@ -2,9 +2,6 @@
   width: 100vw;
   height: 50px;
   background-color: var(--primary-header-gb);
-  /* position: absolute; */
-  /* top: 0;
-  left: 0; */
 }
 
 .logo-container {
@@ -133,7 +130,8 @@
   top: 45px;
   right: 5px;
   border-radius: 20px;
-  background-color: #d3cece;
+  /* background-color: #d3cece; */
+  background-color: var(--main-color);
   z-index: 1;
 }
 
@@ -148,7 +146,6 @@
 
 .profile-settings li a {
   border-radius: 10px;
-  line-height: 10px;
 }
 
 .profile-settings li a.active {
@@ -206,7 +203,8 @@
   top: 55px;
   right: 10px;
   border-radius: 20px;
-  background-color: #d3cece;
+  /* background-color: #d3cece; */
+  background-color: var(--main-color);
   z-index: 1;
 }
 

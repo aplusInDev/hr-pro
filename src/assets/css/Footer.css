@@ -6,6 +6,16 @@ footer {
   transform: translateY(-10px);
   height: 40px;
   line-height: 40px;
-  text-align: center;
+  text-align: left;
+  padding-left: 50px;
   color: var(--new-primary-color);
+}
+
+.footer a {
+  color: var(--new-primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  margin-top: 10px;
 }

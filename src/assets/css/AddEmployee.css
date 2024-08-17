@@ -11,7 +11,8 @@
 }
 
 .add-employee > form {
-  background-color:#737b87;
+  /* background-color:#737b87; */
+  background-color: var(--main-color);
   width: 500px;
   min-height: fit-content;
   border-radius: 10px;

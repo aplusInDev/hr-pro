@@ -127,12 +127,14 @@ button:disabled, button:disabled:hover {
   color: var(--primary-disabled-color) !important;
 }
 
-.main-item {
-  background-color: var(--primary-card-gb);
+.main-item{
+  background-color: var(--main-color);
+  outline: 1px solid #dddbd7;
 }
 
 .main-item:not(.active-card, .active):hover {
-  background-color: var(--secondary-item-gb);
+  background-color: var(--color23);
+  color: #fff;
 }
 
 .active-card {
@@ -187,7 +189,6 @@ span.close svg {
 }
 .secondary-btn:hover {
   background-color: rgba(47, 47, 167, 0.896) !important;
-  /* background-color: rgba(47, 47, 167, 0.671); */
 }
 
 .new-btn:not(.new-btn.active) {
@@ -208,13 +209,14 @@ main {
   overflow-y: scroll;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  background: var(--primary-bg-style);
 }
 
-main.wide {
+aside.slim ~ main {
   position: absolute;
   width: calc(100vw - 90px);
   left: 80px;
-  top: 55px;
+  top: 50px;
   margin: auto;
 }
 

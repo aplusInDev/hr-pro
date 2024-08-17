@@ -1,6 +1,7 @@
 :root {
   --cardFont: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
   --main-white: #FFFFFF;
+  --main-color: #faf2e4;
   --main-light-color: #D9D9D9;
   --bgColor2: #d1f8f9;
   --main-black: #000000;
@@ -33,7 +34,8 @@
   --color2: #ded5d2;
   --color3: #5f5764;
   --color4: #6698c4;
-  --color5: #f2ebe8;
+  --color51: #f2ebe8;
+  --color5: #dce6e7;
   --color6: #608081;
   --color7: #ceebef;
   --color8: #1e2024;
@@ -52,6 +54,7 @@
   --color20: #303030;
   --color21: #a8c7fa;
   --color22: #eaf1fb;
+  --color23: #3881ca54;
   --pfontColor: #48566b;
   --aside-ground: rgb(37, 155, 233);
   /* ---------------------------------------- */
@@ -59,13 +62,9 @@
   --primary-color: #0A0E0B;
   --secondary-color: #f2f2f2;
   --primary-disabled-color: rgba(16, 16, 16, 0.3);
-  /* --primary-bg: #add8e61f; */
-  /* --primary-bg: #ade6dc29; */
-  /* --primary-bg: #cdd2ce90; */ /* old */
-  --primary-bg: #ccd4d383; /* new */
+  --primary-bg: #ccd4d383;
   --secondary-gb: var(--color15);
   --primary-card-gb: #b0bfc4b2;
-  /* --primary-card-gb: var(--sidebar-bg); */
   --primary-aside-color: var(--color1);
   --primary-btn-gb: #022c3a13;
   --secondary-btn-gb: #e8eef013;
@@ -77,21 +76,17 @@
   --secondary-item-gb: #0331435e;
   --new-primary-color: var(--primary-color);
   --new-secondary-color: #fefefe;
-  --primary-header-gb: #a8aba99a;
-  /* --primary-header-gb: #b0bfc4c2; */ /* old */
-  --primary-header-gb: #cdd2d4; /* new */
-  /* --sidebar-bg: #acb0ad90; */
-  /* --sidebar-bg: #b0bfc4a9; */ /* old */
-  --sidebar-bg: var(--primary-header-gb); /* new */
-  /* --sidebar-bg: var(--second-dark-color); */
+  --primary-header-gb: var(--color51);
+  --sidebar-bg: var(--main-color);
   --primary-font-color: #333;
   --secondary-font-color: #666;
   --main-heading-color: #161d26;
   --main-pcolor: #232b37;
+  --primary-bg-style:  linear-gradient(123deg, #5de8bac3, #3881caac);
 }
 
 .dark-mode {
-  /* --primary-bg: var(--color9); */
+  --main-color: #d1d3d6ec;
   --main-heading-color: #f1f1f1a0;
   --main-pcolor: #738297;
   --primary-bg: #000000e2;
@@ -101,12 +96,11 @@
   --secondary-item-gb: #9ab9c5a9;
   --new-primary-color: #fefefe;
   --new-secondary-color: var(--primary-color);
-  /* --sidebar-bg: #c0edcb; */
-  /* --sidebar-bg: var(--second-dark-color); */
-  /* --primary-header-gb: var(--midnight-black); */
   --primary-header-gb: var(--color20);
   --sidebar-bg: var(--color20);
   --secondary-font-color: #3d3b3b;
+  --primary-bg-style: #2d2f35fa;
+  --color23: #d1d3d6be;
 }
 
 .error,
@@ -148,10 +142,6 @@ html, body, #root {
 	height: 100vh;
 	width: 100vw;
   overflow: hidden;
-}
-
-main {
-  background-color: var(--primary-bg);
 }
 
 ::-webkit-scrollbar {
