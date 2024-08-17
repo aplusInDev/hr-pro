@@ -17,9 +17,9 @@ function Header({ isConnected, showBtns=true }) {
       const texts = Array.from(document.querySelectorAll('.text'));
       const sideBar = document.querySelector('aside');
       texts.forEach(text => {
-        text.classList.add('hide');
+        text?.classList.add('hide');
       });
-      sideBar.classList.add('slim');
+      sideBar?.classList.add('slim');
     }
   }, [mode, asideState]);
 
@@ -186,14 +186,14 @@ function handleClick() {
   const texts = Array.from(document.querySelectorAll('.text'));
   const sideBar = document.querySelector('aside');
 
-  if (sideBar.classList.contains('slim')) {
+  if (sideBar?.classList.contains('slim')) {
     localStorage.setItem("asideState", "normal");
   } else {
     localStorage.setItem("asideState", "slim");
   }
-  texts.forEach(text => {
+  texts?.forEach(text => {
     text.classList.toggle('hide');
 
   });
-  sideBar.classList.toggle('slim');
+  sideBar?.classList.toggle('slim');
 }

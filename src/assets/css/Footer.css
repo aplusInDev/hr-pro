@@ -7,7 +7,7 @@ footer {
   height: 40px;
   line-height: 40px;
   text-align: left;
-  padding-left: 50px;
+  padding-left: 40px;
   color: var(--new-primary-color);
 }
 
@@ -18,4 +18,11 @@ footer {
   justify-content: flex-start;
   gap: 5px;
   margin-top: 10px;
+}
+
+.home ~ footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transform: translateY(0);
 }
