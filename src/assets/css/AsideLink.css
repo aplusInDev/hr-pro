@@ -17,13 +17,12 @@ li:hover > .aside-link:not(.aside-link.active) {
 }
 
 aside li > .aside-link {
-  /* color: var(--color2); */
   color: var(--new-primary-color);
   opacity: .7;
 }
 
 .aside-link.active {
-  background-color: var(--color5);
+  background-color: var(--color23);
   border-radius: 5px;
   color: var(--icon-color);
   opacity: .8;
