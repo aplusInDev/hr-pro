@@ -23,7 +23,6 @@ export default function Company() {
   return (
     <main className='company'>
       <Form
-        action='company'
         method='put'
         onSubmit={handleIdle}
       >
